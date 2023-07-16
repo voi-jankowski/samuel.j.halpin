@@ -183,6 +183,41 @@ const resolvers = {
 
       throw new AuthenticationError("You need to be logged in!");
     },
+
+    // add reply
+    addReply: async (parent, { commentId, replyText }, context) => {
+      if (context.user) {
+        return Comment.findOneAndUpdate(
+          { _id: commentId },
+          {
+            $addToSet: {
+              replies: { replyText, replyAuthor: context.user.username },
+            },
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+      }
+      throw new AuthenticationError("You need to be logged in!");
+    },
+
+    // remove reply
+    removeReply: async (parent, { commentId, replyId }, context) => {
+      if (context.user) {
+        return Comment.findOneAndUpdate(
+          { _id: commentId },
+          {
+            $pull: {
+              replies: { _id: replyId, replyAuthor: context.user.username },
+            },
+          },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError("You need to be logged in!");
+    },
   },
 };
 
