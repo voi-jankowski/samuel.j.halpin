@@ -258,6 +258,41 @@ const resolvers = {
 
       throw new AuthenticationError("You need to be logged in!");
     },
+
+    // add answer
+    addAnswer: async (parent, { questionId, answerText }, context) => {
+      if (context.user.username === "admin") {
+        return Question.findOneAndUpdate(
+          { _id: questionId },
+          {
+            $addToSet: {
+              answers: { answerText },
+            },
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+      }
+      throw new AuthenticationError("You need to be logged in as admin!");
+    },
+
+    // remove answer
+    removeAnswer: async (parent, { questionId, answerId }, context) => {
+      if (context.user.username === "admin") {
+        return Question.findOneAndUpdate(
+          { _id: questionId },
+          {
+            $pull: {
+              answers: { _id: answerId },
+            },
+          },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError("You need to be logged in as admin!");
+    },
   },
 };
 
