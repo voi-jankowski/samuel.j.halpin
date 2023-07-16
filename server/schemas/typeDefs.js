@@ -55,4 +55,13 @@ const typeDefs = gql`
     purchaseDate: String
     products: [Product]
   }
+
+  type Checkout {
+    session: ID
+  }
+
+  type Auth {
+    token: ID!
+    user: User
+  }
 `;
