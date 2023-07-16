@@ -293,6 +293,24 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in as admin!");
     },
+
+    // add order
+    addOrder: async (parent, { products }, context) => {
+      console.log(context);
+      if (context.user) {
+        const order = new Order({ products });
+
+        await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $push: { orders: order } },
+          { new: true }
+        );
+
+        return order;
+      }
+
+      throw new AuthenticationError("You need to be logged in!");
+    },
   },
 };
 
