@@ -64,4 +64,16 @@ const typeDefs = gql`
     token: ID!
     user: User
   }
+
+  type Query {
+    products: [Product]
+    product(_id: ID!): Product
+    order(_id: ID!): Order
+    checkout(products: [ID]!): Checkout
+    me: User
+    comments: [Comment]
+    comment(_id: ID!): Comment
+    questions: [Question]
+    question(_id: ID!): Question
+  }
 `;
