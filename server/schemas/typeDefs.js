@@ -77,11 +77,17 @@ const typeDefs = gql`
     question(_id: ID!): Question
   }
 
+  input UserDetails {
+    username: String
+    email: String
+    password: String
+  }
+
   type Mutation {
-    addUser(username: String!, email: String!, password: String!): Auth
+    addUser(userDetails: UserDetails!): Auth
     login(email: String!, password: String!): Auth
     removeUser(_id: ID!): User
-    updateUser(username: String, email: String, password: String): User
+    updateUser(userDetails: UserDetails!): User
     addComment(commentText: String!): Comment
     removeComment(commentId: ID!): Comment
     addReply(commentId: ID!, replyText: String!): Comment
