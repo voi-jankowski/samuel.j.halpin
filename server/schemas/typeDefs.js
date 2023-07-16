@@ -76,4 +76,21 @@ const typeDefs = gql`
     questions: [Question]
     question(_id: ID!): Question
   }
+
+  type Mutation {
+    addUser(username: String!, email: String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
+    removeUser(_id: ID!): User
+    updateUser(username: String, email: String, password: String): User
+    addComment(commentText: String!): Comment
+    removeComment(commentId: ID!): Comment
+    addReply(commentId: ID!, replyText: String!): Comment
+    removeReply(commentId: ID!, replyId: ID!): Comment
+    addQuestion(questionText: String!): Question
+    removeQuestion(questionId: ID!): Question
+    addAnswer(questionId: ID!, answerText: String!): Question
+    removeAnswer(questionId: ID!, answerId: ID!): Question
+    addOrder(products: [ID]!): Order
+    updateProduct(_id: ID!, quantity: Int!): Product
+  }
 `;
