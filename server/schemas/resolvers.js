@@ -167,7 +167,7 @@ const resolvers = {
     // remove comment
     removeComment: async (parent, { commentId }, context) => {
       if (context.user) {
-        const comment = await Comment.findByIdAndDelete({
+        const comment = await Comment.findOneAndDelete({
           _id: commentId,
           commentAuthor: context.user.username,
         });
@@ -216,6 +216,46 @@ const resolvers = {
           { new: true }
         );
       }
+      throw new AuthenticationError("You need to be logged in!");
+    },
+
+    // add question
+    addQuestion: async (parent, { questionText }, context) => {
+      if (context.user) {
+        const question = await Question.create({
+          questionText,
+          questionAuthor: context.user.username,
+        });
+
+        await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { questions: question._id } },
+          { new: true }
+        );
+
+        return question;
+      }
+
+      throw new AuthenticationError("You need to be logged in!");
+    },
+
+    // remove question
+    removeQuestion: async (parent, { questionId }, context) => {
+      if (context.user) {
+        const question = await Question.findOneAndDelete({
+          _id: questionId,
+          questionAuthor: context.user.username,
+        });
+
+        await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $pull: { questions: question._id } },
+          { new: true }
+        );
+
+        return question;
+      }
+
       throw new AuthenticationError("You need to be logged in!");
     },
   },
