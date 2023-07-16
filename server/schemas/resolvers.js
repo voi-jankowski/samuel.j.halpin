@@ -65,7 +65,16 @@ const resolvers = {
         return { session: session.id };
       }
     },
+
+    // get me (logged in user)
+    me: async (parent, args, context) => {
+      if (context.user) {
+        return await User.findById(context.user._id);
+      }
+      throw new AuthenticationError("You need to be logged in!");
+    },
   },
+
   Mutation: {},
 };
 
