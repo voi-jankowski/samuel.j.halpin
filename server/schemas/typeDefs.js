@@ -15,6 +15,7 @@ const typeDefs = gql`
     _id: ID
     commentText: String
     commentAuthor: String
+    commentedBook: String
     createdAt: String
     replies: [Reply]!
   }

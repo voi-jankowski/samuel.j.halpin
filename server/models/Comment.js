@@ -14,6 +14,11 @@ const commentSchema = new Schema({
     required: true,
     trim: true,
   },
+  commentedBook: {
+    type: String,
+    required: true,
+    trim: true,
+  },
   createdAt: {
     type: Date,
     default: Date.now,

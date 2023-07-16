@@ -73,6 +73,19 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
+
+    // get all comments
+    comments: async (parent, { commentedBook }) => {
+      const params = commentedBook ? { commentedBook } : {};
+      return await Comment.find(params)
+        .sort({ createdAt: -1 })
+        .populate("replies");
+    },
+
+    // get a single comment by its _id
+    comment: async (parent, { thoughtId }) => {
+      return await Comment.findOne({ _id: thoughtId }).populate("replies");
+    },
   },
 
   Mutation: {},
