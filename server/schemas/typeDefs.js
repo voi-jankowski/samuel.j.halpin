@@ -26,4 +26,19 @@ const typeDefs = gql`
         createdAt: String
     }
 
+    type Question {
+        _id: ID
+        questionText: String
+        questionAuthor: String
+        createdAt: String
+        answers: [Answer]!
+    }
+
+    type Answer {
+        _id: ID
+        answerText: String
+        answerAuthor: String
+        createdAt: String
+    }
+
     
