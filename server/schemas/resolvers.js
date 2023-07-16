@@ -11,6 +11,10 @@ const resolvers = {
     products: async () => {
       return await Product.find();
     },
+    // get a single product by its _id
+    product: async (parent, { _id }) => {
+      return await Product.findById(_id);
+    },
   },
   Mutation: {},
 };
