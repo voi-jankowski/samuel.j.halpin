@@ -123,6 +123,25 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
+
+    //  remove user
+    removeUser: async (parent, args, context) => {
+      const user = await User.findByIdAndDelete(context.user._id);
+      return user;
+    },
+
+    //  update user
+    updateUser: async (parent, { username, email, password }, context) => {
+      if (context.user) {
+        const user = await User.findByIdAndUpdate(
+          context.user._id,
+          { username, email, password },
+          { new: true }
+        );
+        return user;
+      }
+      throw new AuthenticationError("Not logged in");
+    },
   },
 };
 
