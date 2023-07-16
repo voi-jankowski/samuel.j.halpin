@@ -142,6 +142,47 @@ const resolvers = {
       }
       throw new AuthenticationError("Not logged in");
     },
+
+    // add comment
+    addComment: async (parent, { commentedBook, commentText }, context) => {
+      if (context.user) {
+        const comment = await Comment.create({
+          commentedBook,
+          commentText,
+          commentAuthor: context.user.username,
+        });
+
+        await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { comments: comment._id } },
+          { new: true }
+        );
+
+        return comment;
+      }
+
+      throw new AuthenticationError("You need to be logged in!");
+    },
+
+    // remove comment
+    removeComment: async (parent, { commentId }, context) => {
+      if (context.user) {
+        const comment = await Comment.findByIdAndDelete({
+          _id: commentId,
+          commentAuthor: context.user.username,
+        });
+
+        await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $pull: { comments: comment._id } },
+          { new: true }
+        );
+
+        return comment;
+      }
+
+      throw new AuthenticationError("You need to be logged in!");
+    },
   },
 };
 
