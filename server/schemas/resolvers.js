@@ -5,6 +5,14 @@ const stripe = require("stripe")(
   "sk_test_51NUJK2AfEwsDyM4I9JDGzRlXlYALqglL2SRBqVUKT01R4ucQFbCvmY255kiREGNkbAtwyIwKUjETnNZTNzAYwEsX00rcl9jbwl"
 );
 
-const resolvers = {};
+const resolvers = {
+  Query: {
+    // get all products
+    products: async () => {
+      return await Product.find();
+    },
+  },
+  Mutation: {},
+};
 
 module.exports = resolvers;
