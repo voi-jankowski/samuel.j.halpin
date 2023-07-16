@@ -100,3 +100,5 @@ const typeDefs = gql`
     updateProduct(_id: ID!, quantity: Int!): Product
   }
 `;
+
+module.exports = typeDefs;
