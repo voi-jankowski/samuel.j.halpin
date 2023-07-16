@@ -86,6 +86,16 @@ const resolvers = {
     comment: async (parent, { thoughtId }) => {
       return await Comment.findOne({ _id: thoughtId }).populate("replies");
     },
+
+    // get all questions
+    questions: async () => {
+      return await Question.find().sort({ createdAt: -1 }).populate("answers");
+    },
+
+    // get a single question by its _id
+    question: async (parent, { questionId }) => {
+      return await Question.findOne({ _id: questionId }).populate("answers");
+    },
   },
 
   Mutation: {},
