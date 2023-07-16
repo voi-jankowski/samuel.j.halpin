@@ -15,6 +15,16 @@ const resolvers = {
     product: async (parent, { _id }) => {
       return await Product.findById(_id);
     },
+    // get user's order
+    order: async (parent, { _id }, context) => {
+      if (context.user) {
+        const user = await User.findById(context.user._id).populate({
+          path: "orders.products",
+        });
+        return user.orders.id(_id);
+      }
+      throw new AuthenticationError("Not logged in");
+    },
   },
   Mutation: {},
 };
