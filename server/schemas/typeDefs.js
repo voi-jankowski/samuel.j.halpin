@@ -72,7 +72,7 @@ const typeDefs = gql`
     order(_id: ID!): Order
     checkout(products: [ID]!): Checkout
     me: User
-    comments(commentedBook: commentedBook!): [Comment]
+    comments(commentedBook: String!): [Comment]
     comment(commentId: ID!): Comment
     questions: [Question]
     question(questionId: ID!): Question
