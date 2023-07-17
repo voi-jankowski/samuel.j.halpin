@@ -42,7 +42,25 @@ const client = new ApolloClient({
 });
 
 function App() {
-  return <h1> Hello World </h1>;
+  return (
+    <ApolloProvider client={client}>
+      <Router>
+        <div>
+          <Header />
+          <div className="container">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/map" element={<Map />} />
+              <Route path="/merchandise" element={<Merchandise />} />
+              <Route path="/books" element={<Books />} />
+              <Route path="/profile" element={<Profile />} />
+            </Routes>
+          </div>
+          <Footer />
+        </div>
+      </Router>
+    </ApolloProvider>
+  );
 }
 
 export default App;
