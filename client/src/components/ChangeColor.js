@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { changeColor } from "../features/theme";
 
 function ChangeColor() {
   const [color, setColor] = useState("");
+  const dispatch = useDispatch();
   return (
     <div>
       <input
@@ -11,7 +14,13 @@ function ChangeColor() {
           setColor(event.target.value);
         }}
       ></input>
-      <button>Change Color</button>
+      <button
+        onClick={() => {
+          dispatch(changeColor(color));
+        }}
+      >
+        Change Color
+      </button>
     </div>
   );
 }
