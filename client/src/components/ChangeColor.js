@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 function ChangeColor() {
-  const [color, setColor] = useState("red");
+  const [color, setColor] = useState("");
   return (
     <div>
       <input
