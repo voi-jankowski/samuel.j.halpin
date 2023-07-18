@@ -9,7 +9,7 @@ export default function Profile() {
   return (
     <div style={{ color: themeColor }}>
       <h1>Profile Page</h1>
-      <p>Username: {user.name}</p>
+      <p>Username: {user.username}</p>
       <p>Email: {user.email}</p>
       <p>Password: {user.password}</p>
       <Login />

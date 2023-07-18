@@ -6,7 +6,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import userReducer from "./features/user";
 import themeReducer from "./features/theme";
-import { ChakraProvider } from "@chakra-ui/react";
+import { extendTheme, ChakraProvider } from "@chakra-ui/react";
 
 const store = configureStore({
   reducer: {
@@ -15,10 +15,21 @@ const store = configureStore({
   },
 });
 
+// Extend the theme to include custom colors, fonts, etc
+const colors = {
+  brand: {
+    900: "#1a365d",
+    800: "#153e75",
+    700: "#2a69ac",
+  },
+};
+
+const theme = extendTheme({ colors });
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <Provider store={store}>
         <App />
       </Provider>
