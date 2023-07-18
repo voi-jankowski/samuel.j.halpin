@@ -5,8 +5,9 @@ import ChangeColor from "../components/ChangeColor";
 
 export default function Profile() {
   const user = useSelector((state) => state.user.value);
+  const themeColor = useSelector((state) => state.theme.value);
   return (
-    <div>
+    <div style={{ color: themeColor }}>
       <h1>Profile Page</h1>
       <p>Username: {user.name}</p>
       <p>Email: {user.email}</p>
