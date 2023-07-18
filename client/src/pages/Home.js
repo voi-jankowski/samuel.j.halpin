@@ -20,7 +20,7 @@ function Home() {
   };
 
   return (
-    <Container as="section" maxWidth="3xl" py="20px">
+    <Container as="main" maxWidth="3xl" py="20px">
       <Heading sx={headingStyles}>About</Heading>
       <Box sx={boxStyles}>
         <Text mx="20px">
