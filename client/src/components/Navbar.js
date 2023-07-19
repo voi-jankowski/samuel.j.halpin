@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 // The navbar template sourced from https://chakra-templates.dev/navigation/navbar
 import {
   Box,
@@ -38,6 +38,7 @@ const Links = [
 
 const NavLink = ({ children, url }) => (
   <Link
+    key={children}
     px={2}
     py={1}
     rounded={"md"}
@@ -51,9 +52,11 @@ const NavLink = ({ children, url }) => (
   </Link>
 );
 
-export default function Simple() {
+export default function Navbar() {
   const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  // Add a separate state variable to track Login modal visibility
+  const [isLoginOpen, setLoginOpen] = useState(false);
 
   return (
     <>
@@ -64,7 +67,10 @@ export default function Simple() {
             icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
             aria-label={"Open Menu"}
             display={{ md: "none" }}
-            onClick={isOpen ? onClose : onOpen}
+            onClick={(event) => {
+              event.stopPropagation(); // Stop event propagation
+              isOpen ? onClose() : onOpen();
+            }}
           />
 
           <HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }}>
@@ -109,8 +115,11 @@ export default function Simple() {
                   <br />
                   <MenuDivider />
                   <MenuItem>Your Profile</MenuItem>
-                  <MenuItem onClick={onOpen}>Login</MenuItem>
-                  <Modal isOpen={isOpen} onClose={onClose}>
+                  <MenuItem onClick={() => setLoginOpen(true)}>Login</MenuItem>
+                  <Modal
+                    isOpen={isLoginOpen}
+                    onClose={() => setLoginOpen(false)}
+                  >
                     <ModalOverlay />
                     <ModalContent>
                       <Login />
@@ -127,7 +136,9 @@ export default function Simple() {
           <Box pb={4} display={{ md: "none" }}>
             <Stack as={"nav"} spacing={4}>
               {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
+                <NavLink key={link.name} url={link.url}>
+                  {link.name}
+                </NavLink>
               ))}
             </Stack>
           </Box>
