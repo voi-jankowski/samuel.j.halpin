@@ -21,7 +21,13 @@ import {
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 
-const Links = ["Home", "Books", "Inspiration Maps", "Teaching resources"];
+const Links = [
+  "Home",
+  "About",
+  "Books",
+  "Inspiration Maps",
+  "Teaching resources",
+];
 
 const NavLink = ({ children }) => (
   <Link
@@ -53,18 +59,13 @@ export default function Simple() {
             display={{ md: "none" }}
             onClick={isOpen ? onClose : onOpen}
           />
-          <HStack spacing={8} alignItems={"center"}>
-            <Box>Logo</Box>
-            <HStack
-              as={"nav"}
-              spacing={4}
-              display={{ base: "none", md: "flex" }}
-            >
-              {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
-              ))}
-            </HStack>
+
+          <HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }}>
+            {Links.map((link) => (
+              <NavLink key={link}>{link}</NavLink>
+            ))}
           </HStack>
+
           <Flex alignItems={"center"}>
             <Stack direction={"row"} spacing={7}>
               <Button onClick={toggleColorMode}>
