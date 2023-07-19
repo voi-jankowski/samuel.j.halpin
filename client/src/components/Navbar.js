@@ -30,14 +30,13 @@ import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 import Login from "./Login";
 
 const Links = [
-  "Home",
-  "About",
-  "Books",
-  "Inspiration Maps",
-  "Teaching resources",
+  { name: "Home", url: "/" },
+  { name: "Books", url: "/books" },
+  { name: "Inspiration Maps", url: "/map" },
+  { name: "Teaching Resources", url: "/teaching" },
 ];
 
-const NavLink = ({ children }) => (
+const NavLink = ({ children, url }) => (
   <Link
     px={2}
     py={1}
@@ -46,7 +45,7 @@ const NavLink = ({ children }) => (
       textDecoration: "none",
       bg: useColorModeValue("gray.200", "gray.700"),
     }}
-    href={"#"}
+    href={url}
   >
     {children}
   </Link>
@@ -70,7 +69,9 @@ export default function Simple() {
 
           <HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }}>
             {Links.map((link) => (
-              <NavLink key={link}>{link}</NavLink>
+              <NavLink key={link.name} url={link.url}>
+                {link.name}
+              </NavLink>
             ))}
           </HStack>
 
