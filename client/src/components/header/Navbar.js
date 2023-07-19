@@ -28,6 +28,7 @@ import {
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 import Login from "./Login";
+import Signup from "./Signup";
 
 const Links = [
   { name: "Home", url: "/" },
@@ -57,6 +58,7 @@ export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   // Add a separate state variable to track Login modal visibility
   const [isLoginOpen, setLoginOpen] = useState(false);
+  const [isSignupOpen, setSignupOpen] = useState(false);
 
   return (
     <>
@@ -125,7 +127,18 @@ export default function Navbar() {
                       <Login />
                     </ModalContent>
                   </Modal>
-                  <MenuItem>Signup</MenuItem>
+                  <MenuItem onClick={() => setSignupOpen(true)}>
+                    Signup
+                  </MenuItem>
+                  <Modal
+                    isOpen={isSignupOpen}
+                    onClose={() => setSignupOpen(false)}
+                  >
+                    <ModalOverlay />
+                    <ModalContent>
+                      <Signup />
+                    </ModalContent>
+                  </Modal>
                 </MenuList>
               </Menu>
             </Stack>
