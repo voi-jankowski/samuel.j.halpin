@@ -30,7 +30,17 @@ const container = {
   },
 };
 
-const theme = extendTheme({ colors, components: { Container: container } });
+const heading = {
+  baseStyle: {
+    my: "10px",
+    p: "30px",
+  },
+};
+
+const theme = extendTheme({
+  colors,
+  components: { Container: container, Heading: heading },
+});
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
