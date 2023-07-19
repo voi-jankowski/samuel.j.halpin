@@ -1,5 +1,5 @@
 import React from "react";
-import BookCardSimple from "../components/BookCardSimple";
+import BookCardSimple from "../components/smallComponents/BookCardSimple";
 import {
   Box,
   Button,

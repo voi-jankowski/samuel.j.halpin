@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import Login from "../components/Login";
-import ChangeColor from "../components/ChangeColor";
+import Login from "../components/header/Login";
+import ChangeColor from "../components/smallComponents/ChangeColor";
 import {
   Button,
   Flex,

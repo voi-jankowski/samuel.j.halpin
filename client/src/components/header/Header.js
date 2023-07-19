@@ -1,14 +1,12 @@
+import React from "react";
 import {
   Box,
   Spacer,
   Heading,
   Flex,
-  Text,
-  Button,
-  HStack,
   useColorModeValue,
 } from "@chakra-ui/react";
-import React from "react";
+
 import Navbar from "./Navbar";
 
 function Header() {

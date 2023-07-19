@@ -15,8 +15,8 @@ import Merchandise from "./pages/Merchandise";
 import Books from "./pages/Books";
 import Profile from "./pages/Profile";
 import TeachingResources from "./pages/TeachingResources";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Header from "./components/header/Header";
+import Footer from "./components/footer/Footer";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({

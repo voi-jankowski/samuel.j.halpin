@@ -15,7 +15,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
-import { login, logout } from "../features/user";
+import { login, logout } from "../../features/user";
 import { useHistory } from "react-router-dom";
 
 export default function Login() {
