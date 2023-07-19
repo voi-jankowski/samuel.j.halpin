@@ -18,8 +18,16 @@ import {
   Stack,
   useColorMode,
   Center,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
+import Login from "./Login";
 
 const Links = [
   "Home",
@@ -99,9 +107,15 @@ export default function Simple() {
                   </Center>
                   <br />
                   <MenuDivider />
-                  <MenuItem>Your Servers</MenuItem>
-                  <MenuItem>Account Settings</MenuItem>
-                  <MenuItem>Logout</MenuItem>
+                  <MenuItem>Your Profile</MenuItem>
+                  <MenuItem onClick={onOpen}>Login</MenuItem>
+                  <Modal isOpen={isOpen} onClose={onClose}>
+                    <ModalOverlay />
+                    <ModalContent>
+                      <Login />
+                    </ModalContent>
+                  </Modal>
+                  <MenuItem>Signup</MenuItem>
                 </MenuList>
               </Menu>
             </Stack>
