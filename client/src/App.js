@@ -14,6 +14,7 @@ import Map from "./pages/Map";
 import Merchandise from "./pages/Merchandise";
 import Books from "./pages/Books";
 import Profile from "./pages/Profile";
+import TeachingResources from "./pages/TeachingResources";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
@@ -54,6 +55,7 @@ function App() {
               <Route path="/merchandise" element={<Merchandise />} />
               <Route path="/books" element={<Books />} />
               <Route path="/profile" element={<Profile />} />
+              <Route path="/teaching" element={<TeachingResources />} />
             </Routes>
           </div>
           <Footer className="Footer" />
