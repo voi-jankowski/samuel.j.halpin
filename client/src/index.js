@@ -24,7 +24,13 @@ const colors = {
   },
 };
 
-const theme = extendTheme({ colors });
+const container = {
+  baseStyle: {
+    minW: "4xl",
+  },
+};
+
+const theme = extendTheme({ colors, components: { Container: container } });
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
