@@ -17,13 +17,6 @@ function Header() {
       <Flex as="header" alignItems="center">
         <Heading as="h1">Samuel J. Halpin</Heading>
         <Spacer />
-        <HStack spacing="10px">
-          <Box bg="gray.200" p="10px">
-            M
-          </Box>
-          <Text>voi@gmail.com</Text>
-          <Button colorScheme="purple">Logout</Button>
-        </HStack>
       </Flex>
       <Navbar />
     </Box>

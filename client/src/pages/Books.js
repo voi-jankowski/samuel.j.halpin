@@ -1,30 +1,35 @@
-import {
-  Container,
-  Heading,
-  Box,
-  Flex,
-  chakra,
-  SimpleGrid,
-  Button,
-  VStack,
-  Wrap,
-  Stack,
-} from "@chakra-ui/react";
 import React from "react";
 import BookCardSimple from "../components/BookCardSimple";
+import {
+  Box,
+  Button,
+  Container,
+  Flex,
+  Heading,
+  Stack,
+  Text,
+  useColorModeValue,
+} from "@chakra-ui/react";
 
-export default function Books() {
+export default function gridListWith() {
   return (
-    <Container as="main">
-      <Heading>Books</Heading>
-      <Wrap spacing="30px" justify="space-around">
-        <Box minW="250px">
+    <Box p={4}>
+      <Stack spacing={4} as={Container} maxW={"3xl"} textAlign={"center"}>
+        <Heading fontSize={{ base: "2xl", sm: "4xl" }} fontWeight={"bold"}>
+          Short heading
+        </Heading>
+        <Text color={"gray.600"} fontSize={{ base: "sm", sm: "lg" }}>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
+          obcaecati ut cupiditate pariatur, dignissimos, placeat amet officiis.
+        </Text>
+      </Stack>
+
+      <Container maxW={"5xl"} mt={12}>
+        <Flex flexWrap="wrap" gridGap={6} justify="center">
           <BookCardSimple />
-        </Box>
-        <Box minW="250px">
           <BookCardSimple />
-        </Box>
-      </Wrap>
-    </Container>
+        </Flex>
+      </Container>
+    </Box>
   );
 }
