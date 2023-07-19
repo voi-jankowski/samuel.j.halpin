@@ -26,7 +26,7 @@ const colors = {
 
 const container = {
   baseStyle: {
-    minW: "4xl",
+    maxWidth: "4xl",
   },
 };
 
