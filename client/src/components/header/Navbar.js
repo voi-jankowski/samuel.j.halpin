@@ -30,6 +30,12 @@ import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 import Login from "./Login";
 import Signup from "./Signup";
 
+import { useDispatch } from "react-redux";
+import { login, logout } from "../../features/user";
+
+import AuthService from "../../utils/auth";
+const Auth = new AuthService();
+
 const Links = [
   { name: "Home", url: "/" },
   { name: "Books", url: "/books" },
@@ -59,6 +65,15 @@ export default function Navbar() {
   // Add a separate state variable to track Login modal visibility
   const [isLoginOpen, setLoginOpen] = useState(false);
   const [isSignupOpen, setSignupOpen] = useState(false);
+
+  const dispatch = useDispatch();
+
+  // create logic for logging out
+  const handleLogout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+    dispatch(logout());
+  };
 
   return (
     <>
