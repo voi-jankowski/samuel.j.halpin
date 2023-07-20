@@ -18,6 +18,12 @@ import { useDispatch } from "react-redux";
 import { login, logout } from "../../features/user";
 import { useHistory } from "react-router-dom";
 
+import { useMutation } from "@apollo/client";
+import { LOGIN_USER } from "../../utils/mutations";
+
+import AuthService from "../../utils/auth";
+const Auth = new AuthService();
+
 export default function Login() {
   const dispatch = useDispatch();
   return (
