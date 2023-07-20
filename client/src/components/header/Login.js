@@ -16,7 +16,7 @@ import {
 } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
 import { login, logout } from "../../features/user";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../../utils/mutations";
@@ -26,6 +26,49 @@ const Auth = new AuthService();
 
 export default function Login() {
   const dispatch = useDispatch();
+  // const history = useHistory();
+
+  const [formState, setFormState] = React.useState({
+    email: "",
+    password: "",
+  });
+
+  const [loginUser, { error, data }] = useMutation(LOGIN_USER);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    console.log(formState);
+
+    try {
+      const { data } = await loginUser({
+        variables: { ...formState },
+      });
+      console.log(data);
+      // Pass the values of the form to the global state
+      dispatch(login(data.login.user));
+      // Save the token to localStorage
+      Auth.login(data.login.token);
+      // history.push("/");
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  // clear form values
+  setFormState({
+    email: "",
+    password: "",
+  });
+
   return (
     <Flex
       minH={"100vh"}
