@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import Login from "../components/header/Login";
 import ChangeColor from "../components/smallComponents/ChangeColor";
 import {
   Button,
@@ -11,7 +10,6 @@ import {
   Input,
   Stack,
   useColorModeValue,
-  HStack,
   Avatar,
   AvatarBadge,
   IconButton,
@@ -66,7 +64,7 @@ export default function Profile() {
             </Stack>
           </FormControl>
           <FormControl id="userName" isRequired>
-            <FormLabel>User name</FormLabel>
+            <FormLabel>Username</FormLabel>
             <Input
               placeholder={user.username}
               _placeholder={{ color: "gray.500" }}
@@ -114,7 +112,6 @@ export default function Profile() {
         </Stack>
       </Flex>
       <br />
-      <Login />
       <ChangeColor />
     </Container>
   );
