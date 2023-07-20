@@ -116,8 +116,12 @@ export default function Navbar() {
                   </Center>
                   <br />
                   <MenuDivider />
-                  <MenuItem>Your Profile</MenuItem>
-                  <MenuItem onClick={() => setLoginOpen(true)}>Login</MenuItem>
+                  <MenuItem as={Link} href="/profile" onClick={onClose}>
+                    Your Profile
+                  </MenuItem>
+                  <MenuItem as={Link} onClick={() => setLoginOpen(true)}>
+                    Login
+                  </MenuItem>
                   <Modal
                     isOpen={isLoginOpen}
                     onClose={() => setLoginOpen(false)}
@@ -127,7 +131,7 @@ export default function Navbar() {
                       <Login />
                     </ModalContent>
                   </Modal>
-                  <MenuItem onClick={() => setSignupOpen(true)}>
+                  <MenuItem as={Link} onClick={() => setSignupOpen(true)}>
                     Signup
                   </MenuItem>
                   <Modal
