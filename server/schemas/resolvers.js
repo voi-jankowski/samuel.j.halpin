@@ -69,7 +69,18 @@ const resolvers = {
     // get me (logged in user)
     me: async (parent, args, context) => {
       if (context.user) {
-        return await User.findById(context.user._id);
+        return await User.findById(context.user._id)
+          .populate({
+            path: "orders.products",
+          })
+          .populate({
+            path: "comments",
+            populate: "replies",
+          })
+          .populate({
+            path: "questions",
+            populate: "answers",
+          });
       }
       throw new AuthenticationError("You need to be logged in!");
     },

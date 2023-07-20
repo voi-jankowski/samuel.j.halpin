@@ -18,8 +18,11 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+import { useDispatch } from "react-redux";
+import { login, logout } from "../../features/user";
 
 export default function SignupCard() {
+  const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
 
   return (
@@ -88,6 +91,15 @@ export default function SignupCard() {
                 _hover={{
                   bg: "blue.500",
                 }}
+                onClick={() =>
+                  dispatch(
+                    login({
+                      username: "test",
+                      email: "test",
+                      password: "test",
+                    })
+                  )
+                }
               >
                 Sign up
               </Button>
