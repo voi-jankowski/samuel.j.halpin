@@ -15,7 +15,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
-import { login, logout } from "../../features/user";
+import { login } from "../../features/user";
 // import { useHistory } from "react-router-dom";
 
 import { useMutation } from "@apollo/client";
@@ -67,13 +67,13 @@ export default function Login() {
     } catch (e) {
       console.error(e);
     }
-  };
 
-  // clear form values
-  setFormState({
-    email: "",
-    password: "",
-  });
+    // clear form values
+    setFormState({
+      email: "",
+      password: "",
+    });
+  };
 
   return (
     <Flex
@@ -134,14 +134,6 @@ export default function Login() {
                 >
                   Sign in
                 </Button>
-
-                <button
-                  onClick={() => {
-                    dispatch(logout());
-                  }}
-                >
-                  Logout
-                </button>
               </Stack>
             </Stack>
           </form>

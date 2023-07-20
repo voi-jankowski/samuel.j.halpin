@@ -134,30 +134,36 @@ export default function Navbar() {
                   <MenuItem as={Link} href="/profile" onClick={onClose}>
                     Your Profile
                   </MenuItem>
-                  <MenuItem as={Link} onClick={() => setLoginOpen(true)}>
-                    Login
-                  </MenuItem>
-                  <Modal
-                    isOpen={isLoginOpen}
-                    onClose={() => setLoginOpen(false)}
-                  >
-                    <ModalOverlay />
-                    <ModalContent>
-                      <Login />
-                    </ModalContent>
-                  </Modal>
-                  <MenuItem as={Link} onClick={() => setSignupOpen(true)}>
-                    Signup
-                  </MenuItem>
-                  <Modal
-                    isOpen={isSignupOpen}
-                    onClose={() => setSignupOpen(false)}
-                  >
-                    <ModalOverlay />
-                    <ModalContent>
-                      <Signup />
-                    </ModalContent>
-                  </Modal>
+                  {Auth.loggedIn() ? (
+                    <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                  ) : (
+                    <>
+                      <MenuItem as={Link} onClick={() => setLoginOpen(true)}>
+                        Login
+                      </MenuItem>
+                      <Modal
+                        isOpen={isLoginOpen}
+                        onClose={() => setLoginOpen(false)}
+                      >
+                        <ModalOverlay />
+                        <ModalContent>
+                          <Login />
+                        </ModalContent>
+                      </Modal>
+                      <MenuItem as={Link} onClick={() => setSignupOpen(true)}>
+                        Signup
+                      </MenuItem>
+                      <Modal
+                        isOpen={isSignupOpen}
+                        onClose={() => setSignupOpen(false)}
+                      >
+                        <ModalOverlay />
+                        <ModalContent>
+                          <Signup />
+                        </ModalContent>
+                      </Modal>
+                    </>
+                  )}
                 </MenuList>
               </Menu>
             </Stack>
