@@ -85,28 +85,34 @@ export default function SignupCard() {
           p={8}
         >
           <Stack spacing={4}>
-            <HStack>
-              <Box>
-                <FormControl id="firstName" isRequired>
-                  <FormLabel>First Name</FormLabel>
-                  <Input type="text" />
-                </FormControl>
-              </Box>
-              <Box>
-                <FormControl id="lastName">
-                  <FormLabel>Last Name</FormLabel>
-                  <Input type="text" />
-                </FormControl>
-              </Box>
-            </HStack>
+            <FormControl id="username" isRequired>
+              <FormLabel>Username</FormLabel>
+              <Input
+                type="text"
+                name="username"
+                value={formState.name}
+                onChange={handleChange}
+              />
+            </FormControl>
+
             <FormControl id="email" isRequired>
               <FormLabel>Email address</FormLabel>
-              <Input type="email" />
+              <Input
+                type="email"
+                name="email"
+                value={formState.email}
+                onChange={handleChange}
+              />
             </FormControl>
             <FormControl id="password" isRequired>
               <FormLabel>Password</FormLabel>
               <InputGroup>
-                <Input type={showPassword ? "text" : "password"} />
+                <Input
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  value={formState.password}
+                  onChange={handleChange}
+                />
                 <InputRightElement h={"full"}>
                   <Button
                     variant={"ghost"}
@@ -128,15 +134,16 @@ export default function SignupCard() {
                 _hover={{
                   bg: "blue.500",
                 }}
-                onClick={() =>
+                onClick={async () => {
                   dispatch(
                     login({
-                      username: "test",
-                      email: "test",
-                      password: "test",
+                      username: formState.username,
+                      email: formState.email,
+                      password: formState.password,
                     })
-                  )
-                }
+                  );
+                  await handleFormSubmit();
+                }}
               >
                 Sign up
               </Button>
