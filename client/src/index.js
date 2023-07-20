@@ -7,12 +7,26 @@ import { Provider } from "react-redux";
 import userReducer from "./features/user";
 import themeReducer from "./features/theme";
 import { extendTheme, ChakraProvider } from "@chakra-ui/react";
+import { PersistGate } from "redux-persist/integration/react";
+import { persistStore } from "redux-persist";
+import { persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage"; // Defaults to localStorage for web
 
+// Create a redux-persist store
+const persistConfig = {
+  key: "root",
+  storage,
+};
+
+// Combine the reducers
+const rootReducer = combineReducers({
+  user: persistReducer(persistConfig, userReducer),
+  theme: themeReducer,
+});
+
+// Create the redux store
 const store = configureStore({
-  reducer: {
-    user: userReducer,
-    theme: themeReducer,
-  },
+  reducer: rootReducer,
 });
 
 // Extend the theme to include custom colors, fonts, etc
@@ -45,11 +59,13 @@ const theme = extendTheme({
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <ChakraProvider theme={theme}>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </ChakraProvider>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <ChakraProvider theme={theme}>
+          <App />
+        </ChakraProvider>
+      </PersistGate>
+    </Provider>
   </React.StrictMode>
 );
 
