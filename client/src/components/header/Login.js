@@ -54,7 +54,13 @@ export default function Login() {
       });
       console.log(data);
       // Pass the values of the form to the global state
-      dispatch(login(data.login.user));
+      dispatch(
+        login({
+          username: data.login.user.username,
+          email: data.login.user.email,
+          password: formState.password,
+        })
+      );
       // Save the token to localStorage
       Auth.login(data.login.token);
       // history.push("/");
@@ -89,48 +95,56 @@ export default function Login() {
           boxShadow={"lg"}
           p={8}
         >
-          <Stack spacing={4}>
-            <FormControl id="email">
-              <FormLabel>Email address</FormLabel>
-              <Input type="email" />
-            </FormControl>
-            <FormControl id="password">
-              <FormLabel>Password</FormLabel>
-              <Input type="password" />
-            </FormControl>
-            <Stack spacing={10}>
-              <Stack
-                direction={{ base: "column", sm: "row" }}
-                align={"start"}
-                justify={"space-between"}
-              >
-                <Checkbox>Remember me</Checkbox>
-                <Link color={"blue.400"}>Forgot password?</Link>
-              </Stack>
-              <Button
-                bg={"blue.400"}
-                color={"white"}
-                _hover={{
-                  bg: "blue.500",
-                }}
-                onClick={() => {
-                  dispatch(
-                    login({ username: "test", email: "test", password: "test" })
-                  );
-                }}
-              >
-                Sign in
-              </Button>
+          <form onSubmit={handleFormSubmit}>
+            <Stack spacing={4}>
+              <FormControl id="email">
+                <FormLabel>Email address</FormLabel>
+                <Input
+                  type="email"
+                  name="email"
+                  value={formState.email}
+                  onChange={handleChange}
+                />
+              </FormControl>
+              <FormControl id="password">
+                <FormLabel>Password</FormLabel>
+                <Input
+                  type="password"
+                  name="password"
+                  value={formState.password}
+                  onChange={handleChange}
+                />
+              </FormControl>
+              <Stack spacing={10}>
+                <Stack
+                  direction={{ base: "column", sm: "row" }}
+                  align={"start"}
+                  justify={"space-between"}
+                >
+                  <Checkbox>Remember me</Checkbox>
+                  <Link color={"blue.400"}>Forgot password?</Link>
+                </Stack>
+                <Button
+                  bg={"blue.400"}
+                  color={"white"}
+                  _hover={{
+                    bg: "blue.500",
+                  }}
+                  type="submit"
+                >
+                  Sign in
+                </Button>
 
-              <button
-                onClick={() => {
-                  dispatch(logout());
-                }}
-              >
-                Logout
-              </button>
+                <button
+                  onClick={() => {
+                    dispatch(logout());
+                  }}
+                >
+                  Logout
+                </button>
+              </Stack>
             </Stack>
-          </Stack>
+          </form>
         </Box>
       </Stack>
     </Flex>
