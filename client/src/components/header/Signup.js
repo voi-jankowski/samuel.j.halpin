@@ -25,7 +25,8 @@ import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../../utils/mutations";
 import { useHistory } from "react-router-dom";
 
-import Auth from "../../utils/auth";
+import AuthService from "../../utils/auth";
+const Auth = new AuthService();
 
 export default function SignupCard() {
   const dispatch = useDispatch();
@@ -55,6 +56,15 @@ export default function SignupCard() {
       const { data } = await addUser({
         variables: { ...formState },
       });
+      console.log(data);
+      // Pass the values of the form to the global state
+      dispatch(
+        login({
+          username: formState.username,
+          email: formState.email,
+          password: formState.password,
+        })
+      );
 
       Auth.login(data.addUser.token);
     } catch (e) {
@@ -84,76 +94,69 @@ export default function SignupCard() {
           boxShadow={"lg"}
           p={8}
         >
-          <Stack spacing={4}>
-            <FormControl id="username" isRequired>
-              <FormLabel>Username</FormLabel>
-              <Input
-                type="text"
-                name="username"
-                value={formState.name}
-                onChange={handleChange}
-              />
-            </FormControl>
-
-            <FormControl id="email" isRequired>
-              <FormLabel>Email address</FormLabel>
-              <Input
-                type="email"
-                name="email"
-                value={formState.email}
-                onChange={handleChange}
-              />
-            </FormControl>
-            <FormControl id="password" isRequired>
-              <FormLabel>Password</FormLabel>
-              <InputGroup>
+          <form onSubmit={handleFormSubmit}>
+            <Stack spacing={4}>
+              <FormControl id="username" isRequired>
+                <FormLabel>Username</FormLabel>
                 <Input
-                  type={showPassword ? "text" : "password"}
-                  name="password"
-                  value={formState.password}
+                  type="text"
+                  name="username"
+                  value={formState.name}
                   onChange={handleChange}
                 />
-                <InputRightElement h={"full"}>
-                  <Button
-                    variant={"ghost"}
-                    onClick={() =>
-                      setShowPassword((showPassword) => !showPassword)
-                    }
-                  >
-                    {showPassword ? <ViewIcon /> : <ViewOffIcon />}
-                  </Button>
-                </InputRightElement>
-              </InputGroup>
-            </FormControl>
-            <Stack spacing={10} pt={2}>
-              <Button
-                loadingText="Submitting"
-                size="lg"
-                bg={"blue.400"}
-                color={"white"}
-                _hover={{
-                  bg: "blue.500",
-                }}
-                onClick={async () => {
-                  dispatch(
-                    login({
-                      username: formState.username,
-                      email: formState.email,
-                      password: formState.password,
-                    })
-                  );
-                  await handleFormSubmit();
-                }}
-              >
-                Sign up
-              </Button>
+              </FormControl>
+
+              <FormControl id="email" isRequired>
+                <FormLabel>Email address</FormLabel>
+                <Input
+                  type="email"
+                  name="email"
+                  value={formState.email}
+                  onChange={handleChange}
+                />
+              </FormControl>
+              <FormControl id="password" isRequired>
+                <FormLabel>Password</FormLabel>
+                <InputGroup>
+                  <Input
+                    type={showPassword ? "text" : "password"}
+                    name="password"
+                    value={formState.password}
+                    onChange={handleChange}
+                  />
+                  <InputRightElement h={"full"}>
+                    <Button
+                      variant={"ghost"}
+                      onClick={() =>
+                        setShowPassword((showPassword) => !showPassword)
+                      }
+                    >
+                      {showPassword ? <ViewIcon /> : <ViewOffIcon />}
+                    </Button>
+                  </InputRightElement>
+                </InputGroup>
+              </FormControl>
+              <Stack spacing={10} pt={2}>
+                <Button
+                  loadingText="Submitting"
+                  size="lg"
+                  bg={"blue.400"}
+                  color={"white"}
+                  _hover={{
+                    bg: "blue.500",
+                  }}
+                  type="submit"
+                >
+                  Sign up
+                </Button>
+              </Stack>
+              <Stack pt={6}>
+                <Text align={"center"}>
+                  Already a user? <Link color={"blue.400"}>Login</Link>
+                </Text>
+              </Stack>
             </Stack>
-            <Stack pt={6}>
-              <Text align={"center"}>
-                Already a user? <Link color={"blue.400"}>Login</Link>
-              </Text>
-            </Stack>
-          </Stack>
+          </form>
         </Box>
       </Stack>
     </Flex>
