@@ -32,13 +32,13 @@ export default class AuthService {
     // Saves user token to localStorage
     localStorage.setItem("id_token", idToken);
     // Reload window to display the logout button instead of the login button
-    window.location.assign("/");
+    // window.location.assign("/");
   }
 
   logout() {
     // Clear user token and profile data from localStorage
     localStorage.removeItem("id_token");
     // this will reload the page and reset the state of the application
-    window.location.assign("/");
+    // window.location.assign("/");
   }
 }

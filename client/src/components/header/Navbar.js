@@ -30,8 +30,8 @@ import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 import Login from "./Login";
 import Signup from "./Signup";
 
-import { useDispatch } from "react-redux";
-import { login, logout } from "../../features/user";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../features/user";
 
 import AuthService from "../../utils/auth";
 const Auth = new AuthService();
@@ -67,6 +67,8 @@ export default function Navbar() {
   const [isSignupOpen, setSignupOpen] = useState(false);
 
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.value);
+  console.log(user);
 
   // create logic for logging out
   const handleLogout = (event) => {
@@ -126,18 +128,27 @@ export default function Navbar() {
                     />
                   </Center>
                   <br />
-                  <Center>
-                    <p>Username</p>
-                  </Center>
-                  <br />
-                  <MenuDivider />
-                  <MenuItem as={Link} href="/profile" onClick={onClose}>
-                    Your Profile
-                  </MenuItem>
+
                   {Auth.loggedIn() ? (
-                    <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                    <>
+                      <Center>
+                        <p>{user.username}</p>
+                      </Center>
+                      <br />
+                      <MenuDivider />
+                      <MenuItem as={Link} href="/profile" onClick={onClose}>
+                        Your Profile
+                      </MenuItem>
+                      <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                    </>
                   ) : (
                     <>
+                      <Center>
+                        <p>Login or Create New User</p>
+                      </Center>
+                      <br />
+                      <MenuDivider />
+
                       <MenuItem as={Link} onClick={() => setLoginOpen(true)}>
                         Login
                       </MenuItem>
