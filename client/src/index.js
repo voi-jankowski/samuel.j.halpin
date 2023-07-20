@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import userReducer from "./features/user";
 import themeReducer from "./features/theme";
@@ -55,6 +55,8 @@ const theme = extendTheme({
   colors,
   components: { Container: container, Heading: heading },
 });
+
+const persistor = persistStore(store);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
