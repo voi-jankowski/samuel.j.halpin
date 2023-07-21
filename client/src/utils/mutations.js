@@ -9,6 +9,7 @@ export const ADD_USER = gql`
         _id
         username
         email
+        userIcon
       }
     }
   }
@@ -23,6 +24,7 @@ export const LOGIN_USER = gql`
         _id
         username
         email
+        userIcon
       }
     }
   }
@@ -46,6 +48,7 @@ export const UPDATE_USER = gql`
       _id
       username
       email
+      userIcon
     }
   }
 `;

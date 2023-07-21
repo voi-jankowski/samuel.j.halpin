@@ -6,6 +6,7 @@ const typeDefs = gql`
     username: String
     email: String
     password: String
+    userIcon: String
     comments: [Comment]!
     questions: [Question]!
     orders: [Order]
@@ -88,7 +89,12 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     removeUser(_id: ID!): User
-    updateUser(username: String, email: String, password: String): User
+    updateUser(
+      username: String
+      email: String
+      password: String
+      userIcon: String
+    ): User
     addComment(commentText: String!, commentedBook: String!): Comment
     removeComment(commentId: ID!): Comment
     addReply(commentId: ID!, replyText: String!): Comment

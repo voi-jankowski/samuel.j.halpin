@@ -62,6 +62,7 @@ export const GET_ME = gql`
       _id
       username
       email
+      userIcon
       comments {
         _id
         commentText

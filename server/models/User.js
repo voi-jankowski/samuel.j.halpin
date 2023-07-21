@@ -20,6 +20,10 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
+  userIcon: {
+    type: String,
+    default: "https://bit.ly/sage-adebayo",
+  },
   comments: [
     {
       type: Schema.Types.ObjectId,

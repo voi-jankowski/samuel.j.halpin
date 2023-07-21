@@ -114,7 +114,7 @@ const resolvers = {
     addUser: async (parent, { username, email, password }) => {
       const user = await User.create({ username, email, password });
       const token = signToken(user);
-      return { token, user: { _id: user._id, username, email } };
+      return { token, user: { _id: user._id, username, email, userIcon } };
     },
 
     // login a user
@@ -142,11 +142,15 @@ const resolvers = {
     },
 
     //  update user
-    updateUser: async (parent, { username, email, password }, context) => {
+    updateUser: async (
+      parent,
+      { username, email, password, userIcon },
+      context
+    ) => {
       if (context.user) {
         const user = await User.findByIdAndUpdate(
           context.user._id,
-          { username, email, password },
+          { username, email, password, userIcon },
           { new: true }
         );
         return user;
