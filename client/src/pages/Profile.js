@@ -9,6 +9,7 @@ import {
   Heading,
   Input,
   Stack,
+  Text,
   useColorModeValue,
   Avatar,
   AvatarBadge,
@@ -22,12 +23,15 @@ import {
 import { SmallCloseIcon } from "@chakra-ui/icons";
 
 import { useSelector, useDispatch } from "react-redux";
-import { logout, update } from "../features/user";
+import { update } from "../features/user";
 
 import { useMutation } from "@apollo/client";
-import { REMOVE_USER, UPDATE_USER } from "../utils/mutations";
+import { UPDATE_USER } from "../utils/mutations";
 
 import DeleteUser from "../components/smallComponents/DeleteUser";
+
+import AuthService from "../utils/auth";
+const Auth = new AuthService();
 
 export default function Profile() {
   const [isDeleteOpen, setDeleteOpen] = useState(false);
@@ -95,96 +99,112 @@ export default function Profile() {
           p={6}
           my={12}
         >
-          <Heading lineHeight={1.1} fontSize={{ base: "2xl", sm: "3xl" }}>
-            User Profile Edit
-          </Heading>
-          <form onSubmit={handleFormSubmit}>
-            <FormControl id="userIcon">
-              <FormLabel>User Icon</FormLabel>
+          {Auth.loggedIn() ? (
+            <>
+              <Heading lineHeight={1.1} fontSize={{ base: "2xl", sm: "3xl" }}>
+                User Profile Edit
+              </Heading>
+              <form onSubmit={handleFormSubmit}>
+                <FormControl id="userIcon">
+                  <FormLabel>User Icon</FormLabel>
 
-              <Stack direction={["column", "row"]} spacing={6}>
-                <Center>
-                  <Avatar size="xl" src="https://bit.ly/sage-adebayo">
-                    <AvatarBadge
-                      as={IconButton}
-                      size="sm"
-                      rounded="full"
-                      top="-10px"
-                      colorScheme="red"
-                      aria-label="remove Image"
-                      icon={<SmallCloseIcon />}
-                    />
-                  </Avatar>
-                </Center>
-                <Center w="full">
-                  <Button w="full">Change Icon</Button>
-                </Center>
-              </Stack>
-            </FormControl>
-            <FormControl id="userName">
-              <FormLabel>Username</FormLabel>
-              <Input
-                placeholder={user.username}
-                _placeholder={{ color: "gray.500" }}
-                type="text"
-                name="username"
-                value={formState.username}
-                onChange={handleChange}
-              />
-            </FormControl>
-            <FormControl id="email">
-              <FormLabel>Email address</FormLabel>
-              <Input
-                placeholder={user.email}
-                _placeholder={{ color: "gray.500" }}
-                type="email"
-                name="email"
-                value={formState.email}
-                onChange={handleChange}
-              />
-            </FormControl>
-            <FormControl id="password">
-              <FormLabel>Password</FormLabel>
-              <Input
-                placeholder={user.password}
-                _placeholder={{ color: "gray.500" }}
-                type="password"
-                name="password"
-                value={formState.password}
-                onChange={handleChange}
-              />
-            </FormControl>
-            <br />
-            <Stack spacing={6} direction={["column", "row"]}>
-              <Button
-                bg={"red.400"}
-                color={"white"}
-                w="full"
-                _hover={{
-                  bg: "red.500",
-                }}
-                onClick={() => setDeleteOpen(true)}
-              >
-                Delete Account
-              </Button>
-              <Modal isOpen={isDeleteOpen} onClose={() => setDeleteOpen(false)}>
-                <ModalOverlay />
-                <ModalContent>
-                  <DeleteUser onClose={() => setDeleteOpen(false)} />
-                </ModalContent>
-              </Modal>
-              <Button
-                bg={"blue.400"}
-                color={"white"}
-                w="full"
-                _hover={{
-                  bg: "blue.500",
-                }}
-              >
-                Update Profile
-              </Button>
+                  <Stack direction={["column", "row"]} spacing={6}>
+                    <Center>
+                      <Avatar size="xl" src="https://bit.ly/sage-adebayo">
+                        <AvatarBadge
+                          as={IconButton}
+                          size="sm"
+                          rounded="full"
+                          top="-10px"
+                          colorScheme="red"
+                          aria-label="remove Image"
+                          icon={<SmallCloseIcon />}
+                        />
+                      </Avatar>
+                    </Center>
+                    <Center w="full">
+                      <Button w="full">Change Icon</Button>
+                    </Center>
+                  </Stack>
+                </FormControl>
+                <FormControl id="userName">
+                  <FormLabel>Username</FormLabel>
+                  <Input
+                    placeholder={user.username}
+                    _placeholder={{ color: "gray.500" }}
+                    type="text"
+                    name="username"
+                    value={formState.username}
+                    onChange={handleChange}
+                  />
+                </FormControl>
+                <FormControl id="email">
+                  <FormLabel>Email address</FormLabel>
+                  <Input
+                    placeholder={user.email}
+                    _placeholder={{ color: "gray.500" }}
+                    type="email"
+                    name="email"
+                    value={formState.email}
+                    onChange={handleChange}
+                  />
+                </FormControl>
+                <FormControl id="password">
+                  <FormLabel>Password</FormLabel>
+                  <Input
+                    placeholder={user.password}
+                    _placeholder={{ color: "gray.500" }}
+                    type="password"
+                    name="password"
+                    value={formState.password}
+                    onChange={handleChange}
+                  />
+                </FormControl>
+                <br />
+                <Stack spacing={6} direction={["column", "row"]}>
+                  <Button
+                    bg={"red.400"}
+                    color={"white"}
+                    w="full"
+                    _hover={{
+                      bg: "red.500",
+                    }}
+                    onClick={() => setDeleteOpen(true)}
+                  >
+                    Delete Account
+                  </Button>
+                  <Modal
+                    isOpen={isDeleteOpen}
+                    onClose={() => setDeleteOpen(false)}
+                  >
+                    <ModalOverlay />
+                    <ModalContent>
+                      <DeleteUser onClose={() => setDeleteOpen(false)} />
+                    </ModalContent>
+                  </Modal>
+                  <Button
+                    bg={"blue.400"}
+                    color={"white"}
+                    w="full"
+                    _hover={{
+                      bg: "blue.500",
+                    }}
+                  >
+                    Update Profile
+                  </Button>
+                </Stack>
+              </form>
+            </>
+          ) : (
+            <Stack align={"center"}>
+              <Heading fontSize={"4xl"} textAlign={"center"}>
+                Log in or Sign up
+              </Heading>
+              <Text fontSize={"lg"} color={"gray.600"}>
+                to enjoy all of our cool features ✌️
+              </Text>
             </Stack>
-          </form>
+          )}
         </Stack>
       </Flex>
       <br />

@@ -18,6 +18,9 @@ import TeachingResources from "./pages/TeachingResources";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 
+import AuthService from "./utils/auth";
+const Auth = new AuthService();
+
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
   uri: "http://localhost:3001/graphql",
