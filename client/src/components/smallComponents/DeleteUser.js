@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+
 import {
   Flex,
   Box,
@@ -23,7 +24,7 @@ import { REMOVE_USER } from "../../utils/mutations";
 import AuthService from "../../utils/auth";
 const Auth = new AuthService();
 
-export default function DeleteUser() {
+export default function DeleteUser({ onClose }) {
   const dispatch = useDispatch();
   const [deleteConfirmed, setDeleteConfirmed] = useState(false);
 
@@ -49,6 +50,11 @@ export default function DeleteUser() {
     } catch (e) {
       console.error(e);
     }
+  };
+
+  const handleCancel = () => {
+    console.log("Cancel clicked");
+    onClose(); // Call the onClose function from the prop to close the modal
   };
 
   return (
@@ -95,6 +101,7 @@ export default function DeleteUser() {
                   _hover={{
                     bg: "blue.500",
                   }}
+                  onClick={handleCancel}
                 >
                   Cancel
                 </Button>

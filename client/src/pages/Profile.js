@@ -170,7 +170,7 @@ export default function Profile() {
               <Modal isOpen={isDeleteOpen} onClose={() => setDeleteOpen(false)}>
                 <ModalOverlay />
                 <ModalContent>
-                  <DeleteUser />
+                  <DeleteUser onClose={() => setDeleteOpen(false)} />
                 </ModalContent>
               </Modal>
               <Button
