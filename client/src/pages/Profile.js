@@ -15,6 +15,7 @@ import {
   IconButton,
   Center,
   Container,
+  Spacer,
 } from "@chakra-ui/react";
 import { SmallCloseIcon } from "@chakra-ui/icons";
 
@@ -30,10 +31,10 @@ export default function Profile() {
   const themeColor = useSelector((state) => state.theme.value);
 
   const [formState, setFormState] = useState({
-    username: "",
-    email: "",
-    password: "",
-    // userIcon: "https://bit.ly/sage-adebayo",
+    username: user.username,
+    email: user.email,
+    password: user.password,
+    userIcon: user.userIcon,
   });
 
   const [removeUser, { error, data }] = useMutation(REMOVE_USER);
@@ -63,7 +64,7 @@ export default function Profile() {
           username: data.updateUser.username,
           email: data.updateUser.email,
           password: formState.password,
-          // userIcon: data.updateUser.user.userIcon,
+          userIcon: data.updateUser.user.userIcon,
         })
       );
     } catch (e) {
@@ -122,7 +123,7 @@ export default function Profile() {
                 _placeholder={{ color: "gray.500" }}
                 type="text"
                 name="username"
-                value={formState.name}
+                value={formState.username}
                 onChange={handleChange}
               />
             </FormControl>
@@ -143,8 +144,12 @@ export default function Profile() {
                 placeholder={user.password}
                 _placeholder={{ color: "gray.500" }}
                 type="password"
+                name="password"
+                value={formState.password}
+                onChange={handleChange}
               />
             </FormControl>
+            <br />
             <Stack spacing={6} direction={["column", "row"]}>
               <Button
                 bg={"red.400"}

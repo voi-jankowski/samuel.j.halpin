@@ -4,6 +4,7 @@ const initialStateValue = {
   username: "",
   email: "",
   password: "",
+  userIcon: "https://bit.ly/sage-adebayo",
 };
 
 export const userSlice = createSlice({
