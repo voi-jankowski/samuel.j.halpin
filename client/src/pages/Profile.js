@@ -1,5 +1,5 @@
 import React from "react";
-
+import { useState } from "react";
 import ChangeColor from "../components/smallComponents/ChangeColor";
 import {
   Button,
@@ -19,14 +19,57 @@ import {
 import { SmallCloseIcon } from "@chakra-ui/icons";
 
 import { useSelector, useDispatch } from "react-redux";
-import { update } from "../features/user";
+import { logout, update } from "../features/user";
 
 import { useMutation } from "@apollo/client";
 import { REMOVE_USER, UPDATE_USER } from "../utils/mutations";
 
 export default function Profile() {
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.user.value);
   const themeColor = useSelector((state) => state.theme.value);
+
+  const [formState, setFormState] = useState({
+    username: "",
+    email: "",
+    password: "",
+    // userIcon: "https://bit.ly/sage-adebayo",
+  });
+
+  const [removeUser, { error, data }] = useMutation(REMOVE_USER);
+  const [updateUser, { error2, data2 }] = useMutation(UPDATE_USER);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    console.log(formState);
+
+    try {
+      const { data } = await updateUser({
+        variables: { ...formState },
+      });
+      console.log(data);
+      // Pass the values of the form to the global state
+      dispatch(
+        update({
+          username: data.updateUser.username,
+          email: data.updateUser.email,
+          password: formState.password,
+          // userIcon: data.updateUser.user.userIcon,
+        })
+      );
+    } catch (e) {
+      console.error(e);
+    }
+  };
   return (
     <Container style={{ color: themeColor }}>
       <Flex

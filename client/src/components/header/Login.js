@@ -1,5 +1,6 @@
 // Template sourced from https://chakra-templates.dev/forms/authentication
 import React from "react";
+import { useState } from "react";
 import {
   Flex,
   Box,
@@ -28,7 +29,7 @@ export default function Login() {
   const dispatch = useDispatch();
   // const history = useHistory();
 
-  const [formState, setFormState] = React.useState({
+  const [formState, setFormState] = useState({
     email: "",
     password: "",
   });
