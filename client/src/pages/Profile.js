@@ -15,7 +15,9 @@ import {
   IconButton,
   Center,
   Container,
-  Spacer,
+  Modal,
+  ModalOverlay,
+  ModalContent,
 } from "@chakra-ui/react";
 import { SmallCloseIcon } from "@chakra-ui/icons";
 
@@ -25,7 +27,11 @@ import { logout, update } from "../features/user";
 import { useMutation } from "@apollo/client";
 import { REMOVE_USER, UPDATE_USER } from "../utils/mutations";
 
+import DeleteUser from "../components/smallComponents/DeleteUser";
+
 export default function Profile() {
+  const [isDeleteOpen, setDeleteOpen] = useState(false);
+
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.value);
   const themeColor = useSelector((state) => state.theme.value);
@@ -158,9 +164,16 @@ export default function Profile() {
                 _hover={{
                   bg: "red.500",
                 }}
+                onClick={() => setDeleteOpen(true)}
               >
-                Cancel
+                Delete Account
               </Button>
+              <Modal isOpen={isDeleteOpen} onClose={() => setDeleteOpen(false)}>
+                <ModalOverlay />
+                <ModalContent>
+                  <DeleteUser />
+                </ModalContent>
+              </Modal>
               <Button
                 bg={"blue.400"}
                 color={"white"}
@@ -169,7 +182,7 @@ export default function Profile() {
                   bg: "blue.500",
                 }}
               >
-                Submit
+                Update Profile
               </Button>
             </Stack>
           </form>
