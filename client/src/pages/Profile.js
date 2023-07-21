@@ -43,8 +43,7 @@ export default function Profile() {
     userIcon: user.userIcon,
   });
 
-  const [removeUser, { error, data }] = useMutation(REMOVE_USER);
-  const [updateUser, { error2, data2 }] = useMutation(UPDATE_USER);
+  const [updateUser, { error, data }] = useMutation(UPDATE_USER);
 
   const handleChange = (event) => {
     const { name, value } = event.target;

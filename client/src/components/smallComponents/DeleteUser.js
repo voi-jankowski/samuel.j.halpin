@@ -45,6 +45,7 @@ export default function DeleteUser() {
       // Pass the values of the form to the global state
       dispatch(logout());
       Auth.logout();
+      //   window.location.replace("/");
     } catch (e) {
       console.error(e);
     }
