@@ -19,7 +19,7 @@ import {
 import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { useDispatch } from "react-redux";
-import { login, logout } from "../../features/user";
+import { login } from "../../features/user";
 
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../../utils/mutations";
