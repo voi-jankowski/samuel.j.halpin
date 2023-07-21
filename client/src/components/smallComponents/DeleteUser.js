@@ -25,7 +25,30 @@ const Auth = new AuthService();
 
 export default function DeleteUser() {
   const dispatch = useDispatch();
-  const [formState, setFormState] = useState({});
+  const [deleteConfirmed, setDeleteConfirmed] = useState(false);
+
+  const [removeUser, { error, data }] = useMutation(REMOVE_USER);
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+
+    if (!deleteConfirmed) {
+      alert(
+        "Please confirm you want to delete your account by ticking the box"
+      );
+      return;
+    }
+
+    try {
+      const { data } = await removeUser();
+      console.log(data);
+      // Pass the values of the form to the global state
+      dispatch(logout());
+      Auth.logout();
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   return (
     <Flex
@@ -57,7 +80,11 @@ export default function DeleteUser() {
                 align={"start"}
                 justify={"space-between"}
               >
-                <Checkbox>Tick the box to confirm</Checkbox>
+                <Checkbox
+                  onChange={(e) => setDeleteConfirmed(e.target.checked)}
+                >
+                  Tick the box to confirm
+                </Checkbox>
               </Stack>
               <Stack spacing={6} direction={["column", "row"]}>
                 <Button
@@ -77,6 +104,7 @@ export default function DeleteUser() {
                   _hover={{
                     bg: "red.500",
                   }}
+                  onClick={handleFormSubmit}
                 >
                   Delete
                 </Button>

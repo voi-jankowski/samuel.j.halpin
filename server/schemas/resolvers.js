@@ -137,6 +137,7 @@ const resolvers = {
 
     //  remove user
     removeUser: async (parent, args, context) => {
+      console.log(context.user);
       const user = await User.findByIdAndDelete(context.user._id);
       return user;
     },
