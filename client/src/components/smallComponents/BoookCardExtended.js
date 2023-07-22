@@ -17,6 +17,7 @@ import {
 } from "@chakra-ui/react";
 
 import AddComment from "./AddComment";
+import Comment from "./Comment";
 
 export default function BoookCardExtended({
   index,
@@ -123,7 +124,7 @@ export default function BoookCardExtended({
         <Text as={"span"} color={"red.400"}>
           Readers' Comments
         </Text>
-
+        <Comment />
         <AddComment />
       </Heading>
     </Container>
