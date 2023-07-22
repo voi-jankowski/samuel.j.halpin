@@ -17,9 +17,10 @@ import {
   ModalBody,
   ModalCloseButton,
 } from "@chakra-ui/react";
+import BoookCardExtended from "./BoookCardExtended";
 
 const IMAGE =
-  "https://images.unsplash.com/photo-1518051870910-a46e30d9db16?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80";
+  "https://usborne.com/media/catalog/product/cache/577949ba73ecbe39f04bc3cd25e7620e/9/7/9781474970655_cover_image_1689898341.jpg";
 
 export default function BookCardSimple() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -100,7 +101,9 @@ export default function BookCardSimple() {
         <ModalContent>
           <ModalHeader>Modal Title</ModalHeader>
           <ModalCloseButton />
-          <ModalBody>the body of the modal</ModalBody>
+          <ModalBody>
+            <BoookCardExtended />
+          </ModalBody>
           <ModalFooter>
             <Button onClick={onClose}>Close</Button>
           </ModalFooter>

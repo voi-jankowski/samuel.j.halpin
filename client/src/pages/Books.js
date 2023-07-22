@@ -13,16 +13,24 @@ import {
 
 const books = [
   {
-    title: "The Metamorphosis",
-    image: "https://bit.ly/2Z4KKcF",
-    link: "/books/1",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    title: "The Peculiar Peggs of Riddling Woods",
+    image:
+      "https://usborne.com/media/catalog/product/cache/577949ba73ecbe39f04bc3cd25e7620e/9/7/9781474945660_cover_image.jpg",
+    link: "https://usborne.com/au/the-peculiar-peggs-of-riddling-woods-9781474945660",
+    description:
+      "This is the story of a sleepy town called Suds. A place where stories fill the air of children turning grey and disappearing without a trace... Poppy and Erasmus are certain there's something peculiar going on in Suds, and they're determined to unravel its secrets. But when they discover the answers might lie in the dark and twisting woods, can they find the courage to creep inside and solve this riddling mystery?",
+    publisher: "Usborne Publishing",
+    year: "2019",
   },
   {
-    title: "The Trial",
-    image: "https://bit.ly/3hG0dIU",
-    link: "/books/2",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    title: "The Midnight Switch",
+    image:
+      "https://usborne.com/media/catalog/product/cache/577949ba73ecbe39f04bc3cd25e7620e/9/7/9781474970655_cover_image_1689898341.jpg",
+    link: "https://usborne.com/au/the-midnight-switch-9781474970655",
+    description:
+      "A spooky, quirky adventure of curses and magic, perfect for fans of Malamander and A Place Called Perfect.",
+    publisher: "Usborne Publishing",
+    year: "2023",
   },
 ];
 
