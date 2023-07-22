@@ -10,6 +10,9 @@ import {
   Modal,
   useDisclosure,
   Button,
+  Flex,
+  Link,
+  chakra,
   ModalOverlay,
   ModalContent,
   ModalHeader,
@@ -19,14 +22,20 @@ import {
 } from "@chakra-ui/react";
 import BoookCardExtended from "./BoookCardExtended";
 
-const IMAGE =
-  "https://usborne.com/media/catalog/product/cache/577949ba73ecbe39f04bc3cd25e7620e/9/7/9781474970655_cover_image_1689898341.jpg";
-
-export default function BookCardSimple() {
+export default function BookCardSimple({
+  title,
+  image,
+  link,
+  description,
+  publisher,
+  year,
+}) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [scrollBehavior, setScrollBehavior] = React.useState("outside");
 
   const btnRef = React.useRef(null);
+
+  const IMAGE = image;
 
   return (
     <Center py={12}>
@@ -75,20 +84,55 @@ export default function BookCardSimple() {
           />
         </Box>
         <Stack pt={10} align={"center"}>
-          <Text color={"gray.500"} fontSize={"sm"} textTransform={"uppercase"}>
-            Brand
-          </Text>
-          <Heading fontSize={"2xl"} fontFamily={"body"} fontWeight={500}>
-            Nice Chair, pink
+          <Heading
+            display="block"
+            color="gray.800"
+            _dark={{
+              color: "white",
+            }}
+            fontWeight="bold"
+            fontSize="2xl"
+            mt={2}
+            _hover={{
+              color: "gray.600",
+              textDecor: "underline",
+            }}
+          >
+            {title}
           </Heading>
-          <Stack direction={"row"} align={"center"}>
-            <Text fontWeight={800} fontSize={"xl"}>
-              $57
-            </Text>
-            <Text textDecoration={"line-through"} color={"gray.600"}>
-              $199
-            </Text>
-          </Stack>
+          <Box mt={4}>
+            <Flex alignItems="center">
+              <Flex alignItems="center">
+                <Image
+                  h={10}
+                  fit="cover"
+                  rounded="full"
+                  src="https://images.unsplash.com/photo-1586287011575-a23134f797f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=48&q=60"
+                  alt="Avatar"
+                />
+                <Link
+                  mx={2}
+                  fontWeight="bold"
+                  color="gray.700"
+                  _dark={{
+                    color: "gray.200",
+                  }}
+                >
+                  Jone Doe
+                </Link>
+              </Flex>
+              <chakra.span
+                mx={1}
+                fontSize="sm"
+                color="gray.600"
+                _dark={{
+                  color: "gray.300",
+                }}
+              >
+                21 SEP 2015
+              </chakra.span>
+            </Flex>
+          </Box>
         </Stack>
       </Box>
       <Modal
