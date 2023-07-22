@@ -28,14 +28,13 @@ export default function BookCardSimple({
   link,
   description,
   publisher,
+  publisherLogo,
   year,
 }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [scrollBehavior, setScrollBehavior] = React.useState("outside");
 
   const btnRef = React.useRef(null);
-
-  const IMAGE = image;
 
   return (
     <Center py={12}>
@@ -56,7 +55,7 @@ export default function BookCardSimple({
           rounded={"lg"}
           mt={-12}
           pos={"relative"}
-          height={"230px"}
+          height={"430px"}
           _after={{
             transition: "all .3s ease",
             content: '""',
@@ -65,7 +64,7 @@ export default function BookCardSimple({
             pos: "absolute",
             top: 5,
             left: 0,
-            backgroundImage: `url(${IMAGE})`,
+            backgroundImage: `url(${image})`,
             filter: "blur(15px)",
             zIndex: -1,
           }}
@@ -77,10 +76,10 @@ export default function BookCardSimple({
         >
           <Image
             rounded={"lg"}
-            height={230}
+            height={430}
             width={282}
             objectFit={"cover"}
-            src={IMAGE}
+            src={image}
           />
         </Box>
         <Stack pt={10} align={"center"}>
@@ -92,6 +91,7 @@ export default function BookCardSimple({
             }}
             fontWeight="bold"
             fontSize="2xl"
+            textAlign="center"
             mt={2}
             _hover={{
               color: "gray.600",
@@ -100,17 +100,17 @@ export default function BookCardSimple({
           >
             {title}
           </Heading>
-          <Box mt={4}>
+          <Box>
             <Flex alignItems="center">
               <Flex alignItems="center">
                 <Image
                   h={10}
                   fit="cover"
                   rounded="full"
-                  src="https://images.unsplash.com/photo-1586287011575-a23134f797f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=48&q=60"
-                  alt="Avatar"
+                  src={publisherLogo}
+                  alt="Publisher Logo"
                 />
-                <Link
+                <Text
                   mx={2}
                   fontWeight="bold"
                   color="gray.700"
@@ -118,8 +118,8 @@ export default function BookCardSimple({
                     color: "gray.200",
                   }}
                 >
-                  Jone Doe
-                </Link>
+                  {publisher}
+                </Text>
               </Flex>
               <chakra.span
                 mx={1}
@@ -129,7 +129,7 @@ export default function BookCardSimple({
                   color: "gray.300",
                 }}
               >
-                21 SEP 2015
+                {year}
               </chakra.span>
             </Flex>
           </Box>

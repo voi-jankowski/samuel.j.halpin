@@ -19,7 +19,9 @@ const books = [
     link: "https://usborne.com/au/the-peculiar-peggs-of-riddling-woods-9781474945660",
     description:
       "This is the story of a sleepy town called Suds. A place where stories fill the air of children turning grey and disappearing without a trace... Poppy and Erasmus are certain there's something peculiar going on in Suds, and they're determined to unravel its secrets. But when they discover the answers might lie in the dark and twisting woods, can they find the courage to creep inside and solve this riddling mystery?",
-    publisher: "Usborne Publishing",
+    publisher: "Usborne",
+    publisherLogo:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiEb9sJCnewxzyUGHbiMZuZvuytJDiMQKZLS6MyHQDFw&s",
     year: "2019",
   },
   {
@@ -29,7 +31,9 @@ const books = [
     link: "https://usborne.com/au/the-midnight-switch-9781474970655",
     description:
       "A spooky, quirky adventure of curses and magic, perfect for fans of Malamander and A Place Called Perfect.",
-    publisher: "Usborne Publishing",
+    publisher: "Usborne",
+    publisherLogo:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiEb9sJCnewxzyUGHbiMZuZvuytJDiMQKZLS6MyHQDFw&s",
     year: "2023",
   },
 ];
@@ -57,6 +61,7 @@ export default function gridListWith() {
               link={book.link}
               description={book.description}
               publisher={book.publisher}
+              publisherLogo={book.publisherLogo}
               year={book.year}
             />
           ))}
