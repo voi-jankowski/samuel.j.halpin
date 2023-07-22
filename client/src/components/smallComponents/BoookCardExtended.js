@@ -16,6 +16,8 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 
+import AddComment from "./AddComment";
+
 export default function BoookCardExtended({
   index,
   title,
@@ -56,10 +58,6 @@ export default function BoookCardExtended({
             >
               {title}
             </Text>
-            <br />
-            {/* <Text as={"span"} color={"red.400"}>
-              use everywhere!
-            </Text> */}
           </Heading>
           <Text color={"gray.500"}>{description}</Text>
           <Stack
@@ -116,6 +114,18 @@ export default function BoookCardExtended({
           </Box>
         </Flex>
       </Stack>
+
+      <Heading
+        lineHeight={1.1}
+        fontWeight={600}
+        fontSize={{ base: "xl", sm: "2xl", lg: "3xl" }}
+      >
+        <Text as={"span"} color={"red.400"}>
+          Readers' Comments
+        </Text>
+
+        <AddComment />
+      </Heading>
     </Container>
   );
 }
