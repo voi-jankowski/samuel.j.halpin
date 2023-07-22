@@ -11,6 +11,21 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 
+const books = [
+  {
+    title: "The Metamorphosis",
+    image: "https://bit.ly/2Z4KKcF",
+    link: "/books/1",
+    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+  },
+  {
+    title: "The Trial",
+    image: "https://bit.ly/3hG0dIU",
+    link: "/books/2",
+    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+  },
+];
+
 export default function gridListWith() {
   return (
     <Box p={4}>

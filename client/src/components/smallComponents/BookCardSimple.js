@@ -7,12 +7,26 @@ import {
   Text,
   Stack,
   Image,
+  Modal,
+  useDisclosure,
+  Button,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
 } from "@chakra-ui/react";
 
 const IMAGE =
   "https://images.unsplash.com/photo-1518051870910-a46e30d9db16?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80";
 
 export default function BookCardSimple() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [scrollBehavior, setScrollBehavior] = React.useState("outside");
+
+  const btnRef = React.useRef(null);
+
   return (
     <Center py={12}>
       <Box
@@ -25,6 +39,8 @@ export default function BookCardSimple() {
         rounded={"lg"}
         pos={"relative"}
         zIndex={1}
+        ref={btnRef}
+        onClick={onOpen}
       >
         <Box
           rounded={"lg"}
@@ -74,6 +90,22 @@ export default function BookCardSimple() {
           </Stack>
         </Stack>
       </Box>
+      <Modal
+        onClose={onClose}
+        finalFocusRef={btnRef}
+        isOpen={isOpen}
+        scrollBehavior={scrollBehavior}
+      >
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Modal Title</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>the body of the modal</ModalBody>
+          <ModalFooter>
+            <Button onClick={onClose}>Close</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </Center>
   );
 }
