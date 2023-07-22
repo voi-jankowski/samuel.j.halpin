@@ -23,6 +23,7 @@ import {
 import BoookCardExtended from "./BoookCardExtended";
 
 export default function BookCardSimple({
+  index,
   title,
   image,
   link,
@@ -140,13 +141,22 @@ export default function BookCardSimple({
         finalFocusRef={btnRef}
         isOpen={isOpen}
         scrollBehavior={scrollBehavior}
+        size="3xl"
       >
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <BoookCardExtended />
+            <BoookCardExtended
+              key={index}
+              title={title}
+              image={image}
+              link={link}
+              description={description}
+              publisher={publisher}
+              publisherLogo={publisherLogo}
+              year={year}
+            />
           </ModalBody>
           <ModalFooter>
             <Button onClick={onClose}>Close</Button>
