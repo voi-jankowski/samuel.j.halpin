@@ -49,8 +49,17 @@ export default function gridListWith() {
 
       <Container maxW={"5xl"} mt={12}>
         <Flex flexWrap="wrap" gridGap={6} justify="center">
-          <BookCardSimple />
-          <BookCardSimple />
+          {books.map((book, index) => (
+            <BookCardSimple
+              key={index}
+              title={book.title}
+              image={book.image}
+              link={book.link}
+              description={book.description}
+              publisher={book.publisher}
+              year={book.year}
+            />
+          ))}
         </Flex>
       </Container>
     </Box>
