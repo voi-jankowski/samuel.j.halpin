@@ -1,5 +1,5 @@
 import React from "react";
-
+import { useQuery } from "@apollo/client";
 import {
   Container,
   Stack,
@@ -19,6 +19,8 @@ import {
 import AddComment from "./AddComment";
 import Comment from "./Comment";
 
+import { GET_COMMENTS } from "../../utils/queries";
+
 export default function BoookCardExtended({
   index,
   title,
@@ -29,6 +31,11 @@ export default function BoookCardExtended({
   publisherLogo,
   year,
 }) {
+  const { loading, data } = useQuery(GET_COMMENTS, {
+    variables: { commentedBook: title },
+  });
+  console.log(data);
+  const comments = data?.comments || [];
   return (
     <Container maxW={"6xl"}>
       <Stack
@@ -116,16 +123,46 @@ export default function BoookCardExtended({
         </Flex>
       </Stack>
 
-      <Heading
-        lineHeight={1.1}
-        fontWeight={600}
-        fontSize={{ base: "xl", sm: "2xl", lg: "3xl" }}
-        color={"red.400"}
-      >
-        Readers' Comments
-        <Comment />
-        <AddComment />
-      </Heading>
+      {/* Comments Section */}
+      {loading ? (
+        <div>Loading...</div>
+      ) : (
+        <>
+          {comments ? (
+            <>
+              <Heading
+                lineHeight={1.1}
+                fontWeight={600}
+                fontSize={{ base: "xl", sm: "2xl", lg: "3xl" }}
+                color={"red.400"}
+              >
+                Readers' Comments
+                {comments?.map((comment) => (
+                  <Comment
+                    commentAuthor={comment.commentAuthor}
+                    commentText={comment.commentText}
+                    createdAt={comment.createdAt}
+                    replies={comment.replies}
+                  />
+                ))}
+                <AddComment />
+              </Heading>
+            </>
+          ) : (
+            <>
+              <Heading
+                lineHeight={1.1}
+                fontWeight={600}
+                fontSize={{ base: "xl", sm: "2xl", lg: "3xl" }}
+                color={"red.400"}
+              >
+                Be the first to leave a comment...
+                <AddComment />
+              </Heading>
+            </>
+          )}
+        </>
+      )}
     </Container>
   );
 }
