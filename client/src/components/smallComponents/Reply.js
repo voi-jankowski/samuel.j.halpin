@@ -11,7 +11,7 @@ const testimonials = [
   },
 ];
 
-export default function Reply() {
+export default function Reply({ replyAuthor, replyText, createdAt }) {
   const { name, content, avatar } = testimonials[0];
   return (
     <Box
@@ -51,7 +51,7 @@ export default function Reply() {
               color: "gray.200",
             }}
           >
-            {name}
+            {replyAuthor}
           </Text>
         </Flex>
         <Text
@@ -75,7 +75,7 @@ export default function Reply() {
           color: "gray.200",
         }}
       >
-        {content}
+        {replyText}
       </Text>
       <Flex justifyContent="end" mt={4}>
         <IconButton

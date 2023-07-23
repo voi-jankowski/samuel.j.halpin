@@ -35,8 +35,13 @@ const testimonials = [
   },
 ];
 
-export default function Comment() {
-  const { name, content, avatar } = testimonials[0];
+export default function Comment({
+  commentAuthor,
+  commentText,
+  createdAt,
+  replies,
+}) {
+  const { avatar } = testimonials[0];
   return (
     <Flex mt={6} p={0} w="full" flexDir="column" alignItems="flex-end">
       <Box
@@ -75,7 +80,7 @@ export default function Comment() {
                 color: "gray.200",
               }}
             >
-              {name}
+              {commentAuthor}
             </Text>
           </Flex>
           <Text
@@ -99,7 +104,7 @@ export default function Comment() {
             color: "gray.200",
           }}
         >
-          {content}
+          {commentText}
         </Text>
 
         <Flex justifyContent="end" mt={4}>
@@ -130,7 +135,15 @@ export default function Comment() {
         </Flex>
       </Box>
       <AddReply />
-      <Reply />
+      {replies.length > 0 &&
+        replies.map((reply) => (
+          <Reply
+            key={reply._id}
+            replyAuthor={reply.replyAuthor}
+            replyText={reply.replyText}
+            createdAt={reply.createdAt}
+          />
+        ))}
     </Flex>
   );
 }

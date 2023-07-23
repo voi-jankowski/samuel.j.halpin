@@ -139,6 +139,7 @@ export default function BoookCardExtended({
                 Readers' Comments
                 {comments?.map((comment) => (
                   <Comment
+                    key={comment._id}
                     commentAuthor={comment.commentAuthor}
                     commentText={comment.commentText}
                     createdAt={comment.createdAt}
