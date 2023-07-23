@@ -60,7 +60,7 @@ export default function AddComment() {
       borderColor="red.400"
     >
       <FormControl id="comment">
-        <Textarea placeholder="@commentAuthor" />
+        <Textarea placeholder="Share your thoughts on the book..." />
       </FormControl>
 
       <Button

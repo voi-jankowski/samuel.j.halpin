@@ -1,5 +1,6 @@
 import React from "react";
-import { Box, chakra, Flex, Image, Link, Text } from "@chakra-ui/react";
+import { Box, IconButton, Flex, Image, Icon, Text } from "@chakra-ui/react";
+import { FaReply, FaTrashCan } from "react-icons/fa6";
 import Reply from "./Reply";
 import AddReply from "./AddReply";
 
@@ -101,7 +102,32 @@ export default function Comment() {
           {content}
         </Text>
 
-        <Flex justifyContent="end" mt={4}></Flex>
+        <Flex justifyContent="end" mt={4}>
+          <IconButton
+            isRound={true}
+            aria-label="reply"
+            icon={<Icon as={FaTrashCan} />}
+            variant="ghost"
+            color="gray.600"
+            _dark={{
+              color: "gray.200",
+            }}
+            mr={2}
+            size="md"
+          />
+          <IconButton
+            isRound={true}
+            aria-label="reply"
+            icon={<Icon as={FaReply} />}
+            variant="ghost"
+            color="gray.600"
+            _dark={{
+              color: "gray.200",
+            }}
+            mr={2}
+            size="md"
+          />
+        </Flex>
       </Box>
       <AddReply />
       <Reply />
