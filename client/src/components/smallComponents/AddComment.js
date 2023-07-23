@@ -1,6 +1,6 @@
 import {
   Button,
-  Box,
+  HStack,
   FormControl,
   Flex,
   Heading,
@@ -47,45 +47,31 @@ const testimonials = [
 export default function AddComment() {
   const { name, content, avatar } = testimonials[0];
   return (
-    <Flex mt={6} p={0} w="full" alignItems="center" justifyContent="center">
-      <Box w="full" mx="auto">
-        <Stack
-          spacing={4}
-          w="full"
-          bg={useColorModeValue("white", "gray.700")}
-          rounded={"lg"}
-          boxShadow={"lg"}
-          py={4}
-          px={6}
-          borderWidth="1px"
-          borderColor="red.400"
-        >
-          <Flex justifyContent="space-between">
-            <Heading
-              lineHeight={1.1}
-              fontWeight={600}
-              fontSize={{ base: "lg", sm: "xl" }}
-              color={"red.400"}
-              p={0}
-            >
-              Share your thoughts
-            </Heading>
-            <Button
-              bg={"red.400"}
-              color={"white"}
-              _hover={{
-                bg: "red.500",
-              }}
-            >
-              Save
-            </Button>
-          </Flex>
+    <HStack
+      spacing={4}
+      alignItems="flex-end"
+      w="full"
+      bg={useColorModeValue("white", "gray.700")}
+      rounded={"lg"}
+      boxShadow={"lg"}
+      mt={6}
+      p={4}
+      borderWidth="1px"
+      borderColor="red.400"
+    >
+      <FormControl id="comment">
+        <Textarea placeholder="@commentAuthor" />
+      </FormControl>
 
-          <FormControl id="comment">
-            <Textarea placeholder="Type it here..." />
-          </FormControl>
-        </Stack>
-      </Box>
-    </Flex>
+      <Button
+        bg={"red.400"}
+        color={"white"}
+        _hover={{
+          bg: "red.500",
+        }}
+      >
+        Save
+      </Button>
+    </HStack>
   );
 }
