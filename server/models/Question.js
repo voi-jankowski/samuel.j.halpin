@@ -14,6 +14,9 @@ const questionSchema = new Schema({
     required: true,
     trim: true,
   },
+  authorIcon: {
+    type: String,
+  },
   createdAt: {
     type: Date,
     default: Date.now,

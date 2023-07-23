@@ -166,6 +166,7 @@ const resolvers = {
           commentedBook,
           commentText,
           commentAuthor: context.user.username,
+          authorIcon: context.user.userIcon,
         });
 
         await User.findByIdAndUpdate(
@@ -207,7 +208,11 @@ const resolvers = {
           { _id: commentId },
           {
             $addToSet: {
-              replies: { replyText, replyAuthor: context.user.username },
+              replies: {
+                replyText,
+                replyAuthor: context.user.username,
+                authorIcon: context.user.userIcon,
+              },
             },
           },
           {
@@ -241,6 +246,7 @@ const resolvers = {
         const question = await Question.create({
           questionText,
           questionAuthor: context.user.username,
+          authorIcon: context.user.userIcon,
         });
 
         await User.findByIdAndUpdate(

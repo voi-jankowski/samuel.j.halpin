@@ -16,6 +16,7 @@ const typeDefs = gql`
     _id: ID
     commentText: String
     commentAuthor: String
+    authorIcon: String
     commentedBook: String
     createdAt: String
     replies: [Reply]!
@@ -25,6 +26,7 @@ const typeDefs = gql`
     _id: ID
     replyText: String
     replyAuthor: String
+    authorIcon: String
     createdAt: String
   }
 
@@ -32,6 +34,7 @@ const typeDefs = gql`
     _id: ID
     questionText: String
     questionAuthor: String
+    authorIcon: String
     createdAt: String
     answers: [Answer]!
   }

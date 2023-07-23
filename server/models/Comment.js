@@ -14,6 +14,10 @@ const commentSchema = new Schema({
     required: true,
     trim: true,
   },
+  authorIcon: {
+    type: String,
+  },
+
   commentedBook: {
     type: String,
     required: true,
@@ -35,6 +39,9 @@ const commentSchema = new Schema({
       replyAuthor: {
         type: String,
         required: true,
+      },
+      authorIcon: {
+        type: String,
       },
       createdAt: {
         type: Date,
