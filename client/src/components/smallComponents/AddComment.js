@@ -55,24 +55,21 @@ export default function AddComment() {
           bg={useColorModeValue("white", "gray.700")}
           rounded={"lg"}
           boxShadow={"lg"}
-          p={6}
+          py={4}
+          px={6}
           borderWidth="1px"
           borderColor="red.400"
         >
-          <Heading
-            lineHeight={1.1}
-            fontWeight={600}
-            fontSize={{ base: "lg", sm: "xl", lg: "2xl" }}
-            color={"red.400"}
-            p={0}
-          >
-            Share your thoughts
-          </Heading>
-
-          <FormControl id="comment">
-            <Textarea placeholder="Type it here..." />
-          </FormControl>
-          <Flex justifyContent="end">
+          <Flex justifyContent="space-between">
+            <Heading
+              lineHeight={1.1}
+              fontWeight={600}
+              fontSize={{ base: "lg", sm: "xl" }}
+              color={"red.400"}
+              p={0}
+            >
+              Share your thoughts
+            </Heading>
             <Button
               bg={"red.400"}
               color={"white"}
@@ -83,6 +80,10 @@ export default function AddComment() {
               Save
             </Button>
           </Flex>
+
+          <FormControl id="comment">
+            <Textarea placeholder="Type it here..." />
+          </FormControl>
         </Stack>
       </Box>
     </Flex>

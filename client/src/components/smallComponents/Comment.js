@@ -41,7 +41,7 @@ export default function Comment() {
       <Box
         w="full"
         py={4}
-        px={8}
+        px={6}
         bg="red.400"
         _dark={{
           bg: "red.400",

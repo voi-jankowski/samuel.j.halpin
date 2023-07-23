@@ -17,7 +17,7 @@ export default function Reply() {
       w="85%"
       mt={3}
       py={4}
-      px={8}
+      px={6}
       bg="red.400"
       _dark={{
         bg: "red.400",
