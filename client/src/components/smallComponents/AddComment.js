@@ -1,5 +1,6 @@
 import {
   Button,
+  Box,
   FormControl,
   Flex,
   Heading,
@@ -46,73 +47,44 @@ const testimonials = [
 export default function AddComment() {
   const { name, content, avatar } = testimonials[0];
   return (
-    <Flex
-      // minH={"100vh"}
-      align={"center"}
-      justify={"center"}
-      // bg={useColorModeValue("gray.50", "gray.800")}
-    >
-      <Stack
-        spacing={4}
-        w={"full"}
-        maxW={"md"}
-        bg={useColorModeValue("white", "gray.700")}
-        rounded={"xl"}
-        boxShadow={"lg"}
-        p={6}
-        my={12}
-      >
-        <Flex
-          justifyContent={{
-            base: "center",
-            md: "start",
-          }}
-          mt={-12}
+    <Flex mt={6} p={50} w="full" alignItems="center" justifyContent="center">
+      <Box w="full" mx="auto">
+        <Stack
+          spacing={4}
+          w="full"
+          bg={useColorModeValue("white", "gray.700")}
+          rounded={"lg"}
+          boxShadow={"lg"}
+          p={6}
+          borderWidth="1px"
+          borderColor="red.400"
         >
-          <Image
-            w={16}
-            h={16}
-            fit="cover"
-            rounded="full"
-            borderStyle="solid"
-            borderWidth={2}
-            color="brand.500"
-            _dark={{
-              color: "brand.400",
-            }}
-            alt="Comment avatar"
-            src={avatar}
-          />
-        </Flex>
-        <Heading
-          lineHeight={1.1}
-          fontWeight={600}
-          fontSize={{ base: "xl", sm: "2xl", lg: "3xl" }}
-          color={"red.400"}
-        >
-          Leave your comment
-        </Heading>
-        <Text
-          fontSize={{ base: "sm", sm: "md" }}
-          color={useColorModeValue("gray.800", "gray.400")}
-        >
-          What are your thoughts on the book?
-        </Text>
-        <FormControl id="comment">
-          <Textarea placeholder="Type it here..." />
-        </FormControl>
-        <Stack spacing={6}>
-          <Button
-            bg={"blue.400"}
-            color={"white"}
-            _hover={{
-              bg: "blue.500",
-            }}
+          <Heading
+            lineHeight={1.1}
+            fontWeight={600}
+            fontSize={{ base: "lg", sm: "xl", lg: "2xl" }}
+            color={"red.400"}
+            p={0}
           >
-            Save
-          </Button>
+            Share your thoughts
+          </Heading>
+
+          <FormControl id="comment">
+            <Textarea placeholder="Type it here..." />
+          </FormControl>
+          <Flex justifyContent="end">
+            <Button
+              bg={"red.400"}
+              color={"white"}
+              _hover={{
+                bg: "red.500",
+              }}
+            >
+              Save
+            </Button>
+          </Flex>
         </Stack>
-      </Stack>
+      </Box>
     </Flex>
   );
 }
