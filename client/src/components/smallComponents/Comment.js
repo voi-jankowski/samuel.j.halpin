@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, chakra, Flex, Image, Link } from "@chakra-ui/react";
+import { Box, chakra, Flex, Image, Link, Text } from "@chakra-ui/react";
 
 const testimonials = [
   {
@@ -35,38 +35,23 @@ const testimonials = [
 export default function Comment() {
   const { name, content, avatar } = testimonials[0];
   return (
-    <Flex
-      //   bg="white"
-      //   _dark={{
-      //     bg: "gray.800",
-      //   }}
-      p={50}
-      w="full"
-      alignItems="center"
-      justifyContent="center"
-    >
+    <Flex mt={6} p={50} w="full" alignItems="center" justifyContent="center">
       <Box
-        w="md"
+        w="full"
         mx="auto"
         py={4}
         px={8}
-        bg="orange.400"
+        bg="red.400"
         _dark={{
-          bg: "orange.400",
+          bg: "red.400",
         }}
         shadow="lg"
         rounded="lg"
       >
-        <Flex
-          justifyContent={{
-            base: "center",
-            md: "end",
-          }}
-          mt={-16}
-        >
+        <Flex alignItems={"center"} justifyContent="start">
           <Image
-            w={20}
-            h={20}
+            w={10}
+            h={10}
             fit="cover"
             rounded="full"
             borderStyle="solid"
@@ -75,49 +60,45 @@ export default function Comment() {
             _dark={{
               color: "brand.400",
             }}
-            alt="Testimonial avatar"
+            alt="Comment avatar"
             src={avatar}
           />
+          <Text
+            ml={2}
+            fontWeight={600}
+            fontSize="medium"
+            color="gray.600"
+            _dark={{
+              color: "gray.200",
+            }}
+          >
+            {name}
+          </Text>
         </Flex>
-
-        <chakra.h2
-          color="gray.800"
-          _dark={{
-            color: "white",
-          }}
-          fontSize={{
-            base: "2xl",
-            md: "3xl",
-          }}
-          mt={{
-            base: 2,
-            md: 0,
-          }}
-          fontWeight="bold"
-        >
-          Design Tools
-        </chakra.h2>
-
-        <chakra.p
-          mt={2}
+        <Text
+          my={2}
+          fontSize="md"
+          fontWeight={400}
           color="gray.600"
           _dark={{
             color: "gray.200",
           }}
         >
           {content}
-        </chakra.p>
+        </Text>
 
         <Flex justifyContent="end" mt={4}>
-          <Link
-            fontSize="xl"
-            color="brand.500"
+          <Text
+            fontWeight={600}
+            fontSize="xs"
+            color="gray.600"
             _dark={{
-              color: "brand.300",
+              color: "gray.200",
             }}
+            mx={3}
           >
-            {name}
-          </Link>
+            {/* {getTimeDifference(createdAt)} */}6 weeks ago
+          </Text>
         </Flex>
       </Box>
     </Flex>

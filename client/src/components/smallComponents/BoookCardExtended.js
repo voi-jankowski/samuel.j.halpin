@@ -120,10 +120,9 @@ export default function BoookCardExtended({
         lineHeight={1.1}
         fontWeight={600}
         fontSize={{ base: "xl", sm: "2xl", lg: "3xl" }}
+        color={"red.400"}
       >
-        <Text as={"span"} color={"red.400"}>
-          Readers' Comments
-        </Text>
+        Readers' Comments
         <Comment />
         <AddComment />
       </Heading>
