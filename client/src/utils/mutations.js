@@ -60,6 +60,7 @@ export const ADD_COMMENT = gql`
       _id
       commentText
       commentAuthor
+      authorIcon
       commentedBook
       createdAt
       replies {
@@ -104,6 +105,7 @@ export const ADD_REPLY = gql`
         _id
         replyText
         replyAuthor
+        authorIcon
         createdAt
       }
     }
@@ -136,6 +138,7 @@ export const ADD_QUESTION = gql`
       _id
       questionText
       questionAuthor
+      authorIcon
       createdAt
       answers {
         _id

@@ -67,12 +67,14 @@ export const GET_ME = gql`
         _id
         commentText
         commentAuthor
+        authorIcon
         commentedBook
         createdAt
         replies {
           _id
           replyText
           replyAuthor
+          authorIcon
           createdAt
         }
       }
@@ -80,6 +82,7 @@ export const GET_ME = gql`
         _id
         questionText
         questionAuthor
+        authorIcon
         createdAt
         answers {
           _id
@@ -111,12 +114,14 @@ export const GET_COMMENTS = gql`
       _id
       commentText
       commentAuthor
+      authorIcon
       commentedBook
       createdAt
       replies {
         _id
         replyText
         replyAuthor
+        authorIcon
         createdAt
       }
     }
@@ -130,12 +135,14 @@ export const GET_COMMENT = gql`
       _id
       commentText
       commentAuthor
+      authorIcon
       commentedBook
       createdAt
       replies {
         _id
         replyText
         replyAuthor
+        authorIcon
         createdAt
       }
     }
@@ -149,6 +156,7 @@ export const GET_QUESTIONS = gql`
       _id
       questionText
       questionAuthor
+      authorIcon
       createdAt
       answers {
         _id
@@ -167,6 +175,7 @@ export const GET_QUESTION = gql`
       _id
       questionText
       questionAuthor
+      authorIcon
       createdAt
       answers {
         _id
