@@ -47,7 +47,7 @@ const testimonials = [
 export default function AddComment() {
   const { name, content, avatar } = testimonials[0];
   return (
-    <Flex mt={6} p={50} w="full" alignItems="center" justifyContent="center">
+    <Flex mt={6} p={0} w="full" alignItems="center" justifyContent="center">
       <Box w="full" mx="auto">
         <Stack
           spacing={4}

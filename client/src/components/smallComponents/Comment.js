@@ -1,5 +1,7 @@
 import React from "react";
 import { Box, chakra, Flex, Image, Link, Text } from "@chakra-ui/react";
+import Reply from "./Reply";
+import AddReply from "./AddReply";
 
 const testimonials = [
   {
@@ -35,10 +37,9 @@ const testimonials = [
 export default function Comment() {
   const { name, content, avatar } = testimonials[0];
   return (
-    <Flex mt={6} p={50} w="full" alignItems="center" justifyContent="center">
+    <Flex mt={6} p={0} w="full" flexDir="column" alignItems="flex-end">
       <Box
         w="full"
-        mx="auto"
         py={4}
         px={8}
         bg="red.400"
@@ -48,31 +49,44 @@ export default function Comment() {
         shadow="lg"
         rounded="lg"
       >
-        <Flex alignItems={"center"} justifyContent="start">
-          <Image
-            w={10}
-            h={10}
-            fit="cover"
-            rounded="full"
-            borderStyle="solid"
-            borderWidth={2}
-            color="brand.500"
-            _dark={{
-              color: "brand.400",
-            }}
-            alt="Comment avatar"
-            src={avatar}
-          />
+        <Flex justifyContent="space-between">
+          <Flex alignItems={"center"} justifyContent="start">
+            <Image
+              w={10}
+              h={10}
+              fit="cover"
+              rounded="full"
+              borderStyle="solid"
+              borderWidth={2}
+              color="brand.500"
+              _dark={{
+                color: "brand.400",
+              }}
+              alt="Comment avatar"
+              src={avatar}
+            />
+            <Text
+              ml={2}
+              fontWeight={600}
+              fontSize="medium"
+              color="gray.600"
+              _dark={{
+                color: "gray.200",
+              }}
+            >
+              {name}
+            </Text>
+          </Flex>
           <Text
-            ml={2}
             fontWeight={600}
-            fontSize="medium"
+            fontSize="xs"
             color="gray.600"
             _dark={{
               color: "gray.200",
             }}
+            mx={3}
           >
-            {name}
+            {/* {getTimeDifference(createdAt)} */}6 weeks ago
           </Text>
         </Flex>
         <Text
@@ -87,20 +101,10 @@ export default function Comment() {
           {content}
         </Text>
 
-        <Flex justifyContent="end" mt={4}>
-          <Text
-            fontWeight={600}
-            fontSize="xs"
-            color="gray.600"
-            _dark={{
-              color: "gray.200",
-            }}
-            mx={3}
-          >
-            {/* {getTimeDifference(createdAt)} */}6 weeks ago
-          </Text>
-        </Flex>
+        <Flex justifyContent="end" mt={4}></Flex>
       </Box>
+      <AddReply />
+      <Reply />
     </Flex>
   );
 }
