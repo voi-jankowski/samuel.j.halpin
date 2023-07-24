@@ -2,22 +2,14 @@ import React from "react";
 import { Box, Icon, Flex, Image, IconButton, Text } from "@chakra-ui/react";
 import { FaTrashCan } from "react-icons/fa6";
 
-const testimonials = [
-  {
-    name: "Brandon P.",
-    content: "This is a reply!",
-    avatar:
-      "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
-  },
-];
-
 export default function Reply({
   replyAuthor,
   authorIcon,
   replyText,
   createdAt,
 }) {
-  const { name, content, avatar } = testimonials[0];
+  const avatar =
+    "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80";
   return (
     <Box
       w="85%"
