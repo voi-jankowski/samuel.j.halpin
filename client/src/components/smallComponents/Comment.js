@@ -137,10 +137,12 @@ export default function Comment({
         replies.map((reply) => (
           <Reply
             key={reply._id}
+            replyId={reply._id}
             replyAuthor={reply.replyAuthor}
             authorIcon={reply.authorIcon}
             replyText={reply.replyText}
             createdAt={reply.createdAt}
+            commentId={commentId}
           />
         ))}
     </Flex>
