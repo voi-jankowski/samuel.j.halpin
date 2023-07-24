@@ -1,69 +1,61 @@
-// the template sorced from https://chakra-templates.dev/page-sections/footer
 import React from "react";
 import {
   Box,
-  chakra,
+  IconButton,
   Container,
   Stack,
-  Text,
+  Flex,
   useColorModeValue,
   VisuallyHidden,
 } from "@chakra-ui/react";
 import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 
-const SocialButton = ({ children, label, href }) => {
+const SocialButton = ({ icon, label, href }) => {
   return (
-    <chakra.button
-      bg={useColorModeValue("blackAlpha.100", "whiteAlpha.100")}
-      rounded={"full"}
-      w={8}
-      h={8}
-      cursor={"pointer"}
-      as={"a"}
+    <IconButton
+      isRound={true}
+      variant="outline"
+      colorScheme="whiteAlpha"
+      aria-label={label}
+      fontSize="20px"
+      color="white" // Set the color to white explicitly
+      icon={icon}
       href={href}
-      display={"inline-flex"}
-      alignItems={"center"}
-      justifyContent={"center"}
-      transition={"background 0.3s ease"}
-      _hover={{
-        bg: useColorModeValue("blackAlpha.200", "whiteAlpha.200"),
-      }}
-    >
-      <VisuallyHidden>{label}</VisuallyHidden>
-      {children}
-    </chakra.button>
+    />
   );
 };
 
 export default function Footer() {
   return (
-    <Box
-      bg={useColorModeValue("gray.50", "gray.900")}
-      color={useColorModeValue("gray.700", "gray.200")}
+    <Flex
+      color={useColorModeValue("white", "gray.200")}
       marginTop="auto"
+      justifyContent="center" // Center the content horizontally
+      alignItems="center" // Center the content vertically
+      py={4}
+      position="relative" // Set the position to relative for the footer container
     >
-      <Container
-        as={Stack}
-        maxW={"6xl"}
-        py={4}
-        direction={{ base: "column", md: "row" }}
-        spacing={4}
-        justify={{ base: "center", md: "space-between" }}
-        align={{ base: "center", md: "center" }}
+      {/* Footer image */}
+      <Box
+        as="img"
+        src="/assets/images/footer.png"
+        width="50%"
+        alt="Silhouette"
+      />
+
+      {/* Social buttons */}
+      <Stack
+        direction={"row"}
+        spacing={6}
+        position="absolute" // Set the position to absolute for the social buttons container
+        bottom={8} // Adjust the bottom value to control the vertical positioning
+        left="50%" // Center the social buttons container horizontally
+        transform="translateX(-50%)" // Center the social buttons container horizontally
       >
-        <Text>© 2022 Chakra Templates. All rights reserved</Text>
-        <Stack direction={"row"} spacing={6}>
-          <SocialButton label={"Twitter"} href={"#"}>
-            <FaTwitter />
-          </SocialButton>
-          <SocialButton label={"YouTube"} href={"#"}>
-            <FaYoutube />
-          </SocialButton>
-          <SocialButton label={"Instagram"} href={"#"}>
-            <FaInstagram />
-          </SocialButton>
-        </Stack>
-      </Container>
-    </Box>
+        <SocialButton label={"Twitter"} href={"#"} icon={FaTwitter} />
+        <SocialButton label={"YouTube"} href={"#"} icon={FaYoutube} />
+        <SocialButton label={"Instagram"} href={"#"} icon={FaInstagram} />
+      </Stack>
+    </Flex>
   );
 }

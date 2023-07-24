@@ -82,7 +82,7 @@ export default function Map() {
     <Box p={4} mt="10%">
       <Box
         position="absolute"
-        top="25%"
+        top="20%"
         left="50%"
         transform="translate(-50%, -50%)"
         textAlign="center"
