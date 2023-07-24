@@ -12,7 +12,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
-import { useMutation } from "@apollo/client";
+import { useMutation, gql } from "@apollo/client";
 import { ADD_COMMENT } from "../../utils/mutations";
 
 export default function AddComment({ commentedBook }) {
@@ -21,6 +21,33 @@ export default function AddComment({ commentedBook }) {
 
   const [addComment, { error }] = useMutation(ADD_COMMENT, {
     variables: { commentedBook, commentText },
+    // Add the update function to update the cache
+    update(cache, { data: { addComment } }) {
+      cache.modify({
+        fields: {
+          comments(existingComments = []) {
+            const newCommentRef = cache.writeFragment({
+              data: addComment,
+              fragment: gql`
+                fragment NewComment on Comment {
+                  _id
+                  commentText
+                  createdAt
+                  username
+                  replies {
+                    _id
+                    replyText
+                    createdAt
+                    username
+                  }
+                }
+              `,
+            });
+            return [...existingComments, newCommentRef];
+          },
+        },
+      });
+    },
   });
 
   const handleInputChange = (event) => {

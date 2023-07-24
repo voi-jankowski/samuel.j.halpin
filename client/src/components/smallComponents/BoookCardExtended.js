@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useQuery } from "@apollo/client";
 import {
   Container,
@@ -31,11 +31,17 @@ export default function BoookCardExtended({
   publisherLogo,
   year,
 }) {
-  const { loading, data } = useQuery(GET_COMMENTS, {
+  const { loading, data, refetch } = useQuery(GET_COMMENTS, {
     variables: { commentedBook: title },
   });
   console.log(data);
   const comments = data?.comments || [];
+
+  // Use useEffect to refetch the comments whenever the comments or replies change
+  useEffect(() => {
+    refetch();
+  }, [comments]);
+
   return (
     <Container maxW={"6xl"}>
       <Stack
