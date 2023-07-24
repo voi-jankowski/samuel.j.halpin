@@ -20,6 +20,7 @@ const Auth = new AuthService();
 
 export default function AddReply({ commentId }) {
   const [replyText, setReplyText] = useState(""); // State to manage the content of the textarea
+  const [addError, setAddError] = useState(""); // Add the setAddError function to the state
   const [addReply, { error }] = useMutation(ADD_REPLY);
 
   const handleInputChange = (event) => {
@@ -28,6 +29,14 @@ export default function AddReply({ commentId }) {
 
   const handleSaveReply = async (event) => {
     event.preventDefault();
+
+    if (!replyText.trim()) {
+      // Check if the reply text is empty or contains only whitespace
+      // Set an error state to show the validation message
+      setAddError("Reply text cannot be empty.");
+      return;
+    }
+
     try {
       const { data } = await addReply({
         variables: {
@@ -37,8 +46,10 @@ export default function AddReply({ commentId }) {
       });
       console.log("Reply added:", data.addReply);
       setReplyText("");
+      setAddError(""); // Clear the error state after successful submission
     } catch (err) {
-      console.error(err);
+      console.log("Error adding reply:", err.message);
+      // Handle the error, show an error message, or take any necessary action
     }
   };
 
@@ -56,6 +67,9 @@ export default function AddReply({ commentId }) {
       borderColor="red.400"
     >
       <FormControl id="comment">
+        {addError && (
+          <p style={{ color: "red.600", marginBottom: "10px" }}>{addError}</p>
+        )}
         <Textarea
           value={replyText}
           onChange={handleInputChange}
