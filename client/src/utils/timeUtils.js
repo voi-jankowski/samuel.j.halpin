@@ -1,8 +1,16 @@
 // methods sourced from https://github.com/blaqbox-prime/interactive_comments
-export const getTimeDifference = (date) => {
+export const getTimeDifference = (timestamp) => {
   let today = new Date();
-  let givenDate = new Date(date);
-
+  let givenDate = new Date(parseInt(timestamp)); // Convert the timestamp to a number
+  console.log(
+    "timestamp: ",
+    timestamp,
+    "givenDate: ",
+    givenDate,
+    "today: ",
+    today
+  );
+  console.log("today, givenDAte: ", today, givenDate);
   let daysInBetween =
     millisecondsToDays(today.getTime()) -
     millisecondsToDays(givenDate.getTime());

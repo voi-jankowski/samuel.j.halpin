@@ -3,6 +3,7 @@ import { Box, IconButton, Flex, Image, Icon, Text } from "@chakra-ui/react";
 import { FaReply, FaTrashCan } from "react-icons/fa6";
 import Reply from "./Reply";
 import AddReply from "./AddReply";
+import { getTimeDifference } from "../../utils/timeUtils";
 
 import { useSelector, useDispatch } from "react-redux";
 import { toggle } from "../../features/showExtraContent";
@@ -21,15 +22,7 @@ export default function Comment({
   createdAt,
   replies,
 }) {
-  console.log(
-    "Comment props:",
-    commentId,
-    commentAuthor,
-    authorIcon,
-    commentText,
-    createdAt,
-    replies
-  );
+  console.log(getTimeDifference(createdAt));
   const avatar =
     "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80";
 
@@ -109,7 +102,7 @@ export default function Comment({
             }}
             mx={3}
           >
-            {/* {getTimeDifference(createdAt)} */}6 weeks ago
+            {getTimeDifference(createdAt)}
           </Text>
         </Flex>
         <Text
