@@ -2,6 +2,12 @@ import React from "react";
 import { Box, Icon, Flex, Image, IconButton, Text } from "@chakra-ui/react";
 import { FaTrashCan } from "react-icons/fa6";
 
+import { useMutation } from "@apollo/client";
+import { REMOVE_REPLY } from "../../utils/mutations";
+
+import AuthService from "../../utils/auth";
+const Auth = new AuthService();
+
 export default function Reply({
   replyAuthor,
   authorIcon,
@@ -74,20 +80,22 @@ export default function Reply({
       >
         {replyText}
       </Text>
-      <Flex justifyContent="end" mt={4}>
-        <IconButton
-          isRound={true}
-          aria-label="reply"
-          icon={<Icon as={FaTrashCan} />}
-          variant="ghost"
-          color="gray.600"
-          _dark={{
-            color: "gray.200",
-          }}
-          mr={2}
-          size="md"
-        />
-      </Flex>
+      {Auth.loggedIn() && Auth.getProfile().data.username === replyAuthor && (
+        <Flex justifyContent="end" mt={0}>
+          <IconButton
+            isRound={true}
+            aria-label="reply"
+            icon={<Icon as={FaTrashCan} />}
+            variant="ghost"
+            color="gray.600"
+            _dark={{
+              color: "gray.200",
+            }}
+            mr={2}
+            size="md"
+          />
+        </Flex>
+      )}
     </Box>
   );
 }

@@ -4,6 +4,12 @@ import { FaReply, FaTrashCan } from "react-icons/fa6";
 import Reply from "./Reply";
 import AddReply from "./AddReply";
 
+import { useMutation } from "@apollo/client";
+import { REMOVE_COMMENT } from "../../utils/mutations";
+
+import AuthService from "../../utils/auth";
+const Auth = new AuthService();
+
 export default function Comment({
   commentAuthor,
   authorIcon,
@@ -87,19 +93,23 @@ export default function Comment({
           {commentText}
         </Text>
 
-        <Flex justifyContent="end" mt={4}>
-          <IconButton
-            isRound={true}
-            aria-label="reply"
-            icon={<Icon as={FaTrashCan} />}
-            variant="ghost"
-            color="gray.600"
-            _dark={{
-              color: "gray.200",
-            }}
-            mr={2}
-            size="md"
-          />
+        <Flex justifyContent="end" mt={0}>
+          {Auth.loggedIn() &&
+            Auth.getProfile().data.username === commentAuthor && (
+              <IconButton
+                isRound={true}
+                aria-label="reply"
+                icon={<Icon as={FaTrashCan} />}
+                variant="ghost"
+                color="gray.600"
+                _dark={{
+                  color: "gray.200",
+                }}
+                mr={2}
+                size="md"
+              />
+            )}
+
           <IconButton
             isRound={true}
             aria-label="reply"
