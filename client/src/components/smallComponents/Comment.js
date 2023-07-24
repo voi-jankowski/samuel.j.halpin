@@ -4,6 +4,9 @@ import { FaReply, FaTrashCan } from "react-icons/fa6";
 import Reply from "./Reply";
 import AddReply from "./AddReply";
 
+import { useSelector, useDispatch } from "react-redux";
+import { toggle } from "../../features/showExtraContent";
+
 import { useMutation } from "@apollo/client";
 import { REMOVE_COMMENT } from "../../utils/mutations";
 
@@ -22,11 +25,13 @@ export default function Comment({
     "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80";
 
   // Add state to track whether AddReply should be displayed or not
-  const [showAddReply, setShowAddReply] = useState(false);
+  // Add state to track whether AddReply should be displayed or not
+  const showExtraContent = useSelector((state) => state.showExtraContent.value);
+  const dispatch = useDispatch();
 
   //   Function to toggle the display of AddReply
   const toggleAddReply = () => {
-    setShowAddReply(!showAddReply);
+    dispatch(toggle()); // Dispatch the toggle action from Redux
   };
 
   return (
@@ -126,8 +131,8 @@ export default function Comment({
           />
         </Flex>
       </Box>
-      {/* Show AddReply only when showAddReply is true */}
-      {showAddReply && <AddReply commentId={commentId} />}
+      {/* Show AddReply only when showExtraContent is true */}
+      {showExtraContent && <AddReply commentId={commentId} />}
       {replies.length > 0 &&
         replies.map((reply) => (
           <Reply
