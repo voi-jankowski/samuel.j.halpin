@@ -6,7 +6,8 @@ import {
   Stack,
   useColorModeValue,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useState, useEffect } from "react";
+import MothElement from "../components/mapComponents/MothElement";
 
 const inspirations = [
   {
@@ -61,7 +62,12 @@ const inspirations = [
 ];
 
 export default function Map() {
-  const bg = useColorModeValue("white", "gray.800");
+  // Function to get a random position within the container
+  const getRandomPosition = () => ({
+    top: `${Math.random() * 80 + 10}%`,
+    left: `${Math.random() * 80 + 10}%`,
+  });
+
   return (
     <Box
       w="full"
@@ -69,28 +75,18 @@ export default function Map() {
       backgroundImage="url(/assets/images/Map_Frame.png)"
       bgPos="center"
       bgSize="cover"
+      position="relative"
     >
-      <Flex
-        align="center"
-        pos="relative"
-        justify="center"
-        boxSize="full"
-        //   bg="blackAlpha.700"
-      >
-        <Stack textAlign="center" alignItems="center" spacing={6}>
-          <Heading
-            fontSize={["2xl", , "3xl"]}
-            fontWeight="semibold"
-            color="white"
-            textTransform="uppercase"
-          >
-            Build Your new{" "}
-          </Heading>
-          <Button colorScheme="brand" textTransform="uppercase" w="fit-content">
-            Start project
-          </Button>
-        </Stack>
-      </Flex>
+      {inspirations.map((inspiration, index) => (
+        <MothElement
+          key={index}
+          title={inspiration.title}
+          description={inspiration.description}
+          linkImage={inspiration.linkImage}
+          image={inspiration.image}
+          style={getRandomPosition()} // Pass the random position as a prop
+        />
+      ))}
     </Box>
   );
 }
