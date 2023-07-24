@@ -2,12 +2,6 @@ import {
   Button,
   HStack,
   FormControl,
-  Flex,
-  Heading,
-  Image,
-  Input,
-  Stack,
-  Text,
   Textarea,
   useColorModeValue,
 } from "@chakra-ui/react";
