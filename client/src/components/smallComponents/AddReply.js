@@ -11,19 +11,37 @@ import {
   Textarea,
   useColorModeValue,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
+import { useMutation } from "@apollo/client";
+import { ADD_REPLY } from "../../utils/mutations";
 
-const testimonials = [
-  {
-    name: "Brandon P.",
-    content: "This is a reply!",
-    avatar:
-      "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
-  },
-];
+import AuthService from "../../utils/auth";
+const Auth = new AuthService();
 
-export default function AddReply() {
-  const { name, content, avatar } = testimonials[0];
+export default function AddReply({ commentId }) {
+  const [replyText, setReplyText] = useState(""); // State to manage the content of the textarea
+  const [addReply, { error }] = useMutation(ADD_REPLY);
+
+  const handleInputChange = (event) => {
+    setReplyText(event.target.value);
+  };
+
+  const handleSaveReply = async (event) => {
+    event.preventDefault();
+    try {
+      const { data } = await addReply({
+        variables: {
+          commentId,
+          replyText,
+        },
+      });
+      console.log("Reply added:", data.addReply);
+      setReplyText("");
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <HStack
       spacing={4}
@@ -38,7 +56,11 @@ export default function AddReply() {
       borderColor="red.400"
     >
       <FormControl id="comment">
-        <Textarea placeholder="@commentAuthor" />
+        <Textarea
+          value={replyText}
+          onChange={handleInputChange}
+          placeholder="@commentAuthor"
+        />
       </FormControl>
 
       <Button
@@ -47,6 +69,7 @@ export default function AddReply() {
         _hover={{
           bg: "red.500",
         }}
+        onClick={handleSaveReply} // Call handleSaveReply when the "Save" button is clicked
       >
         Save
       </Button>

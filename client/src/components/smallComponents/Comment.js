@@ -11,6 +11,7 @@ import AuthService from "../../utils/auth";
 const Auth = new AuthService();
 
 export default function Comment({
+  commentId,
   commentAuthor,
   authorIcon,
   commentText,
@@ -126,7 +127,7 @@ export default function Comment({
         </Flex>
       </Box>
       {/* Show AddReply only when showAddReply is true */}
-      {showAddReply && <AddReply />}
+      {showAddReply && <AddReply commentId={commentId} />}
       {replies.length > 0 &&
         replies.map((reply) => (
           <Reply
