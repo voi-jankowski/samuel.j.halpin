@@ -49,9 +49,8 @@ export default function Comment({
       });
     },
   });
-  console.log(replies);
+
   const sortedReplies = selectionSort(replies, "createdAt");
-  console.log(sortedReplies);
 
   return (
     <Flex mt={6} p={0} w="full" flexDir="column" alignItems="flex-end">
