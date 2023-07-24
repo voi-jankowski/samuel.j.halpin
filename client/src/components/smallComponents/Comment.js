@@ -34,6 +34,10 @@ export default function Comment({
     dispatch(toggle()); // Dispatch the toggle action from Redux
   };
 
+  const [removeComment] = useMutation(REMOVE_COMMENT, {
+    variables: { commentId: commentId },
+  });
+
   return (
     <Flex mt={6} p={0} w="full" flexDir="column" alignItems="flex-end">
       <Box
@@ -113,6 +117,7 @@ export default function Comment({
                 }}
                 mr={2}
                 size="md"
+                onClick={removeComment}
               />
             )}
 
