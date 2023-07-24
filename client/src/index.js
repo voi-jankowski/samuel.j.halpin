@@ -6,6 +6,7 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import userReducer from "./features/user";
 import themeReducer from "./features/theme";
+import showExtraContentReducer from "./features/showExtraContent";
 import { extendTheme, ChakraProvider } from "@chakra-ui/react";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
@@ -22,6 +23,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   user: persistReducer(persistConfig, userReducer),
   theme: themeReducer,
+  showExtraContent: showExtraContentReducer,
 });
 
 // Create the redux store
