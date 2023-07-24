@@ -11,7 +11,12 @@ const testimonials = [
   },
 ];
 
-export default function Reply({ replyAuthor, replyText, createdAt }) {
+export default function Reply({
+  replyAuthor,
+  authorIcon,
+  replyText,
+  createdAt,
+}) {
   const { name, content, avatar } = testimonials[0];
   return (
     <Box
@@ -40,7 +45,7 @@ export default function Reply({ replyAuthor, replyText, createdAt }) {
               color: "brand.400",
             }}
             alt="Comment avatar"
-            src={avatar}
+            src={authorIcon ?? avatar}
           />
           <Text
             ml={2}

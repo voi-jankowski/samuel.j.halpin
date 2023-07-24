@@ -141,6 +141,7 @@ export default function BoookCardExtended({
                   <Comment
                     key={comment._id}
                     commentAuthor={comment.commentAuthor}
+                    authorIcon={comment.authorIcon}
                     commentText={comment.commentText}
                     createdAt={comment.createdAt}
                     replies={comment.replies}

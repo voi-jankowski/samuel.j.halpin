@@ -37,6 +37,7 @@ const testimonials = [
 
 export default function Comment({
   commentAuthor,
+  authorIcon,
   commentText,
   createdAt,
   replies,
@@ -69,7 +70,7 @@ export default function Comment({
                 color: "brand.400",
               }}
               alt="Comment avatar"
-              src={avatar}
+              src={authorIcon ?? avatar}
             />
             <Text
               ml={2}
@@ -140,6 +141,7 @@ export default function Comment({
           <Reply
             key={reply._id}
             replyAuthor={reply.replyAuthor}
+            authorIcon={reply.authorIcon}
             replyText={reply.replyText}
             createdAt={reply.createdAt}
           />
