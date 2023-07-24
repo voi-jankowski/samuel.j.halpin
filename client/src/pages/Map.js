@@ -1,10 +1,12 @@
 import {
   Box,
-  Flex,
+  Container,
+  Text,
+  Image,
   Heading,
   Button,
   Stack,
-  useColorModeValue,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
 import MothElement from "../components/mapComponents/MothElement";
@@ -61,6 +63,12 @@ const inspirations = [
   },
 ];
 
+const heightValues = {
+  base: "130vh", // Height on small screens
+  // sm: "100vh", // Height on medium screens
+  lg: "200vh", // Height on larger screens
+};
+
 export default function Map() {
   // Function to get a random position within the container
   const getRandomPosition = () => ({
@@ -68,25 +76,52 @@ export default function Map() {
     left: `${Math.random() * 80 + 10}%`,
   });
 
+  const height = useBreakpointValue(heightValues);
+
   return (
-    <Box
-      w="full"
-      h="container.xl"
-      backgroundImage="url(/assets/images/Map_Frame.png)"
-      bgPos="center"
-      bgSize="cover"
-      position="relative"
-    >
-      {inspirations.map((inspiration, index) => (
-        <MothElement
-          key={index}
-          title={inspiration.title}
-          description={inspiration.description}
-          linkImage={inspiration.linkImage}
-          image={inspiration.image}
-          style={getRandomPosition()} // Pass the random position as a prop
+    <Box p={4}>
+      <Box
+        position="absolute"
+        top="20%"
+        left="50%"
+        transform="translate(-50%, -50%)"
+        textAlign="center"
+      >
+        <Container spacing={4} maxW={"3xl"}>
+          <Heading fontSize={{ base: "2xl", sm: "4xl" }} fontWeight={"bold"}>
+            Inspiration Map
+          </Heading>
+          <Text color={"gray.600"} fontSize={{ base: "sm", sm: "lg" }}>
+            Wonder across this most peculiar map of Suds from The Peculiar Peggs
+            of Riddling Woods to see where the inspiration for different parts
+            of the book came from.
+          </Text>
+        </Container>
+      </Box>
+      <Box mb={20} position="relative">
+        {/* Use the Image component and set the source of the background image */}
+        <Image
+          src="/assets/images/Map_Frame.png"
+          alt="Inspiration Map"
+          h={height}
+          w="100%"
+          m="auto"
+          objectFit="cover"
         />
-      ))}
+        {/* Render the Moth elements on top of the Image */}
+        <Box position="absolute" top="10%" left="10%" w="90%" h="80%">
+          {inspirations.map((inspiration, index) => (
+            <MothElement
+              key={index}
+              title={inspiration.title}
+              description={inspiration.description}
+              linkImage={inspiration.linkImage}
+              image={inspiration.image}
+              style={getRandomPosition()} // Pass the random position as a prop
+            />
+          ))}
+        </Box>
+      </Box>
     </Box>
   );
 }

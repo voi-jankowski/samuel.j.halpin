@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import {
   Image,
   Box,
@@ -13,6 +14,8 @@ import {
   ModalCloseButton,
 } from "@chakra-ui/react";
 import Inspiration from "./Inspiration";
+
+const MotionImage = motion(Image); // Wrap the Image component in motion
 
 export default function MothElement({
   title,
@@ -30,8 +33,19 @@ export default function MothElement({
       position="absolute"
       cursor="pointer"
       style={style} // Apply the random position from props
+      boxSize="200px"
     >
-      <Image src={linkImage} alt={title} ref={btnRef} onClick={onOpen} />
+      <MotionImage
+        src={linkImage}
+        alt={title}
+        ref={btnRef}
+        onClick={onOpen}
+        w="100%" // Make the image take up the full width and height of the container
+        h="100%"
+        objectFit="cover" // Scale the image to cover the container while maintaining aspect ratio
+        transition="transform 0.2s ease" // Add a smooth transition when scaling on hover
+        _hover={{ transform: "scale(1.5)" }} // Scale up the image on hover
+      />
       <Modal
         onClose={onClose}
         finalFocusRef={btnRef}
@@ -52,9 +66,6 @@ export default function MothElement({
               image={image}
             />
           </ModalBody>
-          <ModalFooter>
-            <Button onClick={onClose}>Close</Button>
-          </ModalFooter>
         </ModalContent>
       </Modal>
     </Box>
