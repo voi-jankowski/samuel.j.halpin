@@ -70,7 +70,7 @@ export default function AddReply({ commentId }) {
       borderWidth="1px"
       borderColor="red.400"
     >
-      <FormControl id="comment">
+      <FormControl id="reply">
         {addError && (
           <p style={{ color: "red.600", marginBottom: "10px" }}>{addError}</p>
         )}

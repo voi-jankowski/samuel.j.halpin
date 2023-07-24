@@ -148,7 +148,7 @@ export default function BoookCardExtended({
                     replies={comment.replies}
                   />
                 ))}
-                <AddComment />
+                <AddComment commentedBook={title} />
               </Heading>
             </>
           ) : (

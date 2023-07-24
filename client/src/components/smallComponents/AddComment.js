@@ -11,41 +11,48 @@ import {
   Textarea,
   useColorModeValue,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
+import { useMutation } from "@apollo/client";
+import { ADD_COMMENT } from "../../utils/mutations";
 
-const testimonials = [
-  {
-    name: "Brandon P.",
-    content:
-      "It really saves me time and effort. It is exactly what our business has been lacking. EEZY is the most valuable business resource we have EVER purchased. After using EEZY my business skyrocketed!",
-    avatar:
-      "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
-  },
-  {
-    name: "Krysta B.",
-    content:
-      "I didn't even need training. We've used EEZY for the last five years. I have gotten at least 50 times the value from EEZY. I made back the purchase price in just 48 hours!",
-    avatar:
-      "https://images.unsplash.com/photo-1598550874175-4d0ef436c909?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
-  },
-  {
-    name: "Darcy L.",
-    content:
-      "Thank you for making it painless, pleasant and most of all, hassle free! I'm good to go. No matter where you go, EEZY is the coolest, most happening thing around! I love EEZY!",
-    avatar:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=334&q=80",
-  },
-  {
-    name: "Daniel T.",
-    content:
-      "I am so pleased with this product. EEZY is both attractive and highly adaptable. Without EEZY, we would have gone bankrupt by now. Thank you for creating this product!",
-    avatar:
-      "https://images.unsplash.com/photo-1606513542745-97629752a13b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
-  },
-];
+export default function AddComment({ commentedBook }) {
+  const [commentText, setCommentText] = useState(""); // State to manage the content of the textarea
+  const [addError, setAddError] = useState(""); // Add the setAddError function to the state
 
-export default function AddComment() {
-  const { name, content, avatar } = testimonials[0];
+  const [addComment, { error }] = useMutation(ADD_COMMENT, {
+    variables: { commentedBook, commentText },
+  });
+
+  const handleInputChange = (event) => {
+    setCommentText(event.target.value);
+  };
+
+  const handleSaveComment = async (event) => {
+    event.preventDefault();
+
+    if (!commentText.trim()) {
+      // Check if the comment text is empty or contains only whitespace
+      // Set an error state to show the validation message
+      setAddError("Comment text cannot be empty.");
+      return;
+    }
+
+    try {
+      const { data } = await addComment({
+        variables: {
+          commentedBook,
+          commentText,
+        },
+      });
+      console.log("Comment added:", data.addComment);
+      setCommentText("");
+      setAddError(""); // Clear the error state after successful submission
+    } catch (err) {
+      console.log("Error adding comment:", err.message);
+      // Handle the error, show an error message, or take any necessary action
+    }
+  };
+
   return (
     <HStack
       spacing={4}
@@ -60,7 +67,14 @@ export default function AddComment() {
       borderColor="red.400"
     >
       <FormControl id="comment">
-        <Textarea placeholder="Share your thoughts on the book..." />
+        {addError && (
+          <p style={{ color: "red.600", marginBottom: "10px" }}>{addError}</p>
+        )}
+        <Textarea
+          value={commentText}
+          onChange={handleInputChange}
+          placeholder="Share your thoughts on the book..."
+        />
       </FormControl>
 
       <Button
@@ -69,6 +83,7 @@ export default function AddComment() {
         _hover={{
           bg: "red.500",
         }}
+        onClick={handleSaveComment} // Call the handleSaveComment function when the button is clicked
       >
         Save
       </Button>
