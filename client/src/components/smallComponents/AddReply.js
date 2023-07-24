@@ -20,11 +20,10 @@ import { ADD_REPLY } from "../../utils/mutations";
 import AuthService from "../../utils/auth";
 const Auth = new AuthService();
 
-export default function AddReply({ commentId }) {
+export default function AddReply({ commentId, showAddReply, setshowAddReply }) {
   const [replyText, setReplyText] = useState(""); // State to manage the content of the textarea
   const [addError, setAddError] = useState(""); // Add the setAddError function to the state
   const [addReply, { error }] = useMutation(ADD_REPLY);
-  const dispatch = useDispatch();
 
   const handleInputChange = (event) => {
     setReplyText(event.target.value);
@@ -48,9 +47,9 @@ export default function AddReply({ commentId }) {
         },
       });
       console.log("Reply added:", data.addReply);
-      setReplyText("");
+      setReplyText(""); // Clear the textarea
       setAddError(""); // Clear the error state after successful submission
-      dispatch(toggle()); // Close the AddReply component by toggling showExtraContent to false
+      setshowAddReply(!showAddReply); // Hide the AddReply component
     } catch (err) {
       console.log("Error adding reply:", err.message);
       // Handle the error, show an error message, or take any necessary action

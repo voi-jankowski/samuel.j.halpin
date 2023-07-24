@@ -5,9 +5,6 @@ import Reply from "./Reply";
 import AddReply from "./AddReply";
 import { getTimeDifference, selectionSort } from "../../utils/timeUtils";
 
-import { useSelector, useDispatch } from "react-redux";
-import { toggle } from "../../features/showExtraContent";
-
 import { useMutation } from "@apollo/client";
 import { REMOVE_COMMENT } from "../../utils/mutations";
 
@@ -25,14 +22,8 @@ export default function Comment({
   const avatar =
     "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80";
 
-  // Add state to track whether AddReply should be displayed or not
-  const showExtraContent = useSelector((state) => state.showExtraContent.value);
-  const dispatch = useDispatch();
-
-  //   Function to toggle the display of AddReply
-  const toggleAddReply = () => {
-    dispatch(toggle()); // Dispatch the toggle action from Redux
-  };
+  // State to display the AddReply component
+  const [showAddReply, setshowAddReply] = useState(false);
 
   const [removeComment] = useMutation(REMOVE_COMMENT, {
     variables: { commentId: commentId },
@@ -146,12 +137,18 @@ export default function Comment({
             }}
             mr={2}
             size="md"
-            onClick={toggleAddReply}
+            onClick={() => setshowAddReply(!showAddReply)}
           />
         </Flex>
       </Box>
       {/* Show AddReply only when showExtraContent is true */}
-      {showExtraContent && <AddReply commentId={commentId} />}
+      {showAddReply && (
+        <AddReply
+          commentId={commentId}
+          showAddReply={showAddReply}
+          setshowAddReply={setshowAddReply}
+        />
+      )}
       {sortedReplies.length > 0 &&
         sortedReplies.map((reply) => (
           <Reply
