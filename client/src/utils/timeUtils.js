@@ -2,15 +2,7 @@
 export const getTimeDifference = (timestamp) => {
   let today = new Date();
   let givenDate = new Date(parseInt(timestamp)); // Convert the timestamp to a number
-  console.log(
-    "timestamp: ",
-    timestamp,
-    "givenDate: ",
-    givenDate,
-    "today: ",
-    today
-  );
-  console.log("today, givenDAte: ", today, givenDate);
+
   let daysInBetween =
     millisecondsToDays(today.getTime()) -
     millisecondsToDays(givenDate.getTime());
@@ -39,26 +31,6 @@ const millisecondsToDays = (miliseconds) => {
   return Math.floor(miliseconds / 1000 / 60 / 60 / 24);
 };
 
-export function selectionSort(array) {
-  let temp;
-  let sortedArray = [...array]; // Create a new array to avoid modifying the original array
-  let size = sortedArray.length;
-
-  for (let i = 0; i < size; i++) {
-    let min = sortedArray[i];
-    let min_index = i;
-
-    for (let j = i + 1; j < size; j++) {
-      if (sortedArray[j].score > min.score) {
-        min = sortedArray[j];
-        min_index = j;
-      }
-    }
-
-    temp = sortedArray[i];
-    sortedArray[i] = min;
-    sortedArray[min_index] = temp;
-  }
-
-  return sortedArray;
+export function selectionSort(array, key) {
+  return [...array].sort((a, b) => new Date(b[key]) - new Date(a[key]));
 }

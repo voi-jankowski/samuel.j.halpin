@@ -3,7 +3,7 @@ import { Box, IconButton, Flex, Image, Icon, Text } from "@chakra-ui/react";
 import { FaReply, FaTrashCan } from "react-icons/fa6";
 import Reply from "./Reply";
 import AddReply from "./AddReply";
-import { getTimeDifference } from "../../utils/timeUtils";
+import { getTimeDifference, selectionSort } from "../../utils/timeUtils";
 
 import { useSelector, useDispatch } from "react-redux";
 import { toggle } from "../../features/showExtraContent";
@@ -22,11 +22,9 @@ export default function Comment({
   createdAt,
   replies,
 }) {
-  console.log(getTimeDifference(createdAt));
   const avatar =
     "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80";
 
-  // Add state to track whether AddReply should be displayed or not
   // Add state to track whether AddReply should be displayed or not
   const showExtraContent = useSelector((state) => state.showExtraContent.value);
   const dispatch = useDispatch();
@@ -51,6 +49,9 @@ export default function Comment({
       });
     },
   });
+  console.log(replies);
+  const sortedReplies = selectionSort(replies, "createdAt");
+  console.log(sortedReplies);
 
   return (
     <Flex mt={6} p={0} w="full" flexDir="column" alignItems="flex-end">
@@ -152,8 +153,8 @@ export default function Comment({
       </Box>
       {/* Show AddReply only when showExtraContent is true */}
       {showExtraContent && <AddReply commentId={commentId} />}
-      {replies.length > 0 &&
-        replies.map((reply) => (
+      {sortedReplies.length > 0 &&
+        sortedReplies.map((reply) => (
           <Reply
             key={reply._id}
             replyId={reply._id}
