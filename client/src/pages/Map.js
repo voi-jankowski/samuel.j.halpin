@@ -79,10 +79,10 @@ export default function Map() {
   const height = useBreakpointValue(heightValues);
 
   return (
-    <Box p={4}>
+    <Box p={4} mt="10%">
       <Box
         position="absolute"
-        top="20%"
+        top="25%"
         left="50%"
         transform="translate(-50%, -50%)"
         textAlign="center"
