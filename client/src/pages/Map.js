@@ -88,10 +88,22 @@ export default function Map() {
         textAlign="center"
       >
         <Container spacing={4} maxW={"3xl"}>
-          <Heading fontSize={{ base: "2xl", sm: "4xl" }} fontWeight={"bold"}>
+          <Heading
+            fontSize={{
+              base: "2xl",
+              md: "3xl",
+              lg: "4xl",
+              xl: "5xl",
+              "2xl": "6xl",
+            }}
+            fontWeight={"bold"}
+          >
             Inspiration Map
           </Heading>
-          <Text color={"gray.600"} fontSize={{ base: "sm", sm: "lg" }}>
+          <Text
+            color={"gray.600"}
+            fontSize={{ base: "sm", sm: "lg", lg: "xl", xl: "2xl" }}
+          >
             Wonder across this most peculiar map of Suds from The Peculiar Peggs
             of Riddling Woods to see where the inspiration for different parts
             of the book came from.
@@ -109,7 +121,7 @@ export default function Map() {
           objectFit="cover"
         />
         {/* Render the Moth elements on top of the Image */}
-        <Box position="absolute" top="10%" left="10%" w="90%" h="80%">
+        <Box position="absolute" top="10%" left={0} w="100%" h="80%">
           {inspirations.map((inspiration, index) => (
             <MothElement
               key={index}

@@ -12,6 +12,7 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import Inspiration from "./Inspiration";
 
@@ -28,12 +29,22 @@ export default function MothElement({
   const [scrollBehavior, setScrollBehavior] = React.useState("outside");
 
   const btnRef = React.useRef(null);
+
+  // Set different box sizes based on the screen breakpoints
+  const boxSize = useBreakpointValue({
+    base: "100px", // On smaller screens, the MothElement will be 100px x 100px
+    sm: "150px", // On medium screens and up, the MothElement will be 150px x 150px
+    md: "200px", // On large screens and up, the MothElement will be 200px x 200px
+    lg: "250px", // On larger screens and up, the MothElement will be 250px x 250px
+    xl: "300px", // On extra large screens and up, the MothElement will be 300px x 300px
+  });
+
   return (
     <Box
       position="absolute"
       cursor="pointer"
       style={style} // Apply the random position from props
-      boxSize="200px"
+      boxSize={boxSize} // Use the responsive boxSize based on the screen size
     >
       <MotionImage
         src={linkImage}
