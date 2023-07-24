@@ -41,7 +41,7 @@ const millisecondsToDays = (miliseconds) => {
 
 export function selectionSort(array) {
   let temp;
-  let sortedArray = array;
+  let sortedArray = [...array]; // Create a new array to avoid modifying the original array
   let size = sortedArray.length;
 
   for (let i = 0; i < size; i++) {

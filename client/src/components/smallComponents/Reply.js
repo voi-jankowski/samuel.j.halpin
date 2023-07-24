@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Icon, Flex, Image, IconButton, Text } from "@chakra-ui/react";
 import { FaTrashCan } from "react-icons/fa6";
+import { getTimeDifference } from "../../utils/timeUtils";
 
 import { useMutation } from "@apollo/client";
 import { REMOVE_REPLY } from "../../utils/mutations";
@@ -73,7 +74,7 @@ export default function Reply({
           }}
           mx={3}
         >
-          {/* {getTimeDifference(createdAt)} */}6 weeks ago
+          {getTimeDifference(createdAt)}
         </Text>
       </Flex>
       <Text

@@ -10,11 +10,9 @@ import {
   Button,
   Image,
   Icon,
-  IconButton,
-  createIcon,
-  IconProps,
   useColorModeValue,
 } from "@chakra-ui/react";
+import { selectionSort } from "../../utils/timeUtils";
 
 import AddComment from "./AddComment";
 import Comment from "./Comment";
@@ -41,6 +39,8 @@ export default function BoookCardExtended({
   useEffect(() => {
     refetch();
   }, [comments]);
+
+  const sortedComments = selectionSort(comments);
 
   return (
     <Container maxW={"6xl"}>
@@ -143,7 +143,7 @@ export default function BoookCardExtended({
                 color={"red.400"}
               >
                 Readers' Comments
-                {comments?.map((comment) => (
+                {sortedComments.map((comment) => (
                   <Comment
                     key={comment._id}
                     commentId={comment._id}
