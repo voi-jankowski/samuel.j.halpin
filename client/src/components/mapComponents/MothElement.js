@@ -14,20 +14,24 @@ import {
 } from "@chakra-ui/react";
 import Inspiration from "./Inspiration";
 
-export default function MothElement() {
+export default function MothElement({
+  title,
+  description,
+  linkImage,
+  image,
+  style,
+}) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [scrollBehavior, setScrollBehavior] = React.useState("outside");
 
   const btnRef = React.useRef(null);
   return (
-    <Box boxSize="sm" position="relative">
-      <Image
-        src="assets/images/moth1.png"
-        alt="moth-1"
-        ref={btnRef}
-        onClick={onOpen}
-        cursor="pointer"
-      />
+    <Box
+      position="absolute"
+      cursor="pointer"
+      style={style} // Apply the random position from props
+    >
+      <Image src={linkImage} alt={title} ref={btnRef} onClick={onOpen} />
       <Modal
         onClose={onClose}
         finalFocusRef={btnRef}
@@ -35,14 +39,18 @@ export default function MothElement() {
         scrollBehavior={scrollBehavior}
         size="xl"
         motionPreset="scale"
-        isCentered // Set this to true to center the modal above the btnRef
-        initialFocusRef={btnRef} // Set the initial focus to the btnRef
+        isCentered
+        initialFocusRef={btnRef}
       >
         <ModalOverlay />
         <ModalContent>
           <ModalCloseButton />
           <ModalBody>
-            <Inspiration />
+            <Inspiration
+              title={title}
+              description={description}
+              image={image}
+            />
           </ModalBody>
           <ModalFooter>
             <Button onClick={onClose}>Close</Button>
