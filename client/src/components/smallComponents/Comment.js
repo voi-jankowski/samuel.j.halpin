@@ -43,6 +43,11 @@ export default function Comment({
 
   const sortedReplies = selectionSort(replies, "createdAt");
 
+  const loggedInUsername = Auth.loggedIn()
+    ? Auth.getProfile().data.username
+    : null;
+  const isAdmin = loggedInUsername === "admin";
+
   return (
     <Flex mt={6} p={0} w="full" flexDir="column" alignItems="flex-end">
       <Box
@@ -109,36 +114,38 @@ export default function Comment({
         </Text>
 
         <Flex justifyContent="end" mt={0}>
-          {Auth.loggedIn() &&
-            Auth.getProfile().data.username === commentAuthor && (
-              <IconButton
-                isRound={true}
-                aria-label="reply"
-                icon={<Icon as={FaTrashCan} />}
-                variant="ghost"
-                color="gray.600"
-                _dark={{
-                  color: "gray.200",
-                }}
-                mr={2}
-                size="md"
-                onClick={removeComment}
-              />
-            )}
-
-          <IconButton
-            isRound={true}
-            aria-label="reply"
-            icon={<Icon as={FaReply} />}
-            variant="ghost"
-            color="gray.600"
-            _dark={{
-              color: "gray.200",
-            }}
-            mr={2}
-            size="md"
-            onClick={() => setshowAddReply(!showAddReply)}
-          />
+          {/* Render Trash button for the author and admin */}
+          {(loggedInUsername === commentAuthor || isAdmin) && (
+            <IconButton
+              isRound={true}
+              aria-label="reply"
+              icon={<Icon as={FaTrashCan} />}
+              variant="ghost"
+              color="gray.600"
+              _dark={{
+                color: "gray.200",
+              }}
+              mr={2}
+              size="md"
+              onClick={removeComment}
+            />
+          )}
+          {/* Render Reply button only when logged in */}
+          {Auth.loggedIn() && (
+            <IconButton
+              isRound={true}
+              aria-label="reply"
+              icon={<Icon as={FaReply} />}
+              variant="ghost"
+              color="gray.600"
+              _dark={{
+                color: "gray.200",
+              }}
+              mr={2}
+              size="md"
+              onClick={() => setshowAddReply(!showAddReply)}
+            />
+          )}
         </Flex>
       </Box>
       {/* Show AddReply only when showExtraContent is true */}

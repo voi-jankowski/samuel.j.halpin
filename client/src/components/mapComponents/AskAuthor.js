@@ -1,11 +1,14 @@
 import React from "react";
-import { Heading, Container } from "@chakra-ui/react";
+import { Heading, Container, Text } from "@chakra-ui/react";
 
 import { useQuery } from "@apollo/client";
 import { GET_QUESTIONS } from "../../utils/queries";
 import AddQuestion from "./AddQuestion";
 import Question from "./Question";
 import { selectionSort } from "../../utils/timeUtils";
+
+import AuthService from "../../utils/auth";
+const Auth = new AuthService();
 
 export default function AskAuthor() {
   const { loading, data } = useQuery(GET_QUESTIONS);
@@ -41,8 +44,14 @@ export default function AskAuthor() {
                     answers={question.answers}
                   />
                 ))}
-                <AddQuestion />
               </Heading>
+              {Auth.loggedIn() ? (
+                <AddQuestion />
+              ) : (
+                <Text color={"red.600"}>
+                  You must be logged in to leave questions!
+                </Text>
+              )}
             </>
           ) : (
             <>
@@ -53,7 +62,11 @@ export default function AskAuthor() {
                 color={"red.400"}
               >
                 Be the first to leave a question...
-                <AddQuestion />
+                {Auth.loggedIn() ? (
+                  <AddQuestion />
+                ) : (
+                  <span color={"red.600"}>but log in first!</span>
+                )}
               </Heading>
             </>
           )}

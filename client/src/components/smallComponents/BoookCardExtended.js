@@ -13,11 +13,12 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { selectionSort } from "../../utils/timeUtils";
-
 import AddComment from "./AddComment";
 import Comment from "./Comment";
-
 import { GET_COMMENTS } from "../../utils/queries";
+
+import AuthService from "../../utils/auth";
+const Auth = new AuthService();
 
 export default function BoookCardExtended({
   index,
@@ -149,8 +150,14 @@ export default function BoookCardExtended({
                     replies={comment.replies}
                   />
                 ))}
-                <AddComment commentedBook={title} />
               </Heading>
+              {Auth.loggedIn() ? (
+                <AddComment commentedBook={title} />
+              ) : (
+                <Text color={"red.600"}>
+                  You must be logged in to leave questions!
+                </Text>
+              )}
             </>
           ) : (
             <>
@@ -161,7 +168,11 @@ export default function BoookCardExtended({
                 color={"red.400"}
               >
                 Be the first to leave a comment...
-                <AddComment />
+                {Auth.loggedIn() ? (
+                  <AddComment />
+                ) : (
+                  <span color={"red.600"}>but log in first!</span>
+                )}
               </Heading>
             </>
           )}
