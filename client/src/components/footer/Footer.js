@@ -2,28 +2,30 @@ import React from "react";
 import {
   Box,
   IconButton,
+  Icon,
   Container,
   Stack,
   Flex,
   useColorModeValue,
   VisuallyHidden,
+  VStack,
 } from "@chakra-ui/react";
+import SocialButton from "./SocialButton";
 import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 
-const SocialButton = ({ icon, label, href }) => {
-  return (
-    <IconButton
-      isRound={true}
-      variant="outline"
-      colorScheme="whiteAlpha"
-      aria-label={label}
-      fontSize="20px"
-      color="white" // Set the color to white explicitly
-      icon={icon}
-      href={href}
-    />
-  );
-};
+// const SocialButton = ({ icon, label, href }) => {
+//   return (
+//     <IconButton
+//       isRound={true}
+//       variant="outline"
+//       colorScheme="whiteAlpha"
+//       aria-label={label}
+//       fontSize="20px"
+//       color="white" // Set the color to white explicitly
+//       href={href}
+//     />
+//   );
+// };
 
 export default function Footer() {
   return (
@@ -52,9 +54,18 @@ export default function Footer() {
         left="50%" // Center the social buttons container horizontally
         transform="translateX(-50%)" // Center the social buttons container horizontally
       >
-        <SocialButton label={"Twitter"} href={"#"} icon={FaTwitter} />
-        <SocialButton label={"YouTube"} href={"#"} icon={FaYoutube} />
-        <SocialButton label={"Instagram"} href={"#"} icon={FaInstagram} />
+        <SocialButton
+          label={"Twitter"}
+          href={"#"}
+          icon={<FaTwitter />}
+          color={"twitter"}
+        />
+        <SocialButton
+          label={"Instagram"}
+          href={"#"}
+          icon={<FaInstagram />}
+          color={"instagram"}
+        />
       </Stack>
     </Flex>
   );
