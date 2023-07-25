@@ -28,16 +28,7 @@ export default function Question({
   const [removeQuestion] = useMutation(REMOVE_QUESTION, {
     variables: { questionId: questionId },
     update(cache, { data: { removeQuestion } }) {
-      cache.modify({
-        fields: {
-          questions(existingQuestionRefs, { readField }) {
-            return existingQuestionRefs.filter(
-              (questionRef) =>
-                removeQuestion.questionId !== readField("id", questionRef)
-            );
-          },
-        },
-      });
+      cache.evict({ id: cache.identify(removeQuestion) });
     },
   });
 

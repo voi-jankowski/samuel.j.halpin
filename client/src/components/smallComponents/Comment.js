@@ -28,16 +28,7 @@ export default function Comment({
   const [removeComment] = useMutation(REMOVE_COMMENT, {
     variables: { commentId: commentId },
     update(cache, { data: { removeComment } }) {
-      cache.modify({
-        fields: {
-          comments(existingCommentRefs, { readField }) {
-            return existingCommentRefs.filter(
-              (commentRef) =>
-                removeComment.commentId !== readField("id", commentRef)
-            );
-          },
-        },
-      });
+      cache.evict({ id: cache.identify(removeComment) });
     },
   });
 
