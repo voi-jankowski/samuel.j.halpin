@@ -44,14 +44,17 @@ export default function AskAuthor() {
                     answers={question.answers}
                   />
                 ))}
+                {Auth.loggedIn() ? (
+                  <AddQuestion />
+                ) : (
+                  <>
+                    <br />
+                    <Text color={"red.600"} fontSize="lg">
+                      You must be logged in to leave questions!
+                    </Text>
+                  </>
+                )}
               </Heading>
-              {Auth.loggedIn() ? (
-                <AddQuestion />
-              ) : (
-                <Text color={"red.600"}>
-                  You must be logged in to leave questions!
-                </Text>
-              )}
             </>
           ) : (
             <>

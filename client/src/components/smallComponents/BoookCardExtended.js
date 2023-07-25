@@ -150,14 +150,17 @@ export default function BoookCardExtended({
                     replies={comment.replies}
                   />
                 ))}
+                {Auth.loggedIn() ? (
+                  <AddComment commentedBook={title} />
+                ) : (
+                  <>
+                    <br />
+                    <Text color={"red.600"} fontSize="lg">
+                      You must be logged in to leave questions!
+                    </Text>
+                  </>
+                )}
               </Heading>
-              {Auth.loggedIn() ? (
-                <AddComment commentedBook={title} />
-              ) : (
-                <Text color={"red.600"}>
-                  You must be logged in to leave questions!
-                </Text>
-              )}
             </>
           ) : (
             <>
