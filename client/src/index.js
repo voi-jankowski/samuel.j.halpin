@@ -8,6 +8,7 @@ import userReducer from "./features/user";
 import themeReducer from "./features/theme";
 import showExtraContentReducer from "./features/showExtraContent";
 import { extendTheme, ChakraProvider } from "@chakra-ui/react";
+import { questrial } from "@fontsource/questrial"; // Import the Questrial font
 import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
 import { persistReducer } from "redux-persist";
@@ -55,6 +56,10 @@ const heading = {
 
 const theme = extendTheme({
   colors,
+  fonts: {
+    body: "Questrial, sans-serif", // Use Questrial font as the default body font
+    heading: "Questrial, sans-serif", // Use Questrial font as the default heading font
+  },
   components: { Container: container, Heading: heading },
 });
 

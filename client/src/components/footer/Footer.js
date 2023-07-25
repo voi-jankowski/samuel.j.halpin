@@ -48,7 +48,7 @@ export default function Footer() {
       {/* Social buttons */}
       <Stack
         direction={"row"}
-        spacing={6}
+        spacing={0}
         position="absolute" // Set the position to absolute for the social buttons container
         bottom={8} // Adjust the bottom value to control the vertical positioning
         left="50%" // Center the social buttons container horizontally

@@ -7,11 +7,13 @@ export default function SocialButton({ icon, label, href, color }) {
     <Container>
       <Button
         colorScheme={color}
-        variant="ghost"
+        variant="link"
         aria-label={label}
         href={href}
         leftIcon={icon}
         size="lg"
+        fontSize="20px"
+        fontWeight="400"
       >
         {label}
       </Button>

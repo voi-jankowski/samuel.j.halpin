@@ -77,11 +77,15 @@ export default function Map() {
   });
 
   const height = useBreakpointValue(heightValues);
+  const headingPosition = useBreakpointValue({
+    base: "relative",
+    md: "absolute",
+  });
 
   return (
     <Box p={4} mt="10%">
       <Box
-        position="absolute"
+        position={headingPosition}
         top="20%"
         left="50%"
         transform="translate(-50%, -50%)"

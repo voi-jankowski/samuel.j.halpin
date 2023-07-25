@@ -21,10 +21,7 @@ import {
   Modal,
   ModalOverlay,
   ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 import Login from "./Login";
@@ -43,21 +40,26 @@ const Links = [
   { name: "Teaching Resources", url: "/teaching" },
 ];
 
-const NavLink = ({ children, url }) => (
-  <Link
-    key={children}
-    px={2}
-    py={1}
-    rounded={"md"}
-    _hover={{
-      textDecoration: "none",
-      bg: useColorModeValue("gray.200", "gray.700"),
-    }}
-    href={url}
-  >
-    {children}
-  </Link>
-);
+const NavLink = ({ children, url }) => {
+  const linkSize = useBreakpointValue({ base: "sm", md: "lg" });
+
+  return (
+    <Link
+      key={children}
+      px={2}
+      py={1}
+      rounded={"md"}
+      fontSize={linkSize} // Set the font size based on the breakpoint value
+      _hover={{
+        textDecoration: "none",
+        bg: useColorModeValue("gray.300", "gray.700"),
+      }}
+      href={url}
+    >
+      {children}
+    </Link>
+  );
+};
 
 export default function Navbar() {
   const { colorMode, toggleColorMode } = useColorMode();
