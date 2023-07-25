@@ -6,8 +6,9 @@ import {
   Avatar,
   HStack,
   Link,
-  IconButton,
   Button,
+  IconButton,
+  Image,
   Menu,
   MenuButton,
   MenuList,
@@ -67,6 +68,29 @@ const NavLink = ({ children, url }) => {
   );
 };
 
+const ProfileLink = () => {
+  const user = useSelector((state) => state.user.value);
+  console.log(user);
+  return (
+    <>
+      {Auth.loggedIn() ? (
+        <Flex alignItems={"center"}>
+          <Image
+            boxSize="80px"
+            src={user.userIcon || "./assets/images/moth7.png"}
+          />
+          Profile{" "}
+        </Flex>
+      ) : (
+        <Flex alignItems={"center"}>
+          <Image boxSize="80px" src={"./assets/images/moth1.png "} />
+          Login{" "}
+        </Flex>
+      )}
+    </>
+  );
+};
+
 export default function Navbar() {
   const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -85,7 +109,12 @@ export default function Navbar() {
     dispatch(logout());
   };
 
-  const linkSize = useBreakpointValue({ base: "sm", md: "lg" });
+  const linkSize = useBreakpointValue({
+    base: "sm",
+    md: "lg",
+    xl: "2xl",
+    "2xl": "3xl",
+  });
 
   return (
     <>
@@ -121,48 +150,67 @@ export default function Navbar() {
                   as={Button}
                   variant={"link"}
                   cursor={"pointer"}
-                  px={2}
-                  py={1}
-                  rounded={"md"}
-                  fontSize={linkSize} // Set the font size based on the breakpoint value
-                  _hover={{
-                    textDecoration: "none",
-                    bg: useColorModeValue("gray.300", "gray.700"),
-                  }}
+                  fontSize={linkSize}
+                  fontWeight="bold"
+                  color="purple.800"
                 >
-                  Profile <FaUser />
+                  <ProfileLink />
                 </MenuButton>
                 <MenuList alignItems={"center"}>
-                  <br />
-                  <Center>
-                    <Avatar
-                      size={"2xl"}
-                      src={"https://avatars.dicebear.com/api/male/username.svg"}
-                    />
-                  </Center>
-                  <br />
-
                   {Auth.loggedIn() ? (
                     <>
                       <Center>
+                        <Avatar
+                          size={"2xl"}
+                          src={user.userIcon || "./assets/images/moth7.png"}
+                        />
+                      </Center>
+                      <br />
+                      <Center
+                        fontSize={linkSize}
+                        fontWeight="bold"
+                        color="purple.800"
+                      >
                         <p>{user.username}</p>
                       </Center>
                       <br />
                       <MenuDivider />
-                      <MenuItem as={Link} href="/profile" onClick={onClose}>
+                      <MenuItem
+                        as={Link}
+                        fontSize={linkSize}
+                        href="/profile"
+                        onClick={onClose}
+                      >
                         Your Profile
                       </MenuItem>
-                      <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                      <MenuItem fontSize={linkSize} onClick={handleLogout}>
+                        Logout
+                      </MenuItem>
                     </>
                   ) : (
                     <>
                       <Center>
-                        <p>Login or Create New User</p>
+                        <Avatar
+                          size={"2xl"}
+                          src={"./assets/images/moth4.png"}
+                        />
+                      </Center>
+
+                      <Center
+                        fontSize={linkSize}
+                        fontWeight="bold"
+                        color="purple.800"
+                      >
+                        <p>Login or Signup</p>
                       </Center>
                       <br />
                       <MenuDivider />
 
-                      <MenuItem as={Link} onClick={() => setLoginOpen(true)}>
+                      <MenuItem
+                        as={Link}
+                        fontSize={linkSize}
+                        onClick={() => setLoginOpen(true)}
+                      >
                         Login
                       </MenuItem>
                       <Modal
@@ -174,7 +222,11 @@ export default function Navbar() {
                           <Login />
                         </ModalContent>
                       </Modal>
-                      <MenuItem as={Link} onClick={() => setSignupOpen(true)}>
+                      <MenuItem
+                        as={Link}
+                        fontSize={linkSize}
+                        onClick={() => setSignupOpen(true)}
+                      >
                         Signup
                       </MenuItem>
                       <Modal
