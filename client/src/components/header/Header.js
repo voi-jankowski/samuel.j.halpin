@@ -16,7 +16,7 @@ function Header() {
   const logoSize = useBreakpointValue({ base: "70%", md: "50%" });
   const baloonSize = useBreakpointValue({ base: "30%", md: "20%" });
   return (
-    <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
+    <Box bg="transparent" px={4}>
       <Flex as="header" alignItems="center">
         <Image
           src="./assets/images/baloon.png"

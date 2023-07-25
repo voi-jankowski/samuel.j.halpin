@@ -13,20 +13,6 @@ import {
 import SocialButton from "./SocialButton";
 import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 
-// const SocialButton = ({ icon, label, href }) => {
-//   return (
-//     <IconButton
-//       isRound={true}
-//       variant="outline"
-//       colorScheme="whiteAlpha"
-//       aria-label={label}
-//       fontSize="20px"
-//       color="white" // Set the color to white explicitly
-//       href={href}
-//     />
-//   );
-// };
-
 export default function Footer() {
   return (
     <Flex
@@ -34,7 +20,6 @@ export default function Footer() {
       marginTop="auto"
       justifyContent="center" // Center the content horizontally
       alignItems="center" // Center the content vertically
-      py={4}
       position="relative" // Set the position to relative for the footer container
     >
       {/* Footer image */}

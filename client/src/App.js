@@ -46,10 +46,17 @@ const client = new ApolloClient({
 });
 
 function App() {
+  const background = {
+    backgroundImage: "url(./assets/images/background.jpg)",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    backgroundAttachment: "fixed",
+  };
+
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className="App">
+        <div className="App" style={background}>
           <Header />
           <div className="container">
             <Routes>
