@@ -79,7 +79,7 @@ export default function Map() {
   const height = useBreakpointValue(heightValues);
   const headingPosition = useBreakpointValue({
     base: "relative",
-    md: "absolute",
+    lg: "absolute",
   });
 
   return (

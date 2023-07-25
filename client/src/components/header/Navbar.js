@@ -24,6 +24,7 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
+import { FaUser } from "react-icons/fa";
 import Login from "./Login";
 import Signup from "./Signup";
 
@@ -41,7 +42,12 @@ const Links = [
 ];
 
 const NavLink = ({ children, url }) => {
-  const linkSize = useBreakpointValue({ base: "sm", md: "lg" });
+  const linkSize = useBreakpointValue({
+    base: "sm",
+    md: "lg",
+    xl: "2xl",
+    "2xl": "3xl",
+  });
 
   return (
     <Link
@@ -79,6 +85,8 @@ export default function Navbar() {
     dispatch(logout());
   };
 
+  const linkSize = useBreakpointValue({ base: "sm", md: "lg" });
+
   return (
     <>
       <Box bg="transparent" px={4}>
@@ -104,22 +112,25 @@ export default function Navbar() {
 
           <Flex alignItems={"center"}>
             <Stack direction={"row"} spacing={7}>
-              <Button onClick={toggleColorMode}>
+              {/* <Button onClick={toggleColorMode}>
                 {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
-              </Button>
+              </Button> */}
 
               <Menu>
                 <MenuButton
                   as={Button}
-                  rounded={"full"}
                   variant={"link"}
                   cursor={"pointer"}
-                  minW={0}
+                  px={2}
+                  py={1}
+                  rounded={"md"}
+                  fontSize={linkSize} // Set the font size based on the breakpoint value
+                  _hover={{
+                    textDecoration: "none",
+                    bg: useColorModeValue("gray.300", "gray.700"),
+                  }}
                 >
-                  <Avatar
-                    size={"sm"}
-                    src={"https://avatars.dicebear.com/api/male/username.svg"}
-                  />
+                  Profile <FaUser />
                 </MenuButton>
                 <MenuList alignItems={"center"}>
                   <br />

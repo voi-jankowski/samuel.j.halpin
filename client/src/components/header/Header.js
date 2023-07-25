@@ -13,15 +13,34 @@ import {
 import Navbar from "./Navbar";
 
 function Header() {
-  const logoSize = useBreakpointValue({ base: "70%", md: "50%" });
-  const baloonSize = useBreakpointValue({ base: "30%", md: "20%" });
+  const logoSize = useBreakpointValue({
+    base: "70%",
+    sm: "50%",
+    md: "50%",
+    xl: "40%",
+    "2xl": "30%",
+  });
+  const baloonSize = useBreakpointValue({
+    base: "30%",
+    sm: "20%",
+    md: "20%",
+    xl: "15%",
+  });
   return (
     <Box bg="transparent" px={4}>
-      <Flex as="header" alignItems="center">
+      <Flex
+        as="header"
+        alignItems="center"
+        backgroundImage="url(./assets/images/tower.png)"
+        backgroundRepeat="no-repeat"
+        backgroundPosition="left"
+        backgroundSize="contain"
+      >
         <Image
           src="./assets/images/baloon.png"
           alt="Heading Baloon"
-          width="20%"
+          width={baloonSize}
+          ml="6%"
         />
         <Flex direction="column" alignItems="right" width={logoSize}>
           <Image src="./assets/images/sam-logo.png" alt="Sam's Logo" />
