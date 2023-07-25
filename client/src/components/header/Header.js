@@ -31,7 +31,7 @@ function Header() {
       <Flex
         as="header"
         alignItems="center"
-        backgroundImage="url(./assets/images/tower.png)"
+        backgroundImage="url(./assets/images/Mill_Header.png)"
         backgroundRepeat="no-repeat"
         backgroundPosition="left"
         backgroundSize="contain"
@@ -40,7 +40,7 @@ function Header() {
           src="./assets/images/baloon.png"
           alt="Heading Baloon"
           width={baloonSize}
-          ml="6%"
+          ml="5%"
         />
         <Flex direction="column" alignItems="right" width={logoSize}>
           <Image src="./assets/images/sam-logo.png" alt="Sam's Logo" />

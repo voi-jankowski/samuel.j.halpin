@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
 import MothElement from "../components/mapComponents/MothElement";
+import AskAuthor from "../components/mapComponents/AskAuthor";
 
 const inspirations = [
   {
@@ -138,6 +139,7 @@ export default function Map() {
           ))}
         </Box>
       </Box>
+      <AskAuthor />
     </Box>
   );
 }
