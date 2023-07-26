@@ -89,7 +89,7 @@ export default function ImageRightCard({
               base: "full",
               sm: "auto",
             }}
-            size="lg"
+            size="md"
             bg="gray.900"
             _dark={{
               bg: "gray.700",

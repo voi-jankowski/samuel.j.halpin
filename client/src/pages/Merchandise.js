@@ -1,8 +1,9 @@
 // Sourced the template for the page from https://choc-ui.com/docs/page-sections/features
-import { Box, Flex } from "@chakra-ui/react";
+import { Box, Flex, Button, Icon, IconButton } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import ImageRightCard from "../components/merchendiseComponents/ImageRightCard";
 import ImageLeftCard from "../components/merchendiseComponents/ImageLeftCard";
+import { FaShoppingCart } from "react-icons/fa";
 
 import { useSelector, useDispatch } from "react-redux";
 import { setProducts } from "../features/product";
@@ -12,29 +13,8 @@ import { GET_PRODUCTS } from "../utils/queries";
 
 import { idbPromise } from "../utils/idbPromise";
 
-const merchendise = [
-  {
-    name: "Gumnut Witch",
-    description: "This is the book for children. This is the description.",
-    image: "./assets/images/Gumnut_Witch_Square.png",
-    price: 10,
-    quantity: 20,
-  },
-  {
-    name: "Song Of The Seasnake",
-    description: "This is the book for children. This is the description.",
-    image: "./assets/images/Song_Of_The_Seasnake_Square.png",
-    price: 10,
-    quantity: 20,
-  },
-  {
-    name: "The Last Moa",
-    description: "This is the book for children. This is the description.",
-    image: "./assets/images/The_Last_Moa_Square.png",
-    price: 10,
-    quantity: 20,
-  },
-];
+import AuthService from "../utils/auth";
+const Auth = new AuthService();
 
 export default function Merchandise() {
   const dispatch = useDispatch();
@@ -95,6 +75,34 @@ export default function Merchandise() {
           })
         ) : (
           <h3>You haven't added any products yet!</h3>
+        )}
+        {Auth.loggedIn() ? (
+          <Flex justifyContent="right">
+            <Button
+              w={{
+                base: "full",
+                sm: "auto",
+              }}
+              size="lg"
+              bg="gray.900"
+              _dark={{
+                bg: "gray.700",
+              }}
+              _hover={{
+                bg: "gray.700",
+                _dark: {
+                  bg: "gray.600",
+                },
+              }}
+              color="gray.100"
+              as="a"
+              rightIcon={<FaShoppingCart />}
+            >
+              Shopping Cart
+            </Button>
+          </Flex>
+        ) : (
+          <h3>Please log in to add products to your cart.</h3>
         )}
       </Box>
     </Flex>
