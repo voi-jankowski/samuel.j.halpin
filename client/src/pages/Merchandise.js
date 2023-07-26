@@ -1,8 +1,22 @@
 // Sourced the template for the page from https://choc-ui.com/docs/page-sections/features
-import { Box, Flex, Button, Icon, IconButton } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Button,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
+  Heading,
+} from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import ImageRightCard from "../components/merchendiseComponents/ImageRightCard";
 import ImageLeftCard from "../components/merchendiseComponents/ImageLeftCard";
+import { ShoppingCart } from "../components/merchendiseComponents/ShoppingCart";
 import { FaShoppingCart } from "react-icons/fa";
 
 import { useSelector, useDispatch } from "react-redux";
@@ -35,6 +49,11 @@ export default function Merchandise() {
       });
     }
   }, [data, loading, dispatch]);
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [scrollBehavior, setScrollBehavior] = React.useState("outside");
+
+  const btnRef = React.useRef(null);
 
   return (
     <Flex
@@ -74,7 +93,7 @@ export default function Merchandise() {
             }
           })
         ) : (
-          <h3>You haven't added any products yet!</h3>
+          <Heading>You haven't added any products yet!</Heading>
         )}
         {Auth.loggedIn() ? (
           <Flex justifyContent="right">
@@ -97,12 +116,32 @@ export default function Merchandise() {
               color="gray.100"
               as="a"
               rightIcon={<FaShoppingCart />}
+              ref={btnRef}
+              onClick={onOpen}
             >
               Shopping Cart
             </Button>
+            <Modal
+              onClose={onClose}
+              finalFocusRef={btnRef}
+              isOpen={isOpen}
+              scrollBehavior={scrollBehavior}
+              size="3xl"
+            >
+              <ModalOverlay />
+              <ModalContent>
+                <ModalCloseButton />
+                <ModalBody>
+                  <ShoppingCart />
+                </ModalBody>
+                <ModalFooter>
+                  <Button onClick={onClose}>Close</Button>
+                </ModalFooter>
+              </ModalContent>
+            </Modal>
           </Flex>
         ) : (
-          <h3>Please log in to add products to your cart.</h3>
+          <Heading>Please log in to add products to your cart.</Heading>
         )}
       </Box>
     </Flex>

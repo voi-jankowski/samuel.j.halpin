@@ -41,12 +41,7 @@ export const CartItem = ({
       justify="space-between"
       align="center"
     >
-      <CartProductMeta
-        name={name}
-        description={description}
-        image={imageUrl}
-        isGiftWrapping={isGiftWrapping}
-      />
+      <CartProductMeta name={name} description={description} image={imageUrl} />
 
       {/* Desktop */}
       <Flex

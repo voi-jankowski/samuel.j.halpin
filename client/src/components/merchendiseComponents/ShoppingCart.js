@@ -43,7 +43,7 @@ const cartData = [
   },
 ];
 
-export const SoppingCart = () => (
+export const ShoppingCart = () => (
   <Box
     maxW={{ base: "3xl", lg: "7xl" }}
     mx="auto"
