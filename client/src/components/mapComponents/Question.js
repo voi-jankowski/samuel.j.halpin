@@ -152,6 +152,8 @@ export default function Question({
             key={answer._id}
             answerId={answer._id}
             createdAt={answer.createdAt}
+            answerText={answer.answerText}
+            questionId={questionId}
           />
         ))}
     </Flex>
