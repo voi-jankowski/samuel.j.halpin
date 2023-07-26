@@ -25,11 +25,11 @@ export default function ImageLeftCard({
 }) {
   const product = { _id, name, description, image, price, quantity };
   const dispatch = useDispatch();
-  console.log(product);
+
   const products = useSelector((state) => state.product.products);
   const cart = useSelector((state) => state.product.cart);
 
-  const addToCartHandler = (product) => {
+  const addToCartHandler = () => {
     const itemInCart = cart.find((cartItem) => cartItem._id === product._id);
     if (itemInCart) {
       dispatch(
@@ -142,7 +142,7 @@ export default function ImageLeftCard({
               },
             }}
             color="gray.100"
-            onClick={() => addToCartHandler(products)}
+            onClick={() => addToCartHandler()}
           >
             Add To Cart
           </Button>
@@ -151,7 +151,16 @@ export default function ImageLeftCard({
           </Text>
         </HStack>
       </Box>
-      <Box w="100%" h="100px" maxW="350px" mt={imageTopMargin}>
+      <Box
+        w="100%"
+        h="100px"
+        maxW="350px"
+        mt={imageTopMargin}
+        order={{
+          base: 1,
+          md: 1,
+        }}
+      >
         <Image src={product.image} alt={name} fit={"cover"} align={"center"} />
       </Box>
     </SimpleGrid>

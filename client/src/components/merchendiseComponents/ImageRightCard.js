@@ -10,6 +10,10 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react";
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { addToCart, updateCartQuantity } from "../../features/product";
+
+import { idbPromise } from "../../utils/idbPromise";
 
 export default function ImageRightCard({
   _id,
@@ -20,6 +24,29 @@ export default function ImageRightCard({
   quantity,
 }) {
   const product = { _id, name, description, image, price, quantity };
+  const dispatch = useDispatch();
+
+  const products = useSelector((state) => state.product.products);
+  const cart = useSelector((state) => state.product.cart);
+
+  const addToCartHandler = () => {
+    const itemInCart = cart.find((cartItem) => cartItem._id === product._id);
+    if (itemInCart) {
+      dispatch(
+        updateCartQuantity({
+          _id: product._id,
+          purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
+        })
+      );
+      idbPromise("cart", "put", {
+        ...itemInCart,
+        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
+      });
+    } else {
+      dispatch(addToCart({ ...product, purchaseQuantity: 1 }));
+      idbPromise("cart", "put", { ...product, purchaseQuantity: 1 });
+    }
+  };
 
   const imageTopMargin = useBreakpointValue({
     base: "0",
@@ -115,7 +142,7 @@ export default function ImageRightCard({
               },
             }}
             color="gray.100"
-            as="a"
+            onClick={() => addToCartHandler()}
           >
             Add To Cart
           </Button>
@@ -124,7 +151,16 @@ export default function ImageRightCard({
           </Text>
         </HStack>
       </Box>
-      <Box w="100%" h="100px" maxW="350px" mt={imageTopMargin}>
+      <Box
+        w="100%"
+        h="100px"
+        maxW="350px"
+        mt={imageTopMargin}
+        order={{
+          base: 1,
+          md: 2,
+        }}
+      >
         <Image src={image} alt={name} fit={"cover"} align={"center"} />
       </Box>
     </SimpleGrid>
