@@ -8,215 +8,64 @@ import {
   chakra,
 } from "@chakra-ui/react";
 import React from "react";
+import ImageRightCard from "../components/merchendiseComponents/ImageRightCard";
+import ImageLeftCard from "../components/merchendiseComponents/ImageLeftCard";
+
+const merchendise = [
+  {
+    name: "Gumnut Witch",
+    description: "This is the book for children. This is the description.",
+    image: "./assets/images/Gumnut_Witch_Square.png",
+    price: 10,
+    quantity: 20,
+  },
+  {
+    name: "Song Of The Seasnake",
+    description: "This is the book for children. This is the description.",
+    image: "./assets/images/Song_Of_The_Seasnake_Square.png",
+    price: 10,
+    quantity: 20,
+  },
+  {
+    name: "The Last Moa",
+    description: "This is the book for children. This is the description.",
+    image: "./assets/images/The_Last_Moa_Square.png",
+    price: 10,
+    quantity: 20,
+  },
+];
 
 export default function Merchandise() {
   return (
     <Flex
-      bg="#edf3f8"
-      _dark={{
-        bg: "#3e3e3e",
-      }}
+      bg="transparent"
       p={20}
       w="full"
       justifyContent="center"
       alignItems="center"
-      pos="absolute"
     >
-      <Box
-        shadow="xl"
-        bg="white"
-        _dark={{
-          bg: "gray.800",
-        }}
-        px={8}
-        py={20}
-        mx="auto"
-      >
-        <SimpleGrid
-          alignItems="start"
-          columns={{
-            base: 1,
-            md: 2,
-          }}
-          mb={24}
-          spacingY={{
-            base: 10,
-            md: 32,
-          }}
-          spacingX={{
-            base: 10,
-            md: 24,
-          }}
-        >
-          <Box>
-            <chakra.h2
-              mb={4}
-              fontSize={{
-                base: "2xl",
-                md: "4xl",
-              }}
-              fontWeight="extrabold"
-              letterSpacing="tight"
-              textAlign={{
-                base: "center",
-                md: "left",
-              }}
-              color="gray.900"
-              _dark={{
-                color: "gray.400",
-              }}
-              lineHeight={{
-                md: "shorter",
-              }}
-              textShadow="2px 0 currentcolor"
-            >
-              Clear overview for efficient tracking
-            </chakra.h2>
-            <chakra.p
-              mb={5}
-              textAlign={{
-                base: "center",
-                sm: "left",
-              }}
-              color="gray.600"
-              _dark={{
-                color: "gray.400",
-              }}
-              fontSize={{
-                md: "lg",
-              }}
-            >
-              Handle your subscriptions and transactions efficiently with the
-              clear overview in Dashboard. Features like the smart search option
-              allow you to quickly find any data you’re looking for.
-            </chakra.p>
-            <Button
-              w={{
-                base: "full",
-                sm: "auto",
-              }}
-              size="lg"
-              bg="gray.900"
-              _dark={{
-                bg: "gray.700",
-              }}
-              _hover={{
-                bg: "gray.700",
-                _dark: {
-                  bg: "gray.600",
-                },
-              }}
-              color="gray.100"
-              as="a"
-            >
-              Learn More
-            </Button>
-          </Box>
-          <Box
-            w="full"
-            h="full"
-            py={48}
-            bg="gray.200"
-            _dark={{
-              bg: "gray.700",
-            }}
-          ></Box>
-        </SimpleGrid>
-        <SimpleGrid
-          alignItems="center"
-          columns={{
-            base: 1,
-            md: 2,
-          }}
-          flexDirection="column-reverse"
-          mb={24}
-          spacingY={{
-            base: 10,
-            md: 32,
-          }}
-          spacingX={{
-            base: 10,
-            md: 24,
-          }}
-        >
-          <Box
-            order={{
-              base: "initial",
-              md: 2,
-            }}
-          >
-            <chakra.h2
-              mb={4}
-              fontSize={{
-                base: "2xl",
-                md: "4xl",
-              }}
-              fontWeight="extrabold"
-              letterSpacing="tight"
-              textAlign={{
-                base: "center",
-                md: "left",
-              }}
-              color="gray.900"
-              _dark={{
-                color: "gray.400",
-              }}
-              lineHeight={{
-                md: "shorter",
-              }}
-            >
-              Decide how you integrate Payments
-            </chakra.h2>
-            <chakra.p
-              mb={5}
-              textAlign={{
-                base: "center",
-                sm: "left",
-              }}
-              color="gray.600"
-              _dark={{
-                color: "gray.400",
-              }}
-              fontSize={{
-                md: "lg",
-              }}
-            >
-              Love to code? Next to our ready-made and free plugins you can use
-              our expansive yet simple API; decide how you integrate Payments
-              and build advanced and reliable products yourself from scratch.
-            </chakra.p>
-            <Button
-              w={{
-                base: "full",
-                sm: "auto",
-              }}
-              size="lg"
-              bg="gray.900"
-              _dark={{
-                bg: "gray.700",
-              }}
-              _hover={{
-                bg: "gray.700",
-                _dark: {
-                  bg: "gray.600",
-                },
-              }}
-              color="gray.100"
-              as="a"
-            >
-              Learn More
-            </Button>
-          </Box>
-          <Box
-            w="full"
-            h="full"
-            py={48}
-            bg="gray.200"
-            _dark={{
-              bg: "gray.700",
-            }}
-          ></Box>
-        </SimpleGrid>
+      <Box shadow="xl" px={8} py={20} mx="auto">
+        <ImageRightCard
+          name={merchendise[0].name}
+          description={merchendise[0].description}
+          image={merchendise[0].image}
+          price={merchendise[0].price}
+          quantity={merchendise[0].quantity}
+        />
+        <ImageLeftCard
+          name={merchendise[1].name}
+          description={merchendise[1].description}
+          image={merchendise[1].image}
+          price={merchendise[1].price}
+          quantity={merchendise[1].quantity}
+        />
+        <ImageRightCard
+          name={merchendise[2].name}
+          description={merchendise[2].description}
+          image={merchendise[2].image}
+          price={merchendise[2].price}
+          quantity={merchendise[2].quantity}
+        />
       </Box>
     </Flex>
   );

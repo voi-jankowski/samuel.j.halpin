@@ -39,7 +39,8 @@ const Links = [
   { name: "Home", url: "/" },
   { name: "Books", url: "/books" },
   { name: "Inspiration Maps", url: "/map" },
-  { name: "Teaching Resources", url: "/teaching" },
+  // { name: "Teaching Resources", url: "/teaching" },
+  { name: "Gift Books", url: "/merchandise" },
 ];
 
 const NavLink = ({ children, url }) => {
