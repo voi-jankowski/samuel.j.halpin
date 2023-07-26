@@ -7,16 +7,52 @@ import {
   chakra,
   HStack,
   Image,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { addToCart, updateCartQuantity } from "../../features/product";
+
+import { idbPromise } from "../../utils/idbPromise";
 
 export default function ImageLeftCard({
+  _id,
   name,
   description,
   image,
   price,
   quantity,
 }) {
+  const product = { _id, name, description, image, price, quantity };
+  const dispatch = useDispatch();
+  console.log(product);
+  const products = useSelector((state) => state.product.products);
+  const cart = useSelector((state) => state.product.cart);
+
+  const addToCartHandler = (product) => {
+    const itemInCart = cart.find((cartItem) => cartItem._id === product._id);
+    if (itemInCart) {
+      dispatch(
+        updateCartQuantity({
+          _id: product._id,
+          purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
+        })
+      );
+      idbPromise("cart", "put", {
+        ...itemInCart,
+        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
+      });
+    } else {
+      dispatch(addToCart({ ...product, purchaseQuantity: 1 }));
+      idbPromise("cart", "put", { ...product, purchaseQuantity: 1 });
+    }
+  };
+
+  const imageTopMargin = useBreakpointValue({
+    base: "0",
+    md: "-30px",
+  });
+
   return (
     <SimpleGrid
       alignItems="start"
@@ -26,17 +62,17 @@ export default function ImageLeftCard({
       }}
       mb={44}
       spacingY={{
-        base: 10,
+        base: 20,
         md: 32,
       }}
       spacingX={{
-        base: 10,
+        base: 20,
         md: 24,
       }}
     >
       <Box
         order={{
-          base: "initial",
+          base: 2,
           md: 2,
         }}
       >
@@ -106,7 +142,7 @@ export default function ImageLeftCard({
               },
             }}
             color="gray.100"
-            as="a"
+            onClick={() => addToCartHandler(products)}
           >
             Add To Cart
           </Button>
@@ -115,8 +151,8 @@ export default function ImageLeftCard({
           </Text>
         </HStack>
       </Box>
-      <Box w="100%" h="100px" maxW="350px" mt="-30px">
-        <Image src={image} alt={name} fit={"cover"} align={"center"} />
+      <Box w="100%" h="100px" maxW="350px" mt={imageTopMargin}>
+        <Image src={product.image} alt={name} fit={"cover"} align={"center"} />
       </Box>
     </SimpleGrid>
   );

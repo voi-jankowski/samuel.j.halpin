@@ -71,6 +71,7 @@ export default function Merchandise() {
               return (
                 <ImageRightCard
                   key={index}
+                  _id={product._id}
                   name={product.name}
                   description={product.description}
                   image={product.image}
@@ -83,6 +84,7 @@ export default function Merchandise() {
               return (
                 <ImageLeftCard
                   key={index}
+                  _id={product._id}
                   name={product.name}
                   description={product.description}
                   image={product.image}
@@ -126,7 +128,7 @@ export default function Merchandise() {
               finalFocusRef={btnRef}
               isOpen={isOpen}
               scrollBehavior={scrollBehavior}
-              size="3xl"
+              size="4xl"
             >
               <ModalOverlay />
               <ModalContent>

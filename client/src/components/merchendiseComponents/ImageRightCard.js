@@ -7,16 +7,25 @@ import {
   chakra,
   HStack,
   Image,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import React from "react";
 
 export default function ImageRightCard({
+  _id,
   name,
   description,
   image,
   price,
   quantity,
 }) {
+  const product = { _id, name, description, image, price, quantity };
+
+  const imageTopMargin = useBreakpointValue({
+    base: "0",
+    md: "-30px",
+  });
+
   return (
     <SimpleGrid
       alignItems="start"
@@ -26,15 +35,20 @@ export default function ImageRightCard({
       }}
       mb={44}
       spacingY={{
-        base: 10,
+        base: 20,
         md: 32,
       }}
       spacingX={{
-        base: 10,
+        base: 20,
         md: 24,
       }}
     >
-      <Box>
+      <Box
+        order={{
+          base: 2,
+          md: 1,
+        }}
+      >
         <chakra.h2
           mb={4}
           fontSize={{
@@ -110,7 +124,7 @@ export default function ImageRightCard({
           </Text>
         </HStack>
       </Box>
-      <Box w="100%" h="100px" maxW="350px" mt="-30px">
+      <Box w="100%" h="100px" maxW="350px" mt={imageTopMargin}>
         <Image src={image} alt={name} fit={"cover"} align={"center"} />
       </Box>
     </SimpleGrid>

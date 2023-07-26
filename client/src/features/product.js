@@ -17,12 +17,22 @@ const productSlice = createSlice({
     addToCart: (state, action) => {
       state.cart.push(action.payload);
     },
+    updateCartQuantity: (state, action) => {
+      state.cartOpen = true;
+      state.cart = state.cart.map((product) => {
+        if (action.payload._id === product._id) {
+          product.purchaseQuantity = action.payload.purchaseQuantity;
+        }
+        return product;
+      });
+    },
     toggleCartOpen: (state) => {
       state.cartOpen = !state.cartOpen;
     },
   },
 });
 
-export const { setProducts, addToCart, toggleCartOpen } = productSlice.actions;
+export const { setProducts, addToCart, toggleCartOpen, updateCartQuantity } =
+  productSlice.actions;
 
 export default productSlice.reducer;
