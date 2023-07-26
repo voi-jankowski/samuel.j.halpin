@@ -13,9 +13,10 @@ import {
 
 export default function AboutSam() {
   return (
-    <Container maxW={"4xl"}>
+    <Container maxW={"4xl"} pb="30px">
       <Heading
         lineHeight={1.1}
+        m={0}
         fontWeight={600}
         fontSize={{ base: "2xl", sm: "3xl" }}
         position="relative"
