@@ -1,19 +1,12 @@
 import {
   Button,
-  Box,
   FormControl,
-  Flex,
-  Heading,
   HStack,
-  Input,
-  Stack,
-  Text,
   Textarea,
   useColorModeValue,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { toggle } from "../../features/showExtraContent";
+
 import { useMutation } from "@apollo/client";
 import { ADD_REPLY } from "../../utils/mutations";
 
