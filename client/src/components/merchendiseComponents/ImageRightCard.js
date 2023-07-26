@@ -1,14 +1,21 @@
 import {
   Box,
   Button,
-  Container,
-  Flex,
+  Stack,
+  Text,
   SimpleGrid,
   chakra,
+  HStack,
 } from "@chakra-ui/react";
 import React from "react";
 
-export default function ImageRightCard() {
+export default function ImageRightCard({
+  name,
+  description,
+  image,
+  price,
+  quantity,
+}) {
   return (
     <SimpleGrid
       alignItems="start"
@@ -48,9 +55,9 @@ export default function ImageRightCard() {
           }}
           textShadow="2px 0 currentcolor"
         >
-          Clear overview for efficient tracking
+          {name}
         </chakra.h2>
-        <chakra.p
+        <Text
           mb={5}
           textAlign={{
             base: "center",
@@ -64,31 +71,43 @@ export default function ImageRightCard() {
             md: "lg",
           }}
         >
-          Handle your subscriptions and transactions efficiently with the clear
-          overview in Dashboard. Features like the smart search option allow you
-          to quickly find any data you’re looking for.
-        </chakra.p>
-        <Button
-          w={{
-            base: "full",
-            sm: "auto",
-          }}
-          size="lg"
-          bg="gray.900"
-          _dark={{
-            bg: "gray.700",
-          }}
-          _hover={{
-            bg: "gray.700",
-            _dark: {
-              bg: "gray.600",
-            },
-          }}
-          color="gray.100"
-          as="a"
-        >
-          Learn More
-        </Button>
+          {description}
+        </Text>
+
+        <Stack pt={10} align={"center"}>
+          <Text color={"gray.500"} fontSize={"sm"} textTransform={"uppercase"}>
+            {quantity} left in stock
+          </Text>
+
+          <Stack direction={"row"} align={"center"}></Stack>
+        </Stack>
+
+        <HStack pt={10} align={"center"} justify="space-between">
+          <Button
+            w={{
+              base: "full",
+              sm: "auto",
+            }}
+            size="lg"
+            bg="gray.900"
+            _dark={{
+              bg: "gray.700",
+            }}
+            _hover={{
+              bg: "gray.700",
+              _dark: {
+                bg: "gray.600",
+              },
+            }}
+            color="gray.100"
+            as="a"
+          >
+            Add To Cart
+          </Button>
+          <Text fontWeight={800} fontSize={"3xl"}>
+            ${price}
+          </Text>
+        </HStack>
       </Box>
       <Box
         w="full"

@@ -1,12 +1,5 @@
 // Sourced the template for the page from https://choc-ui.com/docs/page-sections/features
-import {
-  Box,
-  Button,
-  Container,
-  Flex,
-  SimpleGrid,
-  chakra,
-} from "@chakra-ui/react";
+import { Box, Flex } from "@chakra-ui/react";
 import React from "react";
 import ImageRightCard from "../components/merchendiseComponents/ImageRightCard";
 import ImageLeftCard from "../components/merchendiseComponents/ImageLeftCard";

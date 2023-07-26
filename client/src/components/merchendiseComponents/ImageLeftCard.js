@@ -8,7 +8,13 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 
-export default function ImageLeftCard() {
+export default function ImageLeftCard({
+  name,
+  description,
+  image,
+  price,
+  quantity,
+}) {
   return (
     <SimpleGrid
       alignItems="center"
