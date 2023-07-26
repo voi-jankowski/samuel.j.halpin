@@ -14,11 +14,33 @@ import {
 export default function AboutSam() {
   return (
     <Container maxW={"4xl"}>
+      <Heading
+        lineHeight={1.1}
+        fontWeight={600}
+        fontSize={{ base: "2xl", sm: "3xl" }}
+        position="relative"
+      >
+        <Text
+          as={"span"}
+          position={"relative"}
+          _after={{
+            content: "''",
+            width: "full",
+            height: "30%",
+            position: "absolute",
+            bottom: 1,
+            left: 0,
+            bg: "purple.400",
+            zIndex: -1,
+          }}
+        >
+          Little Old Me
+        </Text>
+      </Heading>
       <Stack
         textAlign={"center"}
         align={"center"}
         spacing={{ base: 8, md: 10 }}
-        py={{ base: 20, md: 28 }}
         direction={{ base: "column", md: "row" }}
       >
         {/* Column 1: Image */}
@@ -27,6 +49,9 @@ export default function AboutSam() {
           justify={"flex-end"}
           align={"right"}
           position={"relative"}
+          backgroundImage={
+            "url(client/public/assets/images/Moths_Reduced_Opacity_1.png)"
+          }
         >
           <Box
             position={"relative"}
@@ -50,31 +75,12 @@ export default function AboutSam() {
         </Flex>
 
         {/* Column 2: Text */}
-        <Stack flex={1} spacing={{ base: 3, md: 5 }} zIndex={1}>
-          <Heading
-            lineHeight={1.1}
-            fontWeight={600}
-            fontSize={{ base: "2xl", sm: "3xl" }}
-            mt="-5"
-          >
-            <Text
-              as={"span"}
-              position={"relative"}
-              _after={{
-                content: "''",
-                width: "full",
-                height: "30%",
-                position: "absolute",
-                bottom: 1,
-                left: 0,
-                bg: "purple.400",
-                zIndex: -1,
-              }}
-            >
-              Little Old Me
-            </Text>
-            <br />
-          </Heading>
+        <Stack
+          flex={1}
+          spacing={{ base: 3, md: 5 }}
+          zIndex={0}
+          justify="flex-start"
+        >
           <Text color={"gray.800"}>
             Hello, I'm Samuel J. Halpin. And I’m an author of the sorts of books
             that make your spine-tingle.
@@ -87,7 +93,13 @@ export default function AboutSam() {
         </Stack>
 
         {/* Column 3: Text */}
-        <Stack flex={1} spacing={{ base: 3, md: 5 }} zIndex={1}>
+        <Stack
+          flex={1}
+          justify="flex-start"
+          align="flex-start"
+          spacing={{ base: 3, md: 5 }}
+          zIndex={0}
+        >
           <Text color={"gray.800"}>
             For any book related enquiries please contact my agent Silvia
             Molteni at Peters, Fraser & Dunlop
