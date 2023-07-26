@@ -44,7 +44,6 @@ export default function BookCardSimple({
         p={6}
         maxW={"330px"}
         w={"full"}
-        bg={useColorModeValue("white", "gray.800")}
         boxShadow={"2xl"}
         rounded={"lg"}
         pos={"relative"}
@@ -78,7 +77,7 @@ export default function BookCardSimple({
           <Image
             rounded={"lg"}
             height={430}
-            width={282}
+            width={300}
             objectFit={"cover"}
             src={image}
           />

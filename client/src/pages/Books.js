@@ -1,5 +1,5 @@
 import React from "react";
-import BookCardSimple from "../components/smallComponents/BookCardSimple";
+import BookCardSimple from "../components/booksComponents/BookCardSimple";
 import {
   Box,
   Button,
@@ -14,9 +14,7 @@ import {
 const books = [
   {
     title: "The Peculiar Peggs of Riddling Woods",
-    image:
-      "https://usborne.com/media/catalog/product/cache/577949ba73ecbe39f04bc3cd25e7620e/9/7/9781474945660_cover_image.jpg",
-    link: "https://usborne.com/au/the-peculiar-peggs-of-riddling-woods-9781474945660",
+    image: "./assets/images/Peggs_Book_Cover.png",
     description:
       "This is the story of a sleepy town called Suds. A place where stories fill the air of children turning grey and disappearing without a trace... Poppy and Erasmus are certain there's something peculiar going on in Suds, and they're determined to unravel its secrets. But when they discover the answers might lie in the dark and twisting woods, can they find the courage to creep inside and solve this riddling mystery?",
     publisher: "Usborne",
@@ -26,9 +24,7 @@ const books = [
   },
   {
     title: "The Midnight Switch",
-    image:
-      "https://usborne.com/media/catalog/product/cache/577949ba73ecbe39f04bc3cd25e7620e/9/7/9781474970655_cover_image_1689898341.jpg",
-    link: "https://usborne.com/au/the-midnight-switch-9781474970655",
+    image: "./assets/images/Midnight_Book_Cover.png",
     description:
       "A spooky, quirky adventure of curses and magic, perfect for fans of Malamander and A Place Called Perfect.",
     publisher: "Usborne",

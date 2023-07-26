@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import ChangeColor from "../components/smallComponents/ChangeColor";
+import ChangeColor from "../components/booksComponents/ChangeColor";
 import {
   Button,
   Flex,
@@ -28,7 +28,7 @@ import { update } from "../features/user";
 import { useMutation } from "@apollo/client";
 import { UPDATE_USER } from "../utils/mutations";
 
-import DeleteUser from "../components/smallComponents/DeleteUser";
+import DeleteUser from "../components/booksComponents/DeleteUser";
 
 import AuthService from "../utils/auth";
 const Auth = new AuthService();
