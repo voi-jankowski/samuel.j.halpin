@@ -4,8 +4,6 @@ const initialState = {
   products: [],
   cart: [],
   cartOpen: false,
-  categories: [],
-  currentCategory: "",
 };
 
 const productSlice = createSlice({
@@ -13,7 +11,6 @@ const productSlice = createSlice({
   initialState,
   reducers: {
     // Define your actions and reducers here
-    // For example:
     setProducts: (state, action) => {
       state.products = action.payload;
     },
@@ -23,15 +20,9 @@ const productSlice = createSlice({
     toggleCartOpen: (state) => {
       state.cartOpen = !state.cartOpen;
     },
-    // Add other actions as needed
   },
 });
 
-export const {
-  setProducts,
-  addToCart,
-  toggleCartOpen,
-  // Add other action creators here
-} = productSlice.actions;
+export const { setProducts, addToCart, toggleCartOpen } = productSlice.actions;
 
 export default productSlice.reducer;

@@ -19,13 +19,12 @@ export default function ImageLeftCard({
 }) {
   return (
     <SimpleGrid
-      alignItems="center"
+      alignItems="start"
       columns={{
         base: 1,
         md: 2,
       }}
-      flexDirection="column-reverse"
-      mb={24}
+      mb={44}
       spacingY={{
         base: 10,
         md: 32,
@@ -116,7 +115,7 @@ export default function ImageLeftCard({
           </Text>
         </HStack>
       </Box>
-      <Box w="full" h="full">
+      <Box w="100%" h="100px" maxW="350px" mt="-30px">
         <Image src={image} alt={name} fit={"cover"} align={"center"} />
       </Box>
     </SimpleGrid>

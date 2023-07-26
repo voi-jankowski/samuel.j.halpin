@@ -24,7 +24,7 @@ export default function ImageRightCard({
         base: 1,
         md: 2,
       }}
-      mb={24}
+      mb={44}
       spacingY={{
         base: 10,
         md: 32,
@@ -110,7 +110,7 @@ export default function ImageRightCard({
           </Text>
         </HStack>
       </Box>
-      <Box w="full" h="full">
+      <Box w="100%" h="100px" maxW="350px" mt="-30px">
         <Image src={image} alt={name} fit={"cover"} align={"center"} />
       </Box>
     </SimpleGrid>

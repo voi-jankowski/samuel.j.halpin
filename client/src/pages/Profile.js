@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from "react";
-import ChangeColor from "../components/booksComponents/ChangeColor";
 import {
   Button,
   Flex,
@@ -207,8 +206,6 @@ export default function Profile() {
           )}
         </Stack>
       </Flex>
-      <br />
-      <ChangeColor />
     </Container>
   );
 }
