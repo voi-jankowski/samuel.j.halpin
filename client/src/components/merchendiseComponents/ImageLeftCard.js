@@ -1,10 +1,12 @@
 import {
   Box,
   Button,
-  Container,
-  Flex,
+  Stack,
+  Text,
   SimpleGrid,
   chakra,
+  HStack,
+  Image,
 } from "@chakra-ui/react";
 import React from "react";
 
@@ -58,10 +60,11 @@ export default function ImageLeftCard({
           lineHeight={{
             md: "shorter",
           }}
+          textShadow="2px 0 currentcolor"
         >
-          Decide how you integrate Payments
+          {name}
         </chakra.h2>
-        <chakra.p
+        <Text
           mb={5}
           textAlign={{
             base: "center",
@@ -75,41 +78,47 @@ export default function ImageLeftCard({
             md: "lg",
           }}
         >
-          Love to code? Next to our ready-made and free plugins you can use our
-          expansive yet simple API; decide how you integrate Payments and build
-          advanced and reliable products yourself from scratch.
-        </chakra.p>
-        <Button
-          w={{
-            base: "full",
-            sm: "auto",
-          }}
-          size="lg"
-          bg="gray.900"
-          _dark={{
-            bg: "gray.700",
-          }}
-          _hover={{
-            bg: "gray.700",
-            _dark: {
-              bg: "gray.600",
-            },
-          }}
-          color="gray.100"
-          as="a"
-        >
-          Learn More
-        </Button>
+          {description}
+        </Text>
+
+        <Stack pt={10} align={"center"}>
+          <Text color={"gray.500"} fontSize={"sm"} textTransform={"uppercase"}>
+            {quantity} left in stock
+          </Text>
+
+          <Stack direction={"row"} align={"center"}></Stack>
+        </Stack>
+
+        <HStack pt={10} align={"center"} justify="space-between">
+          <Button
+            w={{
+              base: "full",
+              sm: "auto",
+            }}
+            size="lg"
+            bg="gray.900"
+            _dark={{
+              bg: "gray.700",
+            }}
+            _hover={{
+              bg: "gray.700",
+              _dark: {
+                bg: "gray.600",
+              },
+            }}
+            color="gray.100"
+            as="a"
+          >
+            Add To Cart
+          </Button>
+          <Text fontWeight={800} fontSize={"3xl"}>
+            ${price}
+          </Text>
+        </HStack>
       </Box>
-      <Box
-        w="full"
-        h="full"
-        py={48}
-        bg="gray.200"
-        _dark={{
-          bg: "gray.700",
-        }}
-      ></Box>
+      <Box w="full" h="full">
+        <Image src={image} alt={name} fit={"cover"} align={"center"} />
+      </Box>
     </SimpleGrid>
   );
 }

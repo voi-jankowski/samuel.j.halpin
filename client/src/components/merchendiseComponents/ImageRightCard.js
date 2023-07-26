@@ -6,6 +6,7 @@ import {
   SimpleGrid,
   chakra,
   HStack,
+  Image,
 } from "@chakra-ui/react";
 import React from "react";
 
@@ -109,15 +110,9 @@ export default function ImageRightCard({
           </Text>
         </HStack>
       </Box>
-      <Box
-        w="full"
-        h="full"
-        py={48}
-        bg="gray.200"
-        _dark={{
-          bg: "gray.700",
-        }}
-      ></Box>
+      <Box w="full" h="full">
+        <Image src={image} alt={name} fit={"cover"} align={"center"} />
+      </Box>
     </SimpleGrid>
   );
 }
