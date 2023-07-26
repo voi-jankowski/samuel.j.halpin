@@ -6,7 +6,7 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import userReducer from "./features/user";
 import themeReducer from "./features/theme";
-import productSlice from "./features/productSlice";
+import productReducer from "./features/product";
 import { extendTheme, ChakraProvider } from "@chakra-ui/react";
 import { questrial } from "@fontsource/questrial"; // Import the Questrial font
 import { PersistGate } from "redux-persist/integration/react";
@@ -24,7 +24,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   user: persistReducer(persistConfig, userReducer),
   theme: themeReducer,
-  product: productSlice,
+  product: persistReducer(persistConfig, productReducer),
 });
 
 // Create the redux store

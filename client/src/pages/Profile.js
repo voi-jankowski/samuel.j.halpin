@@ -37,6 +37,7 @@ export default function Profile() {
 
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.value);
+  console.log(user);
   const themeColor = useSelector((state) => state.theme.value);
 
   const [formState, setFormState] = useState({
