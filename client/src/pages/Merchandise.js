@@ -70,7 +70,7 @@ export default function Merchandise() {
               // Even index, render ImageRightCard
               return (
                 <ImageRightCard
-                  key={index}
+                  key={product._id}
                   _id={product._id}
                   name={product.name}
                   description={product.description}
@@ -83,7 +83,7 @@ export default function Merchandise() {
               // Odd index, render ImageLeftCard
               return (
                 <ImageLeftCard
-                  key={index}
+                  key={product._id}
                   _id={product._id}
                   name={product.name}
                   description={product.description}
