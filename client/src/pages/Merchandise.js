@@ -105,12 +105,12 @@ export default function Merchandise() {
                 sm: "auto",
               }}
               size="lg"
-              bg="gray.900"
+              bg="purple.500"
               _dark={{
                 bg: "gray.700",
               }}
               _hover={{
-                bg: "gray.700",
+                bg: "red.400",
                 _dark: {
                   bg: "gray.600",
                 },

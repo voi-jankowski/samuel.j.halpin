@@ -60,7 +60,7 @@ export default function AddReply({ commentId, showAddReply, setshowAddReply }) {
       mt={3}
       p={4}
       borderWidth="1px"
-      borderColor="red.400"
+      borderColor="purple.500"
     >
       <FormControl id="reply">
         {addError && (
@@ -74,7 +74,7 @@ export default function AddReply({ commentId, showAddReply, setshowAddReply }) {
       </FormControl>
 
       <Button
-        bg={"red.400"}
+        bg={"purple.500"}
         color={"white"}
         _hover={{
           bg: "red.500",

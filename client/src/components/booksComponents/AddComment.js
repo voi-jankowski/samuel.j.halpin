@@ -85,7 +85,7 @@ export default function AddComment({ commentedBook }) {
       mt={6}
       p={4}
       borderWidth="1px"
-      borderColor="red.400"
+      borderColor="purple.500"
     >
       <FormControl id="comment">
         {addError && (
@@ -99,7 +99,7 @@ export default function AddComment({ commentedBook }) {
       </FormControl>
 
       <Button
-        bg={"red.400"}
+        bg={"purple.500"}
         color={"white"}
         _hover={{
           bg: "red.500",

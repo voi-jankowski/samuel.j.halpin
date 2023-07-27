@@ -82,7 +82,7 @@ export default function AddQuestion() {
       mt={6}
       p={4}
       borderWidth="1px"
-      borderColor="red.400"
+      borderColor="purple.500"
     >
       <FormControl id="question">
         {addError && (
@@ -96,7 +96,7 @@ export default function AddQuestion() {
       </FormControl>
 
       <Button
-        bg={"red.400"}
+        bg={"purple.500"}
         color={"white"}
         _hover={{
           bg: "red.500",

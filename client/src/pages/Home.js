@@ -44,9 +44,9 @@ export default function Home() {
       <Box
         w="full"
         backgroundColor={useColorModeValue(
-          "gray.300",
+          "sage.200",
           "gray.900",
-          "rgba(0, 0, 0, 0.5)"
+          "rgba(0, 0, 0, 0.2)"
         )}
       >
         <AboutSam />

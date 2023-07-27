@@ -30,7 +30,7 @@ export default function AskAuthor() {
                 lineHeight={1.1}
                 fontWeight={600}
                 fontSize={{ base: "xl", sm: "2xl", lg: "3xl" }}
-                color={"red.400"}
+                color={"purple.500"}
               >
                 Readers' Questions
                 {sortedQuestions.map((question) => (
@@ -62,7 +62,7 @@ export default function AskAuthor() {
                 lineHeight={1.1}
                 fontWeight={600}
                 fontSize={{ base: "xl", sm: "2xl", lg: "3xl" }}
-                color={"red.400"}
+                color={"purple.500"}
               >
                 Be the first to leave a question...
                 {Auth.loggedIn() ? (

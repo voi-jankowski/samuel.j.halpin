@@ -45,9 +45,9 @@ export default function Question({
         w="full"
         py={4}
         px={6}
-        bg="red.400"
+        bg="purple.500"
         _dark={{
-          bg: "red.400",
+          bg: "purple.500",
         }}
         shadow="lg"
         rounded="lg"
@@ -72,7 +72,7 @@ export default function Question({
               ml={2}
               fontWeight={600}
               fontSize="medium"
-              color="gray.600"
+              color="gray.200"
               _dark={{
                 color: "gray.200",
               }}
@@ -83,7 +83,7 @@ export default function Question({
           <Text
             fontWeight={600}
             fontSize="xs"
-            color="gray.600"
+            color="gray.200"
             _dark={{
               color: "gray.200",
             }}
@@ -96,7 +96,7 @@ export default function Question({
           my={2}
           fontSize="md"
           fontWeight={400}
-          color="gray.600"
+          color="gray.200"
           _dark={{
             color: "gray.200",
           }}
@@ -112,7 +112,7 @@ export default function Question({
               aria-label="delete"
               icon={<Icon as={FaTrash} />}
               variant="ghost"
-              color="gray.600"
+              color="gray.200"
               _dark={{
                 color: "gray.200",
               }}
@@ -127,7 +127,7 @@ export default function Question({
               aria-label="answer"
               icon={<Icon as={FaReply} />}
               variant="ghost"
-              color="gray.600"
+              color="gray.200"
               _dark={{
                 color: "gray.200",
               }}

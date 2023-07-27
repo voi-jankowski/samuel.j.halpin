@@ -20,7 +20,7 @@ export default function TestimonialCard(props) {
       p={5}
       justifyContent={"space-between"}
       position={"relative"}
-      bg={useColorModeValue("gray.300", "gray.900", "rgba(0, 0, 0, 0.5)")}
+      bg={useColorModeValue("sage.200", "gray.900", "rgba(0, 0, 0, 0.5)")}
       _after={{
         content: '""',
         position: "absolute",

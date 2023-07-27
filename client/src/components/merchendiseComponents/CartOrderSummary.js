@@ -38,7 +38,8 @@ export const CartOrderSummary = ({ total, submitCheckout }) => {
         </Flex>
       </Stack>
       <Button
-        colorScheme="blue"
+        bgColor={"purple.500"}
+        color={"white"}
         size="lg"
         fontSize="md"
         rightIcon={<FaArrowRight />}

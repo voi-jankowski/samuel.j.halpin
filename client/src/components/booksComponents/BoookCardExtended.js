@@ -62,7 +62,7 @@ export default function BoookCardExtended({
                 position: "absolute",
                 bottom: 1,
                 left: 0,
-                bg: "red.400",
+                bg: "purple.500",
                 zIndex: -1,
               }}
             >
@@ -82,7 +82,7 @@ export default function BoookCardExtended({
               fontWeight={"normal"}
               px={6}
               colorScheme={"red"}
-              bg={"red.400"}
+              bg={"purple.500"}
               _hover={{ bg: "red.500" }}
             >
               Buy the Book
@@ -103,7 +103,7 @@ export default function BoookCardExtended({
             top={"-20%"}
             left={0}
             zIndex={-1}
-            color={useColorModeValue("red.50", "red.400")}
+            color={useColorModeValue("red.50", "purple.500")}
           />
           <Box
             position={"relative"}
@@ -136,7 +136,7 @@ export default function BoookCardExtended({
                 lineHeight={1.1}
                 fontWeight={600}
                 fontSize={{ base: "xl", sm: "2xl", lg: "3xl" }}
-                color={"red.400"}
+                color={"purple.500"}
               >
                 Readers' Comments
                 {sortedComments.map((comment) => (
@@ -168,7 +168,7 @@ export default function BoookCardExtended({
                 lineHeight={1.1}
                 fontWeight={600}
                 fontSize={{ base: "xl", sm: "2xl", lg: "3xl" }}
-                color={"red.400"}
+                color={"purple.500"}
               >
                 Be the first to leave a comment...
                 {Auth.loggedIn() ? (

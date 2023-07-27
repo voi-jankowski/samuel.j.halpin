@@ -125,7 +125,7 @@ export default function ShoppingCart({ onClose }) {
             <CartOrderSummary total={total} submitCheckout={submitCheckout} />
             <HStack mt="6" fontWeight="semibold">
               <p>or</p>
-              <Link color={mode("blue.500", "blue.200")} onClick={onClose}>
+              <Link color={mode("purple.500", "red.400")} onClick={onClose}>
                 Continue shopping
               </Link>
             </HStack>
@@ -144,7 +144,7 @@ export default function ShoppingCart({ onClose }) {
           <Heading fontSize="2xl" fontWeight="extrabold">
             Your cart is empty
           </Heading>
-          <Link mt="6" color={mode("blue.500", "blue.200")} onClick={onClose}>
+          <Link mt="6" color={"purple.500"} onClick={onClose}>
             Continue shopping
           </Link>
         </Flex>

@@ -32,9 +32,9 @@ export default function Answer({
       mt={3}
       py={4}
       px={6}
-      bg="red.400"
+      bg="purple.500"
       _dark={{
-        bg: "red.400",
+        bg: "purple.500",
       }}
       shadow="lg"
       rounded="lg"
@@ -59,7 +59,7 @@ export default function Answer({
             ml={2}
             fontWeight={600}
             fontSize="sm"
-            color="gray.600"
+            color="gray.200"
             _dark={{
               color: "gray.200",
             }}
@@ -70,7 +70,7 @@ export default function Answer({
         <Text
           fontWeight={600}
           fontSize="xs"
-          color="gray.600"
+          color="gray.200"
           _dark={{
             color: "gray.200",
           }}
@@ -83,7 +83,7 @@ export default function Answer({
         my={2}
         fontSize="sm"
         fontWeight={400}
-        color="gray.600"
+        color="gray.200"
         _dark={{
           color: "gray.200",
         }}
@@ -97,7 +97,7 @@ export default function Answer({
             aria-label="reply"
             icon={<Icon as={FaTrashCan} />}
             variant="ghost"
-            color="gray.600"
+            color="gray.200"
             _dark={{
               color: "gray.200",
             }}

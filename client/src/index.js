@@ -39,6 +39,15 @@ const colors = {
     800: "#153e75",
     700: "#2a69ac",
   },
+  purple: {
+    500: "#B25AD0", // Define the new color with the desired shade
+  },
+  green: {
+    500: "#918e6d", // Define the new color with the desired shade
+  },
+  sage: {
+    200: "#D4D0A5",
+  },
 };
 
 const container = {
