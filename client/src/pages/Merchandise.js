@@ -6,8 +6,9 @@ import {
   Modal,
   ModalOverlay,
   ModalContent,
-  ModalHeader,
-  ModalFooter,
+  Stack,
+  Container,
+  Text,
   ModalBody,
   ModalCloseButton,
   useDisclosure,
@@ -64,6 +65,21 @@ export default function Merchandise() {
       alignItems="center"
     >
       <Box shadow="xl" px={8} py={20} mx="auto">
+        <Stack
+          spacing={4}
+          mb={100}
+          as={Container}
+          maxW={"3xl"}
+          textAlign={"center"}
+        >
+          <Heading fontSize={{ base: "2xl", sm: "4xl" }} fontWeight={"bold"}>
+            Picture stories by Samuel J. Halpin
+          </Heading>
+          <Text color={"gray.600"} fontSize={{ base: "sm", sm: "lg" }}>
+            Exceptional books for the little ones with poem stories and
+            illustrations created by Samuel J. Halpin.
+          </Text>
+        </Stack>
         {products.length ? (
           products.map((product, index) => {
             if (index % 2 === 0) {
