@@ -23,8 +23,12 @@ import AuthService from "./utils/auth";
 const Auth = new AuthService();
 
 // Construct our main GraphQL API endpoint
+// const httpLink = createHttpLink({
+//   uri: "http://localhost:3001/graphql",
+// });
+
 const httpLink = createHttpLink({
-  uri: "http://localhost:3001/graphql",
+  uri: "https://samuel-j-halpin-5ca11d52cf4b.herokuapp.com/graphql",
 });
 
 // Construct request middleware that will attach the JWT token to every request as an `authorization` header
