@@ -17,6 +17,7 @@ import Profile from "./pages/Profile";
 import TeachingResources from "./pages/TeachingResources";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
+import Success from "./pages/Success";
 
 import AuthService from "./utils/auth";
 const Auth = new AuthService();
@@ -66,6 +67,7 @@ function App() {
               <Route path="/books" element={<Books />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/teaching" element={<TeachingResources />} />
+              <Route path="/success" element={<Success />} />
             </Routes>
           </div>
           <Footer className="Footer" />
