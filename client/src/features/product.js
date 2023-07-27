@@ -17,6 +17,9 @@ const productSlice = createSlice({
     addToCart: (state, action) => {
       state.cart.push(action.payload);
     },
+    addMultipleToCart: (state, action) => {
+      state.cart.push(...action.payload);
+    },
     updateCartQuantity: (state, action) => {
       state.cartOpen = true;
       state.cart = state.cart.map((product) => {
@@ -32,7 +35,12 @@ const productSlice = createSlice({
   },
 });
 
-export const { setProducts, addToCart, toggleCartOpen, updateCartQuantity } =
-  productSlice.actions;
+export const {
+  setProducts,
+  addToCart,
+  addMultipleToCart,
+  toggleCartOpen,
+  updateCartQuantity,
+} = productSlice.actions;
 
 export default productSlice.reducer;

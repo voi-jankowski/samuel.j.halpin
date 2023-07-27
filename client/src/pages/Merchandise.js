@@ -16,7 +16,7 @@ import {
 import React, { useEffect } from "react";
 import ImageRightCard from "../components/merchendiseComponents/ImageRightCard";
 import ImageLeftCard from "../components/merchendiseComponents/ImageLeftCard";
-import { ShoppingCart } from "../components/merchendiseComponents/ShoppingCart";
+import ShoppingCart from "../components/merchendiseComponents/ShoppingCart";
 import { FaShoppingCart } from "react-icons/fa";
 
 import { useSelector, useDispatch } from "react-redux";
@@ -134,7 +134,7 @@ export default function Merchandise() {
               <ModalContent>
                 <ModalCloseButton />
                 <ModalBody>
-                  <ShoppingCart />
+                  <ShoppingCart onClose={onClose} />
                 </ModalBody>
                 <ModalFooter>
                   <Button onClick={onClose}>Close</Button>
