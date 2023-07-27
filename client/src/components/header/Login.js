@@ -119,10 +119,10 @@ export default function Login({ setLoginOpen }) {
               </FormControl>
               <Stack spacing={10}>
                 <Button
-                  bg={"blue.400"}
+                  bg={"purple.500"}
                   color={"white"}
                   _hover={{
-                    bg: "blue.500",
+                    bg: "red.400",
                   }}
                   type="submit"
                 >

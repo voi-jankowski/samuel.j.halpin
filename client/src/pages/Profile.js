@@ -110,7 +110,7 @@ export default function Profile() {
 
                   <Stack direction={["column", "row"]} spacing={6}>
                     <Center>
-                      <Avatar size="xl" src="https://bit.ly/sage-adebayo">
+                      <Avatar size="xl" src={user.userIcon}>
                         <AvatarBadge
                           as={IconButton}
                           size="sm"
@@ -163,11 +163,11 @@ export default function Profile() {
                 <br />
                 <Stack spacing={6} direction={["column", "row"]}>
                   <Button
-                    bg={"red.400"}
+                    bg={"purple.500"}
                     color={"white"}
                     w="full"
                     _hover={{
-                      bg: "red.500",
+                      bg: "red.400",
                     }}
                     onClick={() => setDeleteOpen(true)}
                   >
