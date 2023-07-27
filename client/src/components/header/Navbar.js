@@ -71,7 +71,7 @@ const NavLink = ({ children, url }) => {
 
 const ProfileLink = () => {
   const user = useSelector((state) => state.user.value);
-  console.log(user);
+
   return (
     <>
       {Auth.loggedIn() ? (
@@ -101,7 +101,6 @@ export default function Navbar() {
 
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.value);
-  console.log(user);
 
   // create logic for logging out
   const handleLogout = (event) => {

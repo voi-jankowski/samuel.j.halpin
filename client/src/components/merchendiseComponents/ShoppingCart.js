@@ -116,7 +116,7 @@ export default function ShoppingCart({ onClose }) {
 
             <Stack spacing="6">
               {state.cart.map((item) => (
-                <CartItem key={item.id} {...item} />
+                <CartItem key={item._id} item={item} />
               ))}
             </Stack>
           </Stack>

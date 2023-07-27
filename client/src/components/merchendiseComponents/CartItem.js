@@ -6,8 +6,14 @@ import {
   SelectProps,
   useColorModeValue,
 } from "@chakra-ui/react";
+import React from "react";
 import { PriceTag } from "./PriceTag";
 import { CartProductMeta } from "./CartProductMeta";
+
+import { useSelector, useDispatch } from "react-redux";
+import { updateCartQuantity, removeFromCart } from "../../features/product";
+
+import { idbPromise } from "../../utils/idbPromise";
 
 const QuantitySelect = (props) => {
   return (
@@ -25,19 +31,28 @@ const QuantitySelect = (props) => {
   );
 };
 
-export const CartItem = ({
-  _id,
-  name,
-  description,
-  image,
-  price,
-  purchaseQuantity,
-  quantity,
+export const CartItem = ({ item }) => {
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state.product);
 
-  onChangeQuantity,
-  onClickDelete,
-}) => {
-  console.log("CartItem.js: purchaseQuantity: ", purchaseQuantity);
+  console.log(item);
+  const { _id, name, image, price, purchaseQuantity } = item;
+
+  const handleQuantityChange = (newQuantity) => {
+    if (newQuantity === 0) {
+      dispatch(removeFromCart({ _id }));
+      idbPromise("cart", "delete", { ...item });
+    } else {
+      dispatch(updateCartQuantity({ _id, purchaseQuantity: newQuantity }));
+      idbPromise("cart", "put", { ...item, purchaseQuantity: newQuantity });
+    }
+  };
+
+  const handleDelete = () => {
+    dispatch(removeFromCart({ _id }));
+    idbPromise("cart", "delete", { ...item });
+  };
+
   return (
     <Flex
       direction={{ base: "column", md: "row" }}
@@ -55,13 +70,13 @@ export const CartItem = ({
         <QuantitySelect
           value={purchaseQuantity}
           onChange={(e) => {
-            onChangeQuantity?.(+e.currentTarget.value);
+            handleQuantityChange(+e.currentTarget.value);
           }}
         />
         <PriceTag price={price} currency={"AUD"} />
         <CloseButton
           aria-label={`Delete ${name} from cart`}
-          onClick={onClickDelete}
+          onClick={handleDelete}
         />
       </Flex>
 
@@ -73,13 +88,13 @@ export const CartItem = ({
         justify="space-between"
         display={{ base: "flex", md: "none" }}
       >
-        <Link fontSize="sm" textDecor="underline">
+        <Link fontSize="sm" textDecor="underline" onClick={handleDelete}>
           Delete
         </Link>
         <QuantitySelect
           value={purchaseQuantity}
           onChange={(e) => {
-            onChangeQuantity?.(+e.currentTarget.value);
+            handleQuantityChange(+e.currentTarget.value);
           }}
         />
         <PriceTag price={price} currency={"AUD"} />
