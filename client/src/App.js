@@ -68,6 +68,7 @@ function App() {
               <Route path="/profile" element={<Profile />} />
               <Route path="/teaching" element={<TeachingResources />} />
               <Route path="/success" element={<Success />} />
+              <Route path="*" element={<Home />} />
             </Routes>
           </div>
           <Footer className="Footer" />
