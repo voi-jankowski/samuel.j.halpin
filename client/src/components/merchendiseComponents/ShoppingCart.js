@@ -93,6 +93,8 @@ export default function ShoppingCart({ onClose }) {
     return sum.toFixed(2);
   }
 
+  const total = calculateTotal();
+
   function submitCheckout() {
     const productIds = [];
 
@@ -132,18 +134,24 @@ export default function ShoppingCart({ onClose }) {
         >
           <Stack spacing={{ base: "8", md: "10" }} flex="2">
             <Heading fontSize="2xl" fontWeight="extrabold">
-              Shopping Cart (3 items)
+              Shopping Cart (
+              {state.cart.length === 1 ? (
+                <span>1 item</span>
+              ) : (
+                <span>{state.cart.length} items</span>
+              )}
+              )
             </Heading>
 
             <Stack spacing="6">
-              {cartData.map((item) => (
+              {state.cart.map((item) => (
                 <CartItem key={item.id} {...item} />
               ))}
             </Stack>
           </Stack>
 
           <Flex direction="column" align="center" flex="1">
-            <CartOrderSummary />
+            <CartOrderSummary total={total} />
             <HStack mt="6" fontWeight="semibold">
               <p>or</p>
               <Link color={mode("blue.500", "blue.200")} onClick={onClose}>

@@ -26,22 +26,25 @@ const QuantitySelect = (props) => {
 };
 
 export const CartItem = ({
-  price,
-  currency,
+  _id,
   name,
   description,
+  image,
+  price,
+  purchaseQuantity,
   quantity,
-  imageUrl,
+
   onChangeQuantity,
   onClickDelete,
 }) => {
+  console.log("CartItem.js: purchaseQuantity: ", purchaseQuantity);
   return (
     <Flex
       direction={{ base: "column", md: "row" }}
       justify="space-between"
       align="center"
     >
-      <CartProductMeta name={name} description={description} image={imageUrl} />
+      <CartProductMeta name={name} image={image} />
 
       {/* Desktop */}
       <Flex
@@ -50,12 +53,12 @@ export const CartItem = ({
         display={{ base: "none", md: "flex" }}
       >
         <QuantitySelect
-          value={quantity}
+          value={purchaseQuantity}
           onChange={(e) => {
             onChangeQuantity?.(+e.currentTarget.value);
           }}
         />
-        <PriceTag price={price} currency={currency} />
+        <PriceTag price={price} currency={"AUD"} />
         <CloseButton
           aria-label={`Delete ${name} from cart`}
           onClick={onClickDelete}
@@ -74,12 +77,12 @@ export const CartItem = ({
           Delete
         </Link>
         <QuantitySelect
-          value={quantity}
+          value={purchaseQuantity}
           onChange={(e) => {
             onChangeQuantity?.(+e.currentTarget.value);
           }}
         />
-        <PriceTag price={price} currency={currency} />
+        <PriceTag price={price} currency={"AUD"} />
       </Flex>
     </Flex>
   );

@@ -8,7 +8,7 @@ import {
 } from "@chakra-ui/react";
 
 export const CartProductMeta = (props) => {
-  const { image, name, description } = props;
+  const { image, name } = props;
   return (
     <Stack direction="row" spacing="5" width="full">
       <Image
@@ -22,12 +22,7 @@ export const CartProductMeta = (props) => {
         loading="lazy"
       />
       <Box pt="4">
-        <Stack spacing="0.5">
-          <Text fontWeight="medium">{name}</Text>
-          <Text color={mode("gray.600", "gray.400")} fontSize="sm">
-            {description}
-          </Text>
-        </Stack>
+        <Text fontWeight="medium">{name}</Text>
       </Box>
     </Stack>
   );

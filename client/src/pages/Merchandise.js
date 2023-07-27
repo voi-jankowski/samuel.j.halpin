@@ -136,9 +136,6 @@ export default function Merchandise() {
                 <ModalBody>
                   <ShoppingCart onClose={onClose} />
                 </ModalBody>
-                <ModalFooter>
-                  <Button onClick={onClose}>Close</Button>
-                </ModalFooter>
               </ModalContent>
             </Modal>
           </Flex>
