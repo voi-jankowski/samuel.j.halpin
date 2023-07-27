@@ -64,7 +64,7 @@ export default function Inspiration({ title, description, image }) {
           />
           <Box
             position={"relative"}
-            height={"550px"}
+            height={"auto"}
             rounded={"2xl"}
             boxShadow={"2xl"}
             width={"full"}
@@ -72,7 +72,7 @@ export default function Inspiration({ title, description, image }) {
           >
             <Image
               alt={title}
-              fit={"cover"}
+              fit={"contain"}
               align={"center"}
               w={"100%"}
               h={"100%"}
