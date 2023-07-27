@@ -25,7 +25,7 @@ import { LOGIN_USER } from "../../utils/mutations";
 import AuthService from "../../utils/auth";
 const Auth = new AuthService();
 
-export default function Login() {
+export default function Login({ setLoginOpen }) {
   const dispatch = useDispatch();
   // const history = useHistory();
 
@@ -64,7 +64,8 @@ export default function Login() {
       );
       // Save the token to localStorage
       Auth.login(data.login.token);
-      // history.push("/");
+
+      setLoginOpen(false);
     } catch (e) {
       console.error(e);
     }
@@ -78,7 +79,7 @@ export default function Login() {
 
   return (
     <Flex
-      minH={"100vh"}
+      minH={"50vh"}
       align={"center"}
       justify={"center"}
       bg={useColorModeValue("gray.50", "gray.800")}
@@ -117,14 +118,6 @@ export default function Login() {
                 />
               </FormControl>
               <Stack spacing={10}>
-                <Stack
-                  direction={{ base: "column", sm: "row" }}
-                  align={"start"}
-                  justify={"space-between"}
-                >
-                  <Checkbox>Remember me</Checkbox>
-                  <Link color={"blue.400"}>Forgot password?</Link>
-                </Stack>
                 <Button
                   bg={"blue.400"}
                   color={"white"}

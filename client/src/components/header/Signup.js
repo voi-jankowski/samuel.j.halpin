@@ -28,7 +28,7 @@ import { useHistory } from "react-router-dom";
 import AuthService from "../../utils/auth";
 const Auth = new AuthService();
 
-export default function SignupCard() {
+export default function SignupCard({ setSignupOpen }) {
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
 
@@ -63,10 +63,12 @@ export default function SignupCard() {
           username: formState.username,
           email: formState.email,
           password: formState.password,
+          userIcon: "./assets/images/moth7.png",
         })
       );
 
       Auth.login(data.addUser.token);
+      setSignupOpen(false);
     } catch (e) {
       console.error(e);
     }
@@ -74,7 +76,7 @@ export default function SignupCard() {
 
   return (
     <Flex
-      minH={"100vh"}
+      minH={"50vh"}
       align={"center"}
       justify={"center"}
       bg={useColorModeValue("gray.50", "gray.800")}
@@ -149,11 +151,6 @@ export default function SignupCard() {
                 >
                   Sign up
                 </Button>
-              </Stack>
-              <Stack pt={6}>
-                <Text align={"center"}>
-                  Already a user? <Link color={"blue.400"}>Login</Link>
-                </Text>
               </Stack>
             </Stack>
           </form>

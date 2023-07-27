@@ -7,10 +7,14 @@ import {
   Button,
   Stack,
   useBreakpointValue,
+  Flex,
 } from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
 import MothElement from "../components/mapComponents/MothElement";
 import AskAuthor from "../components/mapComponents/AskAuthor";
+
+import AuthService from "../utils/auth";
+const Auth = new AuthService();
 
 const inspirations = [
   {
@@ -139,7 +143,17 @@ export default function Map() {
           ))}
         </Box>
       </Box>
-      <AskAuthor />
+      {Auth.loggedIn() ? (
+        <AskAuthor />
+      ) : (
+        <>
+          <Flex justifyContent="center">
+            <Text color={"red.600"} fontSize="lg">
+              You must be logged in to view and leave questions!
+            </Text>
+          </Flex>
+        </>
+      )}
     </Box>
   );
 }

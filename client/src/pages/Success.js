@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_ORDER } from "../utils/mutations";
-import { idbPromise } from "../utils/helpers";
+import { idbPromise } from "../utils/idbPromise";
 
 import { Box, Heading, Text, Flex, Spinner, Image } from "@chakra-ui/react";
 

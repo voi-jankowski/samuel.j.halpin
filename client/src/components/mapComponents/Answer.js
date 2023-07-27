@@ -19,6 +19,9 @@ export default function Answer({
 
   const [removeAnswer] = useMutation(REMOVE_ANSWER, {
     variables: { questionId: questionId, answerId: answerId },
+    update(cache, { data: { removeAnswer } }) {
+      cache.evict({ id: cache.identify(removeAnswer) });
+    },
   });
 
   const isAdmin = Auth.getProfile().data.username === "admin";

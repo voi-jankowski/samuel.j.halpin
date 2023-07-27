@@ -214,12 +214,13 @@ export default function Navbar() {
                         Login
                       </MenuItem>
                       <Modal
+                        size={"lg"}
                         isOpen={isLoginOpen}
                         onClose={() => setLoginOpen(false)}
                       >
                         <ModalOverlay />
                         <ModalContent>
-                          <Login />
+                          <Login setLoginOpen={setLoginOpen} />
                         </ModalContent>
                       </Modal>
                       <MenuItem
@@ -230,12 +231,13 @@ export default function Navbar() {
                         Signup
                       </MenuItem>
                       <Modal
+                        size={"lg"}
                         isOpen={isSignupOpen}
                         onClose={() => setSignupOpen(false)}
                       >
                         <ModalOverlay />
                         <ModalContent>
-                          <Signup />
+                          <Signup setSignupOpen={setSignupOpen} />
                         </ModalContent>
                       </Modal>
                     </>
