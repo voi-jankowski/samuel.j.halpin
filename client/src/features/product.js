@@ -32,6 +32,16 @@ const productSlice = createSlice({
     toggleCartOpen: (state) => {
       state.cartOpen = !state.cartOpen;
     },
+    removeFromCart: (state, action) => {
+      state.cartOpen = true;
+      state.cart = state.cart.filter((product) => {
+        return product._id !== action.payload._id;
+      });
+    },
+    clearCart: (state) => {
+      state.cartOpen = false;
+      state.cart = [];
+    },
   },
 });
 
@@ -41,6 +51,8 @@ export const {
   addMultipleToCart,
   toggleCartOpen,
   updateCartQuantity,
+  removeFromCart,
+  clearCart,
 } = productSlice.actions;
 
 export default productSlice.reducer;
