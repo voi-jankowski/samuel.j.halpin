@@ -40,7 +40,10 @@ const colors = {
     700: "#2a69ac",
   },
   purple: {
-    500: "#B25AD0", // Define the new color with the desired shade
+    500: "#B25AD0",
+    400: "#b774cf",
+    300: "#bb8bcc",
+    200: "#c09dcc",
   },
   green: {
     500: "#918e6d", // Define the new color with the desired shade

@@ -37,7 +37,7 @@ export default function Inspiration({ title, description, image }) {
                 position: "absolute",
                 bottom: 1,
                 left: 0,
-                bg: "red.400",
+                bg: "purple.400",
                 zIndex: -1,
               }}
             >
