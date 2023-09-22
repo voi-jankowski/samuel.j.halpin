@@ -42,6 +42,7 @@ export default function BookCardSimple({
       <Box
         role={"group"}
         p={6}
+        // height={""}
         maxW={"330px"}
         w={"full"}
         boxShadow={"2xl"}
@@ -50,6 +51,10 @@ export default function BookCardSimple({
         zIndex={1}
         ref={btnRef}
         onClick={onOpen}
+        _hover={{
+          transform: "scale(1.05)",
+          cursor: "pointer",
+        }}
       >
         <Box
           rounded={"lg"}

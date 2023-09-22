@@ -76,6 +76,8 @@ export default function BoookCardExtended({
           >
             <Button
               as={"a"}
+              target="_blank" // <-- Add this line
+              rel="noopener noreferrer" // <-- Add this for security reasons when using target="_blank"
               href={link}
               rounded={"full"}
               size={"lg"}
@@ -83,7 +85,7 @@ export default function BoookCardExtended({
               px={6}
               colorScheme={"red"}
               bg={"purple.500"}
-              _hover={{ bg: "red.500" }}
+              _hover={{ bg: "red.500", cursor: "pointer" }}
             >
               Buy the Book
             </Button>

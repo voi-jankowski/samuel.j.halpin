@@ -15,6 +15,7 @@ const books = [
   {
     title: "The Peculiar Peggs of Riddling Woods",
     image: "./assets/images/Peggs_Book_Cover.png",
+    link: "https://www.amazon.co.uk/Peculiar-Peggs-Riddling-Woods/dp/1474945677/ref=sr_1_1?dchild=1&keywords=the+peculiar+peggs+of+riddling+woods&qid=1619798213&sr=8-1",
     description:
       "This is the story of a sleepy town called Suds. A place where stories fill the air of children turning grey and disappearing without a trace... Poppy and Erasmus are certain there's something peculiar going on in Suds, and they're determined to unravel its secrets. But when they discover the answers might lie in the dark and twisting woods, can they find the courage to creep inside and solve this riddling mystery?      'A thrilling read...flavoured with fairytales, drizzled with a syrup of fear and sprinkled with heart.' M.G. Leonard",
     publisher: "Usborne",
@@ -25,6 +26,7 @@ const books = [
   {
     title: "The Midnight Switch",
     image: "./assets/images/Midnight_Book_Cover.png",
+    link: "https://www.amazon.co.uk/Midnight-Switch-Samuel-J-Halpin/dp/1474959560/ref=sr_1_1?dchild=1&keywords=the+midnight+switch&qid=1619798245&sr=8-1",
     description:
       "A spooky, quirky adventure of curses and magic, perfect for fans of Malamander and A Place Called Perfect.When Lewis's family moves to a faraway town called Barrow, he can't quite put his finger on what feels so strange about his new home. Everyone is obsessed with superstition, and an old story about floods and witches and a curse, while a mysterious bird watches his every move.Then his family friend Moira arrives to stay. Only, there's something peculiar about Moira too. She doesn't know where she's from, or even when she's from, and strange things happen around her. Lewis and Moira are determined to figure out what's going on in Barrow, but as they unravel secret symbols, riddles and stories of a midnight curse, they find that there might be some truth in the old town tales.    Time is running out, before magic switches up everything they know...",
     publisher: "Usborne",
