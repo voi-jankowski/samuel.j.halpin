@@ -81,6 +81,7 @@ export default function AboutSam() {
           spacing={{ base: 3, md: 5 }}
           zIndex={0}
           justify="flex-start"
+          align="stretch"
         >
           <Text color={"gray.800"}>
             Hello, I'm Samuel J. Halpin. And I’m an author of the sorts of books
@@ -97,7 +98,7 @@ export default function AboutSam() {
         <Stack
           flex={1}
           justify="flex-start"
-          align="flex-start"
+          align="stretch"
           spacing={{ base: 3, md: 5 }}
           zIndex={0}
         >
