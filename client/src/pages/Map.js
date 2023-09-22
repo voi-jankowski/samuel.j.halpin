@@ -148,7 +148,7 @@ export default function Map() {
       ) : (
         <>
           <Flex justifyContent="center">
-            <Text color={"red.600"} fontSize="lg">
+            <Text color={"purple.500"} fontSize="lg" fontWeight={"600"}>
               You must be logged in to view and leave questions!
             </Text>
           </Flex>

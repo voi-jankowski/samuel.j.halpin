@@ -96,10 +96,10 @@ export default function AddQuestion() {
       </FormControl>
 
       <Button
-        bg={"purple.500"}
+        bg={"purple.400"}
         color={"white"}
         _hover={{
-          bg: "red.500",
+          bg: "purple.700",
         }}
         onClick={handleSaveQuestion} // Call the handleSaveQuestion function when the button is clicked
       >

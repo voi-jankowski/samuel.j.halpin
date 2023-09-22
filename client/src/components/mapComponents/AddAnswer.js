@@ -75,10 +75,10 @@ export default function AddAnswer({
       </FormControl>
 
       <Button
-        bg={"purple.500"}
+        bg={"purple.400"}
         color={"white"}
         _hover={{
-          bg: "red.500",
+          bg: "purple.700",
         }}
         onClick={handleSaveAnswer}
       >

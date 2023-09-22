@@ -177,7 +177,7 @@ export default function BoookCardExtended({
                 {Auth.loggedIn() ? (
                   <AddComment />
                 ) : (
-                  <span color={"red.600"}>but log in first!</span>
+                  <span color={"purple.700"}>but log in first!</span>
                 )}
               </Heading>
             </>

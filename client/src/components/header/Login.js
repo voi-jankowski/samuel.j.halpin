@@ -88,7 +88,8 @@ export default function Login({ setLoginOpen }) {
         <Stack align={"center"}>
           <Heading fontSize={"4xl"}>Sign in to your account</Heading>
           <Text fontSize={"lg"} color={"gray.600"}>
-            to enjoy all of our cool <Link color={"blue.400"}>features</Link> ✌️
+            to enjoy all of our cool <Link color={"purple.400"}>features</Link>{" "}
+            ✌️
           </Text>
         </Stack>
         <Box
@@ -119,10 +120,10 @@ export default function Login({ setLoginOpen }) {
               </FormControl>
               <Stack spacing={10}>
                 <Button
-                  bg={"purple.500"}
+                  bg={"purple.400"}
                   color={"white"}
                   _hover={{
-                    bg: "red.400",
+                    bg: "purple.700",
                   }}
                   type="submit"
                 >

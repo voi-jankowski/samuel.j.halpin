@@ -99,10 +99,10 @@ export default function AddComment({ commentedBook }) {
       </FormControl>
 
       <Button
-        bg={"purple.500"}
+        bg={"purple.400"}
         color={"white"}
         _hover={{
-          bg: "red.500",
+          bg: "purple.700",
         }}
         onClick={handleSaveComment} // Call the handleSaveComment function when the button is clicked
       >
