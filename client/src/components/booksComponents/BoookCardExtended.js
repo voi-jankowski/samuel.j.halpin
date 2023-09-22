@@ -157,8 +157,9 @@ export default function BoookCardExtended({
                 ) : (
                   <>
                     <br />
+                    <br />
                     <Text color={"red.600"} fontSize="lg">
-                      You must be logged in to leave questions!
+                      You must be logged in to leave comments!
                     </Text>
                   </>
                 )}
