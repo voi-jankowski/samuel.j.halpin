@@ -29,9 +29,9 @@ export default function Reply({
       mt={3}
       py={4}
       px={6}
-      bg="purple.500"
+      bg="purple.400"
       _dark={{
-        bg: "purple.500",
+        bg: "purple.400",
       }}
       shadow="lg"
       rounded="lg"

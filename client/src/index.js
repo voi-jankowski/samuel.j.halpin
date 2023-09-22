@@ -40,6 +40,7 @@ const colors = {
     700: "#2a69ac",
   },
   purple: {
+    700: "#8e0fba",
     500: "#B25AD0",
     400: "#b774cf",
     300: "#bb8bcc",

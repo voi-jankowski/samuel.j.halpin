@@ -62,7 +62,7 @@ export default function BoookCardExtended({
                 position: "absolute",
                 bottom: 1,
                 left: 0,
-                bg: "purple.500",
+                bg: "purple.400",
                 zIndex: -1,
               }}
             >
@@ -85,7 +85,7 @@ export default function BoookCardExtended({
               px={6}
               colorScheme={"red"}
               bg={"purple.500"}
-              _hover={{ bg: "red.500", cursor: "pointer" }}
+              _hover={{ bg: "purple.700", cursor: "pointer" }}
             >
               Buy the Book
             </Button>
@@ -158,7 +158,7 @@ export default function BoookCardExtended({
                   <>
                     <br />
                     <br />
-                    <Text color={"red.600"} fontSize="lg">
+                    <Text color={"purple.500"} fontSize="lg">
                       You must be logged in to leave comments!
                     </Text>
                   </>

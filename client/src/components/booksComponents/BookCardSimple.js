@@ -163,7 +163,9 @@ export default function BookCardSimple({
             />
           </ModalBody>
           <ModalFooter>
-            <Button onClick={onClose}>Close</Button>
+            <Button onClick={onClose} bg={"purple.100"}>
+              Close
+            </Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
