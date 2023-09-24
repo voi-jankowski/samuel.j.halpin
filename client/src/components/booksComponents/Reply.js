@@ -45,46 +45,18 @@ export default function Reply({
             rounded="full"
             borderStyle="solid"
             borderWidth={2}
-            color="brand.500"
-            _dark={{
-              color: "brand.400",
-            }}
             alt="Comment avatar"
             src={authorIcon ?? avatar}
           />
-          <Text
-            ml={2}
-            fontWeight={600}
-            fontSize="sm"
-            color="gray.200"
-            _dark={{
-              color: "gray.200",
-            }}
-          >
+          <Text ml={2} fontWeight={600} fontSize="sm">
             {replyAuthor}
           </Text>
         </Flex>
-        <Text
-          fontWeight={600}
-          fontSize="xs"
-          color="gray.200"
-          _dark={{
-            color: "gray.200",
-          }}
-          mx={3}
-        >
+        <Text fontWeight={600} fontSize="xs" mx={3}>
           {getTimeDifference(createdAt)}
         </Text>
       </Flex>
-      <Text
-        my={2}
-        fontSize="sm"
-        fontWeight={400}
-        color="gray.200"
-        _dark={{
-          color: "gray.200",
-        }}
-      >
+      <Text my={2} fontSize="sm" fontWeight={400}>
         {replyText}
       </Text>
       {Auth.loggedIn() && Auth.getProfile().data.username === replyAuthor && (
@@ -94,10 +66,7 @@ export default function Reply({
             aria-label="reply"
             icon={<Icon as={FaTrashCan} />}
             variant="ghost"
-            color="gray.200"
-            _dark={{
-              color: "gray.200",
-            }}
+            color={"white"}
             mr={2}
             size="md"
             onClick={() => removeReply()}

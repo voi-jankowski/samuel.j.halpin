@@ -40,7 +40,17 @@ export default function Comment({
   const isAdmin = loggedInUsername === "admin";
 
   return (
-    <Flex mt={6} p={0} w="full" flexDir="column" alignItems="flex-end">
+    <Flex
+      mt={6}
+      p={0}
+      w="full"
+      flexDir="column"
+      alignItems="flex-end"
+      color="white"
+      _dark={{
+        color: "white",
+      }}
+    >
       <Box
         w="full"
         py={4}
@@ -61,10 +71,6 @@ export default function Comment({
               rounded="full"
               borderStyle="solid"
               borderWidth={2}
-              color="brand.500"
-              _dark={{
-                color: "brand.400",
-              }}
               alt="Comment avatar"
               src={authorIcon ?? avatar}
             />
@@ -72,35 +78,19 @@ export default function Comment({
               ml={2}
               fontWeight={600}
               fontSize="medium"
-              color="gray.200"
+              color="white"
               _dark={{
-                color: "gray.200",
+                color: "white",
               }}
             >
               {commentAuthor}
             </Text>
           </Flex>
-          <Text
-            fontWeight={600}
-            fontSize="xs"
-            color="gray.200"
-            _dark={{
-              color: "gray.200",
-            }}
-            mx={3}
-          >
+          <Text fontWeight={600} fontSize="xs" mx={3}>
             {getTimeDifference(createdAt)}
           </Text>
         </Flex>
-        <Text
-          my={2}
-          fontSize="md"
-          fontWeight={400}
-          color="gray.200"
-          _dark={{
-            color: "gray.200",
-          }}
-        >
+        <Text my={2} fontSize="md" fontWeight={400}>
           {commentText}
         </Text>
 
@@ -112,12 +102,9 @@ export default function Comment({
               aria-label="reply"
               icon={<Icon as={FaTrashCan} />}
               variant="ghost"
-              color="gray.200"
-              _dark={{
-                color: "gray.200",
-              }}
               mr={2}
               size="md"
+              color={"white"}
               onClick={removeComment}
             />
           )}
@@ -128,12 +115,9 @@ export default function Comment({
               aria-label="reply"
               icon={<Icon as={FaReply} />}
               variant="ghost"
-              color="gray.200"
-              _dark={{
-                color: "gray.200",
-              }}
               mr={2}
               size="md"
+              color={"white"}
               onClick={() => setshowAddReply(!showAddReply)}
             />
           )}

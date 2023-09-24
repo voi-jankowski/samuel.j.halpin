@@ -74,10 +74,10 @@ export default function AddReply({ commentId, showAddReply, setshowAddReply }) {
       </FormControl>
 
       <Button
-        bg={"purple.500"}
+        bg={"purple.400"}
         color={"white"}
         _hover={{
-          bg: "red.500",
+          bg: "purple.900",
         }}
         onClick={handleSaveReply} // Call handleSaveReply when the "Save" button is clicked
       >

@@ -51,20 +51,21 @@ export default function BoookCardExtended({
             lineHeight={1.1}
             fontWeight={600}
             fontSize={{ base: "3xl", sm: "4xl", lg: "6xl" }}
+            color={"purple.900"}
           >
             <Text
               as={"span"}
               position={"relative"}
-              _after={{
-                content: "''",
-                width: "full",
-                height: "30%",
-                position: "absolute",
-                bottom: 1,
-                left: 0,
-                bg: "purple.400",
-                zIndex: -1,
-              }}
+              // _after={{
+              //   content: "''",
+              //   width: "full",
+              //   height: "30%",
+              //   position: "absolute",
+              //   bottom: 1,
+              //   left: 0,
+              //   bg: "purple.400",
+              //   zIndex: -1,
+              // }}
             >
               {title}
             </Text>
@@ -84,8 +85,8 @@ export default function BoookCardExtended({
               fontWeight={"normal"}
               px={6}
               colorScheme={"red"}
-              bg={"purple.500"}
-              _hover={{ bg: "purple.700", cursor: "pointer" }}
+              bg={"purple.400"}
+              _hover={{ bg: "purple.900", cursor: "pointer" }}
             >
               Buy the Book
             </Button>
@@ -138,7 +139,7 @@ export default function BoookCardExtended({
                 lineHeight={1.1}
                 fontWeight={600}
                 fontSize={{ base: "xl", sm: "2xl", lg: "3xl" }}
-                color={"purple.500"}
+                color={"purple.900"}
               >
                 Readers' Comments
                 {sortedComments.map((comment) => (
@@ -158,7 +159,7 @@ export default function BoookCardExtended({
                   <>
                     <br />
                     <br />
-                    <Text color={"purple.500"} fontSize="lg">
+                    <Text color={"purple.900"} fontSize="lg">
                       You must be logged in to leave comments!
                     </Text>
                   </>
