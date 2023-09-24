@@ -30,16 +30,17 @@ export default function Inspiration({ title, description, image }) {
             <Text
               as={"span"}
               position={"relative"}
-              _after={{
-                content: "''",
-                width: "full",
-                height: "30%",
-                position: "absolute",
-                bottom: 1,
-                left: 0,
-                bg: "purple.400",
-                zIndex: -1,
-              }}
+              color={"purple.900"}
+              // _after={{
+              //   content: "''",
+              //   width: "full",
+              //   height: "30%",
+              //   position: "absolute",
+              //   bottom: 1,
+              //   left: 0,
+              //   bg: "purple.400",
+              //   zIndex: -1,
+              // }}
             >
               {title}
             </Text>
