@@ -80,18 +80,12 @@ const inspirations = [
 
 // Define the different heights for the map based on the screen size
 const heightValues = {
-  base: "130vh", // Height on small screens
+  base: "80vh", // Height on small screens
   // sm: "100vh", // Height on medium screens
-  lg: "200vh", // Height on larger screens
+  lg: "80vh", // Height on larger screens
 };
 
 export default function Map() {
-  // Function to get a random position within the container
-  const getRandomPosition = () => ({
-    top: `${Math.random() * 80 + 10}%`,
-    left: `${Math.random() * 80 + 10}%`,
-  });
-
   const height = useBreakpointValue(heightValues);
   const headingPosition = useBreakpointValue({
     base: "relative",
@@ -136,18 +130,7 @@ export default function Map() {
           >
             Inspiration Map
           </Heading>
-          <motion.div
-            style={{ height: "100px", width: "100px" }} // Set the width and height of the container
-            variants={shakeVariant}
-            initial="initial"
-            whileHover="shake" // Apply the shake animation
-          >
-            <img
-              src="./assets/images/moth7.png"
-              alt="Test Image"
-              style={{ width: "100%", height: "auto" }}
-            />
-          </motion.div>
+
           <Text
             color={"gray.600"}
             fontSize={{ base: "sm", sm: "lg", lg: "xl", xl: "2xl" }}
@@ -182,6 +165,18 @@ export default function Map() {
           ))}
         </Box>
       </Box>
+      <motion.div
+        style={{ height: "100px", width: "100px" }} // Set the width and height of the container
+        variants={shakeVariant}
+        initial="initial"
+        whileHover="shake" // Apply the shake animation
+      >
+        <img
+          src="./assets/images/moth7.png"
+          alt="Test Image"
+          style={{ width: "100%", height: "auto" }}
+        />
+      </motion.div>
       {Auth.loggedIn() ? (
         <AskAuthor />
       ) : (
