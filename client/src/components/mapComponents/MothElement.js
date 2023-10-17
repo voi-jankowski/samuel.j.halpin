@@ -24,6 +24,7 @@ export default function MothElement({
   linkImage,
   image,
   style,
+  initialPosition,
 }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [scrollBehavior, setScrollBehavior] = React.useState("outside");

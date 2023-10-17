@@ -170,6 +170,7 @@ export default function Map() {
               linkImage={inspiration.linkImage}
               image={inspiration.image}
               style={getRandomPosition()} // Pass the random position as a prop
+              initialPosition={{ x: 0, y: 0 }} // Specify initial position
             />
           ))}
         </Box>
