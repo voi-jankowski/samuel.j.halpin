@@ -31,6 +31,22 @@ export default function MothElement({
 
   const btnRef = React.useRef(null);
 
+  // Animation controls
+  const controls = useAnimation();
+
+  // Animate the MothElement when it mounts
+  useEffect(() => {
+    controls.start({
+      x: initialPosition.x, // Initial x position
+      y: initialPosition.y, // Initial y position
+      opacity: 1, // Set opacity to 1 for visibility
+      transition: {
+        duration: 1.5, // Animation duration
+        ease: "easeOut", // Easing function
+      },
+    });
+  }, [controls, initialPosition]);
+
   // Set different box sizes based on the screen breakpoints
   const boxSize = useBreakpointValue({
     base: "100px", // On smaller screens, the MothElement will be 100px x 100px
