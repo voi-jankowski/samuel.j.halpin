@@ -39,7 +39,7 @@ export default function MothElement({
     controls.start({
       x: style.left, // Target x position (random position)
       y: style.top, // Target y position (random position)
-      opacity: 1, // Set opacity to 1 for visibility
+      rotate: Math.random() * 360, // Random rotation
       transition: {
         duration: 3, // Animation duration
         ease: "easeOut", // Easing function
