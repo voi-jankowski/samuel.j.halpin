@@ -12,6 +12,8 @@ import {
 import React, { useState, useEffect } from "react";
 import MothElement from "../components/mapComponents/MothElement";
 import AskAuthor from "../components/mapComponents/AskAuthor";
+import { motion, Variants } from "framer-motion";
+import { useMotionValue, useTransform } from "framer-motion";
 
 import AuthService from "../utils/auth";
 const Auth = new AuthService();
@@ -68,6 +70,7 @@ const inspirations = [
   },
 ];
 
+// Define the different heights for the map based on the screen size
 const heightValues = {
   base: "130vh", // Height on small screens
   // sm: "100vh", // Height on medium screens
@@ -86,6 +89,22 @@ export default function Map() {
     base: "relative",
     lg: "absolute",
   });
+
+  // Define the shake animation
+  const shakeVariant = {
+    initial: {
+      rotate: 0, // Initial rotation
+    },
+    shake: {
+      rotate: [0, -10, 10, -10, 10, -5, 5, 0],
+      scale: [1, 1.1, 1.1, 1.1, 1.1, 1.05, 1.05, 1],
+      transition: {
+        duration: 0.3, // Total animation duration in seconds
+        ease: "easeInOut", // You can adjust the easing function
+        loop: Infinity, // Infinite loop
+      },
+    },
+  };
 
   return (
     <Box p={4} mt="10%">
@@ -109,6 +128,18 @@ export default function Map() {
           >
             Inspiration Map
           </Heading>
+          <motion.div
+            style={{ height: "100px", width: "100px" }} // Set the width and height of the container
+            variants={shakeVariant}
+            initial="initial"
+            whileHover="shake" // Apply the shake animation
+          >
+            <img
+              src="./assets/images/moth7.png"
+              alt="Test Image"
+              style={{ width: "100%", height: "auto" }}
+            />
+          </motion.div>
           <Text
             color={"gray.600"}
             fontSize={{ base: "sm", sm: "lg", lg: "xl", xl: "2xl" }}
