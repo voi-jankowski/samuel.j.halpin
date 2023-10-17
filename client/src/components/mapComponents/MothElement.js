@@ -37,8 +37,8 @@ export default function MothElement({
   // Animate the MothElement when it mounts
   useEffect(() => {
     controls.start({
-      x: style.left || 0, // Initial x position (left property from style or 0)
-      y: style.top || 0, // Initial y position (top property from style or 0)
+      x: style.left, // Target x position (random position)
+      y: style.top, // Target y position (random position)
       opacity: 1, // Set opacity to 1 for visibility
       transition: {
         duration: 3, // Animation duration
