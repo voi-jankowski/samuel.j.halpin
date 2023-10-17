@@ -26,7 +26,7 @@ const inspirations = [
       "I was hiking with my husband in the mountains in Poland, when I saw a strange building perched on top of a crag, and the moment I saw it I knew that was what the Helligan Mills looked like. I’d seen something similar in my head as I was writing it, but when I saw this it was like the book coming to life in front of me.",
     linkImage: "./assets/images/moth1.png",
     image: "./assets/images/The_TV_Tower.png",
-    position: { top: "30%", left: "10%" },
+    finalPosition: { top: "30%", left: "10%" },
   },
   {
     title: "Bonhilda Bonhoeffer’s Sweetshop",
@@ -34,7 +34,7 @@ const inspirations = [
       "There was a shop in my home town in Tasmania called the Reliquaire, and it was one of the most magical places I could ever imagine as a kid. It was so stuffed with glistening objects and sparkling ornaments and had a strange stillness to it. At the Reliquaire they made the most spectacular fudge I’ve ever tasted to this day, and there would always be someone wondering around with a tasting tray.",
     linkImage: "./assets/images/moth2.png",
     image: "./assets/images/Bonhilda_Bonhoeffer_Sweet_Shop.jpg",
-    position: { top: "70%", left: "20%" },
+    finalPosition: { top: "70%", left: "20%" },
   },
   {
     title: "Gran",
@@ -42,7 +42,7 @@ const inspirations = [
       "My own Grandma wore a variety of silk scarves and had oodles of the most wonderful little sayings which she would whip out, including one which I believed until I was about ten which was that she was twenty-one and not a day older. There was however one scarf she had that was half green and half gold and when she stepped into the sunlight it would glisten like a lizard. I always found those colours so bewitching.",
     linkImage: "./assets/images/moth3.png",
     image: "./assets/images/Gran.JPG",
-    position: { top: "50%", left: "55%" },
+    finalPosition: { top: "50%", left: "55%" },
   },
   {
     title: "Husk Woods School",
@@ -50,7 +50,7 @@ const inspirations = [
       "The back of my own school opened onto a vast stretch of bush, and there was even a deer pen right next to our playground. Every now and then one of the deer would get out of their cage and go charging across the fields and do loops around the swings!",
     linkImage: "./assets/images/moth4.png",
     image: "./assets/images/Husk_School.jpg",
-    position: { top: "40%", left: "80%" },
+    finalPosition: { top: "40%", left: "80%" },
   },
   {
     title: "The Riddling Woods",
@@ -58,7 +58,7 @@ const inspirations = [
       "In Tasmania where I grew up, there were stories all the time about people going missing out in the bush. Often it was Tasmanian Devils that were blamed, but it always meant that there was a sense of unease and apprehension that filled me whenever I went walking through the woods near our house.",
     linkImage: "./assets/images/moth5.png",
     image: "./assets/images/Riddling_Woods.jpg",
-    position: { top: "80%", left: "80%" },
+    finalPosition: { top: "80%", left: "80%" },
   },
   {
     title: "Marley’s Barge",
@@ -66,7 +66,7 @@ const inspirations = [
       "Near my house in London was a big canal called the Regent’s Canal, and I became fascinated walking along it every day by the barges which were moored along it and the types of people that lived in them. One time I even saw one called ‘The Poppy’ which I thought was a sign that Mumbling Marley might be about.",
     linkImage: "./assets/images/moth6.png",
     image: "./assets/images/Barge.jpg",
-    position: { top: "80%", left: "20%" },
+    finalPosition: { top: "80%", left: "20%" },
   },
   {
     title: "The Brindled Weave",
@@ -74,7 +74,7 @@ const inspirations = [
       "I was inspired by a fabric shop I once went to in Cornwall. It had shelves and shelves groaning under the weight of different coloured silks and satins. And from the back of the shop as I wandered around being generally nosy, a lady appeared with hair so white and feathery it was liked whipped cream. Ever since that day I’ve always kept the image of that fascinating place in my head, until it finally appeared in the Peggs.",
     linkImage: "./assets/images/moth7.png",
     image: "./assets/images/Brindled_Weave.jpg",
-    position: { top: "10%", left: "80%" },
+    finalPosition: { top: "10%", left: "80%" },
   },
 ];
 
@@ -177,7 +177,7 @@ export default function Map() {
               description={inspiration.description}
               linkImage={inspiration.linkImage}
               image={inspiration.image}
-              style={inspiration.position}
+              finalPosition={inspiration.finalPosition}
             />
           ))}
         </Box>

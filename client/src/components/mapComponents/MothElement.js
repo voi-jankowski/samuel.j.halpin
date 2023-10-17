@@ -23,8 +23,7 @@ export default function MothElement({
   description,
   linkImage,
   image,
-  style,
-  initialPosition,
+  finalPosition,
 }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [scrollBehavior, setScrollBehavior] = React.useState("outside");
@@ -37,15 +36,15 @@ export default function MothElement({
   // Animate the MothElement when it mounts
   useEffect(() => {
     controls.start({
-      x: style.left, // Target x position (random position)
-      y: style.top, // Target y position (random position)
+      left: finalPosition.left, // Target x position (random position)
+      top: finalPosition.top, // Target y position (random position)
       rotate: Math.random() * 360, // Random rotation
       transition: {
         duration: 3, // Animation duration
         ease: "easeOut", // Easing function
       },
     });
-  }, [controls, style]);
+  }, [controls, finalPosition]);
 
   // Set different box sizes based on the screen breakpoints
   const boxSize = useBreakpointValue({
@@ -60,7 +59,7 @@ export default function MothElement({
     <MotionImage
       position="absolute"
       cursor="pointer"
-      style={style} // Apply the random position from props
+      style={{ top: "50%", left: "50%" }} // Create a starting position at the center of the container
       boxSize={boxSize} // Use the responsive boxSize based on the screen size
       animate={controls} // Apply the animation controls
     >
