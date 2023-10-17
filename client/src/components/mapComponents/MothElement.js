@@ -18,6 +18,24 @@ import Inspiration from "./Inspiration";
 
 const MotionImage = motion(Box); // Wrap the Image component in motion
 
+const shakeVariant = {
+  initial: {
+    rotate: 0, // Initial rotation
+  },
+  shake: {
+    rotate: [
+      0, -10, 10, -10, 10, -5, 5, 0, -10, 10, -10, 10, -5, 5, 0, -10, 10, -10,
+      10, -5, 5, 0, -10, 10, -10, 10, -5, 5, 0,
+    ],
+    scale: [1, 1.1, 1.1, 1.1, 1.1, 1.05, 1.05, 1],
+    transition: {
+      duration: 0.8, // Total animation duration in seconds
+      ease: "easeInOut", // You can adjust the easing function
+      loop: Infinity, // Infinite loop
+    },
+  },
+};
+
 export default function MothElement({
   title,
   description,
@@ -62,6 +80,9 @@ export default function MothElement({
       style={{ top: "50%", left: "50%" }} // Create a starting position at the center of the container
       boxSize={boxSize} // Use the responsive boxSize based on the screen size
       animate={controls} // Apply the animation controls
+      variants={shakeVariant}
+      initial="initial"
+      whileHover="shake" // Apply the shake animation
     >
       <Image
         src={linkImage}
