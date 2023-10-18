@@ -9,8 +9,11 @@ import {
   useColorModeValue,
   useBreakpointValue,
 } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 
 import Navbar from "./Navbar";
+
+const MotionImage = motion(Image);
 
 function Header() {
   const logoSize = useBreakpointValue({
@@ -36,11 +39,13 @@ function Header() {
         backgroundPosition="left"
         backgroundSize="contain"
       >
-        <Image
+        <MotionImage
           src="./assets/images/baloon.png"
           alt="Heading Baloon"
           width={baloonSize}
           ml="5%"
+          animate={{ x: [1000, 0] }}
+          transition={{ duration: 8, ease: "easeInOut" }}
         />
         <Flex direction="column" alignItems="right" width={logoSize}>
           <Image src="./assets/images/sam-logo.png" alt="Sam's Logo" />

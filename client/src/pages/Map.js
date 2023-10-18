@@ -14,7 +14,6 @@ import React, { useState, useEffect } from "react";
 import MothElement from "../components/mapComponents/MothElement";
 import AskAuthor from "../components/mapComponents/AskAuthor";
 import { motion, Variants } from "framer-motion";
-import { useMotionValue, useTransform } from "framer-motion";
 
 import AuthService from "../utils/auth";
 const Auth = new AuthService();
@@ -80,9 +79,9 @@ const inspirations = [
 
 // Define the different heights for the map based on the screen size
 const heightValues = {
-  base: "80vh", // Height on small screens
-  // sm: "100vh", // Height on medium screens
-  lg: "80vh", // Height on larger screens
+  base: "60vh", // Height on small screens
+  sm: "100vh", // Height on medium screens
+  lg: "150vh", // Height on larger screens
 };
 
 export default function Map() {
@@ -109,50 +108,71 @@ export default function Map() {
   };
 
   return (
-    <Box p={4} mt="10%">
+    <Box p={4} mt={0}>
       <Box
-        position={headingPosition}
-        top="20%"
-        left="50%"
-        transform="translate(-50%, -50%)"
-        textAlign="center"
-      >
-        <Container spacing={4} maxW={"3xl"}>
-          <Heading
-            fontSize={{
-              base: "2xl",
-              md: "3xl",
-              lg: "4xl",
-              xl: "5xl",
-              "2xl": "6xl",
-            }}
-            fontWeight={"bold"}
-          >
-            Inspiration Map
-          </Heading>
+        // position={headingPosition}
+        // top="20%"
+        // left="50%"
+        // transform="translate(-50%, -50%)"
 
-          <Text
-            color={"gray.600"}
-            fontSize={{ base: "sm", sm: "lg", lg: "xl", xl: "2xl" }}
-          >
-            Wonder across this most peculiar map of Suds from The Peculiar Peggs
-            of Riddling Woods to see where the inspiration for different parts
-            of the book came from.
-          </Text>
-        </Container>
+        flexDirection={"collumn"}
+      >
+        <Box
+          display="flex"
+          alignItems="flex-start"
+          justifyContent="flex-start"
+          zIndex={2}
+          mx={{ base: 0, md: 10 }}
+        >
+          <Image
+            src="./assets/images/Frame_1.png"
+            alt="Frame 1"
+            w="25%"
+            mb={0}
+            objectFit="cover"
+            position="relative"
+            zIndex={4}
+            opacity={0.8}
+          />
+          <Container spacing={4} maxW={"3xl"} textAlign="center">
+            <Heading
+              fontSize={{
+                base: "xl",
+                md: "3xl",
+                lg: "4xl",
+                xl: "5xl",
+                "2xl": "6xl",
+              }}
+              fontWeight={"bold"}
+            >
+              Inspiration Map
+            </Heading>
+
+            <Text
+              color={"gray.600"}
+              fontSize={{ base: "sm", sm: "lg", lg: "xl", xl: "2xl" }}
+            >
+              Wonder across this most peculiar map of Suds from The Peculiar
+              Peggs of Riddling Woods to see where the inspiration for different
+              parts of the book came from.
+            </Text>
+          </Container>
+        </Box>
       </Box>
-      <Box mb={20} position="relative">
+
+      <Box mt={-20}>
         {/* Use the Image component and set the source of the background image */}
         <Image
           src="/assets/images/Map_Frame.png"
           alt="Inspiration Map"
           h={height}
-          w="100%"
+          w="auto"
           m="auto"
           objectFit="cover"
+          zIndex={3}
         />
         {/* Render the Moth elements on top of the Image */}
-        <Box position="absolute" top="10%" left={0} w="100%" h="80%">
+        <Box position="absolute" top="10%" left={0} w="100%" h="100%">
           {inspirations.map((inspiration, index) => (
             <MothElement
               key={index}
