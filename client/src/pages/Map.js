@@ -91,32 +91,9 @@ export default function Map() {
     lg: "absolute",
   });
 
-  // Define the shake animation
-  const shakeVariant = {
-    initial: {
-      rotate: 0, // Initial rotation
-    },
-    shake: {
-      rotate: [0, -10, 10, -10, 10, -5, 5, 0],
-      scale: [1, 1.1, 1.1, 1.1, 1.1, 1.05, 1.05, 1],
-      transition: {
-        duration: 0.3, // Total animation duration in seconds
-        ease: "easeInOut", // You can adjust the easing function
-        loop: Infinity, // Infinite loop
-      },
-    },
-  };
-
   return (
     <Box p={4} mt={0}>
-      <Box
-        // position={headingPosition}
-        // top="20%"
-        // left="50%"
-        // transform="translate(-50%, -50%)"
-
-        flexDirection={"collumn"}
-      >
+      <Box flexDirection={"collumn"}>
         <Box
           display="flex"
           alignItems="flex-start"
@@ -130,8 +107,6 @@ export default function Map() {
             w="25%"
             mb={0}
             objectFit="cover"
-            position="relative"
-            zIndex={4}
             opacity={0.8}
           />
           <Container spacing={4} maxW={"3xl"} textAlign="center">
@@ -160,7 +135,7 @@ export default function Map() {
         </Box>
       </Box>
 
-      <Box mt={-20}>
+      <Box mt={-20} zIndex={1}>
         {/* Use the Image component and set the source of the background image */}
         <Image
           src="/assets/images/Map_Frame.png"
@@ -169,10 +144,17 @@ export default function Map() {
           w="auto"
           m="auto"
           objectFit="cover"
-          zIndex={3}
+          zIndex={2}
         />
         {/* Render the Moth elements on top of the Image */}
-        <Box position="absolute" top="10%" left={0} w="100%" h="100%">
+        <Box
+          position="absolute"
+          top="10%"
+          left={0}
+          w="100%"
+          h="100%"
+          zIndex={1}
+        >
           {inspirations.map((inspiration, index) => (
             <MothElement
               key={index}
@@ -185,18 +167,25 @@ export default function Map() {
           ))}
         </Box>
       </Box>
-      <motion.div
-        style={{ height: "100px", width: "100px" }} // Set the width and height of the container
-        variants={shakeVariant}
-        initial="initial"
-        whileHover="shake" // Apply the shake animation
+
+      <Box
+        display="flex"
+        alignItems="flex-start"
+        justifyContent="flex-end"
+        zIndex={3}
+        mx={{ base: 0, md: 10 }}
+        mt={-50}
       >
-        <img
-          src="./assets/images/moth7.png"
-          alt="Test Image"
-          style={{ width: "100%", height: "auto" }}
+        <Image
+          src="./assets/images/Frame_2.png"
+          alt="Frame 2"
+          w="35%"
+          mb={0}
+          objectFit="cover"
+          opacity={0.8}
         />
-      </motion.div>
+      </Box>
+
       {Auth.loggedIn() ? (
         <AskAuthor />
       ) : (
