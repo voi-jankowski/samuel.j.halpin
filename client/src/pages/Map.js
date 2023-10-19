@@ -93,19 +93,18 @@ export default function Map() {
 
   return (
     <Box p={4} mt={0}>
-      <Box flexDirection={"collumn"}>
+      <Box flexDirection={"collumn"} zIndex={2}>
         <Box
           display="flex"
           alignItems="flex-start"
           justifyContent="flex-start"
-          zIndex={2}
           mx={{ base: 0, md: 10 }}
         >
           <Image
             src="./assets/images/Frame_1.png"
             alt="Frame 1"
             w="25%"
-            mb={0}
+            mt={8}
             objectFit="cover"
             opacity={0.8}
           />
@@ -126,11 +125,27 @@ export default function Map() {
             <Text
               color={"gray.600"}
               fontSize={{ base: "sm", sm: "lg", lg: "xl", xl: "2xl" }}
+              p={{ base: 2, sm: 4, lg: 6, xl: 8 }}
             >
               Wonder across this most peculiar map of Suds from The Peculiar
               Peggs of Riddling Woods to see where the inspiration for different
               parts of the book came from.
             </Text>
+            <Box
+              display="flex"
+              alignItems="flex-start"
+              justifyContent="flex-end"
+              mx={{ base: 0, md: 10 }}
+            >
+              <Image
+                src="./assets/images/Frame_3.png"
+                alt="Frame 3"
+                w="45%"
+                mt={20}
+                objectFit="cover"
+                opacity={0.8}
+              />
+            </Box>
           </Container>
         </Box>
       </Box>
@@ -166,24 +181,6 @@ export default function Map() {
             />
           ))}
         </Box>
-      </Box>
-
-      <Box
-        display="flex"
-        alignItems="flex-start"
-        justifyContent="flex-end"
-        zIndex={3}
-        mx={{ base: 0, md: 10 }}
-        mt={-50}
-      >
-        <Image
-          src="./assets/images/Frame_2.png"
-          alt="Frame 2"
-          w="35%"
-          mb={0}
-          objectFit="cover"
-          opacity={0.8}
-        />
       </Box>
 
       {Auth.loggedIn() ? (
