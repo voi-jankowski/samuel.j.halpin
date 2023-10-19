@@ -4,11 +4,8 @@ import {
   Text,
   Image,
   Heading,
-  Button,
-  Stack,
   useBreakpointValue,
   Flex,
-  position,
 } from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
 import MothElement from "../components/mapComponents/MothElement";
@@ -33,7 +30,7 @@ const inspirations = [
       "There was a shop in my home town in Tasmania called the Reliquaire, and it was one of the most magical places I could ever imagine as a kid. It was so stuffed with glistening objects and sparkling ornaments and had a strange stillness to it. At the Reliquaire they made the most spectacular fudge I’ve ever tasted to this day, and there would always be someone wondering around with a tasting tray.",
     linkImage: "./assets/images/moth2.png",
     image: "./assets/images/Bonhilda_Bonhoeffer_Sweet_Shop.jpg",
-    finalPosition: { top: "60%", left: "20%" },
+    finalPosition: { top: "50%", left: "20%" },
   },
   {
     title: "Gran",
@@ -65,7 +62,7 @@ const inspirations = [
       "Near my house in London was a big canal called the Regent’s Canal, and I became fascinated walking along it every day by the barges which were moored along it and the types of people that lived in them. One time I even saw one called ‘The Poppy’ which I thought was a sign that Mumbling Marley might be about.",
     linkImage: "./assets/images/moth6.png",
     image: "./assets/images/Barge.jpg",
-    finalPosition: { top: "25%", left: "60%" },
+    finalPosition: { top: "15%", left: "60%" },
   },
   {
     title: "The Brindled Weave",
@@ -73,7 +70,7 @@ const inspirations = [
       "I was inspired by a fabric shop I once went to in Cornwall. It had shelves and shelves groaning under the weight of different coloured silks and satins. And from the back of the shop as I wandered around being generally nosy, a lady appeared with hair so white and feathery it was liked whipped cream. Ever since that day I’ve always kept the image of that fascinating place in my head, until it finally appeared in the Peggs.",
     linkImage: "./assets/images/moth7.png",
     image: "./assets/images/Brindled_Weave.jpg",
-    finalPosition: { top: "85%", left: "10%" },
+    finalPosition: { top: "80%", left: "10%" },
   },
 ];
 
@@ -86,10 +83,6 @@ const heightValues = {
 
 export default function Map() {
   const height = useBreakpointValue(heightValues);
-  const headingPosition = useBreakpointValue({
-    base: "relative",
-    lg: "absolute",
-  });
 
   return (
     <Box p={4} mt={0}>
@@ -150,7 +143,7 @@ export default function Map() {
         </Box>
       </Box>
 
-      <Box mt={-20} zIndex={1}>
+      <Box mt={-20} zIndex={1} position={"relative"}>
         {/* Use the Image component and set the source of the background image */}
         <Image
           src="/assets/images/Map_Frame.png"
@@ -162,24 +155,26 @@ export default function Map() {
           zIndex={2}
         />
         {/* Render the Moth elements on top of the Image */}
-        <Box
-          position="absolute"
-          top="10%"
-          left={0}
-          w="100%"
-          h="100%"
-          zIndex={1}
-        >
-          {inspirations.map((inspiration, index) => (
-            <MothElement
-              key={index}
-              title={inspiration.title}
-              description={inspiration.description}
-              linkImage={inspiration.linkImage}
-              image={inspiration.image}
-              finalPosition={inspiration.finalPosition}
-            />
-          ))}
+        <Box position="absolute" top={0} left={0} w="100%" h="100%" zIndex={3}>
+          {inspirations.map(
+            (
+              { title, description, linkImage, image, finalPosition },
+              index
+            ) => (
+              <MothElement
+                key={index}
+                title={title}
+                description={description}
+                linkImage={linkImage}
+                image={image}
+                finalPosition={finalPosition}
+                style={{
+                  position: "absolute",
+                  transform: "translate(-50%, -50%)", // Center the elements
+                }}
+              />
+            )
+          )}
         </Box>
       </Box>
 
