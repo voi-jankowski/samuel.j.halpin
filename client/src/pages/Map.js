@@ -143,7 +143,7 @@ export default function Map() {
         </Box>
       </Box>
 
-      <Box mt={-20} zIndex={1} position={"relative"}>
+      <Box mt={-20} mb={20} zIndex={1} position={"relative"}>
         {/* Use the Image component and set the source of the background image */}
         <Image
           src="/assets/images/Map_Frame.png"

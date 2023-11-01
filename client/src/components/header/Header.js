@@ -44,8 +44,8 @@ function Header() {
           alt="Heading Baloon"
           width={baloonSize}
           ml="5%"
-          animate={{ x: [1000, 0] }}
-          transition={{ duration: 8, ease: "easeInOut" }}
+          animate={{ x: [500, 0], opacity: [0, 1] }}
+          transition={{ duration: 7, ease: "easeInOut" }}
         />
         <Flex direction="column" alignItems="right" width={logoSize}>
           <Image src="./assets/images/sam-logo.png" alt="Sam's Logo" />

@@ -105,7 +105,7 @@ export default function MothElement({
       >
         <ModalOverlay />
         <ModalContent>
-          <ModalCloseButton />
+          <ModalCloseButton color={"purple.900"} />
           <ModalBody>
             <Inspiration
               title={title}
