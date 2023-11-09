@@ -80,15 +80,24 @@ const ProfileLink = () => {
     <>
       {Auth.loggedIn() ? (
         <Flex alignItems={"center"}>
-          <Image
+          <MotionImage
             boxSize="80px"
             src={user.userIcon || "./assets/images/moth7.png"}
+            variants={shakeVariant}
+            initial="initial"
+            whileHover="shake"
           />
           Profile{" "}
         </Flex>
       ) : (
         <Flex alignItems={"center"}>
-          <Image boxSize="80px" src={"./assets/images/moth1.png "} />
+          <MotionImage
+            boxSize="80px"
+            src={"./assets/images/moth1.png"}
+            variants={shakeVariant}
+            initial="initial"
+            whileHover="shake"
+          />
           Login{" "}
         </Flex>
       )}
