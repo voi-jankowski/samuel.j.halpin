@@ -31,6 +31,7 @@ import Signup from "./Signup";
 
 import { motion } from "framer-motion";
 import { shakeVariant } from "../../utils/animationVariants";
+const MotionImage = motion(Image);
 
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../features/user";
