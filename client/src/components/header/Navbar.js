@@ -31,7 +31,6 @@ import Signup from "./Signup";
 
 import { motion } from "framer-motion";
 import { shakeVariant } from "../../utils/animationVariants";
-const MotionImage = motion(Image);
 
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../features/user";
@@ -73,6 +72,8 @@ const NavLink = ({ children, url }) => {
   );
 };
 
+const MotionImage = motion(Image);
+
 const ProfileLink = () => {
   const user = useSelector((state) => state.user.value);
 
@@ -85,7 +86,7 @@ const ProfileLink = () => {
             src={user.userIcon || "./assets/images/moth7.png"}
             variants={shakeVariant}
             initial="initial"
-            whileHover="shake"
+            whileInView="shake"
           />
           Profile{" "}
         </Flex>
@@ -96,7 +97,7 @@ const ProfileLink = () => {
             src={"./assets/images/moth1.png"}
             variants={shakeVariant}
             initial="initial"
-            whileHover="shake"
+            whileInView="shake"
           />
           Login{" "}
         </Flex>
@@ -203,9 +204,16 @@ export default function Navbar() {
                   ) : (
                     <>
                       <Center>
-                        <Avatar
+                        {/* <Avatar
                           size={"2xl"}
                           src={"./assets/images/moth4.png"}
+                        /> */}
+                        <MotionImage
+                          boxSize="120px"
+                          src={"./assets/images/moth4.png"}
+                          variants={shakeVariant}
+                          initial="initial"
+                          whileHover="shake"
                         />
                       </Center>
 
