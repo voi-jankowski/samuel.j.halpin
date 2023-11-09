@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
+import { shakeVariant } from "../../utils/animationVariants";
 import {
   Image,
   Box,
@@ -17,24 +18,6 @@ import {
 import Inspiration from "./Inspiration";
 
 const MotionImage = motion(Box); // Wrap the Image component in motion
-
-const shakeVariant = {
-  initial: {
-    rotate: 0, // Initial rotation
-  },
-  shake: {
-    rotate: [
-      0, -10, 10, -10, 10, -5, 5, 0, -10, 10, -10, 10, -5, 5, 0, -10, 10, -10,
-      10, -5, 5, 0, -10, 10, -10, 10, -5, 5, 0,
-    ],
-    scale: [1, 1.1, 1.1, 1.1, 1.1, 1.05, 1.05, 1],
-    transition: {
-      duration: 0.8, // Total animation duration in seconds
-      ease: "easeInOut", // You can adjust the easing function
-      loop: Infinity, // Infinite loop
-    },
-  },
-};
 
 export default function MothElement({
   title,

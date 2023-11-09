@@ -29,6 +29,9 @@ import { FaUser } from "react-icons/fa";
 import Login from "./Login";
 import Signup from "./Signup";
 
+import { motion } from "framer-motion";
+import { shakeVariant } from "../../utils/animationVariants";
+
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../features/user";
 
