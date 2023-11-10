@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Button,
@@ -11,16 +10,11 @@ import {
   Stack,
   Text,
   useColorModeValue,
-  Avatar,
-  AvatarBadge,
-  IconButton,
-  Center,
   Container,
   Modal,
   ModalOverlay,
   ModalContent,
 } from "@chakra-ui/react";
-import { SmallCloseIcon } from "@chakra-ui/icons";
 
 import { useSelector, useDispatch } from "react-redux";
 import { update } from "../features/user";
@@ -111,7 +105,7 @@ export default function Profile() {
                 User Profile Edit
               </Heading>
               <form onSubmit={handleFormSubmit}>
-                <FormControl id="userIcon">
+                {/* <FormControl id="userIcon">
                   <FormLabel>User Icon</FormLabel>
 
                   <Stack direction={["column", "row"]} spacing={6}>
@@ -132,7 +126,7 @@ export default function Profile() {
                       <Button w="full">Change Icon</Button>
                     </Center>
                   </Stack>
-                </FormControl>
+                </FormControl> */}
                 <FormControl id="userName">
                   <FormLabel>Username</FormLabel>
                   <Input
@@ -142,6 +136,7 @@ export default function Profile() {
                     name="username"
                     value={formState.username}
                     onChange={handleChange}
+                    focusBorderColor="purple.500"
                   />
                 </FormControl>
                 <FormControl id="email">
@@ -153,6 +148,7 @@ export default function Profile() {
                     name="email"
                     value={formState.email}
                     onChange={handleChange}
+                    focusBorderColor="purple.500"
                   />
                 </FormControl>
                 <FormControl id="password">
@@ -164,6 +160,7 @@ export default function Profile() {
                     name="password"
                     value={formState.password}
                     onChange={handleChange}
+                    focusBorderColor="purple.500"
                   />
                 </FormControl>
                 <br />
