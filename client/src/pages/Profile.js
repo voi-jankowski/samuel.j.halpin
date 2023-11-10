@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Button,
   Flex,
@@ -35,6 +36,10 @@ const Auth = new AuthService();
 
 export default function Profile() {
   const [isDeleteOpen, setDeleteOpen] = useState(false);
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/");
+  };
 
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.value);
@@ -211,7 +216,7 @@ export default function Profile() {
                 _hover={{
                   bg: "purple.500",
                 }}
-                onClick={() => redirect("/")}
+                onClick={handleClick}
               >
                 Return to Home
               </Button>
