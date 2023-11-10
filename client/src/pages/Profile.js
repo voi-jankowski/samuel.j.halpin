@@ -93,7 +93,7 @@ export default function Profile() {
           username: data.updateUser.username,
           email: data.updateUser.email,
           password: formState.password,
-          userIcon: data.updateUser.user.userIcon,
+          // userIcon: data.updateUser.user.userIcon,
         })
       );
 
@@ -104,7 +104,7 @@ export default function Profile() {
     } catch (e) {
       console.error(e);
       // Show error alert
-      setErrorAlert("Something went wrong.");
+      setErrorAlert("Something went wrong. Try again.");
       setSuccessAlert(""); // Clear success alert
       setValidationAlert(""); // Clear validation alert
     }
@@ -221,6 +221,7 @@ export default function Profile() {
                     _hover={{
                       bg: "purple.500",
                     }}
+                    type="submit"
                   >
                     Update Profile
                   </Button>
