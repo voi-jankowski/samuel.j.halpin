@@ -1,6 +1,11 @@
 // Template sourced from https://chakra-templates.dev/forms/authentication
 import React from "react";
 import {
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
+  CloseButton,
   Flex,
   Box,
   FormControl,
@@ -38,6 +43,10 @@ export default function SignupCard({ setSignupOpen }) {
     password: "",
   });
   const [addUser, { error, data }] = useMutation(ADD_USER);
+
+  const [successAlert, setSuccessAlert] = useState(""); // Success alert state
+  const [errorAlert, setErrorAlert] = useState(""); // Error alert state
+  const [validationAlert, setValidationAlert] = useState(""); // Validation alert state
 
   const handleChange = (event) => {
     const { name, value } = event.target;
