@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
+  CloseButton,
   Button,
   Flex,
   FormControl,
@@ -65,6 +70,18 @@ export default function Profile() {
     event.preventDefault();
     console.log(formState);
 
+    // Check for empty fields and display a validation alert
+    if (
+      !formState.username.trim() ||
+      !formState.email.trim() ||
+      !formState.password.trim()
+    ) {
+      setValidationAlert("All fields must be filled.");
+      setSuccessAlert(""); // Clear success alert
+      setErrorAlert(""); // Clear error alert
+      return;
+    }
+
     try {
       const { data } = await updateUser({
         variables: { ...formState },
@@ -79,8 +96,17 @@ export default function Profile() {
           userIcon: data.updateUser.user.userIcon,
         })
       );
+
+      // Show success alert
+      setSuccessAlert("Profile has been updated.");
+      setErrorAlert(""); // Clear error alert
+      setValidationAlert(""); // Clear validation alert
     } catch (e) {
       console.error(e);
+      // Show error alert
+      setErrorAlert("Something went wrong.");
+      setSuccessAlert(""); // Clear success alert
+      setValidationAlert(""); // Clear validation alert
     }
   };
 
@@ -199,6 +225,51 @@ export default function Profile() {
                     Update Profile
                   </Button>
                 </Stack>
+
+                {/* Success Alert */}
+                {successAlert && (
+                  <Alert status="success" mt={4} rounded="md">
+                    <AlertIcon />
+                    <AlertTitle mr={2}>Success!</AlertTitle>
+                    <AlertDescription>{successAlert}</AlertDescription>
+                    <CloseButton
+                      onClick={() => setSuccessAlert("")}
+                      position="absolute"
+                      right="8px"
+                      top="8px"
+                    />
+                  </Alert>
+                )}
+
+                {/* Error Alert */}
+                {errorAlert && (
+                  <Alert status="error" mt={4} rounded="md">
+                    <AlertIcon />
+                    <AlertTitle mr={2}>Error!</AlertTitle>
+                    <AlertDescription>{errorAlert}</AlertDescription>
+                    <CloseButton
+                      onClick={() => setErrorAlert("")}
+                      position="absolute"
+                      right="8px"
+                      top="8px"
+                    />
+                  </Alert>
+                )}
+
+                {/* Validation Alert */}
+                {validationAlert && (
+                  <Alert status="error" mt={4} rounded="md">
+                    <AlertIcon />
+                    <AlertTitle mr={2}>Validation Error!</AlertTitle>
+                    <AlertDescription>{validationAlert}</AlertDescription>
+                    <CloseButton
+                      onClick={() => setValidationAlert("")}
+                      position="absolute"
+                      right="8px"
+                      top="8px"
+                    />
+                  </Alert>
+                )}
               </form>
             </>
           ) : (
