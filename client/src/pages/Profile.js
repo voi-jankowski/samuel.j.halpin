@@ -25,7 +25,6 @@ import { UPDATE_USER } from "../utils/mutations";
 import DeleteUser from "../components/booksComponents/DeleteUser";
 
 import AuthService from "../utils/auth";
-import { redirect } from "react-router-dom";
 const Auth = new AuthService();
 
 export default function Profile() {
@@ -48,6 +47,10 @@ export default function Profile() {
   });
 
   const [updateUser, { error, data }] = useMutation(UPDATE_USER);
+
+  const [successAlert, setSuccessAlert] = useState(""); // Success alert state
+  const [errorAlert, setErrorAlert] = useState(""); // Error alert state
+  const [validationAlert, setValidationAlert] = useState(""); // Validation alert state
 
   const handleChange = (event) => {
     const { name, value } = event.target;
