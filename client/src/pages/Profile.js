@@ -30,6 +30,7 @@ import { UPDATE_USER } from "../utils/mutations";
 import DeleteUser from "../components/booksComponents/DeleteUser";
 
 import AuthService from "../utils/auth";
+import { redirect } from "react-router-dom";
 const Auth = new AuthService();
 
 export default function Profile() {
@@ -200,9 +201,20 @@ export default function Profile() {
               <Heading fontSize={"4xl"} textAlign={"center"}>
                 Log in or Sign up
               </Heading>
-              <Text fontSize={"lg"} color={"gray.600"}>
-                to enjoy all of our cool features ✌️
-              </Text>
+              <Heading fontSize={"4xl"} textAlign={"center"}>
+                or
+              </Heading>
+              <Button
+                bg={"purple.400"}
+                color={"white"}
+                w="80%"
+                _hover={{
+                  bg: "purple.500",
+                }}
+                onClick={() => redirect("/")}
+              >
+                Return to Home
+              </Button>
             </Stack>
           )}
         </Stack>
