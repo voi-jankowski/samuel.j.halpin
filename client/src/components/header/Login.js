@@ -83,13 +83,13 @@ export default function Login({ setLoginOpen }) {
       align={"center"}
       justify={"center"}
       bg={useColorModeValue("gray.50", "gray.800")}
+      rounded={"lg"}
     >
       <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
         <Stack align={"center"}>
           <Heading fontSize={"4xl"}>Sign in to your account</Heading>
           <Text fontSize={"lg"} color={"gray.600"}>
-            to enjoy all of our cool <Link color={"purple.400"}>features</Link>{" "}
-            ✌️
+            to have access to all the features
           </Text>
         </Stack>
         <Box
@@ -107,6 +107,7 @@ export default function Login({ setLoginOpen }) {
                   name="email"
                   value={formState.email}
                   onChange={handleChange}
+                  focusBorderColor="purple.400"
                 />
               </FormControl>
               <FormControl id="password">
@@ -116,6 +117,7 @@ export default function Login({ setLoginOpen }) {
                   name="password"
                   value={formState.password}
                   onChange={handleChange}
+                  focusBorderColor="purple.400"
                 />
               </FormControl>
               <Stack spacing={10}>

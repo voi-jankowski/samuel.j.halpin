@@ -80,6 +80,7 @@ export default function SignupCard({ setSignupOpen }) {
       align={"center"}
       justify={"center"}
       bg={useColorModeValue("gray.50", "gray.800")}
+      rounded={"lg"}
     >
       <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
         <Stack align={"center"}>
@@ -105,6 +106,7 @@ export default function SignupCard({ setSignupOpen }) {
                   name="username"
                   value={formState.username}
                   onChange={handleChange}
+                  focusBorderColor="purple.400"
                 />
               </FormControl>
 
@@ -115,6 +117,7 @@ export default function SignupCard({ setSignupOpen }) {
                   name="email"
                   value={formState.email}
                   onChange={handleChange}
+                  focusBorderColor="purple.400"
                 />
               </FormControl>
               <FormControl id="password" isRequired>
@@ -125,6 +128,7 @@ export default function SignupCard({ setSignupOpen }) {
                     name="password"
                     value={formState.password}
                     onChange={handleChange}
+                    focusBorderColor="purple.400"
                   />
                   <InputRightElement h={"full"}>
                     <Button
