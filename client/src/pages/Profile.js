@@ -87,7 +87,7 @@ export default function Profile() {
         minH={"100vh"}
         align={"center"}
         justify={"center"}
-        bg={useColorModeValue("gray.50", "gray.800")}
+        bg={"transparent"}
       >
         <Stack
           spacing={4}
@@ -163,11 +163,11 @@ export default function Profile() {
                 <br />
                 <Stack spacing={6} direction={["column", "row"]}>
                   <Button
-                    bg={"purple.500"}
+                    bg={"red.400"}
                     color={"white"}
                     w="full"
                     _hover={{
-                      bg: "red.400",
+                      bg: "red.500",
                     }}
                     onClick={() => setDeleteOpen(true)}
                   >
@@ -183,11 +183,11 @@ export default function Profile() {
                     </ModalContent>
                   </Modal>
                   <Button
-                    bg={"blue.400"}
+                    bg={"purple.400"}
                     color={"white"}
                     w="full"
                     _hover={{
-                      bg: "blue.500",
+                      bg: "purple.500",
                     }}
                   >
                     Update Profile

@@ -103,7 +103,7 @@ export default function SignupCard({ setSignupOpen }) {
                 <Input
                   type="text"
                   name="username"
-                  value={formState.name}
+                  value={formState.username}
                   onChange={handleChange}
                 />
               </FormControl>

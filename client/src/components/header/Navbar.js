@@ -174,9 +174,12 @@ export default function Navbar() {
                   {Auth.loggedIn() ? (
                     <>
                       <Center>
-                        <Avatar
-                          size={"2xl"}
-                          src={user.userIcon || "./assets/images/moth7.png"}
+                        <MotionImage
+                          boxSize="130px"
+                          src={"./assets/images/moth7.png"}
+                          variants={shakeVariant}
+                          initial="initial"
+                          whileHover="shake"
                         />
                       </Center>
                       <br />
@@ -209,7 +212,7 @@ export default function Navbar() {
                           src={"./assets/images/moth4.png"}
                         /> */}
                         <MotionImage
-                          boxSize="120px"
+                          boxSize="130px"
                           src={"./assets/images/moth4.png"}
                           variants={shakeVariant}
                           initial="initial"
