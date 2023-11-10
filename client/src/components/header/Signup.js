@@ -175,10 +175,10 @@ export default function SignupCard({ setSignupOpen }) {
                 <Button
                   loadingText="Submitting"
                   size="lg"
-                  bg={"purple.500"}
+                  bg={"purple.400"}
                   color={"white"}
                   _hover={{
-                    bg: "red.400",
+                    bg: "purple.500",
                   }}
                   type="submit"
                 >

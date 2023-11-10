@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/samuel-database",
+  process.env.MONGODB_URI ||
+    "mongodb://127.0.0.1:27017/samuel.j.halpin-database",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
