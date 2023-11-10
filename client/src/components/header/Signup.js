@@ -28,7 +28,6 @@ import { login } from "../../features/user";
 
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../../utils/mutations";
-import { useHistory } from "react-router-dom";
 
 import AuthService from "../../utils/auth";
 const Auth = new AuthService();
@@ -61,6 +60,18 @@ export default function SignupCard({ setSignupOpen }) {
     event.preventDefault();
     console.log(formState);
 
+    // Check for empty fields and display a validation alert
+    if (
+      !formState.username.trim() ||
+      !formState.email.trim() ||
+      !formState.password.trim()
+    ) {
+      setValidationAlert("All fields must be filled.");
+      setSuccessAlert(""); // Clear success alert
+      setErrorAlert(""); // Clear error alert
+      return;
+    }
+
     try {
       const { data } = await addUser({
         variables: { ...formState },
@@ -80,6 +91,15 @@ export default function SignupCard({ setSignupOpen }) {
       setSignupOpen(false);
     } catch (e) {
       console.error(e);
+
+      setSuccessAlert(""); // Clear success alert
+      setValidationAlert(""); // Clear validation alert
+      // Check if the error is a duplicate key error
+      if (e.message.includes("E11000 duplicate key error")) {
+        setErrorAlert("This email is already in use.");
+      } else {
+        setErrorAlert("Something went wrong.");
+      }
     }
   };
 
@@ -97,7 +117,7 @@ export default function SignupCard({ setSignupOpen }) {
             Sign up
           </Heading>
           <Text fontSize={"lg"} color={"gray.600"}>
-            to enjoy all of our cool features ✌️
+            to have access to all the features
           </Text>
         </Stack>
         <Box
@@ -166,6 +186,46 @@ export default function SignupCard({ setSignupOpen }) {
                 </Button>
               </Stack>
             </Stack>
+
+            {/* Success Alert */}
+            {successAlert && (
+              <Alert status="success" mt={4} rounded="md">
+                <AlertIcon />
+                <AlertTitle mr={2}>Success!</AlertTitle>
+                <AlertDescription>{successAlert}</AlertDescription>
+                <CloseButton
+                  onClick={() => setSuccessAlert("")}
+                  position="relative"
+                />
+              </Alert>
+            )}
+
+            {/* Error Alert */}
+            {errorAlert && (
+              <Alert status="error" mt={4} rounded="md">
+                <AlertIcon />
+                <AlertDescription style={{ whiteSpace: "normal" }}>
+                  {errorAlert}
+                </AlertDescription>
+                <CloseButton
+                  onClick={() => setErrorAlert("")}
+                  position="relative"
+                />
+              </Alert>
+            )}
+
+            {/* Validation Alert */}
+            {validationAlert && (
+              <Alert status="error" mt={4} rounded="md">
+                <AlertIcon />
+                <AlertTitle mr={2}>Validation Error!</AlertTitle>
+                <AlertDescription>{validationAlert}</AlertDescription>
+                <CloseButton
+                  onClick={() => setValidationAlert("")}
+                  position="relative"
+                />
+              </Alert>
+            )}
           </form>
         </Box>
       </Stack>

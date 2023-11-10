@@ -235,9 +235,7 @@ export default function Profile() {
                     <AlertDescription>{successAlert}</AlertDescription>
                     <CloseButton
                       onClick={() => setSuccessAlert("")}
-                      position="absolute"
-                      right="8px"
-                      top="8px"
+                      position="relative"
                     />
                   </Alert>
                 )}
@@ -250,9 +248,7 @@ export default function Profile() {
                     <AlertDescription>{errorAlert}</AlertDescription>
                     <CloseButton
                       onClick={() => setErrorAlert("")}
-                      position="absolute"
-                      right="8px"
-                      top="8px"
+                      position="relative"
                     />
                   </Alert>
                 )}
@@ -265,9 +261,7 @@ export default function Profile() {
                     <AlertDescription>{validationAlert}</AlertDescription>
                     <CloseButton
                       onClick={() => setValidationAlert("")}
-                      position="absolute"
-                      right="8px"
-                      top="8px"
+                      position="relative"
                     />
                   </Alert>
                 )}
