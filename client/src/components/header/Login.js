@@ -2,19 +2,25 @@
 import React from "react";
 import { useState } from "react";
 import {
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
+  CloseButton,
   Flex,
   Box,
   FormControl,
   FormLabel,
   Input,
-  Checkbox,
+  InputGroup,
+  InputRightElement,
   Stack,
-  Link,
   Button,
   Heading,
   Text,
   useColorModeValue,
 } from "@chakra-ui/react";
+import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { useDispatch } from "react-redux";
 import { login } from "../../features/user";
 // import { useHistory } from "react-router-dom";
@@ -27,7 +33,7 @@ const Auth = new AuthService();
 
 export default function Login({ setLoginOpen }) {
   const dispatch = useDispatch();
-  // const history = useHistory();
+  const [showPassword, setShowPassword] = useState(false);
 
   const [formState, setFormState] = useState({
     email: "",
@@ -110,15 +116,27 @@ export default function Login({ setLoginOpen }) {
                   focusBorderColor="purple.400"
                 />
               </FormControl>
-              <FormControl id="password">
+              <FormControl id="password" isRequired>
                 <FormLabel>Password</FormLabel>
-                <Input
-                  type="password"
-                  name="password"
-                  value={formState.password}
-                  onChange={handleChange}
-                  focusBorderColor="purple.400"
-                />
+                <InputGroup>
+                  <Input
+                    type={showPassword ? "text" : "password"}
+                    name="password"
+                    value={formState.password}
+                    onChange={handleChange}
+                    focusBorderColor="purple.400"
+                  />
+                  <InputRightElement h={"full"}>
+                    <Button
+                      variant={"ghost"}
+                      onClick={() =>
+                        setShowPassword((showPassword) => !showPassword)
+                      }
+                    >
+                      {showPassword ? <ViewIcon /> : <ViewOffIcon />}
+                    </Button>
+                  </InputRightElement>
+                </InputGroup>
               </FormControl>
               <Stack spacing={10}>
                 <Button

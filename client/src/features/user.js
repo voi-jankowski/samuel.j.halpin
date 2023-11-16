@@ -4,7 +4,7 @@ const initialStateValue = {
   username: "",
   email: "",
   password: "",
-  userIcon: "https://bit.ly/sage-adebayo",
+  userIcon: "./assets/images/moth7.png",
 };
 
 export const userSlice = createSlice({
