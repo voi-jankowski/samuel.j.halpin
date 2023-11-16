@@ -22,7 +22,7 @@ const userSchema = new Schema({
   },
   userIcon: {
     type: String,
-    default: "https://bit.ly/sage-adebayo",
+    default: "./assets/images/moth7.png",
   },
   comments: [
     {

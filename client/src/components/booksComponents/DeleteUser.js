@@ -59,10 +59,11 @@ export default function DeleteUser({ onClose }) {
 
   return (
     <Flex
-      minH={"100vh"}
+      id="delete-modal"
+      minH={"60vh"}
       align={"center"}
       justify={"center"}
-      bg={useColorModeValue("gray.50", "gray.800")}
+      background={"transparent"}
     >
       <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
         <Stack align={"center"}>
@@ -88,6 +89,7 @@ export default function DeleteUser({ onClose }) {
                 justify={"space-between"}
               >
                 <Checkbox
+                  colorScheme="purple"
                   onChange={(e) => setDeleteConfirmed(e.target.checked)}
                 >
                   Tick the box to confirm
@@ -95,11 +97,11 @@ export default function DeleteUser({ onClose }) {
               </Stack>
               <Stack spacing={6} direction={["column", "row"]}>
                 <Button
-                  bg={"blue.400"}
+                  bg={"purple.400"}
                   color={"white"}
                   w="full"
                   _hover={{
-                    bg: "blue.500",
+                    bg: "purple.500",
                   }}
                   onClick={handleCancel}
                 >
