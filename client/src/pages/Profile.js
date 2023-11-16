@@ -265,6 +265,19 @@ export default function Profile() {
                     />
                   </Alert>
                 )}
+                <br />
+
+                <Button
+                  bg={"purple.400"}
+                  color={"white"}
+                  w="100%"
+                  _hover={{
+                    bg: "purple.500",
+                  }}
+                  onClick={handleClick}
+                >
+                  Return to Home
+                </Button>
               </form>
             </>
           ) : (
