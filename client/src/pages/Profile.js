@@ -29,6 +29,9 @@ import { UPDATE_USER } from "../utils/mutations";
 
 import DeleteUser from "../components/booksComponents/DeleteUser";
 
+import Login from "../components/header/Login";
+import Signup from "../components/header/Signup";
+
 import AuthService from "../utils/auth";
 const Auth = new AuthService();
 
@@ -38,6 +41,10 @@ export default function Profile() {
   const handleClick = () => {
     navigate("/");
   };
+
+  // Add a separate state variable to track Login modal visibility
+  const [isLoginOpen, setLoginOpen] = useState(false);
+  const [isSignupOpen, setSignupOpen] = useState(false);
 
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.value);
@@ -283,8 +290,41 @@ export default function Profile() {
           ) : (
             <Stack align={"center"}>
               <Heading fontSize={"4xl"} textAlign={"center"}>
-                Log in or Sign up
+                <span
+                  onClick={() => setLoginOpen(true)}
+                  style={{ cursor: "pointer", color: "violet" }}
+                >
+                  Log in
+                </span>{" "}
+                or{" "}
+                <span
+                  onClick={() => setSignupOpen(true)}
+                  style={{ cursor: "pointer", color: "violet" }}
+                >
+                  Sign up
+                </span>
               </Heading>
+
+              <Modal
+                size={"lg"}
+                isOpen={isLoginOpen}
+                onClose={() => setLoginOpen(false)}
+              >
+                <ModalOverlay />
+                <ModalContent>
+                  <Login setLoginOpen={setLoginOpen} />
+                </ModalContent>
+              </Modal>
+              <Modal
+                size={"lg"}
+                isOpen={isSignupOpen}
+                onClose={() => setSignupOpen(false)}
+              >
+                <ModalOverlay />
+                <ModalContent>
+                  <Signup setSignupOpen={setSignupOpen} />
+                </ModalContent>
+              </Modal>
               <Heading fontSize={"4xl"} textAlign={"center"}>
                 or
               </Heading>

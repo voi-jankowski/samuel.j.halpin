@@ -70,6 +70,7 @@ export default function AddReply({ commentId, showAddReply, setshowAddReply }) {
           value={replyText}
           onChange={handleInputChange}
           placeholder="@commentAuthor"
+          focusBorderColor="purple.400"
         />
       </FormControl>
 

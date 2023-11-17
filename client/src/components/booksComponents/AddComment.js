@@ -95,6 +95,7 @@ export default function AddComment({ commentedBook }) {
           value={commentText}
           onChange={handleInputChange}
           placeholder="Share your thoughts on the book..."
+          focusBorderColor="purple.400"
         />
       </FormControl>
 
