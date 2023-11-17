@@ -19,6 +19,7 @@ import {
   Heading,
   Text,
   useColorModeValue,
+  Link,
 } from "@chakra-ui/react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { useDispatch } from "react-redux";
@@ -29,6 +30,7 @@ import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../../utils/mutations";
 
 import AuthService from "../../utils/auth";
+
 const Auth = new AuthService();
 
 export default function Login({ setLoginOpen }) {
@@ -181,6 +183,11 @@ export default function Login({ setLoginOpen }) {
                 </Button>
               </Stack>
             </Stack>
+            <br />
+
+            <Text textAlign={"right"}>
+              <Link color={"purple.500"}>Forgot password?</Link>
+            </Text>
 
             {/* Success Alert */}
             {successAlert && (
