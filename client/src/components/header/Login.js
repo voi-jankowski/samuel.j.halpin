@@ -42,6 +42,10 @@ export default function Login({ setLoginOpen }) {
 
   const [loginUser, { error, data }] = useMutation(LOGIN_USER);
 
+  const [successAlert, setSuccessAlert] = useState(""); // Success alert state
+  const [errorAlert, setErrorAlert] = useState(""); // Error alert state
+  const [validationAlert, setValidationAlert] = useState(""); // Validation alert state
+
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -54,6 +58,14 @@ export default function Login({ setLoginOpen }) {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log(formState);
+
+    // Check for empty fields and display a validation alert
+    if (!formState.email.trim() || !formState.password.trim()) {
+      setValidationAlert("All fields must be filled.");
+      setSuccessAlert(""); // Clear success alert
+      setErrorAlert(""); // Clear error alert
+      return;
+    }
 
     try {
       const { data } = await loginUser({
@@ -72,15 +84,36 @@ export default function Login({ setLoginOpen }) {
       Auth.login(data.login.token);
 
       setLoginOpen(false);
+
+      // Show success alert for 2 seconds and redirect to homepage
+      setErrorAlert(""); // Clear error alert
+      setValidationAlert(""); // Clear validation alert
+      setSuccessAlert("Login successful.");
+
+      // Delay the redirect to the homepage
+      setTimeout(() => {
+        setSuccessAlert("");
+        // Redirect to homepage here
+        window.location.replace("/");
+      }, 2000);
     } catch (e) {
       console.error(e);
+
+      setSuccessAlert(""); // Clear success alert
+      setValidationAlert(""); // Clear validation alert
+      // Check if the error is a duplicate key error
+      if (e.message.includes("Incorrect credentials")) {
+        setErrorAlert("Incorrect login credentials.");
+      } else {
+        setErrorAlert("Something went wrong.");
+      }
     }
 
-    // clear form values
-    setFormState({
-      email: "",
-      password: "",
-    });
+    // // clear form values
+    // setFormState({
+    //   email: "",
+    //   password: "",
+    // });
   };
 
   return (
@@ -106,7 +139,7 @@ export default function Login({ setLoginOpen }) {
         >
           <form onSubmit={handleFormSubmit}>
             <Stack spacing={4}>
-              <FormControl id="email">
+              <FormControl id="email" isRequired>
                 <FormLabel>Email address</FormLabel>
                 <Input
                   type="email"
@@ -151,6 +184,46 @@ export default function Login({ setLoginOpen }) {
                 </Button>
               </Stack>
             </Stack>
+
+            {/* Success Alert */}
+            {successAlert && (
+              <Alert status="success" mt={4} rounded="md">
+                <AlertIcon />
+                <AlertTitle mr={2}>Success!</AlertTitle>
+                <AlertDescription>{successAlert}</AlertDescription>
+                <CloseButton
+                  onClick={() => setSuccessAlert("")}
+                  position="relative"
+                />
+              </Alert>
+            )}
+
+            {/* Error Alert */}
+            {errorAlert && (
+              <Alert status="error" mt={4} rounded="md">
+                <AlertIcon />
+                <AlertDescription style={{ whiteSpace: "normal" }}>
+                  {errorAlert}
+                </AlertDescription>
+                <CloseButton
+                  onClick={() => setErrorAlert("")}
+                  position="relative"
+                />
+              </Alert>
+            )}
+
+            {/* Validation Alert */}
+            {validationAlert && (
+              <Alert status="error" mt={4} rounded="md">
+                <AlertIcon />
+                <AlertTitle mr={2}>Validation Error!</AlertTitle>
+                <AlertDescription>{validationAlert}</AlertDescription>
+                <CloseButton
+                  onClick={() => setValidationAlert("")}
+                  position="relative"
+                />
+              </Alert>
+            )}
           </form>
         </Box>
       </Stack>
