@@ -86,7 +86,19 @@ export default function SignupCard({ setSignupOpen }) {
       );
 
       Auth.login(data.addUser.token);
-      setSignupOpen(false);
+
+      // Show success alert for 2 seconds and redirect to homepage
+      setErrorAlert(""); // Clear error alert
+      setValidationAlert(""); // Clear validation alert
+      setSuccessAlert("Account created successfully.");
+
+      // Delay refreshing the page to allow the success alert to show
+      setTimeout(() => {
+        setSuccessAlert("");
+        // Refresh the page after logout but remain on the same page
+        window.location.replace(window.location.pathname);
+        // setSignupOpen(false);
+      }, 2000);
     } catch (e) {
       console.error(e);
 

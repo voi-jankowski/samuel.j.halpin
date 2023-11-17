@@ -88,7 +88,7 @@ export default function Login({ setLoginOpen }) {
       setValidationAlert(""); // Clear validation alert
       setSuccessAlert("Login successful.");
 
-      // Delay the redirect to the homepage
+      // Delay refreshing the page to allow the success alert to show
       setTimeout(() => {
         setSuccessAlert("");
         // Refresh the page after logout but remain on the same page
