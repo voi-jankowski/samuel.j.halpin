@@ -92,13 +92,11 @@ export default function SignupCard({ setSignupOpen }) {
       setValidationAlert(""); // Clear validation alert
       setSuccessAlert("Account created successfully.");
 
-      // Delay refreshing the page to allow the success alert to show
-      setTimeout(() => {
-        setSuccessAlert("");
-        // Refresh the page after logout but remain on the same page
-        window.location.replace(window.location.pathname);
-        // setSignupOpen(false);
-      }, 2000);
+      // Refresh the page after logout but remain on the same page
+      window.location.replace(window.location.pathname);
+
+      // Close the modal
+      setSignupOpen(false);
     } catch (e) {
       console.error(e);
 

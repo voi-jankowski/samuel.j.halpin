@@ -88,13 +88,11 @@ export default function Login({ setLoginOpen }) {
       setValidationAlert(""); // Clear validation alert
       setSuccessAlert("Login successful.");
 
-      // Delay refreshing the page to allow the success alert to show
-      setTimeout(() => {
-        setSuccessAlert("");
-        // Refresh the page after logout but remain on the same page
-        window.location.replace(window.location.pathname);
-        // setLoginOpen(false);
-      }, 2000);
+      // Refresh the page after logout but remain on the same page
+      window.location.replace(window.location.pathname);
+
+      // close the modal
+      setLoginOpen(false);
     } catch (e) {
       console.error(e);
 
@@ -175,7 +173,7 @@ export default function Login({ setLoginOpen }) {
                   bg={"purple.400"}
                   color={"white"}
                   _hover={{
-                    bg: "purple.700",
+                    bg: "purple.500",
                   }}
                   type="submit"
                 >

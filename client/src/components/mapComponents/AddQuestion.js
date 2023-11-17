@@ -92,6 +92,7 @@ export default function AddQuestion() {
           value={questionText}
           onChange={handleInputChange}
           placeholder="Ask me any question..."
+          focusBorderColor="purple.400"
         />
       </FormControl>
 

@@ -71,6 +71,7 @@ export default function AddAnswer({
           value={answerText}
           onChange={handleInputChange}
           placeholder="Respond here..."
+          focusBorderColor="purple.400"
         />
       </FormControl>
 
