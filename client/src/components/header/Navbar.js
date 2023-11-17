@@ -121,6 +121,9 @@ export default function Navbar() {
     event.preventDefault();
     Auth.logout();
     dispatch(logout());
+
+    // Refresh the page after logout but remain on the same page
+    window.location.replace(window.location.pathname);
   };
 
   const linkSize = useBreakpointValue({

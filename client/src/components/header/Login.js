@@ -83,8 +83,6 @@ export default function Login({ setLoginOpen }) {
       // Save the token to localStorage
       Auth.login(data.login.token);
 
-      setLoginOpen(false);
-
       // Show success alert for 2 seconds and redirect to homepage
       setErrorAlert(""); // Clear error alert
       setValidationAlert(""); // Clear validation alert
@@ -93,8 +91,9 @@ export default function Login({ setLoginOpen }) {
       // Delay the redirect to the homepage
       setTimeout(() => {
         setSuccessAlert("");
-        // Redirect to homepage here
-        window.location.replace("/");
+        // Refresh the page after logout but remain on the same page
+        window.location.replace(window.location.pathname);
+        // setLoginOpen(false);
       }, 2000);
     } catch (e) {
       console.error(e);
