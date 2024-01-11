@@ -186,7 +186,9 @@ export default function Login({ setLoginOpen }) {
             <br />
 
             <Text textAlign={"right"}>
-              <Link color={"purple.500"}>Forgot password?</Link>
+              <Link color={"purple.500"} href="/passwordreset">
+                Forgot password?
+              </Link>
             </Text>
 
             {/* Success Alert */}
