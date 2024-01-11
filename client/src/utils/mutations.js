@@ -63,6 +63,24 @@ export const UPDATE_USER = gql`
   }
 `;
 
+// Request a password reset
+export const REQUEST_PASSWORD_RESET = gql`
+  mutation RequestPasswordReset($email: String!) {
+    requestPasswordReset(email: $email) {
+      message
+    }
+  }
+`;
+
+// Reset a password
+export const RESET_PASSWORD = gql`
+  mutation ResetPassword($password: String!, $token: String!) {
+    resetPassword(password: $password, token: $token) {
+      message
+    }
+  }
+`;
+
 // Add a comment
 export const ADD_COMMENT = gql`
   mutation AddComment($commentText: String!, $commentedBook: String!) {
