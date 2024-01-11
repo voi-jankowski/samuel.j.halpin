@@ -31,8 +31,8 @@ module.exports = {
   },
 
   // generate a password reset token
-  generateResetToken: function ({ email, username, _id }) {
-    const payload = { email, username, _id };
+  generateResetToken: function ({ email, _id }) {
+    const payload = { email, _id };
     return jwt.sign({ data: payload }, secret, { expiresIn: expirationReset });
   },
 
