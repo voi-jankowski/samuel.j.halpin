@@ -202,6 +202,16 @@ const resolvers = {
       return { message: "Password reset email sent" };
     },
 
+    // reset password
+    resetPassword: async (parent, { token, newPassword }) => {
+      // verify the reset token
+      const { email } = verifyResetToken(token);
+
+      if (!email) {
+        throw new AuthenticationError("Invalid or expired token");
+      }
+    },
+
     // add comment
     addComment: async (parent, { commentedBook, commentText }, context) => {
       if (context.user) {
