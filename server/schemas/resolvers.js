@@ -210,6 +210,19 @@ const resolvers = {
       if (!email) {
         throw new AuthenticationError("Invalid or expired token");
       }
+
+      // find the user by email and update the password
+      const updatedUser = await User.findOneAndUpdate(
+        { email },
+        { password: newPassword },
+        { new: true, runValidators: true }
+      );
+
+      if (!updatedUser) {
+        throw new AuthenticationError("No user with this email found");
+      }
+
+      return { message: "Password reset successful" };
     },
 
     // add comment
