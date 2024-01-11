@@ -1,6 +1,6 @@
 const { AuthenticationError } = require("apollo-server-express");
 const { User, Product, Order, Question, Comment } = require("../models");
-const { signToken } = require("../utils/auth");
+const { signToken, generateResetToken, verifyResetToken } = require("../utils/auth");
 const stripe = require("stripe")(
   "sk_test_51NUJK2AfEwsDyM4I9JDGzRlXlYALqglL2SRBqVUKT01R4ucQFbCvmY255kiREGNkbAtwyIwKUjETnNZTNzAYwEsX00rcl9jbwl"
 );
@@ -158,6 +158,18 @@ const resolvers = {
       }
       throw new AuthenticationError("Not logged in");
     },
+
+    // request password reset
+    requestPasswordReset: async (parent, { email }) => {
+
+      // find the user by email
+      const user = await User.findOne({ email });
+      if (!user) {
+        throw new AuthenticationError("No user with this email found");
+      }
+
+      // generate a password reset token
+
 
     // add comment
     addComment: async (parent, { commentedBook, commentText }, context) => {
