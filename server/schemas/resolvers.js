@@ -1,6 +1,11 @@
 const { AuthenticationError } = require("apollo-server-express");
 const { User, Product, Order, Question, Comment } = require("../models");
-const { signToken, generateResetToken, verifyResetToken } = require("../utils/auth");
+const {
+  signToken,
+  generateResetToken,
+  verifyResetToken,
+} = require("../utils/auth");
+const nodemailer = require("nodemailer");
 const stripe = require("stripe")(
   "sk_test_51NUJK2AfEwsDyM4I9JDGzRlXlYALqglL2SRBqVUKT01R4ucQFbCvmY255kiREGNkbAtwyIwKUjETnNZTNzAYwEsX00rcl9jbwl"
 );
@@ -161,7 +166,6 @@ const resolvers = {
 
     // request password reset
     requestPasswordReset: async (parent, { email }) => {
-
       // find the user by email
       const user = await User.findOne({ email });
       if (!user) {
@@ -169,7 +173,34 @@ const resolvers = {
       }
 
       // generate a password reset token
+      const resetToken = generateResetToken(user);
 
+      // send the password reset email
+      const transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+          user: process.env.EMAIL,
+          pass: process.env.EMAIL_PASSWORD,
+        },
+      });
+
+      const mailOptions = {
+        from: process.env.EMAIL,
+        to: user.email,
+        subject: "Password Reset",
+        text: `Hi ${user.username},\n\nPlease click on the link below to reset your password:\n\n${process.env.CLIENT_URL}/reset/${resetToken}\n\nIf you did not request this, please ignore this email and your password will remain unchanged.\n`,
+      };
+
+      transporter.sendMail(mailOptions, (err, info) => {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log("Email sent: " + info.response);
+        }
+      });
+
+      return { message: "Password reset email sent" };
+    },
 
     // add comment
     addComment: async (parent, { commentedBook, commentText }, context) => {
