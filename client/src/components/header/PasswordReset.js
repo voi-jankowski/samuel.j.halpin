@@ -17,13 +17,21 @@ import {
   Link,
 } from "@chakra-ui/react";
 
+import { useMutation } from "@apollo/client";
+import { REQUEST_PASSWORD_RESET } from "../../utils/mutations";
+
 export default function PasswordReset() {
   const [formState, setFormState] = useState({
     email: "",
   });
 
+  const [requestPasswordReset, { error, data }] = useMutation(
+    REQUEST_PASSWORD_RESET
+  );
+
   const [successAlert, setSuccessAlert] = useState("");
   const [validationAlert, setValidationAlert] = useState("");
+  const [errorAlert, setErrorAlert] = useState("");
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -35,23 +43,38 @@ export default function PasswordReset() {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    console.log(formState);
 
     // Check for empty email field and display a validation alert
     if (!formState.email.trim()) {
       setValidationAlert("Email field must be filled.");
       setSuccessAlert("");
+      setErrorAlert("");
       return;
     }
 
     // Implement your password reset logic here
-    // Example: Send a password reset email to the provided email address
+    try {
+      await requestPasswordReset({
+        variables: { email: formState.email },
+      });
+
+      // Show generic success message
+      setValidationAlert("");
+      setSuccessAlert(
+        "If your email address exists in our records, you will receive a password reset link"
+      );
+      setErrorAlert("");
+    } catch (err) {
+      // Show generic error message
+      setValidationAlert("");
+      setSuccessAlert("");
+      setErrorAlert("Something went wrong, please try again later.");
+      console.error(err); // For debugging purposes only, remove in production
+    }
 
     // Clear form input
     setFormState({ email: "" });
-
-    // Show success alert
-    setValidationAlert("");
-    setSuccessAlert("Password reset instructions sent to your email.");
   };
 
   return (
@@ -130,6 +153,19 @@ export default function PasswordReset() {
               <AlertDescription>{validationAlert}</AlertDescription>
               <CloseButton
                 onClick={() => setValidationAlert("")}
+                position="relative"
+              />
+            </Alert>
+          )}
+
+          {/* Error Alert */}
+          {errorAlert && (
+            <Alert status="error" mt={4} rounded="md">
+              <AlertIcon />
+              <AlertTitle mr={2}>Error!</AlertTitle>
+              <AlertDescription>{errorAlert}</AlertDescription>
+              <CloseButton
+                onClick={() => setErrorAlert("")}
                 position="relative"
               />
             </Alert>
