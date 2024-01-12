@@ -169,7 +169,10 @@ const resolvers = {
       // find the user by email
       const user = await User.findOne({ email });
       if (!user) {
-        throw new AuthenticationError("No user with this email found");
+        return {
+          message:
+            "If your email address exists in our records, you will receive a password reset link.",
+        };
       }
 
       // generate a password reset token
@@ -199,7 +202,10 @@ const resolvers = {
         }
       });
 
-      return { message: "Password reset email sent" };
+      return {
+        message:
+          "If your email address exists in our records, you will receive a password reset link.",
+      };
     },
 
     // reset password
