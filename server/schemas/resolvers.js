@@ -195,7 +195,8 @@ const resolvers = {
         from: process.env.MAIL_USERNAME,
         to: user.email,
         subject: "Password Reset",
-        text: `Hi ${user.username},\n\nPlease click on the link below to reset your password:\n\n${process.env.CLIENT_URL}/reset/${resetToken}\n\nIf you did not request this, please ignore this email and your password will remain unchanged.\n`,
+        text: `Hi ${user.username},\n\nIt seems like you forgot your password for Samuel J. Halpn portal. If this is true, click the link below to reset your password. This link will expire in 1 hour.\n\n
+        Reset my password:\n\n${process.env.CLIENT_URL}/reset/${resetToken}\n\nIf you did not request this, please ignore this email and your password will remain unchanged.\n`,
       };
 
       transporter.sendMail(mailOptions, (err, info) => {
