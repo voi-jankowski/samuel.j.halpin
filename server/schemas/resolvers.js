@@ -179,16 +179,20 @@ const resolvers = {
       const resetToken = generateResetToken(user);
 
       // send the password reset email
-      const transporter = nodemailer.createTransport({
+      let transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
-          user: process.env.EMAIL,
-          pass: process.env.EMAIL_PASSWORD,
+          type: "OAuth2",
+          user: process.env.MAIL_USERNAME,
+          pass: process.env.MAIL_PASSWORD,
+          clientId: process.env.OAUTH_CLIENTID,
+          clientSecret: process.env.OAUTH_CLIENT_SECRET,
+          refreshToken: process.env.OAUTH_REFRESH_TOKEN,
         },
       });
 
       const mailOptions = {
-        from: process.env.EMAIL,
+        from: process.env.MAIL_USERNAME,
         to: user.email,
         subject: "Password Reset",
         text: `Hi ${user.username},\n\nPlease click on the link below to reset your password:\n\n${process.env.CLIENT_URL}/reset/${resetToken}\n\nIf you did not request this, please ignore this email and your password will remain unchanged.\n`,
