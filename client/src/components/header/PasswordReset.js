@@ -73,8 +73,8 @@ export default function PasswordReset() {
       console.error(err); // For debugging purposes only, remove in production
     }
 
-    // Clear form input
-    setFormState({ email: "" });
+    // // Clear form input
+    // setFormState({ email: "" });
   };
 
   return (

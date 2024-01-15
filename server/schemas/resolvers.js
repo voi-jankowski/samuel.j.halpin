@@ -169,14 +169,14 @@ const resolvers = {
       // find the user by email
       const user = await User.findOne({ email });
       if (!user) {
-        return {
-          message:
-            "If your email address exists in our records, you will receive a password reset link.",
-        };
+        return user;
       }
+
+      console.log(user);
 
       // generate a password reset token
       const resetToken = generateResetToken(user);
+      console.log(resetToken);
 
       // send the password reset email
       let transporter = nodemailer.createTransport({
@@ -206,10 +206,7 @@ const resolvers = {
         }
       });
 
-      return {
-        message:
-          "If your email address exists in our records, you will receive a password reset link.",
-      };
+      return user;
     },
 
     // reset password
