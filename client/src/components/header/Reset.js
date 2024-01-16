@@ -15,10 +15,14 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 
+import { useParams } from "react-router-dom";
+
 import { useMutation } from "@apollo/client";
 import { RESET_PASSWORD } from "../../utils/mutations";
 
 export default function Reset() {
+  const { token } = useParams();
+
   const [formState, setFormState] = useState({
     password: "",
     confirmPassword: "",
@@ -63,7 +67,7 @@ export default function Reset() {
       await resetPassword({
         variables: {
           password: formState.password,
-          token: window.location.search.split("=")[1],
+          token: token,
         },
       });
 
