@@ -13,15 +13,24 @@ import {
   Button,
   Heading,
   useColorModeValue,
+  Modal,
+  ModalHeader,
+  ModalOverlay,
+  ModalContent,
 } from "@chakra-ui/react";
 
 import { useParams } from "react-router-dom";
+
+import Login from "./Login";
 
 import { useMutation } from "@apollo/client";
 import { RESET_PASSWORD } from "../../utils/mutations";
 
 export default function Reset() {
   const { token } = useParams();
+
+  // Add a separate state variable to track Login modal visibility
+  const [isLoginOpen, setLoginOpen] = useState(false);
 
   const [formState, setFormState] = useState({
     password: "",
@@ -72,9 +81,14 @@ export default function Reset() {
       });
 
       // Password reset success message
-      setSuccessAlert("Password successfully reset. You can now log in.");
+      setSuccessAlert("Password successfully reset.");
       setValidationAlert("");
       setErrorAlert("");
+
+      // Open modal to login with new password after 2 seconds
+      setTimeout(() => {
+        setLoginOpen(true);
+      }, 2000);
     } catch (err) {
       console.error(err);
       setErrorAlert("Something went wrong. Please try again.");
@@ -141,6 +155,21 @@ export default function Reset() {
               </Button>
             </Stack>
           </Stack>
+
+          <Modal
+            size={"lg"}
+            isOpen={isLoginOpen}
+            onClose={() => setLoginOpen(false)}
+          >
+            <ModalOverlay />
+
+            <ModalContent>
+              <ModalHeader>
+                You can now log in with your new password.{" "}
+              </ModalHeader>
+              <Login setLoginOpen={setLoginOpen} />
+            </ModalContent>
+          </Modal>
 
           {/* Success Alert */}
           {successAlert && (
