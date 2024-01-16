@@ -230,7 +230,7 @@ const resolvers = {
         throw new AuthenticationError("No user with this email found");
       }
 
-      return { message: "Password reset successful" };
+      return updatedUser;
     },
 
     // add comment

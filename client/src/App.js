@@ -75,6 +75,7 @@ function App() {
               <Route path="/teaching" element={<TeachingResources />} />
               <Route path="/success" element={<Success />} />
               <Route path="/passwordreset" element={<PasswordReset />} />
+              {/* replace the pasth with /reset/:token */}
               <Route path="/reset" element={<Reset />} />
               <Route path="*" element={<Home />} />
             </Routes>

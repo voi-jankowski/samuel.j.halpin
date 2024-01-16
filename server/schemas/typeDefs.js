@@ -104,7 +104,7 @@ const typeDefs = gql`
       userIcon: String
     ): User
     requestPasswordReset(email: String!): User
-    resetPassword(token: String!, password: String!): String
+    resetPassword(token: String!, password: String!): User
     addComment(commentText: String!, commentedBook: String!): Comment
     removeComment(commentId: ID!): Comment
     addReply(commentId: ID!, replyText: String!): Comment
