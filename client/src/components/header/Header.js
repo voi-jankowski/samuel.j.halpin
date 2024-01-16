@@ -34,13 +34,13 @@ function Header() {
       <Flex
         as="header"
         alignItems="center"
-        backgroundImage="url(./assets/images/Mill_Header.png)"
+        backgroundImage="url(/assets/images/Mill_Header.png)"
         backgroundRepeat="no-repeat"
         backgroundPosition="left"
         backgroundSize="contain"
       >
         <MotionImage
-          src="./assets/images/baloon.png"
+          src="/assets/images/baloon.png"
           alt="Heading Baloon"
           width={baloonSize}
           ml="5%"
@@ -48,7 +48,7 @@ function Header() {
           transition={{ duration: 7, ease: "easeInOut" }}
         />
         <Flex direction="column" alignItems="right" width={logoSize}>
-          <Image src="./assets/images/sam-logo.png" alt="Sam's Logo" />
+          <Image src="/assets/images/sam-logo.png" alt="Sam's Logo" />
           <Text
             fontSize={{ base: "md", sm: "xl", md: "2xl", lg: "3xl", xl: "4xl" }}
             fontWeight="bold"

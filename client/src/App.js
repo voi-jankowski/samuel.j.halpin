@@ -54,7 +54,7 @@ const client = new ApolloClient({
 
 function App() {
   const background = {
-    backgroundImage: "url(./assets/images/background.jpg)",
+    backgroundImage: "url(/assets/images/background.jpg)",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     backgroundAttachment: "fixed",
@@ -75,8 +75,8 @@ function App() {
               <Route path="/teaching" element={<TeachingResources />} />
               <Route path="/success" element={<Success />} />
               <Route path="/passwordreset" element={<PasswordReset />} />
-              {/* replace the pasth with /reset/:token */}
-              <Route path="/reset" element={<Reset />} />
+
+              <Route path="/reset/:token" element={<Reset />} />
               <Route path="*" element={<Home />} />
             </Routes>
           </div>

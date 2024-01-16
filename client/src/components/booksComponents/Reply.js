@@ -17,7 +17,7 @@ export default function Reply({
   createdAt,
   commentId,
 }) {
-  const avatar = "./assets/images/moth1.png";
+  const avatar = "/assets/images/moth1.png";
 
   const [removeReply] = useMutation(REMOVE_REPLY, {
     variables: { commentId: commentId, replyId: replyId },

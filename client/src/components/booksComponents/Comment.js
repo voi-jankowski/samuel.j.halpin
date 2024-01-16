@@ -19,7 +19,7 @@ export default function Comment({
   createdAt,
   replies,
 }) {
-  const avatar = "./assets/images/moth7.png";
+  const avatar = "/assets/images/moth7.png";
 
   // State to display the AddReply component
   const [showAddReply, setshowAddReply] = useState(false);
