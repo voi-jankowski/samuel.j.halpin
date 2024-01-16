@@ -42,6 +42,22 @@ export default function Reset() {
     event.preventDefault();
     console.log(formState);
 
+    // Check for empty password field and display a validation alert
+    if (!formState.password.trim() || !formState.confirmPassword.trim()) {
+      setValidationAlert("Both password fields must be filled.");
+      setSuccessAlert("");
+      setErrorAlert("");
+      return;
+    }
+
+    // Check that password and confirmPassword fields match
+    if (formState.password !== formState.confirmPassword) {
+      setValidationAlert("Passwords do not match.");
+      setSuccessAlert("");
+      setErrorAlert("");
+      return;
+    }
+
     // Add your password reset logic here
 
     // Example: Check if passwords match
