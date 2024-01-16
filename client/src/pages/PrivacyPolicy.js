@@ -70,16 +70,13 @@ export default function PrivacyPolicy() {
           and protect your personal information when you use our website [
           Website URL].
         </Text>
-        {/* Add other policy sections here */}
-        <Heading fontSize={"lg"}>1. Personal Information We Collect</Heading>
-        <Text>
-          When you register on our site, we may collect your username and email
-          address. This information is essential for you to engage in our
-          website's community, particularly for book discussions and comments.
-        </Text>
 
-        <Heading fontSize={"lg"}>2. Use of Personal Information</Heading>
-        <Text>We use your personal information to identify you...</Text>
+        {privacyPolicySections.map((section) => (
+          <Stack spacing={5} key={section.heading}>
+            <Heading fontSize={"lg"}>{section.heading}</Heading>
+            <Text>{section.content}</Text>
+          </Stack>
+        ))}
       </Stack>
     </Container>
   );
