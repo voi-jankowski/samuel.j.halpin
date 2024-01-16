@@ -19,6 +19,7 @@ import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import Success from "./pages/Success";
 import PasswordReset from "./components/header/PasswordReset";
+import Reset from "./components/header/Reset";
 
 import AuthService from "./utils/auth";
 const Auth = new AuthService();
@@ -74,6 +75,7 @@ function App() {
               <Route path="/teaching" element={<TeachingResources />} />
               <Route path="/success" element={<Success />} />
               <Route path="/passwordreset" element={<PasswordReset />} />
+              <Route path="/reset" element={<Reset />} />
               <Route path="*" element={<Home />} />
             </Routes>
           </div>
