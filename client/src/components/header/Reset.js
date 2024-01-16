@@ -58,15 +58,28 @@ export default function Reset() {
       return;
     }
 
-    // Add your password reset logic here
+    // Implement password reset logic
+    try {
+      await resetPassword({
+        variables: {
+          password: formState.password,
+          token: window.location.search.split("=")[1],
+        },
+      });
 
-    // Example: Check if passwords match
-    if (formState.password !== formState.confirmPassword) {
-      setValidationAlert("Passwords do not match.");
-      return;
+      // Password reset success message
+      setSuccessAlert("Password successfully reset. You can now log in.");
+      setValidationAlert("");
+      setErrorAlert("");
+    } catch (err) {
+      console.error(err);
+      setErrorAlert("Something went wrong. Please try again.");
+      setSuccessAlert("");
+      setValidationAlert("");
     }
 
-    // Implement password reset logic
+    // Clear form input
+    setFormState({ password: "", confirmPassword: "" });
   };
 
   return (
