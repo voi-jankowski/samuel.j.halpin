@@ -20,6 +20,7 @@ import Footer from "./components/footer/Footer";
 import Success from "./pages/Success";
 import PasswordReset from "./components/header/PasswordReset";
 import Reset from "./components/header/Reset";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 import AuthService from "./utils/auth";
 const Auth = new AuthService();
@@ -77,6 +78,7 @@ function App() {
               <Route path="/passwordreset" element={<PasswordReset />} />
 
               <Route path="/reset/:token" element={<Reset />} />
+              <Route path="/privacypolicy" element={<PrivacyPolicy />} />
               <Route path="*" element={<Home />} />
             </Routes>
           </div>

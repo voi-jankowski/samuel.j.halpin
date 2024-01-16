@@ -5,12 +5,10 @@ import {
   SimpleGrid,
   Flex,
   Heading,
-  Icon,
   Stack,
   Text,
   Box,
   useColorModeValue,
-  Image,
 } from "@chakra-ui/react";
 
 const testimonials = [
