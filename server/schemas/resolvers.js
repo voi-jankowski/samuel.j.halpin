@@ -214,6 +214,7 @@ const resolvers = {
     resetPassword: async (parent, { token, newPassword }) => {
       // verify the reset token
       const { email } = verifyResetToken(token);
+      console.log(email);
 
       if (!email) {
         throw new AuthenticationError("Invalid or expired token");

@@ -15,11 +15,16 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 
+import { useMutation } from "@apollo/client";
+import { RESET_PASSWORD } from "../../utils/mutations";
+
 export default function Reset() {
   const [formState, setFormState] = useState({
     password: "",
     confirmPassword: "",
   });
+
+  const [resetPassword, { error, data }] = useMutation(RESET_PASSWORD);
 
   const [successAlert, setSuccessAlert] = useState("");
   const [validationAlert, setValidationAlert] = useState("");
@@ -35,6 +40,7 @@ export default function Reset() {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    console.log(formState);
 
     // Add your password reset logic here
 
