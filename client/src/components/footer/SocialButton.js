@@ -1,22 +1,22 @@
 import React from "react";
-import { Button, Container, Icon, IconButton } from "@chakra-ui/react";
-import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
+import { Container, Link, Icon } from "@chakra-ui/react";
+import { FaInstagram, FaTwitter } from "react-icons/fa6";
 
 export default function SocialButton({ icon, label, href, color }) {
   return (
     <Container>
-      <Button
-        colorScheme={color}
-        variant="link"
-        aria-label={label}
+      <Link
         href={href}
-        leftIcon={icon}
-        size="lg"
+        isExternal
+        aria-label={label}
+        colorScheme={color}
         fontSize="20px"
         fontWeight="400"
+        display="flex"
+        alignItems="center"
       >
-        {label}
-      </Button>
+        <Icon as={icon} mr={2} /> {label}
+      </Link>
     </Container>
   );
 }

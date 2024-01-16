@@ -1,17 +1,7 @@
 import React from "react";
-import {
-  Box,
-  IconButton,
-  Icon,
-  Container,
-  Stack,
-  Flex,
-  useColorModeValue,
-  VisuallyHidden,
-  VStack,
-} from "@chakra-ui/react";
+import { Box, Stack, Flex, useColorModeValue } from "@chakra-ui/react";
 import SocialButton from "./SocialButton";
-import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
+import { FaInstagram, FaTwitter } from "react-icons/fa6";
 
 export default function Footer() {
   return (
@@ -40,15 +30,15 @@ export default function Footer() {
         transform="translateX(-50%)" // Center the social buttons container horizontally
       >
         <SocialButton
-          label={"Twitter"}
-          href={"#"}
-          icon={<FaTwitter />}
+          label={"X-Twitter"}
+          href={"https://twitter.com/samueljhalpin?lang=en"}
+          icon={FaTwitter}
           color={"twitter"}
         />
         <SocialButton
           label={"Instagram"}
-          href={"#"}
-          icon={<FaInstagram />}
+          href={"https://www.instagram.com/samueljhalpin/?hl=en"}
+          icon={FaInstagram}
           color={"instagram"}
         />
       </Stack>
