@@ -104,10 +104,14 @@ export default function Profile() {
         })
       );
 
-      // Show success alert
+      // Show success alert and redirect to home page after 2 seconds
       setSuccessAlert("Profile has been updated.");
       setErrorAlert(""); // Clear error alert
       setValidationAlert(""); // Clear validation alert
+
+      setTimeout(() => {
+        window.location.replace("/");
+      }, 2000);
     } catch (e) {
       console.error(e);
 
