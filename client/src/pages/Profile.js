@@ -110,10 +110,34 @@ export default function Profile() {
       setValidationAlert(""); // Clear validation alert
     } catch (e) {
       console.error(e);
-      // Show error alert
-      setErrorAlert("Something went wrong. Try again.");
+
       setSuccessAlert(""); // Clear success alert
       setValidationAlert(""); // Clear validation alert
+      // Check if the error is a duplicate key error for username
+      if (
+        e.message.includes("E11000 duplicate key error") &&
+        e.message.includes("username_1")
+      ) {
+        setErrorAlert("This username is already in use. Try another one.");
+      }
+      // Check if the error is a duplicate key error for email
+      else if (
+        e.message.includes("E11000 duplicate key error") &&
+        e.message.includes("email_1")
+      ) {
+        setErrorAlert(
+          "This email is already in use. Try logging in or resetting your password."
+        );
+      } else if (
+        e.message.includes("password: Path `password`") &&
+        e.message.includes("is shorter than the minimum allowed length")
+      ) {
+        setErrorAlert(
+          "Password is too short. It must be at least 5 characters long."
+        );
+      } else {
+        setErrorAlert("Something went wrong. Try again.");
+      }
     }
   };
 

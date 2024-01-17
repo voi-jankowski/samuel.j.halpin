@@ -118,6 +118,13 @@ export default function SignupCard({ setSignupOpen }) {
         setErrorAlert(
           "This email is already in use. Try logging in or resetting your password."
         );
+      } else if (
+        e.message.includes("password: Path `password`") &&
+        e.message.includes("is shorter than the minimum allowed length")
+      ) {
+        setErrorAlert(
+          "Password is too short. It must be at least 5 characters long."
+        );
       } else {
         setErrorAlert("Something went wrong. Try again.");
       }
