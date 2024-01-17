@@ -36,26 +36,30 @@ import AuthService from "../utils/auth";
 const Auth = new AuthService();
 
 export default function Profile() {
+  const dispatch = useDispatch();
+  // Add a separate state variable to control viibility of Delete modal
   const [isDeleteOpen, setDeleteOpen] = useState(false);
+  // Add a separate state variable to track Login modal visibility
+  const [isLoginOpen, setLoginOpen] = useState(false);
+  const [isSignupOpen, setSignupOpen] = useState(false);
+
+  // Create a navigate function to redirect the user to the home page
   const navigate = useNavigate();
   const handleClick = () => {
     navigate("/");
   };
 
-  // Add a separate state variable to track Login modal visibility
-  const [isLoginOpen, setLoginOpen] = useState(false);
-  const [isSignupOpen, setSignupOpen] = useState(false);
-
-  const dispatch = useDispatch();
+  // Extract the user data from the global state to use in the form
   const user = useSelector((state) => state.user.value);
   console.log(user);
+  // Extract the theme color from the global state
   const themeColor = useSelector((state) => state.theme.value);
 
   const [formState, setFormState] = useState({
     username: user.username,
     email: user.email,
     password: user.password,
-    userIcon: user.userIcon,
+    // userIcon: user.userIcon,
   });
 
   const [updateUser, { error, data }] = useMutation(UPDATE_USER);
@@ -94,7 +98,7 @@ export default function Profile() {
         variables: { ...formState },
       });
       console.log(data);
-      // Pass the values of the form to the global state
+      // Pass the values of the form to the global state to update the changes
       dispatch(
         update({
           username: data.updateUser.username,
