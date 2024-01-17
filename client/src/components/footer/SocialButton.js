@@ -1,18 +1,24 @@
 import React from "react";
-import { Container, Link, Text } from "@chakra-ui/react";
+import { Container, Link, Text, useMediaQuery } from "@chakra-ui/react";
 import { SocialIcon } from "react-social-icons";
 
 const baseStyle = {
-  width: 45,
-  height: 45,
+  width: 60,
+  height: 60,
 };
 
 const largeStyle = {
-  width: 30,
-  height: 30,
+  width: 40,
+  height: 40,
 };
 
 export default function SocialButton({ label, href, color }) {
+  // Check if the screen is larger than 1050px
+  const [isLargerThan1050] = useMediaQuery("(min-width: 1050px)");
+
+  // Set the icon size based on the screen size
+  const iconSize = isLargerThan1050 ? largeStyle : baseStyle;
+
   return (
     <Container>
       <Link
@@ -24,15 +30,15 @@ export default function SocialButton({ label, href, color }) {
         fontWeight="400"
         display="flex"
         alignItems="center"
+        _hover={{ color: "purple.400" }}
       >
         <SocialIcon
           url={href}
           bgColor={"black"}
-          style={{ base: { baseStyle }, lg: { largeStyle } }}
+          style={iconSize}
+          _hover={{ scale: 1.2 }} // Scale the icon on hover
         />
-        <Text display={{ base: "none", lg: "block" }} ml={2}>
-          {label}
-        </Text>
+        {isLargerThan1050 && <Text ml={2}>{label}</Text>}
       </Link>
     </Container>
   );
