@@ -1,8 +1,18 @@
 import React from "react";
-import { Container, Link, Icon } from "@chakra-ui/react";
-import { FaInstagram, FaTwitter } from "react-icons/fa6";
+import { Container, Link, Text } from "@chakra-ui/react";
+import { SocialIcon } from "react-social-icons";
 
-export default function SocialButton({ icon, label, href, color }) {
+const baseStyle = {
+  width: 45,
+  height: 45,
+};
+
+const largeStyle = {
+  width: 30,
+  height: 30,
+};
+
+export default function SocialButton({ label, href, color }) {
   return (
     <Container>
       <Link
@@ -15,7 +25,14 @@ export default function SocialButton({ icon, label, href, color }) {
         display="flex"
         alignItems="center"
       >
-        <Icon as={icon} mr={2} /> {label}
+        <SocialIcon
+          url={href}
+          bgColor={"black"}
+          style={{ base: { baseStyle }, lg: { largeStyle } }}
+        />
+        <Text display={{ base: "none", lg: "block" }} ml={2}>
+          {label}
+        </Text>
       </Link>
     </Container>
   );

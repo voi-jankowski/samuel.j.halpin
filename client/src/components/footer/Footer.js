@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
   Box,
   Stack,
@@ -8,7 +9,6 @@ import {
   Link,
 } from "@chakra-ui/react";
 import SocialButton from "./SocialButton";
-import { FaInstagram, FaTwitter } from "react-icons/fa6";
 
 export default function Footer() {
   return (
@@ -40,14 +40,12 @@ export default function Footer() {
         >
           <SocialButton
             label={"X-Twitter"}
-            href={"https://twitter.com/samueljhalpin?lang=en"}
-            icon={FaTwitter}
+            href={"https://x.com/samueljhalpin?lang=en"}
             color={"twitter"}
           />
           <SocialButton
             label={"Instagram"}
             href={"https://www.instagram.com/samueljhalpin/?hl=en"}
-            icon={FaInstagram}
             color={"instagram"}
           />
         </Stack>
@@ -60,7 +58,7 @@ export default function Footer() {
           Usborne Publishing. <br />
           Website design and development by Voi Jankowski. <br />
           View our{" "}
-          <Link href="/privacy-policy" color="purple.500">
+          <Link href="/privacy-policy" color="purple.400">
             Privacy Policy
           </Link>
         </Text>
