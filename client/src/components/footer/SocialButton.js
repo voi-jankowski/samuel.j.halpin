@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Link, Text, useMediaQuery } from "@chakra-ui/react";
 import { SocialIcon } from "react-social-icons";
 
@@ -19,6 +19,16 @@ export default function SocialButton({ label, href, color }) {
   // Set the icon size based on the screen size
   const iconSize = isLargerThan1050 ? largeStyle : baseStyle;
 
+  // Check if the mouse is hovering over the icon
+  const [isHovered, setIsHovered] = useState(false);
+
+  // Style for the icon with hover effect
+  const iconStyle = {
+    ...iconSize,
+    transform: isHovered ? "scale(1.3)" : "scale(1)",
+    transition: "transform 0.3s ease-in-out",
+  };
+
   return (
     <Container>
       <Link
@@ -30,14 +40,10 @@ export default function SocialButton({ label, href, color }) {
         fontWeight="400"
         display="flex"
         alignItems="center"
-        _hover={{ color: "purple.400" }}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
       >
-        <SocialIcon
-          url={href}
-          bgColor={"black"}
-          style={iconSize}
-          _hover={{ scale: 1.2 }} // Scale the icon on hover
-        />
+        <SocialIcon url={href} bgColor={"black"} style={iconStyle} />
         {isLargerThan1050 && <Text ml={2}>{label}</Text>}
       </Link>
     </Container>
