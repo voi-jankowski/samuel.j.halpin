@@ -92,21 +92,34 @@ export default function SignupCard({ setSignupOpen }) {
       setValidationAlert(""); // Clear validation alert
       setSuccessAlert("Account created successfully.");
 
-      // Refresh the page after logout but remain on the same page
-      window.location.replace(window.location.pathname);
-
-      // Close the modal
-      setSignupOpen(false);
+      // Refresh the page after 2 seconds after signup but remain on the same page
+      setTimeout(() => {
+        // Close the modal
+        setSignupOpen(false);
+        window.location.replace(window.location.pathname);
+      }, 2000);
     } catch (e) {
       console.error(e);
 
       setSuccessAlert(""); // Clear success alert
       setValidationAlert(""); // Clear validation alert
-      // Check if the error is a duplicate key error
-      if (e.message.includes("E11000 duplicate key error")) {
-        setErrorAlert("This email is already in use.");
+      // Check if the error is a duplicate key error for username
+      if (
+        e.message.includes("E11000 duplicate key error") &&
+        e.message.includes("username_1")
+      ) {
+        setErrorAlert("This username is already in use. Try another one.");
+      }
+      // Check if the error is a duplicate key error for email
+      else if (
+        e.message.includes("E11000 duplicate key error") &&
+        e.message.includes("email_1")
+      ) {
+        setErrorAlert(
+          "This email is already in use. Try logging in or resetting your password."
+        );
       } else {
-        setErrorAlert("Something went wrong.");
+        setErrorAlert("Something went wrong. Try again.");
       }
     }
   };

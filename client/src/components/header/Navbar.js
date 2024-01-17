@@ -122,8 +122,12 @@ export default function Navbar() {
     Auth.logout();
     dispatch(logout());
 
-    // Refresh the page after logout but remain on the same page
-    window.location.replace(window.location.pathname);
+    // Refresh the page after logout but remain on the same page unless the url of the page includes /reset, then redirect to homepage
+    if (window.location.pathname.includes("/reset")) {
+      window.location.replace("/");
+    } else {
+      window.location.replace(window.location.pathname);
+    }
   };
 
   const linkSize = useBreakpointValue({

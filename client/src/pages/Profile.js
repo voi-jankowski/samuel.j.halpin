@@ -120,7 +120,7 @@ export default function Profile() {
   return (
     <Container style={{ color: themeColor }}>
       <Flex
-        minH={"100vh"}
+        minH={"60vh"}
         align={"center"}
         justify={"center"}
         bg={"transparent"}
