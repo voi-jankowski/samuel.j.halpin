@@ -30,7 +30,7 @@ import { update } from "../features/user";
 import { useMutation } from "@apollo/client";
 import { UPDATE_USER } from "../utils/mutations";
 
-import DeleteUser from "../components/booksComponents/DeleteUser";
+import DeleteUser from "../components/profileComponents/DeleteUser";
 
 import Login from "../components/header/Login";
 import Signup from "../components/header/Signup";

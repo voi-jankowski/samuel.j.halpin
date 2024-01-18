@@ -7,17 +7,19 @@ import {
   FormControl,
   FormLabel,
   Input,
+  InputGroup,
+  InputRightElement,
   Checkbox,
   Stack,
-  Link,
   Button,
   Heading,
   Text,
   useColorModeValue,
 } from "@chakra-ui/react";
 
-import { logout } from "../../features/user";
+import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { useDispatch } from "react-redux";
+import { logout } from "../../features/user";
 import { useMutation } from "@apollo/client";
 import { REMOVE_USER } from "../../utils/mutations";
 
@@ -28,6 +30,22 @@ export default function DeleteUser({ onClose }) {
   const dispatch = useDispatch();
   const [deleteConfirmed, setDeleteConfirmed] = useState(false);
 
+  // Add a separate state to change the visibilty of a password field
+  const [showPassword, setShowPassword] = useState(false);
+
+  const [formState, setFormState] = useState({
+    password: "",
+  });
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
   const [removeUser, { error, data }] = useMutation(REMOVE_USER);
 
   const handleFormSubmit = async (event) => {
@@ -37,6 +55,11 @@ export default function DeleteUser({ onClose }) {
       alert(
         "Please confirm you want to delete your account by ticking the box"
       );
+      return;
+    }
+
+    if (!formState.password.trim()) {
+      alert("Please enter your password");
       return;
     }
 
@@ -95,6 +118,31 @@ export default function DeleteUser({ onClose }) {
                   Tick the box to confirm
                 </Checkbox>
               </Stack>
+
+              {deleteConfirmed && ( // Conditionally render the password field
+                <FormControl id="password" isRequired>
+                  <FormLabel>Confirm Password</FormLabel>
+                  <InputGroup>
+                    <Input
+                      type={showPassword ? "text" : "password"}
+                      name="password"
+                      value={formState.password}
+                      onChange={handleChange}
+                      focusBorderColor="purple.400"
+                    />
+                    <InputRightElement width="4.5rem">
+                      <Button
+                        h="1.75rem"
+                        size="sm"
+                        onClick={() => setShowPassword(!showPassword)}
+                      >
+                        {showPassword ? <ViewOffIcon /> : <ViewIcon />}
+                      </Button>
+                    </InputRightElement>
+                  </InputGroup>
+                </FormControl>
+              )}
+
               <Stack spacing={6} direction={["column", "row"]}>
                 <Button
                   bg={"purple.400"}
