@@ -81,7 +81,7 @@ export default function SignupCard({ setSignupOpen }) {
           username: formState.username,
           email: formState.email,
           // password: formState.password,
-          // userIcon: "/assets/images/moth7.png",
+          userIcon: "/assets/images/moth7.png",
         })
       );
 
@@ -92,12 +92,19 @@ export default function SignupCard({ setSignupOpen }) {
       setValidationAlert(""); // Clear validation alert
       setSuccessAlert("Account created successfully.");
 
-      // Refresh the page after 2 seconds after signup but remain on the same page
-      setTimeout(() => {
-        // Close the modal
-        setSignupOpen(false);
+      // Refresh the page after signup but remain on the same page unless the url of the page includes /reset, then redirect to homepage
+
+      // Close the modal
+      setSignupOpen(false);
+
+      if (
+        window.location.pathname.includes("/reset") ||
+        window.location.pathname.includes("/passwordreset")
+      ) {
+        window.location.replace("/");
+      } else {
         window.location.replace(window.location.pathname);
-      }, 2000);
+      }
     } catch (e) {
       console.error(e);
 

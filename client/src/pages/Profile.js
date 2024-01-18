@@ -65,7 +65,7 @@ export default function Profile() {
     username: user.username,
     email: user.email,
     password: "",
-    // userIcon: user.userIcon,
+    userIcon: user.userIcon,
   });
 
   const [updateUser, { error, data }] = useMutation(UPDATE_USER);
@@ -110,7 +110,7 @@ export default function Profile() {
           username: data.updateUser.username,
           email: data.updateUser.email,
           // password: formState.password,
-          // userIcon: data.updateUser.user.userIcon,
+          userIcon: "/assets/images/moth7.png",
         })
       );
 

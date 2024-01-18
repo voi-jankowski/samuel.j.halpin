@@ -91,7 +91,10 @@ export default function Login({ setLoginOpen }) {
       setSuccessAlert("Login successful.");
 
       // Refresh the page after login but remain on the same page unless the url of the page includes /reset, then redirect to homepage
-      if (window.location.pathname.includes("/reset")) {
+      if (
+        window.location.pathname.includes("/reset") ||
+        window.location.pathname.includes("/passwordreset")
+      ) {
         window.location.replace("/");
       } else {
         window.location.replace(window.location.pathname);
