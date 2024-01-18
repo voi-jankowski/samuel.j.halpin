@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialStateValue = {
   username: "",
   email: "",
-  password: "",
+  // password: "",
   userIcon: "./assets/images/moth7.png",
 };
 

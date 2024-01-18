@@ -80,8 +80,8 @@ export default function SignupCard({ setSignupOpen }) {
         login({
           username: formState.username,
           email: formState.email,
-          password: formState.password,
-          userIcon: "/assets/images/moth7.png",
+          // password: formState.password,
+          // userIcon: "/assets/images/moth7.png",
         })
       );
 

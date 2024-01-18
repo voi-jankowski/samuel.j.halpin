@@ -79,7 +79,7 @@ export default function Login({ setLoginOpen }) {
         login({
           username: data.login.user.username,
           email: data.login.user.email,
-          password: formState.password,
+          // password: formState.password,
         })
       );
       // Save the token to localStorage

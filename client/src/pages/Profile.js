@@ -12,6 +12,8 @@ import {
   FormLabel,
   Heading,
   Input,
+  InputGroup,
+  InputRightElement,
   Stack,
   Text,
   useColorModeValue,
@@ -21,6 +23,7 @@ import {
   ModalContent,
 } from "@chakra-ui/react";
 
+import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { useSelector, useDispatch } from "react-redux";
 import { update } from "../features/user";
 
@@ -43,6 +46,9 @@ export default function Profile() {
   const [isLoginOpen, setLoginOpen] = useState(false);
   const [isSignupOpen, setSignupOpen] = useState(false);
 
+  //  // Add a separate state to change the visibilty of a password field
+  const [showPassword, setShowPassword] = useState(false);
+
   // Create a navigate function to redirect the user to the home page
   const navigate = useNavigate();
   const handleClick = () => {
@@ -53,12 +59,12 @@ export default function Profile() {
   const user = useSelector((state) => state.user.value);
   console.log(user);
   // Extract the theme color from the global state
-  const themeColor = useSelector((state) => state.theme.value);
+  // const themeColor = useSelector((state) => state.theme.value);
 
   const [formState, setFormState] = useState({
     username: user.username,
     email: user.email,
-    password: user.password,
+    password: "",
     // userIcon: user.userIcon,
   });
 
@@ -103,7 +109,7 @@ export default function Profile() {
         update({
           username: data.updateUser.username,
           email: data.updateUser.email,
-          password: formState.password,
+          // password: formState.password,
           // userIcon: data.updateUser.user.userIcon,
         })
       );
@@ -150,7 +156,7 @@ export default function Profile() {
   };
 
   return (
-    <Container style={{ color: themeColor }}>
+    <Container>
       <Flex
         minH={"60vh"}
         align={"center"}
@@ -219,17 +225,27 @@ export default function Profile() {
                     focusBorderColor="purple.500"
                   />
                 </FormControl>
-                <FormControl id="password">
+                <FormControl id="password" isRequired>
                   <FormLabel>Password</FormLabel>
-                  <Input
-                    placeholder={user.password}
-                    _placeholder={{ color: "gray.500" }}
-                    type="password"
-                    name="password"
-                    value={formState.password}
-                    onChange={handleChange}
-                    focusBorderColor="purple.500"
-                  />
+                  <InputGroup>
+                    <Input
+                      type={showPassword ? "text" : "password"}
+                      name="password"
+                      value={formState.password}
+                      onChange={handleChange}
+                      focusBorderColor="purple.400"
+                    />
+                    <InputRightElement h={"full"}>
+                      <Button
+                        variant={"ghost"}
+                        onClick={() =>
+                          setShowPassword((showPassword) => !showPassword)
+                        }
+                      >
+                        {showPassword ? <ViewIcon /> : <ViewOffIcon />}
+                      </Button>
+                    </InputRightElement>
+                  </InputGroup>
                 </FormControl>
                 <br />
                 <Stack spacing={6} direction={["column", "row"]}>
