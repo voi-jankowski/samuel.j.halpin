@@ -143,7 +143,6 @@ export default function Profile() {
           "This email is already in use. Try logging in or resetting your password."
         );
       } else if (
-        e.message.includes("password: Path `password`") &&
         e.message.includes("is shorter than the minimum allowed length")
       ) {
         setErrorAlert(
@@ -178,6 +177,10 @@ export default function Profile() {
               <Heading lineHeight={1.1} fontSize={{ base: "2xl", sm: "3xl" }}>
                 User Profile Edit
               </Heading>
+
+              <Text fontSize={{ base: "sm", sm: "md" }} pb={6}>
+                Update your username and email address here.
+              </Text>
               <form onSubmit={handleFormSubmit}>
                 {/* <FormControl id="userIcon">
                   <FormLabel>User Icon</FormLabel>
@@ -226,7 +229,7 @@ export default function Profile() {
                   />
                 </FormControl>
                 <FormControl id="password" isRequired>
-                  <FormLabel>Password</FormLabel>
+                  <FormLabel>Confirm password</FormLabel>
                   <InputGroup>
                     <Input
                       type={showPassword ? "text" : "password"}
