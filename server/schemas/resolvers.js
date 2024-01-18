@@ -182,7 +182,6 @@ const resolvers = {
           {
             username,
             email,
-            password: hashedPassword || user.password,
             userIcon,
           },
           { new: true }

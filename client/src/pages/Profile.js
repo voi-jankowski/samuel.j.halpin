@@ -142,12 +142,8 @@ export default function Profile() {
         setErrorAlert(
           "This email is already in use. Try logging in or resetting your password."
         );
-      } else if (
-        e.message.includes("is shorter than the minimum allowed length")
-      ) {
-        setErrorAlert(
-          "Password is too short. It must be at least 5 characters long."
-        );
+      } else if (e.message.includes("Incorrect credentials")) {
+        setErrorAlert("Incorrect password. Try again.");
       } else {
         setErrorAlert("Something went wrong. Try again.");
       }
