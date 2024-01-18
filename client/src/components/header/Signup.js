@@ -92,7 +92,7 @@ export default function SignupCard({ setSignupOpen }) {
       setValidationAlert(""); // Clear validation alert
       setSuccessAlert("Account created successfully.");
 
-      // Refresh the page after signup but remain on the same page unless the url of the page includes /reset, then redirect to homepage
+      // Refresh the page after signup but remain on the same page unless the url of the page includes /reset or /passwordreset, then redirect to homepage
 
       // Close the modal
       setSignupOpen(false);

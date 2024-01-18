@@ -90,7 +90,7 @@ export default function Login({ setLoginOpen }) {
       setValidationAlert(""); // Clear validation alert
       setSuccessAlert("Login successful.");
 
-      // Refresh the page after login but remain on the same page unless the url of the page includes /reset, then redirect to homepage
+      // Refresh the page after login but remain on the same page unless the url of the page includes /reset or /passwordreset , then redirect to homepage
       if (
         window.location.pathname.includes("/reset") ||
         window.location.pathname.includes("/passwordreset")

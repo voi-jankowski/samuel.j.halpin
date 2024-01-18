@@ -90,7 +90,6 @@ export default function Home() {
           {testimonials.map((testimonial, index) => (
             <TestimonialCard
               key={index}
-              index={index}
               name={testimonial.name}
               content={testimonial.content}
               image={testimonial.image}

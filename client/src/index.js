@@ -30,6 +30,12 @@ const rootReducer = combineReducers({
 // Create the redux store
 const store = configureStore({
   reducer: rootReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: ["persist/PERSIST", "persist/REHYDRATE"],
+      },
+    }),
 });
 
 // Extend the theme to include custom colors, fonts, etc

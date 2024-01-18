@@ -9,6 +9,7 @@ const nodemailer = require("nodemailer");
 const stripe = require("stripe")(
   "sk_test_51NUJK2AfEwsDyM4I9JDGzRlXlYALqglL2SRBqVUKT01R4ucQFbCvmY255kiREGNkbAtwyIwKUjETnNZTNzAYwEsX00rcl9jbwl"
 );
+const bcrypt = require("bcrypt");
 
 const resolvers = {
   Query: {
@@ -154,9 +155,29 @@ const resolvers = {
       context
     ) => {
       if (context.user) {
+        // Check if password length is less than 5 characters
+        if (password && password.length < 5) {
+          throw new AuthenticationError(
+            "Password is shorter than the minimum allowed length (5)."
+          );
+        }
+
+        // Hash the password
+        if (password) {
+          let hashedPassword;
+          const saltRounds = 10;
+          hashedPassword = await bcrypt.hash(password, saltRounds);
+        }
+
+        // Proceed with updating the user
         const user = await User.findByIdAndUpdate(
           context.user._id,
-          { username, email, password, userIcon },
+          {
+            username,
+            email,
+            password: hashedPassword || user.password,
+            userIcon,
+          },
           { new: true }
         );
         return user;
