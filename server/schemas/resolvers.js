@@ -163,8 +163,8 @@ const resolvers = {
         }
 
         // Hash the password
+        let hashedPassword;
         if (password) {
-          let hashedPassword;
           const saltRounds = 10;
           hashedPassword = await bcrypt.hash(password, saltRounds);
         }
