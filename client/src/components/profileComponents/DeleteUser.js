@@ -74,6 +74,7 @@ export default function DeleteUser({ onClose }) {
       setValidationAlert("Password field must be filled.");
       setSuccessAlert("");
       setErrorAlert("");
+      return;
     }
 
     try {

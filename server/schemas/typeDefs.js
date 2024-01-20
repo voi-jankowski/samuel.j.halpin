@@ -96,7 +96,7 @@ const typeDefs = gql`
       userIcon: String
     ): Auth
     login(email: String!, password: String!): Auth
-    removeUser: User
+    removeUser(password: String!): User
     updateUser(
       username: String
       email: String

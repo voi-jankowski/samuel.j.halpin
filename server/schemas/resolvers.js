@@ -142,10 +142,21 @@ const resolvers = {
     },
 
     //  remove user
-    removeUser: async (parent, args, context) => {
+    removeUser: async (parent, password, context) => {
       console.log(context.user);
-      const user = await User.findByIdAndDelete(context.user._id);
-      return user;
+
+      if (context.user) {
+        // Find the user and check if provided password is correct
+        const user = await User.findById(context.user._id);
+        const correctPw = await user.isCorrectPassword(password.password);
+        if (!correctPw) {
+          throw new AuthenticationError("Incorrect credentials");
+        }
+
+        // Proceed with removing the user
+        const removedUser = await User.findByIdAndDelete(context.user._id);
+        return removedUser;
+      }
     },
 
     //  update user
