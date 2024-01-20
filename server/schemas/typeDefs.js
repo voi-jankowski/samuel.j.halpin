@@ -103,6 +103,7 @@ const typeDefs = gql`
       password: String
       userIcon: String
     ): User
+    updatePassword(password: String!, newPassword: String!): User
     requestPasswordReset(email: String!): User
     resetPassword(token: String!, password: String!): User
     addComment(commentText: String!, commentedBook: String!): Comment

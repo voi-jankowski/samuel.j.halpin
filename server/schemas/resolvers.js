@@ -173,20 +173,6 @@ const resolvers = {
           throw new AuthenticationError("Incorrect credentials");
         }
 
-        // Check if password length is less than 5 characters
-        // if (password && password.length < 5) {
-        //   throw new AuthenticationError(
-        //     "Password is shorter than the minimum allowed length (5)."
-        //   );
-        // }
-
-        // Hash the password
-        // let hashedPassword;
-        // if (password) {
-        //   const saltRounds = 10;
-        //   hashedPassword = await bcrypt.hash(password, saltRounds);
-        // }
-
         // Proceed with updating the user
         const updatedUser = await User.findByIdAndUpdate(
           context.user._id,
@@ -194,6 +180,45 @@ const resolvers = {
             username,
             email,
             userIcon,
+          },
+          { new: true }
+        );
+        return updatedUser;
+      }
+      throw new AuthenticationError("Not logged in");
+    },
+
+    // update user's password
+    updatePassword: async (parent, { password, newPassword }, context) => {
+      if (context.user) {
+        // Find the user and check if current password is correct
+        const user = await User.findById(context.user._id);
+        const correctPw = await user.isCorrectPassword(
+          password.currentPassword
+        );
+        if (!correctPw) {
+          throw new AuthenticationError("Incorrect credentials");
+        }
+
+        // Check in new password's length is less than 5 characters
+        if (newPassword && newPassword.length < 5) {
+          throw new AuthenticationError(
+            "Password is shorter than the minimum allowed length (5)."
+          );
+        }
+
+        // Hash the new password
+        let hashedPassword;
+        if (newPassword) {
+          const saltRounds = 10;
+          hashedPassword = await bcrypt.hash(newPassword, saltRounds);
+        }
+
+        // Proceed with updating the user's password
+        const updatedUser = await User.findByIdAndUpdate(
+          context.user._id,
+          {
+            password: hashedPassword,
           },
           { new: true }
         );
