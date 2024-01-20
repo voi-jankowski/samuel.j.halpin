@@ -31,6 +31,7 @@ import { useMutation } from "@apollo/client";
 import { UPDATE_USER } from "../utils/mutations";
 
 import DeleteUser from "../components/profileComponents/DeleteUser";
+import PasswordChange from "../components/profileComponents/PasswordChange";
 
 import Login from "../components/header/Login";
 import Signup from "../components/header/Signup";
@@ -42,6 +43,8 @@ export default function Profile() {
   const dispatch = useDispatch();
   // Add a separate state variable to control viibility of Delete modal
   const [isDeleteOpen, setDeleteOpen] = useState(false);
+  // Add a separate state variable to control viibility of Password modal
+  const [isPasswordOpen, setPasswordOpen] = useState(false);
   // Add a separate state variable to track Login modal visibility
   const [isLoginOpen, setLoginOpen] = useState(false);
   const [isSignupOpen, setSignupOpen] = useState(false);
@@ -324,10 +327,19 @@ export default function Profile() {
                     _hover={{
                       bg: "purple.500",
                     }}
-                    // onClick={}
+                    onClick={() => setPasswordOpen(true)}
                   >
                     Update Password
                   </Button>
+                  <Modal
+                    isOpen={isPasswordOpen}
+                    onClose={() => setPasswordOpen(false)}
+                  >
+                    <ModalOverlay />
+                    <ModalContent>
+                      <PasswordChange onClose={() => setPasswordOpen(false)} />
+                    </ModalContent>
+                  </Modal>
                 </Stack>
               </form>
             </>
