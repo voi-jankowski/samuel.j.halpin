@@ -43,7 +43,7 @@ export default function SocialButton({ label, href, color }) {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <SocialIcon url={href} bgColor={"black"} style={iconStyle} />
+        <SocialIcon url={href} as="div" bgColor={"black"} style={iconStyle} />
         {isLargerThan1050 && <Text ml={2}>{label}</Text>}
       </Link>
     </Container>
