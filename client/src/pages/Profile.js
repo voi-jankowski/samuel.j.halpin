@@ -49,12 +49,6 @@ export default function Profile() {
   //  // Add a separate state to change the visibilty of a password field
   const [showPassword, setShowPassword] = useState(false);
 
-  // Create a navigate function to redirect the user to the home page
-  const navigate = useNavigate();
-  const handleClick = () => {
-    navigate("/");
-  };
-
   // Extract the user data from the global state to use in the form
   const user = useSelector((state) => state.user.value);
   console.log(user);
@@ -247,39 +241,20 @@ export default function Profile() {
                   </InputGroup>
                 </FormControl>
                 <br />
-                <Stack spacing={6} direction={["column", "row"]}>
-                  <Button
-                    bg={"red.400"}
-                    color={"white"}
-                    w="full"
-                    _hover={{
-                      bg: "red.500",
-                    }}
-                    onClick={() => setDeleteOpen(true)}
-                  >
-                    Delete Account
-                  </Button>
-                  <Modal
-                    isOpen={isDeleteOpen}
-                    onClose={() => setDeleteOpen(false)}
-                  >
-                    <ModalOverlay />
-                    <ModalContent>
-                      <DeleteUser onClose={() => setDeleteOpen(false)} />
-                    </ModalContent>
-                  </Modal>
-                  <Button
-                    bg={"purple.400"}
-                    color={"white"}
-                    w="full"
-                    _hover={{
-                      bg: "purple.500",
-                    }}
-                    type="submit"
-                  >
-                    Update Profile
-                  </Button>
-                </Stack>
+
+                <Button
+                  bg={"purple.400"}
+                  color={"white"}
+                  w="full"
+                  _hover={{
+                    bg: "purple.500",
+                  }}
+                  type="submit"
+                >
+                  Update Profile
+                </Button>
+
+                <br />
 
                 {/* Success Alert */}
                 {successAlert && (
@@ -320,18 +295,40 @@ export default function Profile() {
                   </Alert>
                 )}
                 <br />
+                <Stack spacing={6} direction={["column", "row"]}>
+                  <Button
+                    bg={"red.400"}
+                    color={"white"}
+                    w="full"
+                    _hover={{
+                      bg: "red.500",
+                    }}
+                    onClick={() => setDeleteOpen(true)}
+                  >
+                    Delete Account
+                  </Button>
+                  <Modal
+                    isOpen={isDeleteOpen}
+                    onClose={() => setDeleteOpen(false)}
+                  >
+                    <ModalOverlay />
+                    <ModalContent>
+                      <DeleteUser onClose={() => setDeleteOpen(false)} />
+                    </ModalContent>
+                  </Modal>
 
-                <Button
-                  bg={"purple.400"}
-                  color={"white"}
-                  w="100%"
-                  _hover={{
-                    bg: "purple.500",
-                  }}
-                  onClick={handleClick}
-                >
-                  Return to Home
-                </Button>
+                  <Button
+                    bg={"purple.400"}
+                    color={"white"}
+                    w="100%"
+                    _hover={{
+                      bg: "purple.500",
+                    }}
+                    // onClick={}
+                  >
+                    Update Password
+                  </Button>
+                </Stack>
               </form>
             </>
           ) : (
@@ -382,7 +379,7 @@ export default function Profile() {
                 _hover={{
                   bg: "purple.500",
                 }}
-                onClick={handleClick}
+                onClick={() => window.replace("/")}
               >
                 Return to Home
               </Button>
