@@ -2,6 +2,11 @@ import React from "react";
 import { useState } from "react";
 
 import {
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
+  CloseButton,
   Flex,
   Box,
   FormControl,
@@ -24,6 +29,7 @@ import { useMutation } from "@apollo/client";
 import { REMOVE_USER } from "../../utils/mutations";
 
 import AuthService from "../../utils/auth";
+
 const Auth = new AuthService();
 
 export default function DeleteUser({ onClose }) {
@@ -48,19 +54,26 @@ export default function DeleteUser({ onClose }) {
 
   const [removeUser, { error, data }] = useMutation(REMOVE_USER);
 
+  const [successAlert, setSuccessAlert] = useState(""); // Success alert state
+  const [errorAlert, setErrorAlert] = useState(""); // Error alert state
+  const [validationAlert, setValidationAlert] = useState(""); // Validation alert state
+
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
+    // Check for empty password field and display a validation alert
     if (!deleteConfirmed) {
-      alert(
-        "Please confirm you want to delete your account by ticking the box"
-      );
+      setValidationAlert("Please confirm your decision to delete your account");
+      setSuccessAlert("");
+      setErrorAlert("");
       return;
     }
 
+    // Check for empty password field and display a validation alert
     if (!formState.password.trim()) {
-      alert("Please enter your password");
-      return;
+      setValidationAlert("Password field must be filled.");
+      setSuccessAlert("");
+      setErrorAlert("");
     }
 
     try {
@@ -69,9 +82,27 @@ export default function DeleteUser({ onClose }) {
       // Pass the values of the form to the global state
       dispatch(logout());
       Auth.logout();
-      //   window.location.replace("/");
+      // show success alert and go back to the homescreen after 2 seconds
+      setSuccessAlert("Your account has been deleted.");
+      setErrorAlert("");
+      setValidationAlert("");
+      setTimeout(() => {
+        onClose();
+        window.location.replace("/");
+      }, 2000);
     } catch (e) {
       console.error(e);
+
+      // Show error alert
+      if (e.message.includes("Incorrect credentials")) {
+        setErrorAlert("Incorrect password. Please try again.");
+        setValidationAlert("");
+        setSuccessAlert("");
+      } else {
+        setErrorAlert("Something went wrong.");
+        setValidationAlert("");
+        setSuccessAlert("");
+      }
     }
   };
 
@@ -94,7 +125,7 @@ export default function DeleteUser({ onClose }) {
             Delete Account
           </Heading>
         </Stack>
-        <br />
+
         <Box
           rounded={"lg"}
           bg={useColorModeValue("white", "gray.700")}
@@ -170,6 +201,45 @@ export default function DeleteUser({ onClose }) {
             </Stack>
           </Stack>
         </Box>
+
+        {/* Success Alert */}
+        {successAlert && (
+          <Alert status="success" mt={4} rounded="md">
+            <AlertIcon />
+            <AlertTitle mr={2}>Success!</AlertTitle>
+            <AlertDescription>{successAlert}</AlertDescription>
+            <CloseButton
+              onClick={() => setSuccessAlert("")}
+              position="relative"
+            />
+          </Alert>
+        )}
+
+        {/* Error Alert */}
+        {errorAlert && (
+          <Alert status="error" mt={4} rounded="md">
+            <AlertIcon />
+            <AlertTitle mr={2}>Error!</AlertTitle>
+            <AlertDescription>{errorAlert}</AlertDescription>
+            <CloseButton
+              onClick={() => setErrorAlert("")}
+              position="relative"
+            />
+          </Alert>
+        )}
+
+        {/* Validation Alert */}
+        {validationAlert && (
+          <Alert status="error" mt={4} rounded="md">
+            <AlertIcon />
+            <AlertTitle mr={2}>Validation Error!</AlertTitle>
+            <AlertDescription>{validationAlert}</AlertDescription>
+            <CloseButton
+              onClick={() => setValidationAlert("")}
+              position="relative"
+            />
+          </Alert>
+        )}
       </Stack>
     </Flex>
   );
