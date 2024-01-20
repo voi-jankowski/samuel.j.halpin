@@ -43,7 +43,7 @@ export const LOGIN_USER = gql`
 // Remove a user
 export const REMOVE_USER = gql`
   mutation RemoveUser($password: String!) {
-    removeUser {
+    removeUser(password: $password) {
       _id
       username
       email

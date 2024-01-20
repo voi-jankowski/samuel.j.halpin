@@ -78,22 +78,21 @@ export default function DeleteUser({ onClose }) {
     }
 
     try {
+      console.log(formState);
       const { data } = await removeUser({
-        variables: { ...formState },
+        variables: { password: formState.password },
       });
       console.log(data);
 
-      // Pass the values of the form to the global state
-      dispatch(logout());
-      Auth.logout();
-
-      // show success alert and go back to the homescreen after 2 seconds
+      // show success alert and go to logged out state
       setSuccessAlert("Your account has been deleted.");
       setErrorAlert("");
       setValidationAlert("");
       setTimeout(() => {
         onClose();
-        window.location.replace("/");
+        // Pass the values of the form to the global state
+        dispatch(logout());
+        Auth.logout();
       }, 2000);
     } catch (e) {
       console.error(e);
