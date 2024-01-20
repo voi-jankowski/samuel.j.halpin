@@ -193,9 +193,7 @@ const resolvers = {
       if (context.user) {
         // Find the user and check if current password is correct
         const user = await User.findById(context.user._id);
-        const correctPw = await user.isCorrectPassword(
-          password.currentPassword
-        );
+        const correctPw = await user.isCorrectPassword(password);
         if (!correctPw) {
           throw new AuthenticationError("Incorrect credentials");
         }
