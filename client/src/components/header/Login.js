@@ -74,34 +74,35 @@ export default function Login({ setLoginOpen }) {
         variables: { ...formState },
       });
       console.log(data);
-      // Pass the values of the form to the global state
-      dispatch(
-        login({
-          username: data.login.user.username,
-          email: data.login.user.email,
-          // password: formState.password,
-        })
-      );
-      // Save the token to localStorage
-      Auth.login(data.login.token);
 
       // Show success alert for 2 seconds and redirect to homepage
       setErrorAlert(""); // Clear error alert
       setValidationAlert(""); // Clear validation alert
       setSuccessAlert("Login successful.");
+      setTimeout(() => {
+        // Pass the values of the form to the global state
+        dispatch(
+          login({
+            username: data.login.user.username,
+            email: data.login.user.email,
+            // password: formState.password,
+          })
+        );
+        // Save the token to localStorage
+        Auth.login(data.login.token);
+        // Refresh the page after login but remain on the same page unless the url of the page includes /reset or /passwordreset , then redirect to homepage
+        if (
+          window.location.pathname.includes("/reset") ||
+          window.location.pathname.includes("/passwordreset")
+        ) {
+          window.location.replace("/");
+        } else {
+          window.location.replace(window.location.pathname);
+        }
 
-      // Refresh the page after login but remain on the same page unless the url of the page includes /reset or /passwordreset , then redirect to homepage
-      if (
-        window.location.pathname.includes("/reset") ||
-        window.location.pathname.includes("/passwordreset")
-      ) {
-        window.location.replace("/");
-      } else {
-        window.location.replace(window.location.pathname);
-      }
-
-      // close the modal
-      setLoginOpen(false);
+        // close the modal
+        setLoginOpen(false);
+      }, 2000);
     } catch (e) {
       console.error(e);
 
@@ -143,101 +144,99 @@ export default function Login({ setLoginOpen }) {
           boxShadow={"lg"}
           p={8}
         >
-          <form onSubmit={handleFormSubmit}>
-            <Stack spacing={4}>
-              <FormControl id="email" isRequired>
-                <FormLabel>Email address</FormLabel>
+          <Stack spacing={4}>
+            <FormControl id="email" isRequired>
+              <FormLabel>Email address</FormLabel>
+              <Input
+                type="email"
+                name="email"
+                value={formState.email}
+                onChange={handleChange}
+                focusBorderColor="purple.400"
+              />
+            </FormControl>
+            <FormControl id="password" isRequired>
+              <FormLabel>Password</FormLabel>
+              <InputGroup>
                 <Input
-                  type="email"
-                  name="email"
-                  value={formState.email}
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  value={formState.password}
                   onChange={handleChange}
                   focusBorderColor="purple.400"
                 />
-              </FormControl>
-              <FormControl id="password" isRequired>
-                <FormLabel>Password</FormLabel>
-                <InputGroup>
-                  <Input
-                    type={showPassword ? "text" : "password"}
-                    name="password"
-                    value={formState.password}
-                    onChange={handleChange}
-                    focusBorderColor="purple.400"
-                  />
-                  <InputRightElement h={"full"}>
-                    <Button
-                      variant={"ghost"}
-                      onClick={() =>
-                        setShowPassword((showPassword) => !showPassword)
-                      }
-                    >
-                      {showPassword ? <ViewIcon /> : <ViewOffIcon />}
-                    </Button>
-                  </InputRightElement>
-                </InputGroup>
-              </FormControl>
-              <Stack spacing={10}>
-                <Button
-                  bg={"purple.400"}
-                  color={"white"}
-                  _hover={{
-                    bg: "purple.500",
-                  }}
-                  type="submit"
-                >
-                  Sign in
-                </Button>
-              </Stack>
+                <InputRightElement h={"full"}>
+                  <Button
+                    variant={"ghost"}
+                    onClick={() =>
+                      setShowPassword((showPassword) => !showPassword)
+                    }
+                  >
+                    {showPassword ? <ViewIcon /> : <ViewOffIcon />}
+                  </Button>
+                </InputRightElement>
+              </InputGroup>
+            </FormControl>
+            <Stack spacing={10}>
+              <Button
+                bg={"purple.400"}
+                color={"white"}
+                _hover={{
+                  bg: "purple.500",
+                }}
+                onClick={handleFormSubmit}
+              >
+                Sign in
+              </Button>
             </Stack>
-            <br />
+          </Stack>
+          <br />
 
-            <Text textAlign={"right"}>
-              <Link color={"purple.500"} href="/passwordreset">
-                Forgot password?
-              </Link>
-            </Text>
+          <Text textAlign={"right"}>
+            <Link color={"purple.500"} href="/passwordreset">
+              Forgot password?
+            </Link>
+          </Text>
 
-            {/* Success Alert */}
-            {successAlert && (
-              <Alert status="success" mt={4} rounded="md">
-                <AlertIcon />
-                <AlertTitle mr={2}>Success!</AlertTitle>
-                <AlertDescription>{successAlert}</AlertDescription>
-                <CloseButton
-                  onClick={() => setSuccessAlert("")}
-                  position="relative"
-                />
-              </Alert>
-            )}
+          {/* Success Alert */}
+          {successAlert && (
+            <Alert status="success" mt={4} rounded="md">
+              <AlertIcon />
+              <AlertTitle mr={2}>Success!</AlertTitle>
+              <AlertDescription>{successAlert}</AlertDescription>
+              <CloseButton
+                onClick={() => setSuccessAlert("")}
+                position="relative"
+              />
+            </Alert>
+          )}
 
-            {/* Error Alert */}
-            {errorAlert && (
-              <Alert status="error" mt={4} rounded="md">
-                <AlertIcon />
-                <AlertDescription style={{ whiteSpace: "normal" }}>
-                  {errorAlert}
-                </AlertDescription>
-                <CloseButton
-                  onClick={() => setErrorAlert("")}
-                  position="relative"
-                />
-              </Alert>
-            )}
+          {/* Error Alert */}
+          {errorAlert && (
+            <Alert status="error" mt={4} rounded="md">
+              <AlertIcon />
+              <AlertDescription style={{ whiteSpace: "normal" }}>
+                {errorAlert}
+              </AlertDescription>
+              <CloseButton
+                onClick={() => setErrorAlert("")}
+                position="relative"
+              />
+            </Alert>
+          )}
 
-            {/* Validation Alert */}
-            {validationAlert && (
-              <Alert status="error" mt={4} rounded="md">
-                <AlertIcon />
-                <AlertTitle mr={2}>Validation Error!</AlertTitle>
-                <AlertDescription>{validationAlert}</AlertDescription>
-                <CloseButton
-                  onClick={() => setValidationAlert("")}
-                  position="relative"
-                />
-              </Alert>
-            )}
-          </form>
+          {/* Validation Alert */}
+          {validationAlert && (
+            <Alert status="error" mt={4} rounded="md">
+              <AlertIcon />
+              <AlertTitle mr={2}>Validation Error!</AlertTitle>
+              <AlertDescription>{validationAlert}</AlertDescription>
+              <CloseButton
+                onClick={() => setValidationAlert("")}
+                position="relative"
+              />
+            </Alert>
+          )}
         </Box>
       </Stack>
     </Flex>
