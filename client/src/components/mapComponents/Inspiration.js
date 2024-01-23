@@ -1,12 +1,10 @@
 import React from "react";
 import {
-  Container,
   Stack,
   Flex,
   Box,
   Heading,
   Text,
-  Button,
   Image,
   Icon,
   useColorModeValue,

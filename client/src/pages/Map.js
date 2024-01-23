@@ -10,7 +10,6 @@ import {
 import React, { useState, useEffect } from "react";
 import MothElement from "../components/mapComponents/MothElement";
 import AskAuthor from "../components/mapComponents/AskAuthor";
-import { motion, Variants } from "framer-motion";
 
 import AuthService from "../utils/auth";
 const Auth = new AuthService();

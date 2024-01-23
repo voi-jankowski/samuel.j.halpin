@@ -1,7 +1,6 @@
 import {
   Box,
   Image,
-  Link,
   Stack,
   Text,
   useColorModeValue as mode,

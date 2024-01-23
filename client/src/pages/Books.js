@@ -1,15 +1,6 @@
 import React from "react";
 import BookCardSimple from "../components/booksComponents/BookCardSimple";
-import {
-  Box,
-  Button,
-  Container,
-  Flex,
-  Heading,
-  Stack,
-  Text,
-  useColorModeValue,
-} from "@chakra-ui/react";
+import { Box, Container, Flex, Heading, Stack, Text } from "@chakra-ui/react";
 
 const books = [
   {

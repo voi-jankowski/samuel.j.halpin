@@ -4,14 +4,11 @@ import { shakeVariant } from "../../utils/animationVariants";
 import {
   Image,
   Box,
-  Button,
   useDisclosure,
   Modal,
+  ModalBody,
   ModalOverlay,
   ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
   ModalCloseButton,
   useBreakpointValue,
 } from "@chakra-ui/react";

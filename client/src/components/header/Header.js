@@ -2,11 +2,9 @@ import React from "react";
 import {
   Box,
   Spacer,
-  Heading,
   Image,
   Flex,
   Text,
-  useColorModeValue,
   useBreakpointValue,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";

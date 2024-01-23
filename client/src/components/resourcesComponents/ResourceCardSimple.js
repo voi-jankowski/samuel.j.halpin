@@ -3,22 +3,16 @@ import {
   Box,
   Center,
   Heading,
-  Text,
   Stack,
   Image,
   Modal,
   useDisclosure,
   Button,
-  Flex,
-  chakra,
   ModalOverlay,
   ModalContent,
-  ModalHeader,
   ModalFooter,
   ModalBody,
-  ModalCloseButton,
 } from "@chakra-ui/react";
-// import BoookCardExtended from "./BoookCardExtended";
 
 export default function ResourceCardSimple({
   index,
@@ -119,6 +113,7 @@ export default function ResourceCardSimple({
               width="100%"
               height="100%"
               style={{ border: "none" }} // Remove iframe border if needed
+              title={title}
             ></iframe>
           </ModalBody>
           <ModalFooter>
