@@ -53,11 +53,11 @@ export default function Footer() {
       <Box bg="black" color="white" textAlign="center" pt={3} pb={5}>
         {/* Footer text */}
         <Text fontSize="xs" textAlign="center" mt={4}>
-          All content and illustrations on this website are Copyright © 2024 by
-          Samuel J. Halpin. All Rights Reserved. Teaching resources provided by
+          Copyright © 2024 Samuel J. Halpin. All texts and illustrations on this
+          site are protected. Teaching resources are shared with permission from
           Usborne Publishing. <br />
           Website design and development by Voi Jankowski. <br />
-          View our{" "}
+          Privacy information can be found in our{" "}
           <Link href="/privacy-policy" color="purple.400">
             Privacy Policy
           </Link>

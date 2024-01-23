@@ -78,7 +78,7 @@ function App() {
               <Route path="/passwordreset" element={<PasswordReset />} />
 
               <Route path="/reset/:token" element={<Reset />} />
-              <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="*" element={<Home />} />
             </Routes>
           </div>
