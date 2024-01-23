@@ -409,7 +409,7 @@ const resolvers = {
           to: "samuel.j.halpin@gmail.com",
           subject: "New Question From Your Portal",
           text: `Hi Samuel,\n\nA new question has been posted on your portal. Please check it out.\n\n
-          Question:\n\n${questionText}\n\n Login to portal:\n\n${process.env.CLIENT_URL}\n`, ,
+          Question:\n\n${questionText}\n\n Login to portal:\n\n${process.env.CLIENT_URL}\n`,
         };
 
         transporter.sendMail(mailOptions, (err, info) => {
