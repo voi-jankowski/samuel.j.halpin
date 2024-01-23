@@ -39,13 +39,12 @@ export default function AddReply({ commentId, showAddReply, setshowAddReply }) {
           replyText,
         },
       });
-      console.log("Reply added:", data.addReply);
+
       setReplyText(""); // Clear the textarea
       setAddError(""); // Clear the error state after successful submission
       setshowAddReply(!showAddReply); // Hide the AddReply component
     } catch (err) {
-      console.log("Error adding reply:", err.message);
-      // Handle the error, show an error message, or take any necessary action
+      setAddError("Something went wrong. Please try again.");
     }
   };
 

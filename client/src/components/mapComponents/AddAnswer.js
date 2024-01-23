@@ -41,13 +41,12 @@ export default function AddAnswer({
       const { data } = await addAnswer({
         variables: { questionId, answerText },
       });
-      console.log("Answer added:", data.addAnswer);
+
       setAnswerText("");
       setAddError("");
       setShowAddAnswer(!showAddAnswer);
     } catch (err) {
-      console.log("Error adding answer:", err.message);
-      // Handle the error, show an error message, or take any necessary action
+      setAddError("Something went wrong. Please try again.");
     }
   };
   return (

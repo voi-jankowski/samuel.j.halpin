@@ -34,7 +34,6 @@ const Auth = new AuthService();
 export default function Merchandise() {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.product.products);
-  console.log(products);
 
   const { loading, data } = useQuery(GET_PRODUCTS);
 

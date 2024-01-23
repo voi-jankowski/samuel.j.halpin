@@ -56,7 +56,6 @@ export default function SignupCard({ setSignupOpen }) {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
 
     // Check for empty fields and display a validation alert
     if (
@@ -74,7 +73,6 @@ export default function SignupCard({ setSignupOpen }) {
       const { data } = await addUser({
         variables: { ...formState },
       });
-      console.log(data);
 
       // Show success alert for 2 seconds and redirect to homepage
       setErrorAlert(""); // Clear error alert

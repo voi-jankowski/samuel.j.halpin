@@ -65,12 +65,11 @@ export default function AddComment({ commentedBook }) {
           commentText,
         },
       });
-      console.log("Comment added:", data.addComment);
+
       setCommentText("");
       setAddError(""); // Clear the error state after successful submission
     } catch (err) {
-      console.log("Error adding comment:", err.message);
-      // Handle the error, show an error message, or take any necessary action
+      setAddError("Something went wrong. Please try again.");
     }
   };
 

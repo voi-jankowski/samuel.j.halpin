@@ -53,7 +53,6 @@ export default function Reset() {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
 
     // Check for empty password field and display a validation alert
     if (!formState.password.trim() || !formState.confirmPassword.trim()) {

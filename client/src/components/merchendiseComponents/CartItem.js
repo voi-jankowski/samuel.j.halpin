@@ -35,7 +35,6 @@ export const CartItem = ({ item }) => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.product);
 
-  console.log(item);
   const { _id, name, image, price, purchaseQuantity } = item;
 
   const handleQuantityChange = (newQuantity) => {

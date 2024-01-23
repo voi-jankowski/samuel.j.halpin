@@ -62,12 +62,11 @@ export default function AddQuestion() {
       const { data } = await addQuestion({
         variables: { questionText },
       });
-      console.log("Question added: ", data);
+
       setQuestionText("");
       setAddError("");
     } catch (err) {
-      console.log("Error adding question: ", err.message);
-      //    Handle the error, for example by showing a validation error message
+      setAddError("Something went wrong. Please try again.");
     }
   };
 

@@ -43,7 +43,6 @@ export default function PasswordReset() {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
 
     // Check for empty email field and display a validation alert
     if (!formState.email.trim()) {

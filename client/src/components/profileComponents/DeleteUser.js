@@ -78,11 +78,9 @@ export default function DeleteUser({ onClose }) {
     }
 
     try {
-      console.log(formState);
       const { data } = await removeUser({
         variables: { password: formState.password },
       });
-      console.log(data);
 
       // show success alert and go to logged out state
       setSuccessAlert("Your account has been deleted.");
@@ -95,8 +93,6 @@ export default function DeleteUser({ onClose }) {
         Auth.logout();
       }, 2000);
     } catch (e) {
-      console.error(e);
-
       // Show error alert
       if (e.message.includes("Incorrect credentials")) {
         setErrorAlert("Incorrect password. Please try again.");
@@ -111,7 +107,6 @@ export default function DeleteUser({ onClose }) {
   };
 
   const handleCancel = () => {
-    console.log("Cancel clicked");
     onClose(); // Call the onClose function from the prop to close the modal
   };
 

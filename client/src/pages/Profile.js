@@ -54,7 +54,6 @@ export default function Profile() {
 
   // Extract the user data from the global state to use in the form
   const user = useSelector((state) => state.user.value);
-  console.log(user);
   // Extract the theme color from the global state
   // const themeColor = useSelector((state) => state.theme.value);
 
@@ -82,7 +81,6 @@ export default function Profile() {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
 
     // Check for empty fields and display a validation alert
     if (
@@ -100,7 +98,7 @@ export default function Profile() {
       const { data } = await updateUser({
         variables: { ...formState },
       });
-      console.log(data);
+
       // Pass the values of the form to the global state to update the changes
       dispatch(
         update({

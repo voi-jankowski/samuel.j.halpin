@@ -41,7 +41,6 @@ export default function PasswordChange({ onClose }) {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
 
     // Check for empty password fields and display a validation alert
     if (

@@ -29,14 +29,12 @@ export default function ShoppingCart({ onClose }) {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.product);
   const [getCheckout, { data }] = useLazyQuery(GET_CHECKOUT_SESSION);
-  console.log(state.cart);
 
   useEffect(() => {
     if (data) {
       stripePromise.then((res) => {
         res.redirectToCheckout({ sessionId: data.checkout.session });
       });
-      console.log(data);
     }
   }, [data]);
 
@@ -73,7 +71,6 @@ export default function ShoppingCart({ onClose }) {
         productIds.push(item._id);
       }
     });
-    console.log(productIds);
 
     getCheckout({
       variables: { products: productIds },

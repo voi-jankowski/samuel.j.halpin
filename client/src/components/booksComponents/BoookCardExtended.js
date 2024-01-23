@@ -33,7 +33,7 @@ export default function BoookCardExtended({
   const { loading, data } = useQuery(GET_COMMENTS, {
     variables: { commentedBook: title },
   });
-  console.log(data);
+
   const comments = data?.comments || [];
 
   const sortedComments = selectionSort(comments, "createdAt");

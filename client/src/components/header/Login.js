@@ -59,7 +59,6 @@ export default function Login({ setLoginOpen }) {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
 
     // Check for empty fields and display a validation alert
     if (!formState.email.trim() || !formState.password.trim()) {
@@ -73,7 +72,6 @@ export default function Login({ setLoginOpen }) {
       const { data } = await loginUser({
         variables: { ...formState },
       });
-      console.log(data);
 
       // Show success alert for 2 seconds and redirect to homepage
       setErrorAlert(""); // Clear error alert

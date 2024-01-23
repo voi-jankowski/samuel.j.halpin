@@ -12,7 +12,6 @@ const Auth = new AuthService();
 
 export default function AskAuthor() {
   const { loading, data } = useQuery(GET_QUESTIONS);
-  console.log(data);
 
   const questions = data?.questions || [];
 
