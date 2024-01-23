@@ -391,6 +391,35 @@ const resolvers = {
           { new: true }
         );
 
+        // Send email to the author about the new question
+        let transporter = nodemailer.createTransport({
+          service: "gmail",
+          auth: {
+            type: "OAuth2",
+            user: process.env.MAIL_USERNAME,
+            pass: process.env.MAIL_PASSWORD,
+            clientId: process.env.OAUTH_CLIENTID,
+            clientSecret: process.env.OAUTH_CLIENT_SECRET,
+            refreshToken: process.env.OAUTH_REFRESH_TOKEN,
+          },
+        });
+
+        const mailOptions = {
+          from: process.env.MAIL_USERNAME,
+          to: "samuel.j.halpin@gmail.com",
+          subject: "New Question From Your Portal",
+          text: `Hi Samuel,\n\nA new question has been posted on your portal. Please check it out.\n\n
+          Question:\n\n${questionText}\n\n Login to portal:\n\n${process.env.CLIENT_URL}\n`, ,
+        };
+
+        transporter.sendMail(mailOptions, (err, info) => {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log("Email sent: " + info.response);
+          }
+        });
+
         return question;
       }
 
