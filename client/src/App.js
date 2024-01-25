@@ -27,8 +27,7 @@ const Auth = new AuthService();
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
-  uri:
-    process.env.REACT_APP_GRAPHQL_ENDPOINT || "http://localhost:3001/graphql",
+  uri: "http://localhost:3001/graphql",
 });
 
 // Construct request middleware that will attach the JWT token to every request as an `authorization` header
