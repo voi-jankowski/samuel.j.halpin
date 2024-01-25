@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
   ApolloClient,
   InMemoryCache,
@@ -27,10 +27,9 @@ const Auth = new AuthService();
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
-  uri: process.env.REACT_APP_GRAPHQL_ENDPOINT,
+  uri:
+    process.env.REACT_APP_GRAPHQL_ENDPOINT || "http://localhost:3001/graphql",
 });
-
-console.log(process.env.REACT_APP_GRAPHQL_ENDPOINT);
 
 // Construct request middleware that will attach the JWT token to every request as an `authorization` header
 const authLink = setContext((_, { headers }) => {
@@ -52,14 +51,6 @@ const client = new ApolloClient({
 });
 
 function App() {
-  // Set state for animation in the header
-  const [animateHeader, setAnimateHeader] = useState(true);
-
-  useEffect(() => {
-    // After the first render, set animateHeader to false
-    setAnimateHeader(false);
-  }, []);
-
   const background = {
     backgroundImage: "url(/assets/images/background.jpg)",
     backgroundSize: "cover",
@@ -71,7 +62,7 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div className="App" style={background}>
-          <Header animate={animateHeader} />
+          <Header />
           <div className="container">
             <Routes>
               <Route path="/" element={<Home />} />
