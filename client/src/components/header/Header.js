@@ -13,7 +13,7 @@ import Navbar from "./Navbar";
 
 const MotionImage = motion(Image);
 
-function Header({ animate }) {
+function Header() {
   const logoSize = useBreakpointValue({
     base: "70%",
     sm: "50%",
@@ -42,7 +42,7 @@ function Header({ animate }) {
           alt="Heading Baloon"
           width={baloonSize}
           ml="5%"
-          animate={animate ? { x: [500, 0], opacity: [0, 1] } : {}}
+          animate={{ x: [500, 0], opacity: [0, 1] }}
           transition={{ duration: 7, ease: "easeInOut" }}
         />
         <Flex direction="column" alignItems="right" width={logoSize}>
