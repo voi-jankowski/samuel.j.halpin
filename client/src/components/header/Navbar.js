@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 // The navbar template sourced from https://chakra-templates.dev/navigation/navbar
+import { Link as RouterLink } from "react-router-dom"; // Import Link from react-router-dom
 import {
   Box,
   Flex,
@@ -55,20 +56,21 @@ const NavLink = ({ children, url }) => {
   });
 
   return (
-    <Link
-      key={children}
-      px={2}
-      py={1}
-      rounded={"md"}
-      fontSize={linkSize} // Set the font size based on the breakpoint value
-      _hover={{
-        textDecoration: "none",
-        bg: useColorModeValue("gray.300", "gray.700"),
-      }}
-      href={url}
-    >
-      {children}
-    </Link>
+    <RouterLink to={url}>
+      {" "}
+      <Box
+        px={2}
+        py={1}
+        rounded={"md"}
+        fontSize={linkSize}
+        _hover={{
+          textDecoration: "none",
+          bg: useColorModeValue("gray.300", "gray.700"),
+        }}
+      >
+        {children}
+      </Box>
+    </RouterLink>
   );
 };
 
@@ -139,7 +141,7 @@ export default function Navbar() {
 
   return (
     <>
-      <Box bg="transparent" px={4}>
+      <Box bg="transparent" px={10}>
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <IconButton
             size={"md"}

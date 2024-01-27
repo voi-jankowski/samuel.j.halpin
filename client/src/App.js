@@ -17,6 +17,7 @@ import Profile from "./pages/Profile";
 import TeachingResources from "./pages/TeachingResources";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
+import Navbar from "./components/header/Navbar";
 import Success from "./pages/Success";
 import PasswordReset from "./components/header/PasswordReset";
 import Reset from "./components/header/Reset";
@@ -27,8 +28,7 @@ const Auth = new AuthService();
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
-  uri:
-    process.env.REACT_APP_GRAPHQL_ENDPOINT || "http://localhost:3001/graphql",
+  uri: process.env.REACT_APP_GRAPHQL_ENDPOINT,
 });
 
 // Construct request middleware that will attach the JWT token to every request as an `authorization` header
@@ -50,6 +50,12 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+// Wrap the Header component with React.memo
+const MemoizedHeader = React.memo(Header);
+
+// Wrap the Footer component with React.memo
+const MemoizedFooter = React.memo(Footer);
+
 function App() {
   const background = {
     backgroundImage: "url(/assets/images/background.jpg)",
@@ -60,9 +66,11 @@ function App() {
 
   return (
     <ApolloProvider client={client}>
-      <Router>
-        <div className="App" style={background}>
-          <Header />
+      <div className="App" style={background}>
+        <MemoizedHeader />
+
+        <Router>
+          <Navbar />
           <div className="container">
             <Routes>
               <Route path="/" element={<Home />} />
@@ -79,9 +87,9 @@ function App() {
               <Route path="*" element={<Home />} />
             </Routes>
           </div>
-          <Footer className="Footer" />
-        </div>
-      </Router>
+        </Router>
+        <MemoizedFooter className="Footer" />
+      </div>
     </ApolloProvider>
   );
 }

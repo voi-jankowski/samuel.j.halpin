@@ -59,7 +59,6 @@ function Header() {
         </Flex>
         <Spacer />
       </Flex>
-      <Navbar />
     </Box>
   );
 }

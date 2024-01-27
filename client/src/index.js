@@ -1,4 +1,5 @@
 import React from "react";
+
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
@@ -13,6 +14,13 @@ import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage"; // Defaults to localStorage for web
+
+if (process.env.NODE_ENV === "development") {
+  const whyDidYouRender = require("@welldone-software/why-did-you-render");
+  whyDidYouRender(React, {
+    trackAllPureComponents: true,
+  });
+}
 
 // Create a redux-persist store
 const persistConfig = {
