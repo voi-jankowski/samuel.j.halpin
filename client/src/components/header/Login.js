@@ -1,6 +1,7 @@
 // Template sourced from https://chakra-templates.dev/forms/authentication
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Alert,
   AlertIcon,
@@ -34,6 +35,7 @@ import AuthService from "../../utils/auth";
 const Auth = new AuthService();
 
 export default function Login({ setLoginOpen }) {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
 
@@ -93,9 +95,9 @@ export default function Login({ setLoginOpen }) {
           window.location.pathname.includes("/reset") ||
           window.location.pathname.includes("/passwordreset")
         ) {
-          window.location.replace("/");
+          navigate("/");
         } else {
-          window.location.replace(window.location.pathname);
+          navigate(window.location.pathname, { replace: true });
         }
 
         // close the modal

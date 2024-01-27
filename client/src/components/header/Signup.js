@@ -1,5 +1,6 @@
 // Template sourced from https://chakra-templates.dev/forms/authentication
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Alert,
   AlertIcon,
@@ -31,6 +32,7 @@ import AuthService from "../../utils/auth";
 const Auth = new AuthService();
 
 export default function SignupCard({ setSignupOpen }) {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
 
@@ -98,9 +100,9 @@ export default function SignupCard({ setSignupOpen }) {
           window.location.pathname.includes("/reset") ||
           window.location.pathname.includes("/passwordreset")
         ) {
-          window.location.replace("/");
+          navigate("/");
         } else {
-          window.location.replace(window.location.pathname);
+          navigate(window.location.pathname, { replace: true });
         }
       }, 2000);
     } catch (e) {

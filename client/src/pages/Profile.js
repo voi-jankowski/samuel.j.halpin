@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Alert,
   AlertIcon,
@@ -39,6 +40,7 @@ import AuthService from "../utils/auth";
 const Auth = new AuthService();
 
 export default function Profile() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   // Add a separate state variable to control viibility of Delete modal
   const [isDeleteOpen, setDeleteOpen] = useState(false);
@@ -114,7 +116,7 @@ export default function Profile() {
       setValidationAlert(""); // Clear validation alert
 
       setTimeout(() => {
-        window.location.replace("/");
+        navigate("/");
       }, 2000);
     } catch (e) {
       console.error(e);

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 // The navbar template sourced from https://chakra-templates.dev/navigation/navbar
-import { Link as RouterLink } from "react-router-dom"; // Import Link from react-router-dom
+import { Link as RouterLink, useNavigate } from "react-router-dom"; // Import Link from react-router-dom
 import {
   Box,
   Flex,
@@ -109,6 +109,7 @@ const ProfileLink = () => {
 };
 
 export default function Navbar() {
+  const navigate = useNavigate();
   const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
   // Add a separate state variable to track Login modal visibility
@@ -126,9 +127,9 @@ export default function Navbar() {
 
     // Refresh the page after logout but remain on the same page unless the url of the page includes /reset, then redirect to homepage
     if (window.location.pathname.includes("/reset")) {
-      window.location.replace("/");
+      navigate("/");
     } else {
-      window.location.replace(window.location.pathname);
+      navigate(window.location.pathname, { replace: true });
     }
   };
 
