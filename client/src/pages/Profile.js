@@ -390,7 +390,7 @@ export default function Profile() {
                 _hover={{
                   bg: "purple.500",
                 }}
-                onClick={() => window.replace("/")}
+                onClick={() => navigate("/")}
               >
                 Return to Home
               </Button>
