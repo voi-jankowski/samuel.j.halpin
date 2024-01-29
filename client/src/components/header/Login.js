@@ -1,7 +1,7 @@
 // Template sourced from https://chakra-templates.dev/forms/authentication
 import React from "react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link as RouterLink } from "react-router-dom";
 import {
   Alert,
   AlertIcon,
@@ -150,6 +150,7 @@ export default function Login({ setLoginOpen }) {
               <Input
                 type="email"
                 name="email"
+                autoComplete="email"
                 value={formState.email}
                 onChange={handleChange}
                 focusBorderColor="purple.400"
@@ -161,6 +162,7 @@ export default function Login({ setLoginOpen }) {
                 <Input
                   type={showPassword ? "text" : "password"}
                   name="password"
+                  autoComplete="current-password"
                   value={formState.password}
                   onChange={handleChange}
                   focusBorderColor="purple.400"
@@ -193,7 +195,13 @@ export default function Login({ setLoginOpen }) {
           <br />
 
           <Text textAlign={"right"}>
-            <Link color={"purple.500"} href="/passwordreset">
+            <Link
+              as={RouterLink}
+              to="/passwordreset"
+              color="purple.500"
+              _hover={{ textDecoration: "underline" }}
+              onClick={() => setLoginOpen(false)}
+            >
               Forgot password?
             </Link>
           </Text>

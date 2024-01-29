@@ -167,6 +167,7 @@ export default function SignupCard({ setSignupOpen }) {
               <Input
                 type="text"
                 name="username"
+                autoComplete="username"
                 value={formState.username}
                 onChange={handleChange}
                 focusBorderColor="purple.400"
@@ -178,6 +179,7 @@ export default function SignupCard({ setSignupOpen }) {
               <Input
                 type="email"
                 name="email"
+                autoComplete="email"
                 value={formState.email}
                 onChange={handleChange}
                 focusBorderColor="purple.400"
@@ -189,6 +191,7 @@ export default function SignupCard({ setSignupOpen }) {
                 <Input
                   type={showPassword ? "text" : "password"}
                   name="password"
+                  autoComplete="current-password"
                   value={formState.password}
                   onChange={handleChange}
                   focusBorderColor="purple.400"

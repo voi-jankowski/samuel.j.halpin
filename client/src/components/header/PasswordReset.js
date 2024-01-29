@@ -15,7 +15,12 @@ import {
   Text,
   useColorModeValue,
   Link,
+  Modal,
+  ModalOverlay,
+  ModalContent,
 } from "@chakra-ui/react";
+
+import Login from "./Login";
 
 import { useMutation } from "@apollo/client";
 import { REQUEST_PASSWORD_RESET } from "../../utils/mutations";
@@ -24,6 +29,9 @@ export default function PasswordReset() {
   const [formState, setFormState] = useState({
     email: "",
   });
+
+  // Add a state for the Login modal visibility
+  const [isLoginOpen, setLoginOpen] = useState(false);
 
   const [requestPasswordReset, { error, data }] = useMutation(
     REQUEST_PASSWORD_RESET
@@ -57,7 +65,7 @@ export default function PasswordReset() {
       await requestPasswordReset({
         variables: { email: formState.email },
       });
-
+      console.log("requestPasswordReset", requestPasswordReset);
       // Show generic success message
       setValidationAlert("");
       setSuccessAlert(
@@ -106,6 +114,7 @@ export default function PasswordReset() {
               <Input
                 type="email"
                 name="email"
+                autoComplete="email"
                 value={formState.email}
                 onChange={handleChange}
                 focusBorderColor="purple.400"
@@ -126,10 +135,20 @@ export default function PasswordReset() {
           </Stack>
           <br />
           <Text textAlign={"right"}>
-            <Link color={"purple.500"} href="/login">
+            <Link color={"purple.500"} onClick={() => setLoginOpen(true)}>
               Back to Login
             </Link>
           </Text>
+          <Modal
+            size={"lg"}
+            isOpen={isLoginOpen}
+            onClose={() => setLoginOpen(false)}
+          >
+            <ModalOverlay />
+            <ModalContent>
+              <Login setLoginOpen={setLoginOpen} />
+            </ModalContent>
+          </Modal>
 
           {/* Success Alert */}
           {successAlert && (

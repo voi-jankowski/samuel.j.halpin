@@ -17,6 +17,7 @@ import {
   ModalHeader,
   ModalOverlay,
   ModalContent,
+  Text,
 } from "@chakra-ui/react";
 
 import { useParams } from "react-router-dom";
@@ -113,6 +114,9 @@ export default function Reset() {
       <Stack align={"center"}>
         <Heading fontSize={"4xl"}>Reset Your Password</Heading>
       </Stack>
+      <Text fontSize={"lg"} color={"gray.600"}>
+        The new password must be at least 5 characters long.
+      </Text>
       <Box
         rounded={"lg"}
         bg={useColorModeValue("white", "gray.700")}

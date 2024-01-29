@@ -120,8 +120,8 @@ export default function Map() {
               p={{ base: 2, sm: 4, lg: 6, xl: 8 }}
             >
               Wonder across this most peculiar map of Suds from The Peculiar
-              Peggs of Riddling Woods to see where the inspiration for different
-              parts of the book came from.
+              Peggs of Riddling Woods and try clicking on the moths to learn
+              where the inspiration for different parts of the book came from.
             </Text>
             <Box
               display="flex"
