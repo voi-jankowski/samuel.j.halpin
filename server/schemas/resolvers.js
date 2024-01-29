@@ -230,7 +230,7 @@ const resolvers = {
       // find the user by email
       const user = await User.findOne({ email });
       if (!user) {
-        return user;
+        throw new Error("User not found");
       }
 
       console.log(user);
@@ -260,13 +260,13 @@ const resolvers = {
         Reset my password:\n\n${process.env.CLIENT_URL}/reset/${resetToken}\n\nIf you did not request this, please ignore this email and your password will remain unchanged.\n`,
       };
 
-      transporter.sendMail(mailOptions, (err, info) => {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log("Email sent: " + info.response);
-        }
-      });
+      try {
+        let emailResponse = await transporter.sendMail(mailOptions);
+        console.log("Email sent: " + emailResponse.response);
+      } catch (err) {
+        console.error("Error sending email: ", err);
+        throw new Error("Failed to send password reset email");
+      }
 
       return user;
     },
