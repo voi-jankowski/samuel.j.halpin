@@ -39,14 +39,7 @@ export default function Home() {
       spacing={{ base: 8, md: 10 }}
       py={{ base: 10, md: 18 }}
     >
-      <Box
-        w="full"
-        backgroundColor={useColorModeValue(
-          "sage.200",
-          "gray.900",
-          "rgba(0, 0, 0, 0.2)"
-        )}
-      >
+      <Box w="full" boxShadow={"2xl"}>
         <AboutSam />
       </Box>
       <Flex

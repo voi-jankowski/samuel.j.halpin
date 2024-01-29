@@ -12,7 +12,7 @@ export default function TestimonialCard(props) {
   const { name, content, image, index } = props;
   return (
     <Flex
-      boxShadow={"lg"}
+      boxShadow={"2xl"}
       maxW={"640px"}
       direction={{ base: "column-reverse", md: "row" }}
       width={"full"}
@@ -20,7 +20,6 @@ export default function TestimonialCard(props) {
       p={5}
       justifyContent={"space-between"}
       position={"relative"}
-      bg={useColorModeValue("sage.200", "gray.900", "rgba(0, 0, 0, 0.5)")}
       _after={{
         content: '""',
         position: "absolute",
