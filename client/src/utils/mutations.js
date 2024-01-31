@@ -249,35 +249,3 @@ export const REMOVE_ANSWER = gql`
     }
   }
 `;
-
-// Add an order
-export const ADD_ORDER = gql`
-  mutation AddOrder($products: [ID]!) {
-    addOrder(products: $products) {
-      _id
-      purchaseDate
-      products {
-        _id
-        name
-        description
-        image
-        price
-        quantity
-      }
-    }
-  }
-`;
-
-// Update a product's quantity
-export const UPDATE_PRODUCT = gql`
-  mutation UpdateProduct($_id: ID!, $quantity: Int!) {
-    updateProduct(_id: $_id, quantity: $quantity) {
-      _id
-      name
-      description
-      image
-      price
-      quantity
-    }
-  }
-`;

@@ -1,60 +1,5 @@
 import { gql } from "@apollo/client";
 
-// Fetch all products
-export const GET_PRODUCTS = gql`
-  query GetProducts {
-    products {
-      _id
-      name
-      description
-      image
-      price
-      quantity
-    }
-  }
-`;
-
-// Fetch a single product by its ID
-export const GET_PRODUCT = gql`
-  query GetProduct($productId: ID!) {
-    product(_id: $productId) {
-      _id
-      name
-      description
-      image
-      price
-      quantity
-    }
-  }
-`;
-
-// Fetch user's order by its ID
-export const GET_ORDER = gql`
-  query GetOrder($orderId: ID!) {
-    order(_id: $orderId) {
-      _id
-      purchaseDate
-      products {
-        _id
-        name
-        description
-        image
-        price
-        quantity
-      }
-    }
-  }
-`;
-
-// Get checkout session
-export const GET_CHECKOUT_SESSION = gql`
-  query GetCheckoutSession($products: [ID]!) {
-    checkout(products: $products) {
-      session
-    }
-  }
-`;
-
 // Get logged in user's details
 export const GET_ME = gql`
   query GetMe {
@@ -89,18 +34,6 @@ export const GET_ME = gql`
           answerText
           answerAuthor
           createdAt
-        }
-      }
-      orders {
-        _id
-        purchaseDate
-        products {
-          _id
-          name
-          description
-          image
-          price
-          quantity
         }
       }
     }
