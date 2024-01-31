@@ -11,14 +11,12 @@ import "./App.css";
 
 import Home from "./pages/Home";
 import Map from "./pages/Map";
-import Merchandise from "./pages/Merchandise";
 import Books from "./pages/Books";
 import Profile from "./pages/Profile";
 import TeachingResources from "./pages/TeachingResources";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import Navbar from "./components/header/Navbar";
-import Success from "./pages/Success";
 import PasswordReset from "./components/header/PasswordReset";
 import Reset from "./components/header/Reset";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
@@ -75,13 +73,10 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/map" element={<Map />} />
-              <Route path="/merchandise" element={<Merchandise />} />
               <Route path="/books" element={<Books />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/teaching" element={<TeachingResources />} />
-              <Route path="/success" element={<Success />} />
               <Route path="/passwordreset" element={<PasswordReset />} />
-
               <Route path="/reset/:token" element={<Reset />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="*" element={<Home />} />
