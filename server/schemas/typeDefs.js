@@ -9,7 +9,6 @@ const typeDefs = gql`
     userIcon: String
     comments: [Comment]!
     questions: [Question]!
-    orders: [Order]
   }
 
   type Comment {
@@ -46,35 +45,12 @@ const typeDefs = gql`
     createdAt: String
   }
 
-  type Product {
-    _id: ID
-    name: String
-    description: String
-    image: String
-    price: Float
-    quantity: Int
-  }
-
-  type Order {
-    _id: ID
-    purchaseDate: String
-    products: [Product]
-  }
-
-  type Checkout {
-    session: ID
-  }
-
   type Auth {
     token: ID!
     user: User
   }
 
   type Query {
-    products: [Product]
-    product(_id: ID!): Product
-    order(_id: ID!): Order
-    checkout(products: [ID]!): Checkout
     me: User
     comments(commentedBook: String!): [Comment]
     comment(commentId: ID!): Comment
@@ -114,8 +90,6 @@ const typeDefs = gql`
     removeQuestion(questionId: ID!): Question
     addAnswer(questionId: ID!, answerText: String!): Question
     removeAnswer(questionId: ID!, answerId: ID!): Question
-    addOrder(products: [ID]!): Order
-    updateProduct(_id: ID!, quantity: Int!): Product
   }
 `;
 
