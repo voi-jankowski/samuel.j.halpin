@@ -33,6 +33,10 @@ export default function PasswordReset() {
   // Add a state for the Login modal visibility
   const [isLoginOpen, setLoginOpen] = useState(false);
 
+  const [successAlert, setSuccessAlert] = useState("");
+  const [validationAlert, setValidationAlert] = useState("");
+  const [errorAlert, setErrorAlert] = useState("");
+
   const [requestPasswordReset, { error }] = useMutation(
     REQUEST_PASSWORD_RESET,
     {
@@ -47,17 +51,21 @@ export default function PasswordReset() {
       },
       onError: (err) => {
         console.error("Mutation error:", err);
-        // Show generic error message
-        setValidationAlert("");
-        setSuccessAlert("");
-        setErrorAlert("Something went wrong, please try again later.");
+        // Show generic success message if User not found and error message if other error
+        if (err.message === "User not found") {
+          setValidationAlert("");
+          setSuccessAlert(
+            "If your email address exists in our records, you will receive a password reset link"
+          );
+          setErrorAlert("");
+        } else {
+          setValidationAlert("");
+          setSuccessAlert("");
+          setErrorAlert("Something went wrong. Please try again.");
+        }
       },
     }
   );
-
-  const [successAlert, setSuccessAlert] = useState("");
-  const [validationAlert, setValidationAlert] = useState("");
-  const [errorAlert, setErrorAlert] = useState("");
 
   const handleChange = (event) => {
     const { name, value } = event.target;
