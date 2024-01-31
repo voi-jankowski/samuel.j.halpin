@@ -33,8 +33,26 @@ export default function PasswordReset() {
   // Add a state for the Login modal visibility
   const [isLoginOpen, setLoginOpen] = useState(false);
 
-  const [requestPasswordReset, { error, data }] = useMutation(
-    REQUEST_PASSWORD_RESET
+  const [requestPasswordReset, { error }] = useMutation(
+    REQUEST_PASSWORD_RESET,
+    {
+      onCompleted: (data) => {
+        console.log("Mutation completed:", data);
+        // Show generic success message
+        setValidationAlert("");
+        setSuccessAlert(
+          "If your email address exists in our records, you will receive a password reset link"
+        );
+        setErrorAlert("");
+      },
+      onError: (err) => {
+        console.error("Mutation error:", err);
+        // Show generic error message
+        setValidationAlert("");
+        setSuccessAlert("");
+        setErrorAlert("Something went wrong, please try again later.");
+      },
+    }
   );
 
   const [successAlert, setSuccessAlert] = useState("");
@@ -65,18 +83,7 @@ export default function PasswordReset() {
       await requestPasswordReset({
         variables: { email: formState.email },
       });
-      console.log("requestPasswordReset", requestPasswordReset);
-      // Show generic success message
-      setValidationAlert("");
-      setSuccessAlert(
-        "If your email address exists in our records, you will receive a password reset link"
-      );
-      setErrorAlert("");
     } catch (err) {
-      // Show generic error message
-      setValidationAlert("");
-      setSuccessAlert("");
-      setErrorAlert("Something went wrong, please try again later.");
       console.error(err); // For debugging purposes only, remove in production
     }
 
