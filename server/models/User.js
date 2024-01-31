@@ -1,6 +1,5 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
-const Order = require("./Order");
 
 const userSchema = new Schema({
   username: {
@@ -36,7 +35,6 @@ const userSchema = new Schema({
       ref: "Question",
     },
   ],
-  orders: [Order.schema],
 });
 
 userSchema.pre("save", async function (next) {
