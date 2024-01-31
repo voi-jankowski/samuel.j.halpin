@@ -391,14 +391,12 @@ const resolvers = {
 
         // Send email to the author about the new question
         let transporter = nodemailer.createTransport({
-          service: "gmail",
+          host: process.env.EMAIL_HOST,
+          port: 465,
+          secure: true, // use SSL
           auth: {
-            type: "OAuth2",
             user: process.env.MAIL_USERNAME,
             pass: process.env.MAIL_PASSWORD,
-            clientId: process.env.OAUTH_CLIENTID,
-            clientSecret: process.env.OAUTH_CLIENT_SECRET,
-            refreshToken: process.env.OAUTH_REFRESH_TOKEN,
           },
         });
 
