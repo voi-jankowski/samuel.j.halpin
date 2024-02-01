@@ -9,7 +9,6 @@ This author's page is a captivating web application designed to showcase the wor
 ## Table of Contents
 
 - [Features](#features)
-- [Screenshots](#screenshots)
 - [Technologies Used](#technologies-used)
 - [Usage](#usage)
 - [License](#license)
@@ -20,11 +19,7 @@ This author's page is a captivating web application designed to showcase the wor
 - **Book Showcase**: Browse through the collection of published books, each with captivating descriptions and cover images.
 - **Inspiration Map**: Explore a visually-rich map that shows the world in the novel and stories that inspired the author's creative journey.
 - **Interactive Comments**: Engage with other readers and the author through interactive comments and discussions on each book's page.
-- **Easy Ordering**: Seamlessly place orders for some unpublished books through a convenient shopping cart system.
-
-## Screenshots
-
-Include screenshots or GIFs showcasing the layout and design of your webpage.
+- **Teacher's Resources**: Access downloadable PDFs containing teaching activities and resources related to Samuel J. Halpin's books.
 
 ## Technologies Used
 
@@ -35,7 +30,6 @@ Include screenshots or GIFs showcasing the layout and design of your webpage.
 - Apollo
 - GraphQL
 - Redux
-- Stripe
 
 ## Usage
 
@@ -52,9 +46,7 @@ Include screenshots or GIFs showcasing the layout and design of your webpage.
 
 ![Map section](./client/public/assets/images/screenshot-3.png)
 
-5. The "Gift Books" section provides an opportunity for users to explore exciting merchandise of Samuel's yet unpublished books.
-
-![Merchendise section](./client/public/assets/images/screenshot-4.png)
+5. The "Teacher's Resources" section provides educators with downloadable PDFs containing teaching activities and resources, enriching the learning experience with Samuel J. Halpin's books.
 
 6. Create a new user or log in to be able to enjoy commenting asking questions to the author and placing orders.
 
@@ -70,6 +62,6 @@ If you have any questions or would like to get in touch, feel free to reach out 
 - Email: voi.jankowski@gmail.com
 - LinkedIn: [linkedin.com/in/voi-jankowski/](https://www.linkedin.com/in/voi-jankowski/)
 
-The page can be accessed [here](https://samuel-j-halpin-5ca11d52cf4b.herokuapp.com/) .
+The page can be accessed [here](https://samueljhalpin.com/) .
 
 The repository for the project is [here](https://github.com/voi-jankowski/samuel.j.halpin) .
