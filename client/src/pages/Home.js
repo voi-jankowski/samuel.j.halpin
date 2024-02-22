@@ -16,18 +16,18 @@ const testimonials = [
     name: "-THE BOOK SELLER-",
     content:
       "Halpin weaves a tantalising web with echoes of Tim Burton and Neil Gaiman.",
-    image: "./assets/images/moth5.png",
+    image: "./assets/images-converted/moth5.webp",
   },
   {
     name: "-LANCASTER GUARDIAN-",
     content: "Halpin knows how to weave a thrilling story",
-    image: "./assets/images/moth6.png",
+    image: "./assets/images-converted/moth6.webp",
   },
   {
     name: "-EMILY BEARN, THE TELEGRAPH-",
     content:
       "The real joy of his writing lies in his ability to observe adult vanities through the eyes of a child.",
-    image: "./assets/images/moth2.png",
+    image: "./assets/images-converted/moth2.webp",
   },
 ];
 

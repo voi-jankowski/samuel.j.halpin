@@ -15,7 +15,7 @@ export default function Answer({
   createdAt,
   questionId,
 }) {
-  const avatar = "./assets/images/avatarSam.png";
+  const avatar = "./assets/images-converted/avatarSam.webp";
 
   const [removeAnswer] = useMutation(REMOVE_ANSWER, {
     variables: { questionId: questionId, answerId: answerId },

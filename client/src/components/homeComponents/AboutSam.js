@@ -49,7 +49,7 @@ export default function AboutSam() {
           align={"right"}
           position={"relative"}
           backgroundImage={
-            "url(client/public/assets/images/Moths_Reduced_Opacity_1.png)"
+            "url(client/public/assets/images-converted/Moths_Reduced_Opacity_1.webp)"
           }
         >
           <Box
@@ -68,7 +68,7 @@ export default function AboutSam() {
               align={"center"}
               w={"100%"}
               h={"100%"}
-              src={"./assets/images/Portrait.jpg"}
+              src={"./assets/images-converted/Portrait.webp"}
             />
           </Box>
         </Flex>

@@ -19,7 +19,7 @@ export default function Question({
   createdAt,
   answers,
 }) {
-  const avatar = "./assets/images/moth7.png";
+  const avatar = "./assets/images-converted/moth7.webp";
   // State to display the AddReply component
   const [showAddAnswer, setShowAddAnswer] = useState(false);
 

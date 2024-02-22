@@ -85,7 +85,7 @@ const ProfileLink = () => {
         <Flex alignItems={"center"}>
           <MotionImage
             boxSize="80px"
-            src={user.userIcon || "/assets/images/moth7.png"}
+            src={user.userIcon || "/assets/images-converted/moth7.webp"}
             variants={shakeVariant}
             initial="initial"
             whileInView="shake"
@@ -96,7 +96,7 @@ const ProfileLink = () => {
         <Flex alignItems={"center"}>
           <MotionImage
             boxSize="80px"
-            src={"/assets/images/moth1.png"}
+            src={"/assets/images-converted/moth1.webp"}
             variants={shakeVariant}
             initial="initial"
             whileInView="shake"
@@ -186,7 +186,7 @@ export default function Navbar() {
                       <Center>
                         <MotionImage
                           boxSize="130px"
-                          src={"/assets/images/moth7.png"}
+                          src={"/assets/images-converted/moth7.webp"}
                           variants={shakeVariant}
                           initial="initial"
                           whileHover="shake"
@@ -219,11 +219,11 @@ export default function Navbar() {
                       <Center>
                         {/* <Avatar
                           size={"2xl"}
-                          src={"/assets/images/moth4.png"}
+                          src={"/assets/images-converted/moth4.webp"}
                         /> */}
                         <MotionImage
                           boxSize="130px"
-                          src={"/assets/images/moth4.png"}
+                          src={"/assets/images-converted/moth4.webp"}
                           variants={shakeVariant}
                           initial="initial"
                           whileHover="shake"

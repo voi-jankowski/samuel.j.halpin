@@ -24,7 +24,7 @@ export default function Footer() {
         {/* Footer image */}
         <Box
           as="img"
-          src="/assets/images/footer.png"
+          src="/assets/images-converted/footer.webp"
           width="60%"
           alt="Silhouette"
         />

@@ -19,56 +19,56 @@ const inspirations = [
     title: "The Helligan Mills",
     description:
       "I was hiking with my husband in the mountains in Poland, when I saw a strange building perched on top of a crag, and the moment I saw it I knew that was what the Helligan Mills looked like. I’d seen something similar in my head as I was writing it, but when I saw this it was like the book coming to life in front of me.",
-    linkImage: "./assets/images/moth1.png",
-    image: "./assets/images/The_TV_Tower.png",
+    linkImage: "./assets/images-converted/moth1.webp",
+    image: "./assets/images-converted/The_TV_Tower.webp",
     finalPosition: { top: "20%", left: "10%" },
   },
   {
     title: "Bonhilda Bonhoeffer’s Sweetshop",
     description:
       "There was a shop in my home town in Tasmania called the Reliquaire, and it was one of the most magical places I could ever imagine as a kid. It was so stuffed with glistening objects and sparkling ornaments and had a strange stillness to it. At the Reliquaire they made the most spectacular fudge I’ve ever tasted to this day, and there would always be someone wondering around with a tasting tray.",
-    linkImage: "./assets/images/moth2.png",
-    image: "./assets/images/Bonhilda_Bonhoeffer_Sweet_Shop.jpg",
+    linkImage: "./assets/images-converted/moth2.webp",
+    image: "./assets/images-converted/Bonhilda_Bonhoeffer_Sweet_Shop.webp",
     finalPosition: { top: "50%", left: "20%" },
   },
   {
     title: "Gran",
     description:
       "My own Grandma wore a variety of silk scarves and had oodles of the most wonderful little sayings which she would whip out, including one which I believed until I was about ten which was that she was twenty-one and not a day older. There was however one scarf she had that was half green and half gold and when she stepped into the sunlight it would glisten like a lizard. I always found those colours so bewitching.",
-    linkImage: "./assets/images/moth3.png",
-    image: "./assets/images/Gran.JPG",
+    linkImage: "./assets/images-converted/moth3.webp",
+    image: "./assets/images-converted/Gran.webp",
     finalPosition: { top: "55%", left: "50%" },
   },
   {
     title: "Husk Woods School",
     description:
       "The back of my own school opened onto a vast stretch of bush, and there was even a deer pen right next to our playground. Every now and then one of the deer would get out of their cage and go charging across the fields and do loops around the swings!",
-    linkImage: "./assets/images/moth4.png",
-    image: "./assets/images/Husk_School.jpg",
+    linkImage: "./assets/images-converted/moth4.webp",
+    image: "./assets/images-converted/Husk_School.webp",
     finalPosition: { top: "60%", left: "75%" },
   },
   {
     title: "The Riddling Woods",
     description:
       "In Tasmania where I grew up, there were stories all the time about people going missing out in the bush. Often it was Tasmanian Devils that were blamed, but it always meant that there was a sense of unease and apprehension that filled me whenever I went walking through the woods near our house.",
-    linkImage: "./assets/images/moth5.png",
-    image: "./assets/images/Riddling_Woods.jpg",
+    linkImage: "./assets/images-converted/moth5.webp",
+    image: "./assets/images-converted/Riddling_Woods.webp",
     finalPosition: { top: "75%", left: "55%" },
   },
   {
     title: "Marley’s Barge",
     description:
       "Near my house in London was a big canal called the Regent’s Canal, and I became fascinated walking along it every day by the barges which were moored along it and the types of people that lived in them. One time I even saw one called ‘The Poppy’ which I thought was a sign that Mumbling Marley might be about.",
-    linkImage: "./assets/images/moth6.png",
-    image: "./assets/images/Barge.jpg",
+    linkImage: "./assets/images-converted/moth6.webp",
+    image: "./assets/images-converted/Barge.webp",
     finalPosition: { top: "15%", left: "60%" },
   },
   {
     title: "The Brindled Weave",
     description:
       "I was inspired by a fabric shop I once went to in Cornwall. It had shelves and shelves groaning under the weight of different coloured silks and satins. And from the back of the shop as I wandered around being generally nosy, a lady appeared with hair so white and feathery it was liked whipped cream. Ever since that day I’ve always kept the image of that fascinating place in my head, until it finally appeared in the Peggs.",
-    linkImage: "./assets/images/moth7.png",
-    image: "./assets/images/Brindled_Weave.jpg",
+    linkImage: "./assets/images-converted/moth7.webp",
+    image: "./assets/images-converted/Brindled_Weave.webp",
     finalPosition: { top: "80%", left: "10%" },
   },
 ];
@@ -93,7 +93,7 @@ export default function Map() {
           mx={{ base: 0, md: 10 }}
         >
           <Image
-            src="./assets/images/Frame_1.png"
+            src="./assets/images-converted/Frame_1.webp"
             alt="Frame 1"
             w="25%"
             mt={8}
@@ -130,7 +130,7 @@ export default function Map() {
               mx={{ base: 0, md: 10 }}
             >
               <Image
-                src="./assets/images/Frame_3.png"
+                src="./assets/images-converted/Frame_3.webp"
                 alt="Frame 3"
                 w="45%"
                 mt={20}
@@ -145,7 +145,7 @@ export default function Map() {
       <Box mt={-20} mb={20} zIndex={1} position={"relative"}>
         {/* Use the Image component and set the source of the background image */}
         <Image
-          src="/assets/images/Map_Frame.png"
+          src="/assets/images-converted/Map_Frame.webp"
           alt="Inspiration Map"
           h={height}
           w="auto"

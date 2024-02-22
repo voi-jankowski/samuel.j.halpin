@@ -125,7 +125,7 @@ import ResourceCardSimple from "../components/resourcesComponents/ResourceCardSi
 const resources = [
   {
     title: "Resource Pack for KS2 Teachers",
-    image: "./assets/images/peggs_title.png",
+    image: "./assets/images-converted/peggs_title.webp",
     document: "./assets/resources/Peggs_Teaching_Resources.pdf",
     description:
       "This is the story of a sleepy town called Suds. A place where stories fill the air of children turning grey and disappearing without a trace... Poppy and Erasmus are certain there's something peculiar going on in Suds, and they're determined to unravel its secrets. But when they discover the answers might lie in the dark and twisting woods, can they find the courage to creep inside and solve this riddling mystery?      'A thrilling read...flavoured with fairytales, drizzled with a syrup of fear and sprinkled with heart.' M.G. Leonard",

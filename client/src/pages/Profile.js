@@ -106,7 +106,7 @@ export default function Profile() {
           username: data.updateUser.username,
           email: data.updateUser.email,
           // password: formState.password,
-          userIcon: "/assets/images/moth7.png",
+          userIcon: "/assets/images-converted/moth7.webp",
         })
       );
 

@@ -56,7 +56,7 @@ const MemoizedFooter = React.memo(Footer);
 
 function App() {
   const background = {
-    backgroundImage: "url(/assets/images/background.jpg)",
+    backgroundImage: "url(/assets/images-converted/background.webp)",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     backgroundAttachment: "fixed",

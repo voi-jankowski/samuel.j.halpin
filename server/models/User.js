@@ -21,7 +21,7 @@ const userSchema = new Schema({
   },
   userIcon: {
     type: String,
-    default: "./assets/images/moth7.png",
+    default: "./assets/images-converted/moth7.webp",
   },
   comments: [
     {
